@@ -4,12 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/TextView01"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Vamos a jugar!!!!.">
-</TextView>
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vamos a jugar!!!!.">
+    </TextView>
+
+     <!-- TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=getLevel()>
+    </TextView -->
+
+    <!-- TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=getScore()>
+    </TextView -->
 
 </LinearLayout>
