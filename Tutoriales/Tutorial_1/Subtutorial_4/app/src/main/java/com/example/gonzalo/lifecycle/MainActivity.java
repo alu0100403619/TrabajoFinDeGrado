@@ -3,17 +3,54 @@ package com.example.gonzalo.lifecycle;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-
+import android.widget.Toast;
+import android.view.View;
+import android.content.Intent;
 
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate (savedInstanceState);
+        Toast.makeText (MainActivity.this, "onCreate...", Toast.LENGTH_SHORT).show();
+        setContentView (R.layout.activity_main);
     }
 
+    @Override
+    protected void onStart () {
+        super.onStart ();
+        Toast.makeText (MainActivity.this, "onStart...", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume () {
+        super.onResume ();
+        Toast.makeText (MainActivity.this, "onResume...", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onPause () {
+        super.onPause ();
+        Toast.makeText (MainActivity.this, "onPause...", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop () {
+        super.onStop();
+        Toast.makeText (MainActivity.this, "onStop...", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onRestart () {
+        super.onRestart ();
+        Toast.makeText (MainActivity.this, "onRestart...", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy () {
+        super.onDestroy ();
+        Toast.makeText(MainActivity.this, "onDestroy...", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -22,18 +59,23 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void lanzarAcercaDe (View view) {
+        Intent i = new Intent (this, AcercaDe.class);
+        startActivity(i);
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+    public void lanzarAuthor (View view) {
+        Intent i = new Intent (this, Autor.class);
+        startActivity (i);
+    }
 
-        return super.onOptionsItemSelected(item);
+    public void lanzarConfiguracion (View view) {
+        Intent i = new Intent (this, Configuracion.class);
+        startActivity(i);
+    }
+
+    public void lanzarJugar (View view) {
+        Intent i = new Intent (this, Jugar.class);
+        startActivity(i);
     }
 }

@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AcercaDe" android:label="Acerca de" android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name=".Autor" android:label="Autor" android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name=".Configuracion" android:label="Configuracion" android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name=".Jugar" android:label="Jugar" android:theme="@android:style/Theme.Dialog"></activity>
     </application>
 
 </manifest>
