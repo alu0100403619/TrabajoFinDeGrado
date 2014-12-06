@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gonzalo.subtutorial_2" >
+    package="com.example.gonzalo.mytabapplication" >
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/CustomActionBarTheme2" >
+        android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.gonzalo.subtutorial_2.MainActivity"
-            android:label="@string/app_name" >
+            android:name="com.example.gonzalo.mytabapplication.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- activity android:name="com.example.gonzalo.subtutorial_1.DisplayMessageActivity"
-            android:label="@string/title_activity_display_message" >
-            <intent-filter>
-                <action android:name="com.example.gonzalo.subtutorial_1.DISPLAY_MESSAGE_ACTIVITY"></action>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity -->
+        <activity android:name=".ArtistActivity"></activity>
+        <activity android:name=".AlbumsActivity"></activity>
+        <activity android:name=".SongsActivity"></activity>
     </application>
 
 </manifest>
