@@ -1,0 +1,61 @@
+Nov 17
+
+- Toma de contacto
+- Empezará contacto con latex
+- Empezará con el capÃ­tulo de software y herramientas
+
+1.- Latex, si quieres
+2.- Github
+     Fichero de Seguimiento
+3.- Reuniones Mie 18:00h
+4.- Estructura capí­tulos (ir pensando)
+5.- CapÃ­tulo A: sofware y herramientas
+
+Referencias y bibliografí­a
+ir recopilando la que pudiera entrar en el Capítulo A
+--------------------------
+Dic 01
+Calificación del TFG
+
+
+5
+- Dedicación de 300 horas (12 créditos) al TFG
+- Asistencia a las reuniones semanales de seguimiento
+- Elaboración de la memoria básica del TFG
+- Instalación de todas las herramientas software necesarias para el trabajo
+- Realización de una presentación para exponer el TFG ante el tribunal
+--
+6
+- Repositorio de código (github) o similar con código ejecutable
+- Especificación de requisitos de la aplicación a desarrollar
+--
+7
+- Desarrollo de varias (2-3) aplicaciones Android simples de ejemplo de funcionamiento
+	de algunas funcionalidades de los dispositivos
+--
+8
+- Aplicación operativa en modo emulación, con falta de un 10% de los
+	requisitos de LA APLICACIÓN objetivo del TFG
+-- 
+9
+- Aplicación operativa y desplegada en Google Play cumpliendo con el 95% de los requisitos especificados
+- Aplicación probada en 3 ó más dispositivos Android diferentes
+--
+10
+- Aplicación completamente finalizada y con funcionalidades avanzadas concretas
+- Manual de usuario (capí­tulo de la memoria) de la aplicación
+- Conocimiento pleno y demostrable de la aplicación desarrollada
+--
+Cursar todos los módulos de:
+http://developer.android.com/training/index.html
+- Getting Started
+- Building Apps with Content Sharing
+- Building Apps with Multimedia
+- Building Apps with Graphics & Animation
+- Building Apps with Connectivity & the Cloud
+
+- Propuesta de aplicación: Red social para senderismo
+
+--------------------------
+--------------------------
+
