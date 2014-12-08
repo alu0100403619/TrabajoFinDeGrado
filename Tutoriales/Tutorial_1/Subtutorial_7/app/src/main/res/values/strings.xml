@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Intents</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="buton_call">Call</string>
+    <string name="phone">Insert a phone: 922127777</string>
+    <string name="buton_location">View Location</string>
+    <string name="google_buton">Google</string>
+    <string name="chooser_title">Chooser</string>
+    <string name="chooser_button">App Chooser</string>
+    <string name="pickContact_button">Pick Contact</string>
+    <string name="contact_name_text">Contact Name</string>
+    <string name="contact_phone_text">Contact Phone</string>
+
+</resources>
