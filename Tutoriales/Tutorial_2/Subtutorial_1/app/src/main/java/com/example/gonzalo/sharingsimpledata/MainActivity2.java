@@ -1,14 +1,20 @@
 package com.example.gonzalo.sharingsimpledata;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
 public class MainActivity2 extends Activity {
+
+    private static final int TAKE_PHOTO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,5 +52,21 @@ public class MainActivity2 extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void launchCamera (View view) {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, TAKE_PHOTO);
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        if (requestCode == TAKE_PHOTO) {
+            if (resultCode == RESULT_OK) {
+                Bitmap image = (Bitmap) data.getExtras().get("data");
+                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                imageView.setImageBitmap(image);
+            }
+        }
     }
 }
