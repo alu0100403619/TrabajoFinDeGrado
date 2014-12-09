@@ -27,13 +27,13 @@ public class MainActivity extends Activity {
 
         PackageManager pm = this.getPackageManager();
         if (!pm.hasSystemFeature(PackageManager.FEATURE_NFC)) {
-            Toast.makeText(this, "The device does not has NFC hardware.",
+            Toast.makeText(this, "El dispositivo no tiene hardware NFC.",
                     Toast.LENGTH_SHORT).show();
         } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            Toast.makeText(this, "Android Beam is not supported.",
+            Toast.makeText(this, "Android Beam no es soportado.",
                     Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Android Beam is supported on your device.",
+            Toast.makeText(this, "Android Beam es soportado por tu dispositivo.",
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -63,11 +63,11 @@ public class MainActivity extends Activity {
     public void sendByNFC (View view) {
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (!nfcAdapter.isEnabled()) {
-            Toast.makeText(this, "Please enable NFC.",
+            Toast.makeText(this, "Por favor, active NFC.",
                     Toast.LENGTH_SHORT).show();
             startActivity (new Intent (Settings.ACTION_NFC_SETTINGS));
         } else if (!nfcAdapter.isNdefPushEnabled()) {
-            Toast.makeText(this, "Please enable Android Beam.",
+            Toast.makeText(this, "Por favor, active Android Beam.",
                     Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Settings.ACTION_NFCSHARING_SETTINGS));
         } else {
