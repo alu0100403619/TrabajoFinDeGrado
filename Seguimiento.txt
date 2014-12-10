@@ -57,5 +57,7 @@ http://developer.android.com/training/index.html
 - Propuesta de aplicación: Red social para senderismo
 
 --------------------------
+Dic 10
+
 --------------------------
 
