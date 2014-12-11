@@ -57,5 +57,35 @@ http://developer.android.com/training/index.html
 - Propuesta de aplicación: Red social para senderismo
 
 --------------------------
+Dic 10
+
+Hizo todos los módulos de:
+- Getting Started
+- Building Apps with Content Sharing
+- Building Apps with Multimedia (falta una parte, el último, printing content).
+
+
+- Googlear buscando apps (Android) para "gestión" de colegios
+- Echar un vistazo (registro, etc.) a miColegioApp
+- Asegúrate de cargar en el repositorio todos los tutoriales que hayas
+	completado.
+- Asegúrate de anotar todo lo necesario para reproducir en mi despacho tus
+	resultados.
+- Completar los tutoriales que faltan de la lista anterior.
+
+
+Si te queda tiempo/ganas:
+- Best Practices for Security & Privacy
+- Best Practices for Testing
+
+- Identificar en qué aspectos necesitas profundizar 
+--------------------------
+
+
+
+
+
+
+
 --------------------------
 
