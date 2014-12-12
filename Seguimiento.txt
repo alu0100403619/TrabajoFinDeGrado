@@ -66,6 +66,44 @@ Hizo todos los módulos de:
 
 
 - Googlear buscando apps (Android) para "gestión" de colegios
+=======
+- Googlear buscando apps (Android) para "gestión" de colegios:
+La mayoría son de un solo colegio o este tiene que contratar o usar alguna plataforma virtual específica.
+--Micolegioapp
+--Paramicolegio
+--Plataforma mi cole
+--Mi cole - papas
+--MySchool! Doccenti--Colegio Padre Dehon
+--MySchool!
+--Colegio Delta
+--MySchool! Genitori smartphone
+--FUCN Virtual
+--Colegio Ciudad del Mar
+--Myschool Chat
+--Stella Maris
+--Colegio Marista Castilla
+--CSApp - Colegio San Agustín
+--Colegio Romualdo Ballester
+--Colegio Jaime Balmes
+--Colégio Santo Américo
+--UESD
+--Colegio Teresiano América
+--Colegio Edith Stein
+--Colegio San Antonio de Padua
+--Colegio Los Pinos
+--El Encinar
+--Mi Escuela (Escuela de las artes y la tecnología)
+--Colegio San Enrique
+--COLEGIO BLESS
+--Colegio San Juan Evangelista
+--Colegio Parque
+--Colegio Slam Miami
+--Meridian Mihir MySchool™
+--Mi Cole Andaluz Lite (No tiene que ver pero su funcionalidad es interesante)
+--EduFile Viewer (no tiene mucho que ver pero me parece curioso eso de trabajar con ficheros edufile)
+
+
+
 - Echar un vistazo (registro, etc.) a miColegioApp
 - Asegúrate de cargar en el repositorio todos los tutoriales que hayas
 	completado.
