@@ -4,5 +4,8 @@
     <string name="app_name">Printing Content</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="prinitngPhoto">Printing Photo</string>
+    <string name="printingWeb">Printing Web</string>
+    <string name="printing_button">Printing</string>
 
 </resources>
