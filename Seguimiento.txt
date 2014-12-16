@@ -123,8 +123,8 @@ Si te queda tiempo/ganas:
 - Best Practices for Testing
 
 -/ Identificar en qué aspectos necesitas profundizar:
-	BBDD en la nuve
-	Mandar notificaciones y mensajes tipo Whatsapp entre dispositivos
+	--BBDD en la nuve
+	--Mandar notificaciones y mensajes tipo Whatsapp entre dispositivos
 --------------------------
 
 

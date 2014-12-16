@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+    <string name="app_name">DisplayingBitmaps</string>
+    <string name="intro_message">
+        <![CDATA[
+
+            Esto es una aplicación de ejemplo para la clase de entrenamiento Android
+            &quot;mostrando bitmas de forma eficiente&quot;
+            (http://developer.android.com/training/displaying-bitmaps/).\n\n
+
+            Demostramos como cargar bitmaps largos de forma eficiente en el hilo principal de la UI,
+            "caching" bitmaps (ambos en memoria y en disco), manejando la memoria de bitmaps y
+            mostrando bitmaps en elementos UI como ViewPager y ListView/GridView.
+
+
+        ]]>
+    </string>
+</resources>
