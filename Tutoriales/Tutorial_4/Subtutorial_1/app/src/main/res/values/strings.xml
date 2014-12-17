@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="clear_cache_menu">Limpiar Caches</string>
+    <string name="clear_cache_complete_toast">Caches han sido limpiado</string>
+    <string name="imageview_description">Imagen Thumbnail</string>
+    <string name="no_network_connection_toast">Conexion a la red no encontrada</string>
+
+</resources>

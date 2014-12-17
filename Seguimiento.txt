@@ -48,11 +48,11 @@ Calificación del TFG
 --
 Cursar todos los módulos de:
 http://developer.android.com/training/index.html
-- Getting Started
-- Building Apps with Content Sharing
-- Building Apps with Multimedia
-- Building Apps with Graphics & Animation
-- Building Apps with Connectivity & the Cloud
+1 - Getting Started
+2 - Building Apps with Content Sharing
+3 - Building Apps with Multimedia
+4 - Building Apps with Graphics & Animation
+5 - Building Apps with Connectivity & the Cloud
 
 - Propuesta de aplicación: Red social para senderismo
 
@@ -67,48 +67,55 @@ Hizo todos los módulos de:
 
 - Googlear buscando apps (Android) para "gestión" de colegios
 =======
-- Googlear buscando apps (Android) para "gestión" de colegios:
-La mayoría son de un solo colegio o este tiene que contratar o usar alguna plataforma virtual específica.
---Micolegioapp
---Paramicolegio
---Plataforma mi cole
---Mi cole - papas
---MySchool! Doccenti--Colegio Padre Dehon
---MySchool!
---Colegio Delta
---MySchool! Genitori smartphone
---FUCN Virtual
---Colegio Ciudad del Mar
---Myschool Chat
---Stella Maris
---Colegio Marista Castilla
---CSApp - Colegio San Agustín
---Colegio Romualdo Ballester
---Colegio Jaime Balmes
---Colégio Santo Américo
---UESD
---Colegio Teresiano América
---Colegio Edith Stein
---Colegio San Antonio de Padua
---Colegio Los Pinos
---El Encinar
---Mi Escuela (Escuela de las artes y la tecnología)
---Colegio San Enrique
---COLEGIO BLESS
---Colegio San Juan Evangelista
---Colegio Parque
---Colegio Slam Miami
---Meridian Mihir MySchool™
---Mi Cole Andaluz Lite (No tiene que ver pero su funcionalidad es interesante)
---EduFile Viewer (no tiene mucho que ver pero me parece curioso eso de trabajar con ficheros edufile)
-
+-/ Googlear buscando apps (Android) para "gestión" de colegios:
+	La mayoría son de un solo colegio o este tiene que contratar o usar alguna plataforma virtual específica.
+	--Micolegioapp
+	--Paramicolegio
+	--Plataforma mi cole
+	--Mi cole - papas
+	--MySchool! Doccenti--Colegio Padre Dehon
+	--MySchool!
+	--Colegio Delta
+	--MySchool! Genitori smartphone
+	--FUCN Virtual
+	--Colegio Ciudad del Mar
+	--Myschool Chat
+	--Stella Maris
+	--Colegio Marista Castilla
+	--CSApp - Colegio San Agustín
+	--Colegio Romualdo Ballester
+	--Colegio Jaime Balmes
+	--Colégio Santo Américo
+	--UESD
+	--Colegio Teresiano América
+	--Colegio Edith Stein
+	--Colegio San Antonio de Padua
+	--Colegio Los Pinos
+	--El Encinar
+	--Mi Escuela (Escuela de las artes y la tecnología)
+	--Colegio San Enrique
+	--COLEGIO BLESS
+	--Colegio San Juan Evangelista
+	--Colegio Parque
+	--Colegio Slam Miami
+	--Meridian Mihir MySchool
+	--Mi Cole Andaluz Lite (No tiene que ver pero su funcionalidad es interesante)
+	--EduFile Viewer (no tiene mucho que ver pero me parece curioso eso de trabajar con ficheros edufile)
 
 
 - Echar un vistazo (registro, etc.) a miColegioApp
-- Asegúrate de cargar en el repositorio todos los tutoriales que hayas
-	completado.
-- Asegúrate de anotar todo lo necesario para reproducir en mi despacho tus
-	resultados.
+-/ Asegúrate de cargar en el repositorio todos los tutoriales que hayas completado
+-/ Asegúrate de anotar todo lo necesario para reproducir en mi despacho tus resultados:
+	-- Android studio no render target:
+		Asegurarse de que hay un dispositivo seleccionado
+		Asegurarse de que hay un version de android seleccionada
+		Asegurarse de tener todo lo del SDK(Versiones necesarias de Android) instalado
+		Crear un nuevo Dispositivo Virtual(AVD)
+		Reiniciar Android Studio
+	--Appcompact no compatible
+		Cambiar fichero build.gradle en app/:
+			compile 'com.android.support:support-v4:21.0.0'
+
 - Completar los tutoriales que faltan de la lista anterior.
 
 
@@ -116,12 +123,26 @@ Si te queda tiempo/ganas:
 - Best Practices for Security & Privacy
 - Best Practices for Testing
 
-- Identificar en qué aspectos necesitas profundizar 
+-/ Identificar en qué aspectos necesitas profundizar:
+	--BBDD en la nuve
+	--Mandar notificaciones y mensajes tipo Whatsapp entre dispositivos
 --------------------------
+Dic 17
 
+- Hasta ahora va por los tutoriales y el último (todavía sin completar) es:
+  Building Apps with Graphics & Animation
 
-
-
+Trabajo futuro:
+- Acabar TODOS los tutoriales
+   4 - Building Apps with Graphics & Animation
+   5 - Building Apps with Connectivity & the Cloud
+   6 - Best Practices for Security & Privacy
+   7 - Best Practices for Testing
+	 8 (nuevo) Data Storage.  http://developer.android.com/guide/topics/data/index.html
+- Instala Android Studio 1.0 (compatibilidad con mi despacho). Arregla todos
+	los tutoriales si hay problemas con la nueva versión.
+- Mete el latex de la memoria (no los pdf) en el repositorio. Recuerda ir
+	tomando notas.
 
 
 
