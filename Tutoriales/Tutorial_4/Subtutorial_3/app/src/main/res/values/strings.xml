@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="app_name">Adding Animations</string>
+    <string name="app_name">Animations Demo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Titles -->
+    <string name="title_crossfade">Simple Crossfade</string>
+    <string name="title_card_flip">Card Flip</string>
+    <string name="title_screen_slide">Screen Slide</string>
+    <string name="title_zoom">Zoom</string>
+    <string name="title_layout_changes">Layout Changes</string>
+    <string name="title_template_step">Step <xliff:g id="step_number">%1$d</xliff:g>: Lorem
+        Ipsum</string>
+
+    <!-- Actions -->
+    <string name="action_toggle">Indicador de Toggle</string>
+    <string name="action_add_item">Añadir Item</string>
+    <string name="action_remove_item">Borrar Item</string>
+    <string name="action_previous">Anterior</string>
+    <string name="action_next">Siguiente</string>
+    <string name="action_finish">Fin</string>
+    <string name="action_info">Info de Foto</string>
+    <string name="action_photo">Vista de Foto</string>
+
+    <!-- Messages -->
+    <string name="message_empty_layout_changes">añade un item para empezar.</string>
+    <string name="message_zoom_touch_expand">Toca una foto para expandirla.</string>
+
+    <!-- Accessibility-only descriptions -->
+    <string name="description_image_1">Imagen 1</string>
+    <string name="description_image_2">Imagen 2</string>
+    <string name="description_zoom_touch_close">Imagen Expandida (tocar para cerrar)</string>
+
+    <!-- Other strings -->
+    <string name="card_back_title">Android Rojo Enfadado</string>
+    <string name="card_back_description"><![CDATA[Lorem ipsum dolor sit]]></string>
+    <string name="lorem_ipsum"><![CDATA[Lorem ipsum dolor sit amet, elit adipiscing consectetur. Como lo habían sido en el curso de cualquier elemento de la muy divertida y genial. De hecho, las fauces de ultrices eros, o un león es siempre un montón de tiempo. DUIS gran ejército, que, a veces, ni la vida de Planificación, la salsa es una cama. Pero por favor, por favor eros de fútbol. Envenenado en ultricies ahora muy grande vergonzoso o bebida ecológica. Una urna Servicio de Presentación Directorio Quién sino elit nisi nec purus. También, para la falda de fútbol DUI una proteína. Gaming habitan la edad triste de edad y la enfermedad, y el hambre asesoramiento y lo feo necesidad Netus. \ N \ nPhasellus hijo clínica, eleifend ncp Identificación congue, pero no en el centro. Penatibus y los grandes dioses de las montañas de la parturienta, nacerán un ratón ridículo. Entero es siempre el querer o hasta la puerta del proceso de fermentación, pero un león, el sitio web oficial.]]></string>
 </resources>
