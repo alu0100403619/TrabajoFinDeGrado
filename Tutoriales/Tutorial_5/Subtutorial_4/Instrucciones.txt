@@ -1,0 +1,6 @@
+Instrucciones de Ejecucion:
+1- Ejecutar la aplicacion Andorid.
+2- Obtener RegId dandole al boton.
+	ATENCIÓN: No Cerrar la Aplicación.
+	NOTA: Las librerías necesarias para la aplicación java estan en la carpeta libs, dentro del directoria de dicaha aplicación.
+3- Ejecutar la aplicación java.
