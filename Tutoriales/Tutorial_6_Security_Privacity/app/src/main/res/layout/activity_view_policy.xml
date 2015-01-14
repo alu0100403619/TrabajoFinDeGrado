@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ScrollView android:layout_height="wrap_content" android:layout_width="fill_parent"
+        android:layout_weight="1">
+
+        <LinearLayout android:orientation="vertical" android:layout_height="wrap_content"
+            android:layout_width="fill_parent" android:paddingRight="@dimen/side_padding"
+            android:paddingLeft="@dimen/side_padding" android:paddingTop="@dimen/top_padding">
+
+            <TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+                android:textSize="@dimen/text_size_medium"
+                android:text="@string/view_policy_instruction"
+                android:id="@+id/policy_instructions"/>
+
+            <!-- Password type -->
+            <TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+                android:paddingTop="3dp" android:textSize="@dimen/text_size_small"
+                android:text="@string/view_password_quality"/>
+
+            <TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+                android:paddingLeft="3dp" android:id="@+id/policy_password_quality"
+                android:paddingBottom="3dp"/>
+
+            <!-- Minimum password length -->
+            <TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+                android:paddingTop="3dp" android:textSize="@dimen/text_size_small"
+                android:text="@string/view_password_length"/>
+
+            <TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+                android:paddingLeft="3dp" android:id="@+id/policy_password_length"
+                android:paddingBottom="3dp"/>
+
+            <!-- Minimum password uppercase characters -->
+            <LinearLayout android:orientation="vertical" android:layout_height="wrap_content"
+                android:layout_width="fill_parent" android:id="@+id/password_uppercase_view"
+                android:visibility="gone">
+
+                <TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+                    android:paddingTop="3dp" android:textSize="@dimen/text_size_small"
+                    android:text="@string/view_password_uppercase"/>
+
+                <TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+                    android:paddingLeft="3dp" android:id="@+id/policy_password_uppercase"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="fill_parent"
+        android:paddingRight="@dimen/side_padding" android:paddingLeft="@dimen/side_padding"
+        android:textSize="@dimen/text_size_medium" android:id="@+id/setup_message"
+        android:paddingBottom="5dp"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content"
+        android:id="@+id/setup_action_btn" android:layout_marginBottom="@dimen/top_padding"
+        android:layout_gravity="center_horizontal" android:minWidth="200dp"/>
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="password_types">
+        <item>Anything</item>
+        <item>Something</item>
+        <item>Numeric</item>
+        <item>Alphabetic</item>
+        <item>Alphanumeric</item>
+        <item>Complex</item>
+    </string-array>
+</resources>

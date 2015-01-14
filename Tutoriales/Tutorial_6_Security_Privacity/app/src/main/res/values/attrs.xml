@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="AppTheme">
+        <attr name="actionbarCompatTitleStyle" format="reference"/>
+        <attr name="actionbarCompatButtonStyle" format="reference"/>
+        <attr name="actionbarCompatButtonHomeStyle" format="reference"/>
+        <attr name="actionbarCompatProgressIndicatorStyle" format="reference"/>
+    </declare-styleable>
+
+    <!-- Mostly taken from frameworks/base.git/core/res/res/values/attrs.xml -->
+    <declare-styleable name="TextAppearance">
+        <attr name="textColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="textStyle">
+            <flag name="normal" value="0"/>
+            <flag name="bold" value="1"/>
+            <flag name="italic" value="2"/>
+        </attr>
+        <attr name="typeface">
+            <enum name="normal" value="0"/>
+            <enum name="sans" value="1"/>
+            <enum name="serif" value="2"/>
+            <enum name="monospace" value="3"/>
+        </attr>
+        <attr name="shadowRadius" format="float"/>
+        <attr name="shadowDx" format="float"/>
+        <attr name="shadowDy" format="float"/>
+        <attr name="shadowColor" format="color"/>
+    </declare-styleable>
+</resources>
