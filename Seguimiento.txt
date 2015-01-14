@@ -48,11 +48,11 @@ Calificación del TFG
 --
 Cursar todos los módulos de:
 http://developer.android.com/training/index.html
-1 - Getting Started
-2 - Building Apps with Content Sharing
-3 - Building Apps with Multimedia
-4 - Building Apps with Graphics & Animation
-5 - Building Apps with Connectivity & the Cloud
++ 1 - Getting Started
++ 2 - Building Apps with Content Sharing
++ 3 - Building Apps with Multimedia
++ 4 - Building Apps with Graphics & Animation
++ 5 - Building Apps with Connectivity & the Cloud
 
 - Propuesta de aplicación: Red social para senderismo
 
@@ -134,8 +134,8 @@ Dic 17
 
 Trabajo futuro:
 - Acabar TODOS los tutoriales
-   4 - Building Apps with Graphics & Animation
-   5 - Building Apps with Connectivity & the Cloud
+   + 4 - Building Apps with Graphics & Animation
+   + 5 - Building Apps with Connectivity & the Cloud
    6 - Best Practices for Security & Privacy
    7 - Best Practices for Testing
 	 8 (nuevo) Data Storage.  http://developer.android.com/guide/topics/data/index.html
@@ -143,6 +143,24 @@ Trabajo futuro:
 	los tutoriales si hay problemas con la nueva versión.
 - Mete el latex de la memoria (no los pdf) en el repositorio. Recuerda ir
 	tomando notas.
+--------------------------
+Ene 14
+
+- Ha encontrado (y estudiado) un tutorial sobre Google Cloud messaging:
+2014-2015_GonzaloGarcíaAndroid/
+
+- Va por el tutorial 6. Faltan 7 y 8
+- Localizar y echar un vistazo a cómo resuelven el problema 'BD' en la aplicación shorcial
+- Buscar más apps con código disponible públicamente
+- Primer borrador de: Especificación de requisitos de la app que desarrollaremos como resultado
+	del proyecto. Esto A LA MEMORIA.
+
+
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
 
 
 
