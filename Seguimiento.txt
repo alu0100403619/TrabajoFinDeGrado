@@ -154,9 +154,27 @@ Ene 14
 - Buscar más apps con código disponible públicamente
 - Primer borrador de: Especificación de requisitos de la app que desarrollaremos como resultado
 	del proyecto. Esto A LA MEMORIA.
-
-
 --------------------------
+Ene 21
+
+- Avances: 
++ Ha terminado tutorial 6. ha hecho el tutorial 7. Falta corregir un error.
++ Tiene un borrador (papel) de las pantallas (Layouts) probables para la app a
+  diseñar (Colegio)
+
+- Trabajo Futuro:
+* Tutorial 8
+* Localizar y echar un vistazo a cómo resuelven el problema 'BD' en la aplicación shorcial
+* Buscar más apps con código disponible públicamente
+* Primer borrador de: Especificación de requisitos de la app que
+  desarrollaremos como resultado
+  del proyecto. Esto A LA MEMORIA.
+* Primer borrador de: Especificación de requisitos de la app que
+  desarrollaremos como resultado del proyecto. Esto A LA MEMORIA.
+
+- Referencias (futuro)
+* http://www.nosinmiubuntu.com/2012/12/notificaciones-push-i.html
+* https://parse.com/products/push
 --------------------------
 --------------------------
 --------------------------
