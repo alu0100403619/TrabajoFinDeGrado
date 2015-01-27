@@ -1,0 +1,500 @@
+%
+% ---------------------------------------------------
+%
+% Proyecto de Final de Carrera:
+% Author: Jose Lucas Grillo Lorenzo <jlucas.gl@gmail.com>
+% Author: F. de Sande fsande@ull.es
+% Fichero: main.tex
+%
+% ----------------------------------------------------
+%
+\documentclass[a4paper, twoside, 12pt]{book}
+\usepackage[a4paper]{geometry}
+%\usepackage[a5paper, margin=20mm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Next 3+3 lines select PDF or PS output (comment as apropriate)
+% To switch from PDF and PS comment/uncomment here and change Makefile
+\usepackage[pdftex]{color}
+\usepackage[pdftex]{graphicx}
+\graphicspath{{images/pdf/}}
+%\usepackage[dvips]{color}
+%\usepackage[dvips]{graphicx}
+\usepackage{epsfig}
+%\graphicspath{{images/eps/}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{subfigure}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsmath}          % BGD: Para el boxed de las fórmulas matemáticas
+\usepackage[pdftex=true,colorlinks=false,urlcolor=blue,plainpages=false,pagebackref=true,citecolor=red]{hyperref} %hiperenlaces y backcites 
+%\usepackage[backref,pdftex=true,colorlinks=true,urlcolor=blue,plainpages=false]{hyperref} %hiperenlaces
+\usepackage{indentfirst}			% BGD: Indenta el primer párrafo 
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[framemethod=default]{mdframed}
+\usepackage{algpseudocode}
+\usepackage[chapter]{algorithm}  % K: using the 'chapter' option, changes the default numbering:
+                                 % http://en.wikibooks.org/wiki/LaTeX/Algorithms_and_Pseudocode#The_algorithm_environment
+\usepackage{acronym}
+\usepackage{amsmath}
+
+% \usepackage{graphicx}
+% \usepackage{caption}
+% \usepackage{subcaption}
+
+\usepackage{cclicenses} % Creative commons
+
+% Para usar apéndices
+\usepackage{appendix}
+\renewcommand{\appendixname}{Apéndices}
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\thechapter}{\Roman{chapter}}		% BGD: Número de los capítulos en caracteres romanos
+\renewcommand{\thechapter}{\arabic{chapter}}		% número de los capítulos en arábigos
+
+\definecolor{marron}     {rgb}{0.496, 0.203, 0.152}
+\definecolor{verde-claro}{rgb}{0.625, 0.734, 0.199}
+\definecolor{oscuro}     {rgb}{0.187, 0.141, 0.285}
+\definecolor{gris}     	 {rgb}{0.500, 0.500, 0.500}
+\definecolor{gris-claro}     	 {rgb}{0.250, 0.250, 0.250}
+% Definiendo colores para los listados de código fuente - Univ. Deusto
+\definecolor{violet}{rgb}{0.5,0,0.5}
+\definecolor{navy}{rgb}{0,0,0.5}
+\definecolor{hellgelb}{rgb}{1,1,0.8}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Evitar partir palabras al final de la línea
+\hyphenpenalty=10000
+\tolerance=1000
+%Con este comando se indica a latex que si no puede o sabe partir una palabra,
+%la baje a la siguiente línea y rellene la línea anterior con espacios. Con
+%esto se evita, en cierta medida, que haya "salidas" de línea.
+\sloppy
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para listados de código\newcommand{\OTOSP}{\texttt{OTOSP}{}}
+\usepackage{listings}
+\lstloadlanguages{C}
+\lstset{
+        float=htbp,
+        language = C,
+        basicstyle=\ttfamily\small,
+        identifierstyle=\color{colIdentifier},
+        keywordstyle=\color{colKeys},
+        stringstyle=\color{colString},
+        commentstyle=\color{colComments},
+        columns=flexible,
+        tabsize=3,
+        frame=single,
+        extendedchars=true,
+        showspaces=false,
+        showstringspaces=false,
+        numbers=left,
+        numberstyle=\tiny,
+        breaklines=true,
+        backgroundcolor=\color{hellgelb},
+        breakautoindent=true,
+        captionpos=b,
+        breakatwhitespace=true,
+        aboveskip=10pt,
+        belowskip=10pt,
+}
+
+\renewcommand{\lstlistingname}{Listado} % Los títulos de los códigos insertados se denotan con Ejemplo...   
+
+% Formato para las definiciones
+\let\origdescription\description
+\renewenvironment{description}{
+  \origdescription
+  %\style = multiline
+  \setlength{\labelsep}{\textwidth}
+  \itemsep 0.5pt
+}
+{\endlist}
+% \renewcommand{\descriptionlabel}[1]{\hspace\labelsep\texttt #1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formato para las imágenes
+\newcommand{\figura}[4]{
+   \begin{figure}[htp!] % htpb es el orden de preferencia de colocaci�n:here-top-botton-page
+      \begin{center}
+         \includegraphics[#1]{#2}
+      \end{center}
+      \caption{#4}
+      \label{#3}
+   \end{figure}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---- Macros de uso extensivo ------
+% Comandos para escribir "siempre igual"
+\acrodef{PFC}[PFC]{Proyecto Final de Carrera}
+\acrodef{llcl}[\texttt{llcl}]{La Laguna Computing Language}
+\acrodef{accULL}[\texttt{accULL}]{Accelerator ULL}
+\acrodef{yacf}[\texttt{YaCF}]{Yet Another Compiler Framework}
+\acrodef{llc}[\texttt{llc}]{La Laguna C}
+\acrodef{Frangollo}[\texttt{Frangollo}]{Frangollo}
+% \acrodef{OMPSCR}[\texttt{OmpSCR}]{OpenMP source code repository}
+\acrodef{TBB}[TBB]{Thread Building Blocks}
+\acrodef{CUDA}[CUDA]{Compute Unified Device Architecture}
+\acrodef{OpenACC}[OpenACC]{Open Accelerator API}
+\acrodef{OpenCL}[OpenCL]{Open Computing Language}
+\acrodef{StS}[StS]{\textit{source-to-source}}
+\acrodef{TS}[TS]{Tabla de símbolos}
+\acrodef{SESE}[SESE]{Single Entry - Single Exit}
+%%%%% Codes     
+\acrodef{MD}[MD]{Molecular Dynamics}
+\acrodef{Mandel}[Mandelbrot]{Mandelbrot Set Computation}
+\acrodef{LUred}[LUred]{LU reduction}
+\acrodef{MxM}[MxM]{Multiplicación de Matrices}
+\acrodef{Jacobi}[Jacobi]{solution of a finite difference discretization of Helmholtz equation using a Jacobi iterative method}
+\acrodef{IR}[IR]{\textit{Intermediate Representation}}
+\acrodef{GPGPU}[GPGPU]{\textit{General-Purpose Computing on Graphics Processing Units}}
+\acrodef{IR}[IR]{\textit{Código Intermedio (Intermediate Representation)}}
+\acrodef{AST}[AST]{\textit{Árbol Sintáctico Abstracto (Abstract Syntax Tree)}}
+% \acrodef{ST}[ST]{\textit{Árbol Sintáctico (Syntax Tree)}}
+\acrodef{parent}[\textit{``parent''}]{atributo padre}
+\acrodef{parser}[\textit{``parser''}]{analizador sintáctico}
+\acrodef{lexer}[\textit{``lexer''}]{analizador léxico}
+\acrodef{writer}[\textit{``Writer''}]{escritor}
+\acrodef{GPU}[GPU]{\textit{Graphics Processing Unit}}
+\acrodef{SIMD}[SIMD]{\textit{Single Instruction Multiple Data}}
+\acrodef{CUDA}[CUDA]{\textit{Compute Unified Device Architecture} (Arquitectura Unificada de Dispositivos de Cómputo)}
+\acrodef{ULL}[ULL]{Universidad de La Laguna}
+\acrodef{ETSII}[ETSII]{Escuela Técnica Superior de Ingeniería Informática}
+\acrodef{epcc}[EPCC]{Edinburgh Parallel Computing Centre (Centro de Computación Paralela de Edinburgo)}
+\acrodef{gcap}[GCAP]{Grupo de Computación de Altas Prestaciones de la \ac{ULL}}
+\acrodef{scop}[\textbf{SCop}]{\textit{Static Control Programs}}
+\acrodef{HPC}[HPC]{Computación de Altas Prestaciones (\textit{High Performance Computing})}
+\acrodef{IAC}[IAC]{Instituto de Astrofísica de Canarias}
+\acrodef{SM}[SM]{\textit{Streaming Multiprocessor}}
+\acrodef{PoCC}[\textbf{PoCC}]{\textit{Polyhedral Compiler Collection}}
+
+
+\newcommand{\gpu}{\ac{GPU}}
+\newcommand{\ULL}{\ac{ULL}}
+\newcommand{\ETSII}{\ac{ETSII}}
+\newcommand{\MD}{MD{}}
+\newcommand{\OpenACC}{\ac{OpenACC}{}}
+\newcommand{\OpenAcc}{\ac{OpenACC}{}}
+\newcommand{\OpenCL}{OpenCL{}}
+\newcommand{\accULL}{\texttt{\ac{accULL}}{}}
+\newcommand{\Frangollo}{\texttt{\acs{Frangollo}}{}}
+\newcommand{\OMPSCR}{\texttt{\ac{OMPSCR}}{}}
+\newcommand{\sts}{\ac{StS}{}}
+\newcommand{\HPC}{\ac{HPC}}
+\newcommand{\GPU}{\ac{GPU}}
+\newcommand{\CUDA}{CUDA}
+\newcommand{\cuda}{CUDA}
+\newcommand{\MPI}{MPI}
+\newcommand{\mpi}{MPI}
+% \newcommand{\OTOSP}{\texttt{OTOSP}{}}
+\newcommand{\OpenMP}{OpenMP}
+\newcommand{\omp}{OpenMP}
+% \newcommand{\TBB}{\texttt{TBB}{}}
+% \newcommand{\bw}{\texttt{Cluster ULL}{}}
+% \newcommand{\ciemat}{\texttt{SGI Origin 3000}{}}
+% \newcommand{\cnueve}{\texttt{C99}{}}
+% \newcommand{\intel}{\texttt{Intel Quad-Core}{}}
+\newcommand{\langc}{\texttt{C}{}}
+\newcommand{\llCoMP}{\texttt{llCoMP}{}}       
+\newcommand{\llcomp}{\texttt{llCoMP}{}} 
+\newcommand{\llc}{\texttt{llc}{}}
+\newcommand{\openacc}{OpenACC}
+\newcommand{\opencl}{OpenCL}
+% \newcommand{\tarja}{\texttt{Bull Novascale Server}{}}
+% \newcommand{\yacfmpi}{\texttt{YaCF-MPI}{}}
+\newcommand{\yacf}{\texttt{YaCF}{}}
+\newcommand{\gpgpu}{\ac{GPGPU}}
+\newcommand{\GPGPU}{\ac{GPGPU}}
+\newcommand{\tiling}{\textit{Loop Tiling}}
+\newcommand{\driver}{\textit{driver}{}}
+\newcommand{\writer}{\textit{writer}{}}
+\newcommand{\visitor}{\textit{Visitor}{}}
+\newcommand{\mutator}{\textit{Mutator}{}}
+\newcommand{\gang}{\texttt{gang}{}}
+\newcommand{\worker}{\texttt{worker}{}}
+\newcommand{\cvector}{\texttt{vector}{}}
+\newcommand{\IR}{\ac{IR}{}}
+\newcommand{\parent}{\ac{parent}{}}
+\newcommand{\lexer}{\ac{lexer}{}}
+\newcommand{\parser}{\ac{parser}{}}
+\newcommand{\backend}{\textit{back-end}{}}
+\newcommand{\frontend}{\textit{front-end}{}}
+\newcommand{\NVIDIA}{NVIDIA}
+\newcommand{\Cray}{Cray}
+\newcommand{\PGI}{PGI}
+\newcommand{\CAPS}{CAPS}
+\newcommand{\CPU}{CPU}
+\newcommand{\SIMD}{\ac{SIMD}}
+\newcommand{\rodinia}{Rodinia}
+\newcommand{\benchmark}{\textit{benchmark}}
+\newcommand{\epcc}{\ac{epcc}}
+\newcommand{\gcap}{\ac{gcap}}
+\newcommand{\GCAP}{\ac{gcap}}
+
+\newcommand{\pocc}{\ac{PoCC}}
+\newcommand{\scop}{\ac{scop}}
+\newcommand{\cloog}{\textbf{CLooG}}
+\newcommand{\pluto}{\textbf{Pluto}}
+\newcommand{\PIPLib}{\textbf{PIPLib}}
+\newcommand{\pragma}{\texttt{\#pragma}}
+\newcommand{\thread}{\textit{thread}}
+\newcommand{\grid}{\textit{grid}}
+\newcommand{\warp}{\textit{warp}}
+
+% \newcommand{\ast}{\ac{AST}{}}
+
+\newcommand{\Garoe}{\textsl{Garoe}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\class}[1] {\emph{#1}}
+\newcommand{\method}[1] {\textit{#1}}
+\newcommand{\attr}[1] {\texttt{#1}}
+\newcommand{\directory}[1] {\textsc{#1}}
+\newcommand{\package}[1] {\textsc{#1}}
+\newcommand{\module}[1] {\textsc{#1}}
+
+\acrodef{Filter}[filtro]{\class{Filter}}
+\acrodef{Mutator}[mutador]{\class{Mutator}}
+
+
+
+
+\usepackage{proyecto-docente}
+% Requires fancyhdr package
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titulo, autor y director
+%\newcommand{\titlethesis}{Optimización de bucles en el compilador \texttt{accULL}}
+%\newcommand{\titlethesis}{\texttt{accULL}: Una implementación de código abierto para OpenACC}
+%\newcommand{\titlethesis}{\texttt{accULL}: Implementación de OpenACC de la ULL}
+\newcommand{\titlethesis}{\texttt{accULL}: OpenACC en la ULL}
+\newcommand{\authorthesis}{\lucas}
+\newcommand{\directorthesis}{Francisco de Sande González}
+\newcommand{\codirectorthesis}{Ruymán Reyes Castro}
+\newcommand{\lucas}{José Lucas Grillo Lorenzo}
+
+%\def\thechapter{\Roman{chapter}}    % Números romanos en los capítulos
+\def\thechapter{\arabic{chapter}}    % Números arábigos en los capítulos
+
+% Comando para mis listas (BGD). Coloca el texto alineado con respecto a la
+% mayor etiqueta. Opcionalmente, añade la distancia que se indique entre
+% las definiciones (por defecto, las une en 2mm [-2mm])
+\newcommand{\bgdlist}[2][-2mm]{\settowidth{\labelwidth}{#2}
+    \setlength{\leftmargin}{\labelwidth}
+    \addtolength{\itemsep}{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Página que no está usada esté sin cabecera
+
+\makeatletter \def\cleardoublepage{
+     \clearpage
+     \if@twoside 
+	\ifodd
+	  \c@page
+	\else
+	  \hbox{}
+	  \thispagestyle{plain}
+	  \newpage
+	  \if@twocolumn
+	    \hbox{}
+	    \newpage
+	  \fi
+      \fi
+    \fi} 
+
+\makeatother \clearpage{\pagestyle{plain}\cleardoublepage} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\frenchspacing
+% \setlength{\hoffset}{-15mm}
+% \setlength{\voffset}{-15mm}
+% \setlength{\textwidth}{17cm}
+% \setlength{\textheight}{23cm}
+% \setlength{\parskip}{3mm}
+\setlength{\parskip}{0.5\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para el indice
+%Imprimir los números en los títulos hasta el tercer nivel (subsubsecciones)
+\setcounter{secnumdepth}{3}
+%Imprimir en el índice los títulos hasta el tercer nivel (subsubsecciones)
+\setcounter{tocdepth}{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{marron}       {rgb}{0.496, 0.203, 0.152}
+\definecolor{verde-claro}  {rgb}{0.625, 0.734, 0.199}
+\definecolor{oscuro}       {rgb}{0.187, 0.141, 0.285}
+\definecolor{gris}     	   {rgb}{0.500, 0.500, 0.500}
+\definecolor{bgd-listings} {rgb}{0.999, 0.999, 0.900}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{gray}{gray}{.45}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Code Listings
+%\usepackage{listings} 
+%\lstloadlanguages{python,C}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Evitar partir palabras al final de la línea
+%\hyphenpenalty=10000
+%\tolerance=1000
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para listados de código
+\usepackage{listings}
+\lstloadlanguages{C}
+
+% Definiendo colores para los listados de código fuente - Univ. Deusto
+\definecolor{violet}{rgb}{0.5,0,0.5}
+\definecolor{navy}{rgb}{0,0,0.5}
+\definecolor{hellgelb}{rgb}{1,1,0.8}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+
+%\lstset{morekeywords={pragma copy\_in copy\_out copy omp parallel private reduction shared hicuda loop\_partition over\_tblock over\_thread}}
+\lstset{
+        float=hbp,
+		    language = C,
+				morekeywords={llc,reduction_type,nc_result,
+				              hicuda,global,alloc,shape,kernel,thread,loop_partition,tblock,over_tblock,over_thread,kernel_end,copyout,free,
+											data,region,
+											task,input,inout,output,
+				              pragma,omp,parallel,reduction,private,shared,target,device,copy_in,copy_out,
+				              acc,kernels,loop,copyin,copy,pcopy,pcopyin,collapse,gang,worker,independent},
+				%\emph      ={omp,parallel,reduction,private,shared},
+				emphstyle=\textbf,
+        basicstyle=\ttfamily\footnotesize,
+        identifierstyle=\color{colIdentifier},
+        keywordstyle=\color{colKeys},
+        stringstyle=\color{colString},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        columns=flexible,
+        tabsize=4,
+        frame=single,
+        extendedchars=true,
+        showspaces=false,
+        showstringspaces=false,
+        numbers=left,
+        numberstyle=\tiny,
+        breaklines=true,
+        backgroundcolor=\color{lightlightgray},
+        breakautoindent=true,
+        captionpos=b
+}
+
+%\renewcommand{\lstlistingname}{Listing} % Los títulos de los códigos insertados se denotan con Ejemplo...   
+
+% Otro formato más bonito para código fuente
+\newcommand{\codigofuente}[3]{%
+  \lstlisting[language=#1,caption={#2}]{#3}%
+}
+
+
+
+\begin{document}
+\renewcommand{\tablename}{Tabla}        % Los títulos de las tablas se denotan como Tabla...   
+
+\frontmatter
+% ==========================================================
+% --------      Las papeladas del principio        ---------
+% --------      Estan en el directorio ./previo/   ---------
+% ==========================================================
+
+\include{previo/portada}
+\include{previo/preliminares}
+\include{previo/citas}
+\include{previo/dedica} 
+\include{previo/agrade}
+ 
+% -------- Índices -----------
+\markboth{Índice general}{Índice general}
+\tableofcontents
+
+% ==========================================================
+% --------               Capítulos                ----------
+% --------    Estan en el directorio capitulos/   ----------
+% ==========================================================
+
+\include{capitulos/Prologo}
+%Capítulos
+\mainmatter
+\include{capitulos/Cap1_motivation}
+\include{capitulos/Cap2_objetives}
+\include{capitulos/Cap3_PModel}
+\include{capitulos/Cap4_YaCF}
+%\include{capitulos/Cap5_Opt_GPGPU}
+%\include{capitulos/Cap6_resultados}
+%\include{capitulos/Cap7_conclusiones} 
+ \include{capitulos/Cap_todo}
+
+% ==========================================================
+% ----------              Apendices                ---------
+% ----------   Estan en el directorio apendices/   ---------
+% ==========================================================
+% \appendix
+% \cleardoublepage
+% \addappheadtotoc
+% \appendixpage
+% % Apéndices
+% \include{capitulos/Ap1_Codigos}
+
+% ==========================================================
+% ---------          Bibliografia               ------------
+% --------- Estan en el directorio bibliografia/------------
+% ==========================================================
+\backmatter
+%\pagestyle{fancy}
+% ELEGIR un estilo que te guste de bibliografía
+%\bibliographystyle{amsplain}
+%\bibliographystyle{abbrv}         % 
+\bibliographystyle{bmc_article}    % Este estilo mete las URLs de la bibliografía entre brackets
+% 
+% Diferentes ejemplos de estilos para bibliografía:
+% http://amath.colorado.edu/documentation/LaTeX/reference/faq/bibstyles.html
+%
+\renewcommand{\bibname}{Bibliografía}   %  Para que no aparezca Índice de figuras
+\addcontentsline{toc}{chapter}{\bibname}  % Lo añade al inidice
+%\markboth{\bibname}{\bibname}
+\bibliography{bibliografia/bibliografia}
+
+% ==========================================================
+% ---------                Índices              ------------
+% ==========================================================
+
+\renewcommand{\listfigurename}{Índice de Figuras}   %  Para que no aparezca Índice de figuras
+\addcontentsline{toc}{chapter}{\listfigurename}  % Para incluirlo en el índice  
+%\markboth{\listfigurename}{\listfigurename}
+\listoffigures
+
+\renewcommand{\listtablename}{Índice de Tablas}   %  Para que no aparezca Índice de cuadros
+\addcontentsline{toc}{chapter}{\listtablename}  % Para incluirlo en el índice  
+%\markboth{\listtablename}{\listtablename}
+\listoftables
+
+\renewcommand{\lstlistlistingname}{Índice de Listados} %  Para que no aparezca Listings
+\addcontentsline{toc}{chapter}{\lstlistlistingname}     % Para incluirlo en el índice     
+%\markboth{\lstlistlistingname}{\lstlistlistingname}
+\lstlistoflistings
+
+\end{document}

@@ -1,0 +1,131 @@
+%
+% ---------------------------------------------------
+%
+% Proyecto de Final de Carrera:
+% Author: José Lucas Grillo Lorenzo <jlucas.gl@gmail.com>
+% Capítulo: Yet Another Compiler Framework
+% Fichero: Cap4_YaCF.tex
+%
+% ----------------------------------------------------
+%
+
+\cleardoublepage
+
+\chapter{Yet Another Compiler Framework}
+\label{chap:yacf}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Note %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{mdframed}[backgroundcolor=lightlightgray]
+% \textbf{Nota de reconocimiento}
+% 
+% \small
+% Por su relevancia en este \ac{PFC}, enmarcado en el desarrollo llevado a cabo por 
+% el equipo de desarrolladores de \accULL{}, se incluye en esta memoria el presente cápitulo,
+% extraido y traducido por el autor, a partir del trabajo realizado por \codirectorthesis{},
+% \directorthesis{} y su equipo en el TechReport \ref{}. XXX referencia al TechReport de yacf
+% \end{mdframed}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \vspace{0.5cm}
+
+\noindent
+\acf{yacf} es un compilador \sts{} escrito en Python que ha sido diseñado para facilitar 
+el trabajo a los diseñadores de compiladores.
+Está dividido en componentes independientes y puede emplearse en desarrollar drivers
+\ac{StS} o en crear pequeñas transformaciones de prueba.
+Dentro de \yacf{} existen tres paquetes estructurados en módulos y subclases que
+resuelven algunos problemas comunes en la traducción de código \ac{StS}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htpb]
+\centering
+\begin{tabular}{ | l | c | }
+  \hline
+  \textbf{Parámetro} & \textbf{Valor}                        \\ \hline
+  \texttt{loop\_variable} & $i$                                        \\ \hline
+  \texttt{\_stride} & $1$                                               \\ \hline
+  \texttt{cond\_node} & $i < N$                               \\ \hline
+  \texttt{last\_iteration} ($It_{last}$) &  $N-1$  \\   \hline
+  \texttt{number\_of\_iterations} & $ ( It_{last} - It_{first} ) / 1 $  \\ \hline
+  \texttt{iteration\_expression} & $i += 1$                                        \\  \hline
+\end{tabular}
+\caption{Información extraída del bucle del Listado \ref{middle:analysis1}}
+\label{middle:analysis2}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[float,language=C,caption={Un bucle C canónico},label={middle:analysis1}]{listings/analysis1.c} %% LISTING
+
+Nótese que algunos de los parámetros obtenidos no son valores constantes, sino expresiones en lenguaje \ac{IR}.
+Estas expresiones serán luego traducidas al lenguaje original por una clase \ac{writer}.
+El valor final será evaluado en tiempo de ejecución.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Optimizaciones de bucles}
+\label{subsec:loopopt}
+
+%The optimization stage is one of the most important in any compiler.
+%Its function is to improve the performance of object code execution.
+%The compilers can optimize the code to improve instructions scheduling, 
+%the use of records, or to expose parallelism.
+%\cite{Xue:2000:LTP}. % Pag. 43-45
+\noindent
+Debido a la naturaleza de los compiladores \ac{StS}, las optimizaciones de bucles juegan un papel dominante en 
+las optimizaciones de código. \yacf{} implementa varias optimizaciones de bucles como \texttt{interchange}, 
+\texttt{unswitch}, \texttt{unroll}, o \tiling{}, algunas de las cuales se describen en detalle a continuación.
+Estas transformaciones aparecer con diferentes nombres en la literatura relacionada,
+y muchas de ellas han sido implementadas en otros compiladores \ac{StS} tales como Cetus 
+\cite{Lee:2003:CEC} o Mercurium \cite{URL::Mercurium}.
+
+Las optimizaciones disponible en \yacf{} han sido implementadas siguiendo
+los patrones de software \class{Mutator} y \class{Visitor} \cite{Gamma:1994:DPE}
+en el directorio \directory{MiddleEnd.Loop.Mutator}.
+Este directorio contiene los mutadores responsables de llevar a cabo el procesamiento sobre el
+código intermedio IR-2 (Sección \ref{subsec:IR}).
+Por ejemplo, el módulo \module{LoopTiling.py} contiene la clase \class{LoopTilingMutator}
+que se encarga de aplicar un \tiling{} rectangular sobre el \ac{AST} suministrado,
+p.e. un \tiling{} con tamaños de bloque constante (véase la Sección \ref{LoopTilingRectangular} para más detalles).
+
+Estos mutadores hacen uso extensivo de las herramientas que proporciona el framework \yacf{} como 
+\class{ParametrizeLoopTool} para gestionar los bucles, o las disponibles en el paquete 
+\package{Tools.Tree} como por ejemplo \class{ReplaceTool}.
+
+En \yacf{} el programador es responsable de verificar la legalidad de las optimizaciones 
+que desee aplicar.
+Esto es, no hay garantía de que después de aplicar algunas transformaciones tales como 
+\tiling{},
+la semántica original del código fuente se conserve.
+Es responsabilidad del usuario de \yacf{} asegurar la fidelidad al original del programa
+optimizado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{El paquete común para optimizaciones de bucles	}
+\noindent
+El paquete \package{Common.py} del directorio \directory{MiddleEnd.Loop} contiene
+varias clases \class{Mutators} y \class{Filters} comunes a muchas optimizaciones y drivers, como
+el filtro \class{LoopFilter}.
+Este \class{Filter} busca un nodo \class{For} en todo el \ac{AST}.
+
+El comportamiento por defecto de \class{LoopFilter} es iterar sobre el \ac{AST} para devolver
+cada uno de los nodos \class{For} encontrados.
+A su vez, este filtro puede ser parametrizado con un \textit{identificador} que 
+discrimine por la variable índice del bucle, indicándole el bucle o bucles que se desea encontrar.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Loop Interchange}
+\label{subsec:interchange}
+
+\noindent
+Esta transformación modifica el orden de bucles, intercambiando dos bucles perfectamente anidados.
+Uno de los objetivos del \textit{loop interchange} es mejorar el rendimiento de la cache al acceder a
+elementos de un array.
+Intercambiar los índices de los bucles no siempre es legal debido a las posibles dependencias existentes
+entre sentencias y el orden en el que se deben ejecutar. 
+Para determinar si un compilador puede intercambiar legalmente dos bucles se debe realizar primero un 
+análisis de dependencias entre iteraciones.
+
+\lstinputlisting[float,language=C,caption={Bucle anidado antes de aplicar \textit{loop interchange}},label={code:interchange1}]{listings/interchange1.c} %% LISTING
+
+En el ejemplo básico mostrado en los Listados \ref{code:interchange1} y \ref{code:interchange2}
+se puede observar el efecto de la transformación.
+
+\lstinputlisting[float,language=C,caption={Resultado de aplicar \textit{loop interchange} a los bucles anidados del Listado \ref{code:interchange1}},label={code:interchange2}]{listings/interchange2.c} %%<----LISTING
+
