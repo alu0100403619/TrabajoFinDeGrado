@@ -1,0 +1,54 @@
+%
+% ---------------------------------------------------
+%
+% Proyecto de Final de Carrera:
+% Author: José Lucas Grillo Lorenzo <jlucas.gl@gmail.com>
+% Apéndice: A1
+% Fichero: Ap1_XXX.tex
+%
+% ----------------------------------------------------
+
+\chapter{Códigos relacionados} 
+\label{ap:apx_1}
+
+A continuación se presentan 1770 líneas de código repartidas en varios ficheros
+pertenecientes al trabajo realizado respecto a las optimizaciones de bucles,
+aunque hay que aclarar que los desarrollos llevados a cabo no se limitan a
+los códigos aquí presentados. Estos son códigos que han sido aportados y
+desarrollados enteramente por el autor para el proyecto de investigación \accULL{}:
+
+\section{Loop Common}
+\lstinputlisting[language=Python,caption={Módulo \package{Common.py} conteniendo
+filtros y mutadores útiles para las optimizaciones}, label={code:common.py}]
+{listings/Common.py} %% LISTING
+
+\section{Loop interchange}
+\lstinputlisting[language=Python,caption={Módulo \package{LoopInterchange.py}
+que alberga el mutador \class{LoopInterchangeMutator}}, 
+label={code:loopInterchange.py}]{listings/LoopInterchange.py} %% LISTING
+
+\section{Loop StripMining}
+\lstinputlisting[language=Python,caption={Módulo \package{LoopStripMining.py}
+que alberga el mutador \class{LoopStripMiningMutator}}, 
+label={code:loopStripMining.py}]
+{listings/LoopStripMining.py} %% LISTING
+
+\section{Loop Tiling}
+\lstinputlisting[language=Python,caption={Módulo \package{LoopTiling.py}
+que alberga el mutador \class{LoopTilingMutator}}, 
+label={code:loopTiling.py}]
+{listings/LoopTiling.py} %% LISTING
+
+\section{Driver accgangworker.py}
+\lstinputlisting[language=Python,caption={Driver \package{accgangworker.py}
+descrito en la Sección \ref{chap:optGPGPU:accgangworker}}, 
+label={code:accgangworker.py}]
+{listings/accgangworker.py} %% LISTING
+
+
+\section{Acc Parallel Loop}
+\lstinputlisting[language=Python,caption={Clase \class{AccParallelLoopMutator}
+encargada de realizar las transformaciones correspondientes a las cláusulas
+\gang{} y \worker{}}, 
+label={code:accparallelloop}]
+{listings/AccParallelLoop.full.py} %% LISTING
