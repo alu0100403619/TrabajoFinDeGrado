@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawableRight="@drawable/ic_action_edit" android:id="@+id/action_edit"
+    android:ellipsize="end" android:textSize="20sp" android:singleLine="true"
+    android:padding="5dp" android:gravity="center_vertical"
+    android:layout_width="fill_parent" android:layout_height="wrap_content" >
+</TextView>
+
+<!-- TextView xmlns:android="http://schemas.android.com/apk/res/android"
+android:drawableRight="@drawable/ic_action_remove"
+android:ellipsize="end" android:textSize="20sp" android:singleLine="true"
+android:padding="5dp" android:gravity="center_vertical"
+android:layout_width="fill_parent" android:layout_height="wrap_content" >
+</TextView -->

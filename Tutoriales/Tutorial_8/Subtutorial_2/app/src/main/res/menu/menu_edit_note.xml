@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.gonzalo.noteappexternalstorage.edit_note">
+
+    <item android:id="@+id/action_back" android:title="@string/action_back"
+        app:showAsAction="always|withText" android:icon="@drawable/ic_action_back"/>
+
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>
