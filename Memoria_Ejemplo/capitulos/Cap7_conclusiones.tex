@@ -1,0 +1,93 @@
+%
+% ---------------------------------------------------
+%
+% Proyecto de Final de Carrera:
+% Author: José Lucas Grillo Lorenzo <jlucas.gl@gmail.com>
+% Capítulo: Conclusiones y trabajos futuros
+% Fichero: Cap7_conclusiones.tex
+%
+% ----------------------------------------------------
+%
+
+
+\chapter{Conclusiones y trabajos futuros} \label{chap:conclusiones}  
+
+\section{Conclusiones} \label{sec:conclusiones}
+
+En el presente \acf{PFC}, se han abordado los asuntos relativos a las 
+optimizaciones de bucles y su implementación, mediante las cláusulas \gang{} y \worker{}, 
+en el contexto del estándar de programación heterogénea basado en directivas \OpenACC{}. 
+No menos importante ha sido todo el trabajo de depuración y optmización del código que
+compone el compilador, para obtener una versión de \accULL{} capaz de compilar 
+satisfactoriamente los códigos evaluados. Así mismo es destacable también el trabajo
+realizado por el autor para lograr elaborar un producto listo para usar a partir del
+software del que está compuesto \accULL{}. 
+Importante ha sido en esta labor el trabajo con las
+herramientas de versionado y gestión de repositorio, sin las cuales las tareas de 
+depuración y publicación de \textit{release} hubieran sido mucho más tediosas.
+%XXX - Pasa revista a lo que has hecho:
+En esta memoria de PFC se han revisado los logros conseguidos en la ejecución del 
+proyecto. Relacionándolos directamente con los objetivos planteados inicialmente, podemos 
+señalar como más significativos los siguientes logros: 
+%(pon los más directos, los menos abstractos)
+
+Se ha conseguido que \accULL{} compile y genere código correcto, 
+comprobándolo en tiempo de ejecución para los niveles 0 y 1 del benchmark del EPCC 
+\cite{URL::ACCepccB}, así como para los códigos \textit{27stencil} y \textit{le\_core} del 
+nivel 2. Previo a la realización de este \ac{PFC} solo era posible compilar el nivel 0 y 
+algunos códigos sencillos del 
+nivel 1. El test \textit{le\_core} tampoco compilaba debido a diversos problemas con la 
+\ac{TS}. Concretamente, no había soporte para la definición encadenada de tipos mediante 
+\texttt{typedef}, y las opciones disponibles entonces estaban muy limitadas y daban serios 
+problemas al volver a parsear el código, una vez volcado.
+
+El grado de madurez alcanzado por \accULL{} es tal que a través de los experimentos 
+realizados (véase Capítulo \ref{chap:resultados}) \accULL{} se ha convertido en una 
+herramienta suficientemente madura para ofrecer resultados comparables en muchos casos a los 
+que se pueden conseguir con herramientas comerciales.
+No se pretende con ello decir que \accULL{} sea una herramienta acabada. En muchos casos 
+somos conscientes de sus limitaciones; pueden aparecer bugs, el tiempo de compilación es 
+en muchos casos elevado, el manejo de errores es mejorable, etc.
+Entre estas limitaciones destaca el compilador (\yacf{}). Un compilador escrito en Python, 
+un lenguaje interpretado, que tiene algunas carencias. Entre ellas una búsqueda en la 
+Tabla de Símbolos ineficiente, o el hecho repetir varios ciclos de parseo y volcado de 
+código en sucesivas etapas, hacen que \yacf{} sea uno de los puntos débiles de \accULL{}. 
+En este sentido los ciclos de parseo-volcado nos han permitido desarrollar optimizaciones 
+y transformaciones de código con relativa facilidad. No obstante es 
+evidente la necesidad de estudiar sustituir el actual compilador \yacf{} basado en 
+\textit{pycparser} \cite{Bendersky:pyc:2009}
+por algún otro basado en herramientas con mayor soporte.
+
+\section{Trabajos futuros} \label{sect:trabajo}
+
+%Clasifícalos como 'cosas que vamos a acometer en breve' y 'cosas de mucha enjundia'.
+Se clasifican a continuación, en orden de más prioritario a menos, las líneas abiertas de 
+trabajos futuros que han de ser acometidos próximamente en el contexto de la 
+investigación con el framework de compilación \accULL{}.
+
+\begin{itemize}
+\item Solucionar los casos de resultados incorrectos cuando haya que distribuir menos 
+iteraciones que los \thread{}s de los que se disponga, al aplicar la planificación 
+mediante las cláusulas \texttt{num\_gangs} y \texttt{num\_workers}, o en general al 
+invocar a las cláusulas \gang{}/\worker{}.
+\item Dar soporte para las reducciones de variables privadas en kernels de 2 o más 
+dimensiones.
+\item Evaluar la plataforma con más \benchmark{}s siguiendo el trabajo llevado a cabo para 
+fortalecer su robustez. Como trabajo inmediato, está previsto evaluar los \textit{NAS 
+Parallel \benchmark{}} \cite{Bailey:1991:NPB} verificando la correcta ejecución de los 
+experimentos, y depurando a su vez los hipotéticos \textit{bugs} que surjan.
+\item Implementar el soporte para las cláusulas \gang{}/\worker{} en regiones de tipo 
+\texttt{kernels}, ya que actualmente solo están disponibles para regiones 
+\texttt{parallel}.
+\item Experimentar de forma intensiva con aplicaciones reales. Aprovechando las 
+colaboraciones con el grupo del Dr. D. C. García Sanchez de la Universidad Complutense de 
+Madrid, así como con 
+el \ac{IAC} - a través del profesor Dr. D. F. Garzón, y el Dr. D. Antonio Dorta - este 
+último miembro del grupo de 
+investigación \GCAP{}.
+\item Dar soporte para kernels 3D. 
+\item Reemplazar \yacf{} por alguna alternativa más robusta como podría ser Cetus 
+\cite{Lee:2003:CEC}, 
+Rose \cite{Liao:2010:ESS}, Mercurium \cite{URL::Mercurium}, o LLVM \cite{Guntli:2011:AC}, 
+como se ha discutido en la Sección \ref{sec:conclusiones}.
+\end{itemize}
