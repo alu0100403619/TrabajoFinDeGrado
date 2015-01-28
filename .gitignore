@@ -1,5 +1,4 @@
-Memoria/
-.aux
-.txt
-.pdf
-.gz
+Memoria/*.aux
+Memoria/*.txt
+Memoria/*.pdf
+Memoria/*.gz
