@@ -163,14 +163,12 @@ Ene 21
   diseñar (Colegio)
 
 - Trabajo Futuro:
-* Tutorial 8
-* Localizar y echar un vistazo a cómo resuelven el problema 'BD' en la aplicación shorcial
-* Buscar más apps con código disponible públicamente
-* Primer borrador de: Especificación de requisitos de la app que
++ Tutorial 8
++ Localizar y echar un vistazo a cómo resuelven el problema 'BD' en la aplicación shorcial
++ Buscar más apps con código disponible públicamente
++ Primer borrador de: Especificación de requisitos de la app que
   desarrollaremos como resultado
   del proyecto. Esto A LA MEMORIA.
-* Primer borrador de: Especificación de requisitos de la app que
-  desarrollaremos como resultado del proyecto. Esto A LA MEMORIA.
 
 - Referencias (futuro)
 * http://www.nosinmiubuntu.com/2012/12/notificaciones-push-i.html
@@ -179,8 +177,19 @@ Ene 21
 --------------------------
 --------------------------
 --------------------------
+Ene 29
+- Avances: 
 
-
-
+- Trabajo Futuro:
+1* Detallar en mayor grado la especificación de requisitos: definir con cierto
+  grado de detalle, las funcionalidades que se pretende implementar.
+  Detallar con el mayor nivel posible los Layouts y pantallas que se van a
+	usar para cada funcionalidad.
+	Ir pensando en Diagramas UML para la app.
+2* Echar un vistazo a las tripas de apps con source code para ver qué usan.
+3* Google Cloud Computing + Android:
+  https://cloud.google.com/appengine/docs/whatisgoogleappengine
+4* Tutorial Volley
+5* Firebase
 --------------------------
 
