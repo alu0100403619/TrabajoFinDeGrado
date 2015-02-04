@@ -8,7 +8,3 @@ Memoria/*/*.txt
 Memoria/*/*.pdf
 Memoria/*/*.gz
 Memoria/*/*.log
-
-Memoria_Ejemplo/*.*
-!Memoria_Ejemplo/*.tex
-!Memoria_Ejemplo/*/*.tex
