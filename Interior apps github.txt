@@ -35,6 +35,3 @@
 	https://github.com/jacontrerasp/probador_android
 	Sin Layouts
 	python
-	
-
-

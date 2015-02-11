@@ -174,22 +174,31 @@ Ene 21
 * http://www.nosinmiubuntu.com/2012/12/notificaciones-push-i.html
 * https://parse.com/products/push
 --------------------------
---------------------------
---------------------------
---------------------------
 Ene 29
 - Avances: 
 
 - Trabajo Futuro:
-1* Detallar en mayor grado la especificación de requisitos: definir con cierto
+1+ Detallar en mayor grado la especificación de requisitos: definir con cierto
   grado de detalle, las funcionalidades que se pretende implementar.
   Detallar con el mayor nivel posible los Layouts y pantallas que se van a
 	usar para cada funcionalidad.
 	Ir pensando en Diagramas UML para la app.
-2* Echar un vistazo a las tripas de apps con source code para ver qué usan.
-3* Google Cloud Computing + Android:
-  https://cloud.google.com/appengine/docs/whatisgoogleappengine
+2+ Echar un vistazo a las tripas de apps con source code para ver qué usan.
+3+ Google Cloud Computing + Android:
+   https://cloud.google.com/appengine/docs/whatisgoogleappengine
 4* Tutorial Volley
 5* Firebase
+--------------------------
+Feb 11
+- Trabajo Futuro:
+	* Ir pensando en Diagramas UML para las clases que aparecen en la app.
+	* Tutorial (aprender como sea) Google Cloud Computing + Android: 
+	* Echar un vistazo a Google Cloud SQL a ver si es lo que necesitas
+  * Tutorial Volley (librería de shorcial para comm. con el servidor)
+	* Diseñar (1ª versión) de los Layouts más "evientes" de la app.
+--------------------------
+--------------------------
+--------------------------
+--------------------------
 --------------------------
 
