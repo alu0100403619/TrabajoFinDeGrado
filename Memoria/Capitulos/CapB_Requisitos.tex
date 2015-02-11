@@ -13,13 +13,25 @@
 \chapter{Requisitos}
 \label{chap:requirements}
 
-Las funcionalidades a implementar en nuestra aplicaci\'on son:
+Con nuestra aplicaci\'on para ``Android'' se crear\'a un sistema de comunicaci\'on escolar, para que los padres/madres/tutores legales, profesores e integrantes de la direcci\'on del centro puedan estar comunicados de forma continua.
+
 \begin{itemize}
-	\item Sistema de Registro.
-	\item Sistema de "Login".
-	\item Sistema de comunicaci\'on entre direcci\'on del centro, profesores y padres/madres/tutores legales.
-	\item Sistema de citas.
-	\item Lista de contactos, organizada por grupos desplegables.
+	\item Sistema de Registro: Al usuario se le podr\'a pedir los siguientes datos
+		\begin{itemize}
+			\item Nombre y Apellidos.
+			\item Rol con el que se va a registrar, ya que en funci\'on de un rol u otro se le pedir\'a distintos datos.
+			\item N\'umero de tel\'efono.
+			\item D.N.I
+			\item Nombre y Direcci\'on del centro con el que va a hacer el registro.
+			\item Puesto en el centro.
+			\item Selecci\'on de clase o asignatura, seg\'un lo que imparta el profesor.
+			\item Nombre y Apellidos del alumno.
+			\item Clase en la que est\'a el alumno. %Difrernciar 2 alumnos con = nombre y apellidos en la misma clase.
+		\end{itemize}
+	\item Sistema de ``Login'': Se le pedir\'a al usuario que ingrese su identificaci\'on, es decir, su D.N.I y contrase\~na.
+	\item Sistema de comunicaci\'on entre direcci\'on del centro, profesores y padres/madres/tutores legales: Tanto la direcci\'on del centro como los profesores y padres/madres/tutores legales se podr\'an comunicar entre s\'i con un servicio tipo ``chat'', para informar de alguna incidencia, mensaje o notificaci\'on. Este servicio mandar\'a los mensajes a trav\'es de internet usando notificaciones tipo ``push'', tambi\'en se les permitir\'a mandar documentos a trav\'es de la aplicaci\'on.
+	\item Sistema de citas: Se podr\'a concertar citas con los padres/madres/Tutores Legales, as\'i como \'estos podr\'an solicitar reuniones tanto con la direcci\'on del centro como con los profesores, estas citas se podr\'an a\~nadir al calendario de Google. Para esto ambos usuarios deber\'an aceptar la cita.
+	\item Lista de contactos, organizada por grupos desplegables, por ejemplo los profesores tendr\'an la lista organizadas por las clases que imparten en el centro en la cual estar\'an los alumnos a los que les d\'e clase.
 \end{itemize}
 
 Esto nos permitir\'a establecer un sistema de comunicaciones entre los profesores, la direcci\'on del centro y los padres de alumnos.
