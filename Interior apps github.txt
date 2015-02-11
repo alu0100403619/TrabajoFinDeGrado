@@ -1,0 +1,40 @@
+*Juego de Parejas:
+	https://github.com/jhtan/SimpsonsPares
+	Tablas y Arrays
+
+*Esta app tiene que ver algo con alimentación:
+	https://github.com/jried31/cs130Fall2013
+	Presentacion: https://www.youtube.com/watch?v=gZQbOmb03Lc&noredirect=1
+	Servidor local
+	Parse
+	Maps
+
+*Android First Person Asteroid Shooter Simulator:
+	https://github.com/pidgeonsquish/ACE
+	Google Web Toolkit
+	GDX (Librería para juegos y 3D): https://github.com/libgdx/libgdx
+	IOS y Android
+	Sin Layouts
+
+*Call Record App
+	https://github.com/kinmuriel/CallRecordApp
+	AudioSource.VOICE_DOWNLINK
+	RecordListener
+	BroadcastReceiver
+
+*Plantilla Android para nuevo proyecto basado en YAPPs:
+	https://github.com/whwang5566/Yahoo_BestBuy_Android
+	YAPP: https://www.yapp.us/
+
+*Meteo:
+	https://github.com/jmfierro/Meteo
+	ListAdapterGenerico extends BaseAdapter
+	Descarga datos meteorológicos desde la web --> WebServicio.java linea 53
+
+*Probador:
+	https://github.com/jacontrerasp/probador_android
+	Sin Layouts
+	python
+	
+
+
