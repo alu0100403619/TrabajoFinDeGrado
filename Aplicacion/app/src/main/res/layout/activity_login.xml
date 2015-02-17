@@ -14,7 +14,7 @@
         android:ems="10"
         android:hint="@string/username_hint"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentEnd="true" >
 
         <requestFocus />
     </EditText>
@@ -34,16 +34,61 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_button_label"
-        android:layout_below="@+id/passwordField"
-        android:layout_centerHorizontal="true"
-        android:onClick="login" />
+        android:onClick="login"
+        android:layout_above="@+id/signUpText"
+        android:layout_alignLeft="@+id/signUpText"
+        android:layout_alignStart="@+id/signUpText" />
 
     <Button
         android:id="@+id/signUpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up_text"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordField"
+        android:layout_centerHorizontal="true"
+        android:onClick="setTypeUser"
+        android:id="@+id/radioGroupUser">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alumno"
+            android:id="@+id/radioButton_alumno"
+            android:onClick="setTypeUser" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/teacher"
+            android:id="@+id/radioButton_teacher"
+            android:onClick="setTypeUser" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mother"
+            android:id="@+id/radioButton_mother"
+            android:onClick="setTypeUser" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/father"
+            android:id="@+id/radioButton_father"
+            android:onClick="setTypeUser" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tutor_legal"
+            android:id="@+id/radioButton_tutorLegal"
+            android:onClick="setTypeUser" />
+    </RadioGroup>
 
 </RelativeLayout>

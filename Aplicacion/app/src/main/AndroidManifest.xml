@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gonzalo.schoolapp" android:installLocation="auto">
+    package="com.example.gonzalo.schoolapp"
+    android:installLocation="auto" >
 
     <application
         android:allowBackup="true"
@@ -16,6 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AlumnoTabActivity"
+            android:label="@string/title_activity_alumno_tab" >
+        </activity>
+        <activity android:name=".AlumnoActivity"></activity>
+        <activity android:name=".TeachersActivity"></activity>
+        <activity android:name=".NotificationsActivity"></activity>
     </application>
 
 </manifest>

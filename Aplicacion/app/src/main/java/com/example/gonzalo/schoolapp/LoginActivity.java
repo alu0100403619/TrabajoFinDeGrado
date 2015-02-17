@@ -1,10 +1,12 @@
 package com.example.gonzalo.schoolapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,14 +14,15 @@ import android.widget.Toast;
 public class LoginActivity extends ActionBarActivity {
 
     TextView usernameTextView, passwordTextView;
+    String userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getSupportActionBar();
         setContentView(R.layout.activity_login);
         usernameTextView = (TextView) findViewById(R.id.usernameField);
         passwordTextView = (TextView) findViewById(R.id.passwordField);
+        userType = "";
     }
 
 
@@ -45,11 +48,45 @@ public class LoginActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void setTypeUser (View view) {
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupUser);
+        int userTypeInt = radioGroup.getCheckedRadioButtonId();
+        switch (userTypeInt) {
+            case R.id.radioButton_alumno :
+                userType = getString(R.string.alumno);
+                break;
+            case R.id.radioButton_teacher :
+                userType = getString(R.string.teacher);
+                break;
+            case R.id.radioButton_mother :
+                userType = getString(R.string.mother);
+                break;
+            case R.id.radioButton_father :
+                userType = getString(R.string.father);
+                break;
+            case R.id.radioButton_tutorLegal :
+                userType = getString(R.string.tutor_legal);
+                break;
+        }//switch
+    }
+
     public void login (View view) {
         String message = getString(R.string.prueba);
         CharSequence username = usernameTextView.getText();
         CharSequence password = passwordTextView.getText();
-        message += " -- " + username + "::" + password;
+        message += " -- " + username + "::" + password + "::" + userType;
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        if ((!username.toString().isEmpty()) && (!password.toString().isEmpty())) {
+            Intent intent = new Intent(this, AlumnoTabActivity.class);
+            intent.putExtra(getString(R.string.rol), userType);
+            intent.putExtra(getString(R.string.username_hint), username.toString());
+            startActivity(intent);//*/
+        } //if
+        else {
+            message = "";
+            if (username.toString().isEmpty()) { message += getString(R.string.username_empty) + "\n"; }
+            if (password.toString().isEmpty()) { message += getString(R.string.password_empty) + "\n"; }
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        }
     }
 }

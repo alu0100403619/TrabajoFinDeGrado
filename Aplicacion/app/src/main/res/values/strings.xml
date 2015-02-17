@@ -8,5 +8,21 @@
     <string name="login_button_label">Login</string>
     <string name="sign_up_text">Sign Up</string>
     <string name="prueba">Te has logueado sin usuario</string>
+    <string name="alumno">Alumno</string>
+    <string name="teacher">Profesor</string>
+    <string name="mother">Madre</string>
+    <string name="father">Padre</string>
+    <string name="tutor_legal">Tutor Legal</string>
+    <string name="title_activity_contact">ContactActivity</string>
+    <string name="rol">rol</string>
+    <string name="username_empty">Rellene el nombre de usaurio.</string>
+    <string name="password_empty">Rellene el campo password.</string>
+    <string name="teachers">Profesores</string>
+    <string name="alumnos">Alumnos</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="title_activity_alumno_tab">AlumnoTabActivity</string>
+    <string name="circulares">Circulares</string>
+    <string name="Dates">Citas</string>
+
 
 </resources>
