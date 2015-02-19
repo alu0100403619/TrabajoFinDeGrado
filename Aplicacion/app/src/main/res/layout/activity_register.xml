@@ -13,11 +13,19 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:fillViewport="false">
-
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
+        <LinearLayout android:id="@+id/rol"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="47dp">
+            <TextView android:id="@+id/label_spinner_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rol"/>
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
@@ -25,16 +33,114 @@
                 android:entries="@array/usertype_array"
                 android:prompt="@string/usertype_promt"
                 android:layout_alignParentTop="true"/>
+            </LinearLayout>
 
-            <Button android:id="@+id/submit_button"
+            <LinearLayout android:id="@+id/name"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <!-- TODO Convertir los textviews de estos bloques en un icono -->
+                <TextView android:id="@+id/label_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"/>
+                <EditText android:id="@+id/text_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/lastname"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <TextView android:id="@+id/label_lastname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lastname"/>
+                <EditText android:id="@+id/text_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lastname"
+                    android:inputType="textPersonName"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/dni"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <TextView android:id="@+id/label_dni"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dni"/>
+                <EditText android:id="@+id/text_dni"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    android:hint="@string/dni"/>
+                <EditText android:id="@+id/letter_dni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/letter"
+                    android:maxLength="1"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/tlephone"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <TextView android:id="@+id/label_telephone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/telephone"/>
+                <EditText android:id="@+id/text_telephone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/telephone"
+                    android:inputType="phone"
+                    android:ems="10"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/college"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <TextView android:id="@+id/label_college"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/college"/>
+                <EditText android:id="@+id/text_college"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/college"/>
+            </LinearLayout>
+
+            <!-- TODO Hacer que segun la seleccion del spinner aparezcan unos campos u otros -->
+
+            <LinearLayout android:id="@+id/password"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <TextView android:id="@+id/label_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password"/>
+                <EditText android:id="@+id/text_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"/>
+            </LinearLayout>
+
+            <Button android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
                 android:text="@string/submit"
-                android:onClick="submit" />
-
-            </RelativeLayout>
+                android:layout_gravity="center_horizontal" />
+        <!-- Fin del LinearLayout y del ScrollView -->
+        </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>

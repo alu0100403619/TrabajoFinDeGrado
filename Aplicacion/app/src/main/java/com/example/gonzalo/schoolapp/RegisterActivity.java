@@ -21,7 +21,7 @@ public class RegisterActivity extends ActionBarActivity {
         setContentView(R.layout.activity_register);
 
         spinner1 = (Spinner) findViewById(R.id.spinner_1);
-        submit = (Button) findViewById(R.id.submit_button);
+        //submit = (Button) findViewById(R.id.submit_button);
     }
 
 

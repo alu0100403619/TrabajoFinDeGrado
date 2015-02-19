@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">School App</string>
+    <string name="app_name">College App</string>
     <string name="action_settings">Settings</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
@@ -28,6 +28,13 @@
     <string name="asunto">Asunto</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="submit">Registrar</string>
+    <string name="name">Nombre</string>
+    <string name="lastname">Apellidos</string>
+    <string name="dni">D.N.I</string>
+    <string name="college">Centro</string>
+    <string name="telephone">Teléfono</string>
+    <string name="letter">Letra</string>
+    <string name="password">Contraseña</string>
 
 
     <string name="usertype_promt">Tipo de Usuaro</string>
