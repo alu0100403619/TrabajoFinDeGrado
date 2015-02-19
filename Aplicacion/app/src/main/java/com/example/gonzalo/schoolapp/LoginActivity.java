@@ -61,12 +61,6 @@ public class LoginActivity extends ActionBarActivity {
             case R.id.radioButton_mother :
                 userType = getString(R.string.mother);
                 break;
-            case R.id.radioButton_father :
-                userType = getString(R.string.father);
-                break;
-            case R.id.radioButton_tutorLegal :
-                userType = getString(R.string.tutor_legal);
-                break;
         }//switch
     }
 
@@ -80,7 +74,7 @@ public class LoginActivity extends ActionBarActivity {
             Intent intent = new Intent(this, AlumnoTabActivity.class);
             intent.putExtra(getString(R.string.rol), userType);
             intent.putExtra(getString(R.string.username_hint), username.toString());
-            startActivity(intent);//*/
+            startActivity(intent);
         } //if
         else {
             message = "";
@@ -88,5 +82,10 @@ public class LoginActivity extends ActionBarActivity {
             if (password.toString().isEmpty()) { message += getString(R.string.password_empty) + "\n"; }
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void launchRegister (View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 }

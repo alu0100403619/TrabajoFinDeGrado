@@ -33,16 +33,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
-        <Button android:id="@+id/DatesButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Dates"
-            android:layout_gravity="right" />
-
         <Button android:id="@+id/circularesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/circulares" />
+            android:text="@string/circulares"
+            android:onClick="launchCirculares" />
 
-        </LinearLayout>
+        <Button android:id="@+id/DatesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Dates" />
+
+    </LinearLayout>
 </LinearLayout>

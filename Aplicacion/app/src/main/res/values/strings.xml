@@ -10,9 +10,7 @@
     <string name="prueba">Te has logueado sin usuario</string>
     <string name="alumno">Alumno</string>
     <string name="teacher">Profesor</string>
-    <string name="mother">Madre</string>
-    <string name="father">Padre</string>
-    <string name="tutor_legal">Tutor Legal</string>
+    <string name="mother">Madre/Padre/TutorLegal</string>
     <string name="title_activity_contact">ContactActivity</string>
     <string name="rol">rol</string>
     <string name="username_empty">Rellene el nombre de usaurio.</string>
@@ -23,6 +21,20 @@
     <string name="title_activity_alumno_tab">AlumnoTabActivity</string>
     <string name="circulares">Circulares</string>
     <string name="Dates">Citas</string>
+    <string name="title_activity_circulares">CircularesActivity</string>
+    <string name="send">Enviar</string>
+    <string name="text_hint">Mensaje a enviar...</string>
+    <string name="contactos">Contactos</string>
+    <string name="asunto">Asunto</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="submit">Registrar</string>
 
+
+    <string name="usertype_promt">Tipo de Usuaro</string>
+    <string-array name="usertype_array">
+        <item>Alumno</item>
+        <item>Profesor</item>
+        <item>Madre/Padre/Tutor Legal</item>
+    </string-array>
 
 </resources>

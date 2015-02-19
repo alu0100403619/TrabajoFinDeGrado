@@ -21,9 +21,17 @@
             android:name=".AlumnoTabActivity"
             android:label="@string/title_activity_alumno_tab" >
         </activity>
-        <activity android:name=".AlumnoActivity"></activity>
-        <activity android:name=".TeachersActivity"></activity>
-        <activity android:name=".NotificationsActivity"></activity>
+        <activity android:name=".AlumnoActivity" />
+        <activity android:name=".TeachersActivity" />
+        <activity android:name=".NotificationsActivity" />
+        <activity
+            android:name=".CircularesActivity"
+            android:label="@string/title_activity_circulares" >
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
     </application>
 
 </manifest>

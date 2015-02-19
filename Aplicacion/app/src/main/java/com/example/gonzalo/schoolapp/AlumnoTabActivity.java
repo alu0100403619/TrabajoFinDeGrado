@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TabHost;
 
 public class AlumnoTabActivity extends TabActivity {
@@ -53,5 +54,10 @@ public class AlumnoTabActivity extends TabActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void launchCirculares(View view) {
+        Intent intent = new Intent(this, CircularesActivity.class);
+        startActivity(intent);
     }
 }
