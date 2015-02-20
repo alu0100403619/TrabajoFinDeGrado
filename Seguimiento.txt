@@ -191,12 +191,23 @@ Ene 29
 --------------------------
 Feb 11
 - Trabajo Futuro:
-	* Ir pensando en Diagramas UML para las clases que aparecen en la app.
+	+ Ir pensando en Diagramas UML para las clases que aparecen en la app.
 	* Tutorial (aprender como sea) Google Cloud Computing + Android: 
 	* Echar un vistazo a Google Cloud SQL a ver si es lo que necesitas
   * Tutorial Volley (librería de shorcial para comm. con el servidor)
-	* Diseñar (1ª versión) de los Layouts más "evientes" de la app.
+	+ Diseñar (1ª versión) de los Layouts más "evientes" de la app.
 --------------------------
+Feb 20
+- Trabajo Futuro:
+  * Incluir en la memoria algún apartado donde hables de 'Apps similares'
+	  donde describas mínimamente las funcionalidades (copia algún pantallazo)
+	  de apps similares a collegeApp: Remind, MiCoñlegioApp.
+		Esto iría como apartado en un capitulo de Descripción de collegeApp.
+  - Evaluar Firebase para ver si "es tu solución". Si lo es, go ahead:
+	  tutorial (si necesitas), ¡a meter datos en la nube!
+	- Hacer (aunque sea a mano) un diagrama de Activities de collegeApp
+	- Añadir estética y funcionalidades 'realistas' a las diferentes pantallas.
+
 --------------------------
 --------------------------
 --------------------------
