@@ -199,16 +199,19 @@ Feb 11
 --------------------------
 Feb 20
 - Trabajo Futuro:
-  * Incluir en la memoria algún apartado donde hables de 'Apps similares'
+  - Incluir en la memoria algún apartado donde hables de 'Apps similares'
 	  donde describas mínimamente las funcionalidades (copia algún pantallazo)
 	  de apps similares a collegeApp: Remind, MiCoñlegioApp.
 		Esto iría como apartado en un capitulo de Descripción de collegeApp.
-  - Evaluar Firebase para ver si "es tu solución". Si lo es, go ahead:
+  + Evaluar Firebase para ver si "es tu solución". Si lo es, go ahead:
 	  tutorial (si necesitas), ¡a meter datos en la nube!
-	- Hacer (aunque sea a mano) un diagrama de Activities de collegeApp
+	+ Hacer (aunque sea a mano) un diagrama de Activities de collegeApp
 	- Añadir estética y funcionalidades 'realistas' a las diferentes pantallas.
-
 --------------------------
+Feb 25
+- Trabajo Futuro
+  - A desarrollar funcionalidades 'realistas' al 80%
+
 --------------------------
 --------------------------
 --------------------------
