@@ -3,14 +3,25 @@
     <string name="action_settings">Settings</string>
     <string name="order_by">Ordenar por...</string>
     <string name="order_by_scores">puntuaciones</string>
-    <string name="name">nombre</string>
     <string name="most">2 Más altos</string>
     <string name="less">2 Más ligeros</string>
+    <string name="dinoRef">dinosaurios</string>
+
     <string name="hight">altura</string>
     <string name="weight">peso</string>
     <string name="length">longitud</string>
+    <string name = "name">nombre</string>
+    <string name = "appear">aparecido</string>
+    <string name = "disappear">desaparecido</string>
+    <string name = "order">orden</string>
+    <string name = "score">Puntuacion</string>
+
     <string name="between">[1-9]</string>
     <string name="more_short">Más peq. ERROR</string>
+    <string name="register">Registro de Dinosaurios</string>
+    <string name="Back">Volver</string>
+    <string name="send">Registrar</string>
+    <string name="empty"></string>
 
     <string-array name="atributos">
         <item>nombre</item>
@@ -21,5 +32,8 @@
         <item>orden</item>
         <item>peso</item>
     </string-array>
+    <string name="title_activity_dino_register">DinoRegisterActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

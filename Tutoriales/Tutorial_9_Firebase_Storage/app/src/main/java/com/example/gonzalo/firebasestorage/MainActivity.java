@@ -1,5 +1,6 @@
 package com.example.gonzalo.firebasestorage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -216,6 +217,12 @@ public class MainActivity extends ActionBarActivity {
             public void onCancelled(FirebaseError firebaseError) {}
         });//queryRef
         return tmp;
+    }
+
+    public void launchDinoRegister (View view) {
+        Intent intent = new Intent(this, DinoRegisterActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 
     //ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRR
