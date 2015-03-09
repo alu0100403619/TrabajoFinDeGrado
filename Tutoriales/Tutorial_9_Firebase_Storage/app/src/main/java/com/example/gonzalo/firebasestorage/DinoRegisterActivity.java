@@ -57,6 +57,12 @@ public class DinoRegisterActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_logout) {
+            rootRef.unauth();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
 
         return super.onOptionsItemSelected(item);
     }

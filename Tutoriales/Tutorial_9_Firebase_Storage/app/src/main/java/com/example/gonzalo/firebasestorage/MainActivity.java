@@ -22,7 +22,7 @@ import java.util.ArrayList;
 //https://www.firebase.com/docs/android/guide/
 public class MainActivity extends ActionBarActivity {
 
-    Firebase dinoRef, scoreRef;
+    Firebase dinoRef, scoreRef, rootRef;
     Spinner atributos;
     String atributo;
     ArrayList<String> dinosaurs;
@@ -34,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
 
+        rootRef = new Firebase("https://dinosaurios.firebaseio.com");
         dinoRef = new Firebase("https://dinosaurios.firebaseio.com/dinosaurios");
         scoreRef = new Firebase("https://dinosaurios.firebaseio.com/scores");
         atributos = (Spinner) findViewById(R.id.atributos);
@@ -81,6 +82,12 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.action_logout) {
+            rootRef.unauth();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);

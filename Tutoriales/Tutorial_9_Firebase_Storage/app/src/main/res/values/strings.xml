@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Firebase Storage</string>
     <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
     <string name="order_by">Ordenar por...</string>
     <string name="order_by_scores">puntuaciones</string>
     <string name="most">2 Más altos</string>
@@ -10,11 +11,11 @@
     <string name="hight">altura</string>
     <string name="weight">peso</string>
     <string name="length">longitud</string>
-    <string name = "name">nombre</string>
-    <string name = "appear">aparecido</string>
-    <string name = "disappear">desaparecido</string>
-    <string name = "order">orden</string>
-    <string name = "score">Puntuacion</string>
+    <string name="name">nombre</string>
+    <string name="appear">aparecido</string>
+    <string name="disappear">desaparecido</string>
+    <string name="order">orden</string>
+    <string name="score">Puntuacion</string>
 
     <string name="between">[1-9]</string>
     <string name="more_short">Más peq. ERROR</string>
@@ -32,8 +33,16 @@
         <item>orden</item>
         <item>peso</item>
     </string-array>
+
     <string name="title_activity_dino_register">DinoRegisterActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
 
-    <string name="hello_world">Hello world!</string>
-
+    <string name="usermail">User Mail</string>
+    <string name="password">Password</string>
+    <string name="login">Log-in</string>
+    <string name="signin">Sign-in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
 </resources>
