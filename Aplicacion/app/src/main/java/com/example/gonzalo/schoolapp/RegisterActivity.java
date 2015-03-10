@@ -19,11 +19,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+//TODO Hacer los campos required como en HTML
+//http://www.donnfelker.com/android-validation-with-edittext/
+//https://tausiq.wordpress.com/2013/01/19/android-input-field-validation/
+//http://stackoverflow.com/questions/11535011/edittext-field-is-required-before-moving-on-to-another-activity
 
 public class RegisterActivity extends ActionBarActivity {
 
     Spinner spinner1;
-    //Button submit;
     Firebase ref;
 
     @Override

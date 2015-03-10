@@ -6,23 +6,38 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 
 public class LoginActivity extends ActionBarActivity {
 
-    TextView usernameTextView, passwordTextView;
+    EditText mailEditText, passwordEditText;
     String userType;
+    Firebase rootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        usernameTextView = (TextView) findViewById(R.id.usernameField);
-        passwordTextView = (TextView) findViewById(R.id.passwordField);
+
+        Firebase.setAndroidContext(this);
+        rootRef = new Firebase(getString(R.string.rootRef));
+
+        mailEditText = (EditText) findViewById(R.id.mailField);
+        passwordEditText = (EditText) findViewById(R.id.passwordField);
         userType = "";
+        /*if (mailEditText.getText().toString().equals("")) {
+            mailEditText.setError( "Mail is required!" );
+        }
+        if (passwordEditText.getText().length() == 0) {
+            passwordEditText.setError("Password is required!");
+        }//Funcionna Bien*/
     }
 
 
@@ -65,27 +80,31 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     public void login (View view) {
-        String message = getString(R.string.prueba);
-        CharSequence username = usernameTextView.getText();
-        CharSequence password = passwordTextView.getText();
-        message += " -- " + username + "::" + password + "::" + userType;
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        if ((!username.toString().isEmpty()) && (!password.toString().isEmpty())) {
-            Intent intent = new Intent(this, AlumnoTabActivity.class);
-            intent.putExtra(getString(R.string.rol), userType);
-            intent.putExtra(getString(R.string.username_hint), username.toString());
-            startActivity(intent);
-        } //if
-        else {
-            message = "";
-            if (username.toString().isEmpty()) { message += getString(R.string.username_empty) + "\n"; }
-            if (password.toString().isEmpty()) { message += getString(R.string.password_empty) + "\n"; }
-            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        }
+
+        String mail = mailEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
+            @Override
+            public void onAuthenticated(AuthData authData) {
+                Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
+                //intent.putExtra(getString(R.string.rol), userType);
+                //intent.putExtra(getString(R.string.username_hint), username.toString());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onAuthenticationError(FirebaseError firebaseError) {
+                Toast.makeText(LoginActivity.this,
+                        getString(R.string.login_error)
+                                + firebaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void launchRegister (View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+        this.finish();
     }
 }
