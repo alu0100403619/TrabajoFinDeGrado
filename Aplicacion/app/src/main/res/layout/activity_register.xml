@@ -66,27 +66,6 @@
                     android:inputType="textPersonName"/>
             </LinearLayout>
 
-            <LinearLayout android:id="@+id/dni"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="47dp">
-                <TextView android:id="@+id/label_dni"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dni"/>
-                <EditText android:id="@+id/text_dni"
-                    android:layout_width="246dp"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLength="8"
-                    android:hint="@string/dni"/>
-                <EditText android:id="@+id/letter_dni"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/letter"
-                    android:maxLength="1"/>
-            </LinearLayout>
-
             <LinearLayout android:id="@+id/tlephone"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -119,6 +98,21 @@
 
             <!-- TODO Hacer que segun la seleccion del spinner aparezcan unos campos u otros -->
 
+            <LinearLayout android:id="@+id/mail"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <TextView android:id="@+id/label_mail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mail"/>
+                <EditText android:id="@+id/text_mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/mail"
+                    android:inputType="textEmailAddress"/>
+            </LinearLayout>
+
             <LinearLayout android:id="@+id/password"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -138,7 +132,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/submit"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:onClick="submit" />
         <!-- Fin del LinearLayout y del ScrollView -->
         </LinearLayout>
     </ScrollView>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">College App</string>
+    <string name="app_name">School App</string>
     <string name="action_settings">Settings</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
@@ -10,9 +10,9 @@
     <string name="prueba">Te has logueado sin usuario</string>
     <string name="alumno">Alumno</string>
     <string name="teacher">Profesor</string>
-    <string name="mother">Madre/Padre/TutorLegal</string>
+    <string name="mother">Madre/Padre/Tutor Legal</string>
     <string name="title_activity_contact">ContactActivity</string>
-    <string name="rol">rol</string>
+    <string name="rol">Rol</string>
     <string name="username_empty">Rellene el nombre de usaurio.</string>
     <string name="password_empty">Rellene el campo password.</string>
     <string name="teachers">Profesores</string>
@@ -30,18 +30,27 @@
     <string name="submit">Registrar</string>
     <string name="name">Nombre</string>
     <string name="lastname">Apellidos</string>
-    <string name="dni">D.N.I</string>
     <string name="college">Centro</string>
     <string name="telephone">Teléfono</string>
     <string name="letter">Letra</string>
     <string name="password">Contraseña</string>
-
-
+    <string name="mail">E-mail</string>
     <string name="usertype_promt">Tipo de Usuaro</string>
+    <string name="register_error">Error de Registro: </string>
+    <string name="login_error">Error de Login: </string>
+
+
     <string-array name="usertype_array">
         <item>Alumno</item>
         <item>Profesor</item>
         <item>Madre/Padre/Tutor Legal</item>
     </string-array>
 
+    <!-- Claves para la BBDD -->
+    <string name="bbdd_mail">mail</string>
+    <string name="bbdd_name">nombre</string>
+    <string name="bbdd_lastname">apellido</string>
+    <string name="bbdd_center">centro</string>
+    <string name="bbdd_telephone">telefono</string>
+    <string name="bbdd_rol">rol</string>
 </resources>

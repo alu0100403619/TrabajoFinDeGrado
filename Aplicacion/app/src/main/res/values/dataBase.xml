@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rootRef">https://schoolapplication.firebaseio.com/</string>
+    <string name="profeRef">https://schoolapplication.firebaseio.com/profesores</string>
+    <string name="aluRef">https://schoolapplication.firebaseio.com/alumnos</string>
+    <string name="madreRef">https://schoolapplication.firebaseio.com/padres</string>
+
+</resources>
