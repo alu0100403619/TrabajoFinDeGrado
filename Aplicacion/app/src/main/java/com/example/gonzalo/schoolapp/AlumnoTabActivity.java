@@ -10,22 +10,34 @@ import android.widget.TabHost;
 
 public class AlumnoTabActivity extends TabActivity {
 
+    String mail, clase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumno_tab);
+
+        mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+
+        //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec;
         Intent intent;
 
+        //Alumno Tab
         intent = new Intent().setClass(this, AlumnoActivity.class);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
         spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string.alumnos)).setContent(intent);
         tabHost.addTab(spec);
 
+        //Teachers Tab
         intent = new Intent().setClass(this, TeachersActivity.class);
+        //TeachersActivity.getData(clase);
         spec = tabHost.newTabSpec("profesores").setIndicator(getString(R.string.teachers)).setContent(intent);
         tabHost.addTab(spec);
 
+        //Notificaciones Tab
         intent = new Intent().setClass(this, NotificationsActivity.class);
         spec = tabHost.newTabSpec("notificaciones").setIndicator(getString(R.string.notificaciones)).setContent(intent);
         tabHost.addTab(spec);

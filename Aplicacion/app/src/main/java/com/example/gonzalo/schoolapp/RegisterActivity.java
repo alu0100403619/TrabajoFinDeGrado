@@ -96,7 +96,8 @@ public class RegisterActivity extends ActionBarActivity {
 
                             @Override
                             public void onAuthenticated(AuthData authData) {
-                                //TODO lanzar actividad principal
+                                //TODO Lanzar Actividad Principal Correcta
+                                //intent.putExtra(getString(R.string.bbdd_mail), mail);
                             }//onAuthenticated
 
                             @Override
@@ -126,7 +127,7 @@ public class RegisterActivity extends ActionBarActivity {
         Firebase regRef = ref.child(uuid);
 
         //Obtenemos los datos del XML
-        String rol = String.valueOf(spinner1.getSelectedItem());
+        //String rol = String.valueOf(spinner1.getSelectedItem());
         String mail = ((EditText) findViewById(R.id.text_mail)).getText().toString();
         String name = ((EditText) findViewById(R.id.text_name)).getText().toString();
         String lastname = ((EditText) findViewById(R.id.text_lastname)).getText().toString();
@@ -140,7 +141,7 @@ public class RegisterActivity extends ActionBarActivity {
         infoMap.put(getString(R.string.bbdd_lastname), lastname);
         infoMap.put(getString(R.string.bbdd_center), school);
         infoMap.put(getString(R.string.bbdd_telephone), telephone);
-        infoMap.put(getString(R.string.bbdd_rol), rol);
+        //infoMap.put(getString(R.string.bbdd_rol), rol);
 
         //Actualizamos la BBDD
         regRef.updateChildren(infoMap);

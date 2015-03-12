@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prueba">Te has logueado sin usuario</string>
+    <string name="mail_empty">La dirección de correo no puede estar vacia</string>
+    <string name="mail_incorrect">La dirección no es correcta</string>
+    <string name="password_empty">La contraseña no puede estar vacía</string>
+    <string name="field_empty">Este campo es obligatorio</string>
+    <string name="register_error">Error de Registro: </string>
+    <string name="login_error">Error de Login: </string>
+</resources>

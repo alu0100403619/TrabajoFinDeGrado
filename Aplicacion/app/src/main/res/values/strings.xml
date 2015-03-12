@@ -7,14 +7,11 @@
     <string name="password_hint">Password</string>
     <string name="login_button_label">Login</string>
     <string name="sign_up_text">Sign Up</string>
-    <string name="prueba">Te has logueado sin usuario</string>
     <string name="alumno">Alumno</string>
     <string name="teacher">Profesor</string>
     <string name="mother">Madre/Padre/Tutor Legal</string>
     <string name="title_activity_contact">ContactActivity</string>
     <string name="rol">Rol</string>
-    <string name="username_empty">Rellene el nombre de usaurio.</string>
-    <string name="password_empty">Rellene el campo password.</string>
     <string name="teachers">Profesores</string>
     <string name="alumnos">Alumnos</string>
     <string name="notificaciones">Notificaciones</string>
@@ -36,9 +33,6 @@
     <string name="password">Contraseña</string>
     <string name="mail">E-mail</string>
     <string name="usertype_promt">Tipo de Usuaro</string>
-    <string name="register_error">Error de Registro: </string>
-    <string name="login_error">Error de Login: </string>
-
 
     <string-array name="usertype_array">
         <item>Alumno</item>
@@ -53,4 +47,5 @@
     <string name="bbdd_center">centro</string>
     <string name="bbdd_telephone">telefono</string>
     <string name="bbdd_rol">rol</string>
+    <string name="bbdd_class">clase</string>
 </resources>

@@ -5,30 +5,83 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".LoginActivity">
 
-    <EditText
-        android:id="@+id/mailField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:hint="@string/mail"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:inputType="textEmailAddress">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <requestFocus />
-    </EditText>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-    <EditText
-        android:id="@+id/passwordField"
-        android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/mailField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:ems="10"
+                android:hint="@string/mail"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:inputType="textEmailAddress">
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/passwordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/mailField"
+                android:layout_below="@+id/mailField"
+                android:ems="10"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword" />
+
+            <!-- RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passwordField"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:onClick="setTypeUser"
+                android:id="@+id/radioGroupUser">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alumno"
+                    android:id="@+id/radioButton_alumno"
+                    android:onClick="setTypeUser" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/teacher"
+                    android:id="@+id/radioButton_teacher"
+                    android:onClick="setTypeUser" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:text="@string/mother"
+                    android:id="@+id/radioButton_mother"
+                    android:onClick="setTypeUser" />
+            </RadioGroup -->
+
+
+        </RelativeLayout>
+
+        </ScrollView>
+
+    <Button
+        android:id="@+id/signUpText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/mailField"
-        android:layout_below="@+id/mailField"
-        android:ems="10"
-        android:hint="@string/password_hint"
-        android:inputType="textPassword" />
+        android:text="@string/sign_up_text"
+        android:onClick="launchRegister"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/loginButton"
@@ -37,47 +90,6 @@
         android:text="@string/login_button_label"
         android:onClick="login"
         android:layout_above="@+id/signUpText"
-        android:layout_alignLeft="@+id/signUpText"
-        android:layout_alignStart="@+id/signUpText" />
-
-    <Button
-        android:id="@+id/signUpText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_up_text"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="launchRegister" />
-
-    <RadioGroup
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordField"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:onClick="setTypeUser"
-        android:id="@+id/radioGroupUser">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/alumno"
-            android:id="@+id/radioButton_alumno"
-            android:onClick="setTypeUser" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/teacher"
-            android:id="@+id/radioButton_teacher"
-            android:onClick="setTypeUser" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="52dp"
-            android:text="@string/mother"
-            android:id="@+id/radioButton_mother"
-            android:onClick="setTypeUser" />
-    </RadioGroup>
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

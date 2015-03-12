@@ -18,6 +18,7 @@ import com.firebase.client.FirebaseError;
 public class LoginActivity extends ActionBarActivity {
 
     EditText mailEditText, passwordEditText;
+    RadioGroup userRadioGroup;
     String userType;
     Firebase rootRef;
 
@@ -31,13 +32,8 @@ public class LoginActivity extends ActionBarActivity {
 
         mailEditText = (EditText) findViewById(R.id.mailField);
         passwordEditText = (EditText) findViewById(R.id.passwordField);
-        userType = "";
-        /*if (mailEditText.getText().toString().equals("")) {
-            mailEditText.setError( "Mail is required!" );
-        }
-        if (passwordEditText.getText().length() == 0) {
-            passwordEditText.setError("Password is required!");
-        }//Funcionna Bien*/
+        //userRadioGroup = (RadioGroup) findViewById(R.id.radioGroupUser);
+        //userType = "";
     }
 
 
@@ -63,7 +59,7 @@ public class LoginActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setTypeUser (View view) {
+    /*public void setTypeUser (View view) {
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupUser);
         int userTypeInt = radioGroup.getCheckedRadioButtonId();
         switch (userTypeInt) {
@@ -77,30 +73,40 @@ public class LoginActivity extends ActionBarActivity {
                 userType = getString(R.string.mother);
                 break;
         }//switch
-    }
+    }//*/
 
     public void login (View view) {
 
-        String mail = mailEditText.getText().toString();
+        final String mail = mailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-        rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
-            @Override
-            public void onAuthenticated(AuthData authData) {
-                Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
-                //intent.putExtra(getString(R.string.rol), userType);
-                //intent.putExtra(getString(R.string.username_hint), username.toString());
-                startActivity(intent);
-            }
+        if (mail.isEmpty()) {
+            mailEditText.setError(getString(R.string.field_empty));
+        }
+        if (password.isEmpty()) {
+            passwordEditText.setError(getString(R.string.field_empty));
+        }
+        if ((!mail.isEmpty()) && (!password.isEmpty())) {
+            rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
+                @Override
+                public void onAuthenticated(AuthData authData) {
+                    //TODO Lanzar Actividad Principal Correcta
+                    Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
+                    //intent.putExtra(getString(R.string.rol), userType);
+                    intent.putExtra(getString(R.string.bbdd_mail), mail);
+                    startActivity(intent);
+                    LoginActivity.this.finish();
+                }
 
-            @Override
-            public void onAuthenticationError(FirebaseError firebaseError) {
-                Toast.makeText(LoginActivity.this,
-                        getString(R.string.login_error)
-                                + firebaseError.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
+                @Override
+                public void onAuthenticationError(FirebaseError firebaseError) {
+                    Toast.makeText(LoginActivity.this,
+                            getString(R.string.login_error)
+                                    + firebaseError.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });//rootRef
+        }//if
+    }//funciton
 
     public void launchRegister (View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
