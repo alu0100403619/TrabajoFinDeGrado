@@ -63,6 +63,7 @@ public class AlumnoActivity extends ListActivity {
         getClassmates.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //TODO no meter al propio usuario
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Log.i("AlumnoActivity", "MAP------------->"+values);
                 alus.add(values.get(getString(R.string.bbdd_name)).toString());

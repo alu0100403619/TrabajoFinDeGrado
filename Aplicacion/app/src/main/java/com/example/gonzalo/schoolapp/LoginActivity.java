@@ -34,6 +34,7 @@ public class LoginActivity extends ActionBarActivity {
         passwordEditText = (EditText) findViewById(R.id.passwordField);
         //userRadioGroup = (RadioGroup) findViewById(R.id.radioGroupUser);
         //userType = "";
+        //TODO si auth != null lanzar la actividad correcta
     }
 
 
