@@ -211,8 +211,14 @@ Feb 20
 Feb 25
 - Trabajo Futuro
   - A desarrollar funcionalidades 'realistas' al 80%
-
 --------------------------
+Mar 13
+- Ha conseguido tener autentificación contra Firebase
+  Tiene hecho el caso de autentificación de un alumno --> la app le reconoce
+	como tal y le muestra la info correspondiente a un alu
+	Para los otros roles (profesor, padre/madre) el patrón sería similar
+- Tiene Registro de usuarios. Falta hacer que la info que se solicite sea
+	diferente en función del rol del usuario que se está registrando.
 --------------------------
 --------------------------
 
