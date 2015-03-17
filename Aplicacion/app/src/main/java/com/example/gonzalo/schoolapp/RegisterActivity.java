@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import java.util.UUID;
 public class RegisterActivity extends ActionBarActivity {
 
     Spinner spinner1;
+    LinearLayout course_groupLL, aluDataLL;
     Firebase ref;
 
     @Override
@@ -36,6 +38,8 @@ public class RegisterActivity extends ActionBarActivity {
         Firebase.setAndroidContext(this);
 
         spinner1 = (Spinner) findViewById(R.id.spinner_1);
+        course_groupLL = (LinearLayout) findViewById(R.id.course_group);
+        aluDataLL = (LinearLayout) findViewById(R.id.alumno_data);
 
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -43,12 +47,18 @@ public class RegisterActivity extends ActionBarActivity {
                 String selected = String.valueOf(spinner1.getSelectedItem());
                 if (selected.equals(getString(R.string.alumno))) {
                     ref = new Firebase (getString(R.string.aluRef));
+                    course_groupLL.setVisibility(View.VISIBLE);
+                    aluDataLL.setVisibility(View.GONE);
                 }
                 else if (selected.equals(getString(R.string.teacher))) {
                     ref = new Firebase (getString(R.string.profeRef));
+                    course_groupLL.setVisibility(View.VISIBLE);
+                    aluDataLL.setVisibility(View.GONE);
                 }
                 else if (selected.equals(getString(R.string.mother))) {
                     ref = new Firebase (getString(R.string.madreRef));
+                    course_groupLL.setVisibility(View.GONE);
+                    aluDataLL.setVisibility(View.VISIBLE);
                 }
             }
             @Override
@@ -123,6 +133,7 @@ public class RegisterActivity extends ActionBarActivity {
 
     public void sendToBbdd() {
 
+        String selected = String.valueOf(spinner1.getSelectedItem());
         String uuid = UUID.randomUUID().toString();
         Firebase regRef = ref.child(uuid);
 
@@ -143,8 +154,50 @@ public class RegisterActivity extends ActionBarActivity {
         infoMap.put(getString(R.string.bbdd_telephone), telephone);
         //infoMap.put(getString(R.string.bbdd_rol), rol);
 
+        if (selected.equals(getString(R.string.alumno))) {
+            String clase = ((EditText) findViewById(R.id.text_course_group)).getText().toString();
+            infoMap.put(getString(R.string.bbdd_class), clase);
+        }
+        else if (selected.equals(getString(R.string.teacher))) {
+            String clase = ((EditText) findViewById(R.id.text_course_group)).getText().toString();
+            clase.replaceAll(" ", "");
+            String[] clases = clase.split(",");
+            Map<String, Object> clasesMap = new HashMap<String, Object>();
+            for (int i = 0; i < clases.length; i++) {
+                uuid = UUID.randomUUID().toString();
+                clasesMap.put(uuid, clases[i]);
+            }//for
+            infoMap.put(getString(R.string.bbdd_teacher_class), clasesMap);
+        }
+        else if (selected.equals(getString(R.string.mother))) {
+            //TODO Comprobar que el alumno existe en la BBDD
+            String aluName = ((EditText) findViewById(R.id.text_alu_name)).getText().toString();
+            String aluLastname = ((EditText) findViewById(R.id.text_alu_lastname)).getText()
+                    .toString();
+            String aluCourseGroup = ((EditText) findViewById(R.id.text_alu_course_group)).getText()
+                    .toString();
+            String aluCenter = ((EditText) findViewById(R.id.text_alu_center)).getText()
+                    .toString();
+
+            Map<String, Object> aluMap = new HashMap<String, Object>();
+            Map<String, Object> infoAlu = new HashMap<String, Object>();
+            infoAlu.put(getString(R.string.bbdd_name), aluName);
+            infoAlu.put(getString(R.string.bbdd_lastname), aluLastname);
+            infoAlu.put(getString(R.string.bbdd_center), aluCenter);
+            infoAlu.put(getString(R.string.bbdd_class), aluCourseGroup);
+            uuid = UUID.randomUUID().toString();
+            aluMap.put(uuid, infoAlu);
+
+            infoMap.put(getString(R.string.bbdd_mother_alumno),aluMap);
+        }
+
         //Actualizamos la BBDD
         regRef.updateChildren(infoMap);
     }//function
+
+    public void launchHelpToast (View view) {
+        Toast.makeText(RegisterActivity.this,
+                getString(R.string.course_group_help), Toast.LENGTH_LONG).show();
+    }
 
 }//class

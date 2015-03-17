@@ -7,4 +7,6 @@
     <string name="field_empty">Este campo es obligatorio</string>
     <string name="register_error">Error de Registro: </string>
     <string name="login_error">Error de Login: </string>
+    <string name="course_group_help">Si es usted profesor puede poner los diferentes cursos/grupos
+        a los que da clase separados por comas. 1A, 2B, 3C, ...</string>
 </resources>
