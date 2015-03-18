@@ -2,7 +2,6 @@ package com.example.gonzalo.schoolapp;
 
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import com.firebase.client.ChildEventListener;
@@ -20,9 +19,8 @@ import java.util.Map;
  */
 public class AlumnoActivity extends ListActivity {
 
-    //ListView compañeros;
     List<String> alus;
-    String mail, clase;
+    String mail, clase, myName;
     Firebase aluRef;
 
     public void onCreate (Bundle savedInstanceBundle) {
@@ -30,7 +28,7 @@ public class AlumnoActivity extends ListActivity {
         Firebase.setAndroidContext(this);
         aluRef = new Firebase (getString(R.string.aluRef));
         alus = new ArrayList<>();
-        clase = "";
+        myName = clase = "";
 
         //Obtenemos el Mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
@@ -42,6 +40,7 @@ public class AlumnoActivity extends ListActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> me = (Map<String, Object>) dataSnapshot.getValue();
                 clase = me.get(getString(R.string.bbdd_class)).toString();
+                myName = me.get(getString(R.string.bbdd_name)).toString();
                 preparingData();
             }
 
@@ -65,9 +64,9 @@ public class AlumnoActivity extends ListActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 //TODO no meter al propio usuario
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
-                Log.i("AlumnoActivity", "MAP------------->"+values);
-                alus.add(values.get(getString(R.string.bbdd_name)).toString());
-                Log.i("AlumnoActivity", "ALUS------------->"+alus);
+                String name = values.get(getString(R.string.bbdd_name)) + " "+
+                        values.get(getString(R.string.bbdd_lastname));
+                 alus.add(name);
 
                 //Seteamos el ArrayAdapter
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(AlumnoActivity.this,

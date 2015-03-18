@@ -34,6 +34,10 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
+        <activity
+            android:name=".TeachersTabActivity"
+            android:label="@string/title_activity_teachers_tab" >
+        </activity>
     </application>
 
 </manifest>

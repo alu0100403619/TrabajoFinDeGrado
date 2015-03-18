@@ -8,17 +8,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TabHost;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+
+import java.util.Map;
+
 public class AlumnoTabActivity extends TabActivity {
 
     String mail, clase;
+    Firebase aluRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumno_tab);
+        Firebase.setAndroidContext(this);
+        aluRef = new Firebase (getString(R.string.aluRef));
 
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        getClase();
 
         //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
@@ -33,7 +45,7 @@ public class AlumnoTabActivity extends TabActivity {
 
         //Teachers Tab
         intent = new Intent().setClass(this, TeachersActivity.class);
-        //TeachersActivity.getData(clase);
+        intent.putExtra(getString(R.string.bbdd_class), clase);
         spec = tabHost.newTabSpec("profesores").setIndicator(getString(R.string.teachers)).setContent(intent);
         tabHost.addTab(spec);
 
@@ -45,6 +57,25 @@ public class AlumnoTabActivity extends TabActivity {
         tabHost.setCurrentTab(0);
     }
 
+    public void getClase() {
+        //Obtenemos la clase del Usuario
+        Query currentUser = aluRef.orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
+        currentUser.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Map<String, Object> me = (Map<String, Object>) dataSnapshot.getValue();
+                clase = me.get(getString(R.string.bbdd_class)).toString();
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });//currentUser
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

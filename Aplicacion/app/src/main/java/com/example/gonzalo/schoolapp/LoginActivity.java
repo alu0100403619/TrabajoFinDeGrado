@@ -7,19 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
 
 
 public class LoginActivity extends ActionBarActivity {
 
     EditText mailEditText, passwordEditText;
-    RadioGroup userRadioGroup;
-    String userType;
+    String userType, mail;
     Firebase rootRef;
 
     @Override
@@ -60,21 +61,53 @@ public class LoginActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*public void setTypeUser (View view) {
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupUser);
-        int userTypeInt = radioGroup.getCheckedRadioButtonId();
-        switch (userTypeInt) {
-            case R.id.radioButton_alumno :
-                userType = getString(R.string.alumno);
-                break;
-            case R.id.radioButton_teacher :
-                userType = getString(R.string.teacher);
-                break;
-            case R.id.radioButton_mother :
-                userType = getString(R.string.mother);
-                break;
-        }//switch
-    }//*/
+    public String setTypeUser () {
+        userType = "";
+        mail = mailEditText.getText().toString();
+        Query rolQuery = rootRef.child(getString(R.string._alumnos))
+                .orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
+        rolQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userType = dataSnapshot.getKey();
+                //Si el usuario no es un alumno
+                if (dataSnapshot.getValue() == null) {
+                    Query rolQuery2 = rootRef.child(getString(R.string._padres))
+                            .orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
+                    rolQuery2.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            userType = dataSnapshot.getKey();
+                            //Si el usuario no es un padre
+                            if (dataSnapshot.getValue() == null) {
+                                Query rolQuery3 = rootRef.child(getString(R.string._profes))
+                                        .orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
+                                rolQuery3.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        userType = dataSnapshot.getKey();
+                                        //Si el usuario no es un profesor
+                                        if (dataSnapshot.getValue() == null) {
+                                            Toast.makeText(LoginActivity.this,
+                                                    getString(R.string.login_error) + " UserType",
+                                                    Toast.LENGTH_LONG).show();
+                                        }//if*/
+                                    }
+                                    @Override
+                                    public void onCancelled(FirebaseError firebaseError) {}
+                                });
+                            }//if
+                        }
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {}
+                    });
+                }//if
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });
+        return userType;
+    }//function
 
     public void login (View view) {
 
@@ -84,19 +117,40 @@ public class LoginActivity extends ActionBarActivity {
         if (mail.isEmpty()) {
             mailEditText.setError(getString(R.string.field_empty));
         }
+
         if (password.isEmpty()) {
             passwordEditText.setError(getString(R.string.field_empty));
         }
+
         if ((!mail.isEmpty()) && (!password.isEmpty())) {
+            userType = setTypeUser();
             rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
                 @Override
                 public void onAuthenticated(AuthData authData) {
-                    //TODO Lanzar Actividad Principal Correcta
-                    Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
-                    //intent.putExtra(getString(R.string.rol), userType);
-                    intent.putExtra(getString(R.string.bbdd_mail), mail);
-                    startActivity(intent);
-                    LoginActivity.this.finish();
+                    if (userType.equals(getString(R.string._alumnos))) {
+                        Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
+                        //intent.putExtra(getString(R.string.rol), userType);
+                        intent.putExtra(getString(R.string.bbdd_mail), mail);
+                        startActivity(intent);
+                        LoginActivity.this.finish();
+
+                        Toast.makeText(LoginActivity.this,
+                                getString(R.string.alumno), Toast.LENGTH_LONG).show();
+                    }
+                    else if (userType.equals(getString(R.string._profes))) {
+                        Intent intent = new Intent(LoginActivity.this, TeachersTabActivity.class);
+                        //intent.putExtra(getString(R.string.rol), userType);
+                        intent.putExtra(getString(R.string.bbdd_mail), mail);
+                        startActivity(intent);
+                        LoginActivity.this.finish();//*/
+
+                        Toast.makeText(LoginActivity.this,
+                                getString(R.string.teacher), Toast.LENGTH_LONG).show();
+                    }
+                    else if (userType.equals(getString(R.string._padres))) {
+                        Toast.makeText(LoginActivity.this,
+                                getString(R.string.mother), Toast.LENGTH_LONG).show();
+                    }
                 }
 
                 @Override

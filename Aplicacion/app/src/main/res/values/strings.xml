@@ -58,4 +58,6 @@
     <string name="bbdd_class">clase</string>
     <string name="bbdd_teacher_class">clases</string>
     <string name="bbdd_mother_alumno">alumnos</string>
+    <string name="title_activity_teachers_tab">TeachersTabActivity</string>
+
 </resources>
