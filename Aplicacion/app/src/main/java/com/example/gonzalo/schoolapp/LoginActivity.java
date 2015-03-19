@@ -129,13 +129,9 @@ public class LoginActivity extends ActionBarActivity {
                 public void onAuthenticated(AuthData authData) {
                     if (userType.equals(getString(R.string._alumnos))) {
                         Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
-                        //intent.putExtra(getString(R.string.rol), userType);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         startActivity(intent);
                         LoginActivity.this.finish();
-
-                        Toast.makeText(LoginActivity.this,
-                                getString(R.string.alumno), Toast.LENGTH_LONG).show();
                     }
                     else if (userType.equals(getString(R.string._profes))) {
                         Intent intent = new Intent(LoginActivity.this, TeachersTabActivity.class);
@@ -143,9 +139,6 @@ public class LoginActivity extends ActionBarActivity {
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         startActivity(intent);
                         LoginActivity.this.finish();//*/
-
-                        Toast.makeText(LoginActivity.this,
-                                getString(R.string.teacher), Toast.LENGTH_LONG).show();
                     }
                     else if (userType.equals(getString(R.string._padres))) {
                         Toast.makeText(LoginActivity.this,

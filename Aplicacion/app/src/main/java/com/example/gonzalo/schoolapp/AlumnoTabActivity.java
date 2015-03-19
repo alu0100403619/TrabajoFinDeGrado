@@ -8,13 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TabHost;
 
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.Query;
-
-import java.util.Map;
 
 public class AlumnoTabActivity extends TabActivity {
 
@@ -29,8 +23,9 @@ public class AlumnoTabActivity extends TabActivity {
         Firebase.setAndroidContext(this);
         aluRef = new Firebase (getString(R.string.aluRef));
 
+        //Obtenemos el E-mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
-        getClase();
+        //getClase();
 
         //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
@@ -45,7 +40,10 @@ public class AlumnoTabActivity extends TabActivity {
 
         //Teachers Tab
         intent = new Intent().setClass(this, TeachersActivity.class);
-        intent.putExtra(getString(R.string.bbdd_class), clase);
+        //TODO Pasar el mail del alumno y obtener la clase desde el TeachersActivity??
+        //Log.i("AlumnoTabActivity", "Clase: " + clase); //NULL-----------------------------
+        //intent.putExtra(getString(R.string.bbdd_class), clase);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
         spec = tabHost.newTabSpec("profesores").setIndicator(getString(R.string.teachers)).setContent(intent);
         tabHost.addTab(spec);
 
@@ -57,7 +55,7 @@ public class AlumnoTabActivity extends TabActivity {
         tabHost.setCurrentTab(0);
     }
 
-    public void getClase() {
+    /*public void getClase() {
         //Obtenemos la clase del Usuario
         Query currentUser = aluRef.orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
         currentUser.addChildEventListener(new ChildEventListener() {
@@ -75,7 +73,7 @@ public class AlumnoTabActivity extends TabActivity {
             @Override
             public void onCancelled(FirebaseError firebaseError) {}
         });//currentUser
-    }
+    }//*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
