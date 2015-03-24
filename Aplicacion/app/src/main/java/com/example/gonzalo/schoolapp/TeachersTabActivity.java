@@ -37,7 +37,7 @@ public class TeachersTabActivity extends TabActivity {
 
         //Tab Profesores
         intent = new Intent().setClass(this, ExpandableTeachersActivity.class);
-        //intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
         tabHost.addTab(spec);
