@@ -9,10 +9,13 @@ import android.widget.TabHost;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+
 
 public class TeachersTabActivity extends TabActivity {
 
-    String mail, clase;
+    String mail;
+    ArrayList<String> clases;
     Firebase teachersRef;
 
     @Override
@@ -21,9 +24,11 @@ public class TeachersTabActivity extends TabActivity {
         setContentView(R.layout.activity_teachers_tab);
         Firebase.setAndroidContext(this);
         teachersRef = new Firebase (getString(R.string.profeRef));
+        clases = new ArrayList<>();
 
-        //Obtener mail
+        //Obtener mail y las clases
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
 
         //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
@@ -32,7 +37,8 @@ public class TeachersTabActivity extends TabActivity {
 
         //Tab Profesores
         intent = new Intent().setClass(this, ExpandableTeachersActivity.class);
-        intent.putExtra(getString(R.string.bbdd_mail), mail);
+        //intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
         tabHost.addTab(spec);
 

@@ -2,21 +2,15 @@ package com.example.gonzalo.schoolapp;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
 
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class ExpandableTeachersActivity extends ActionBarActivity {
@@ -25,7 +19,7 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    String mail;
+    ArrayList<String> clases;
     Firebase teachersRef;
 
     @Override
@@ -36,9 +30,10 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
         Firebase.setAndroidContext(this);
 
         teachersRef = new Firebase (getString(R.string.profeRef));
+        clases = new ArrayList<>();
 
-        //Obtenemos el E-mail
-        mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        //Obtenemos las clases
+        clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
@@ -50,49 +45,10 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
     public void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
-
-        Query currentTeacher = teachersRef.orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
-        currentTeacher.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
-                Map<String, Object> clasesMap = (Map<String, Object>) values.get(getString(R.string.bbdd_teacher_class));
-                for (String key : clasesMap.keySet()) {
-                    listDataHeader.add(clasesMap.get(key).toString());
-                }//for key
-                for (int i = 0; i < listDataHeader.size(); i++) {
-                    Log.i("ExpanTeachersActivity", "Clase: " + listDataHeader.get(i));
-                    Query teachers = teachersRef
-                            .orderByChild(getString(R.string.bbdd_teacher_class))
-                            .equalTo(listDataHeader.get(i));
-                    teachers.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            Map<String, Object> teacherMap = (Map<String, Object>) dataSnapshot
-                                    .getValue();
-                            Log.i("ExpanTeachersActivity", "teachersMap: " + teacherMap);
-                        }
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {}
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {}
-                    });
-                }//for
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {}
-        });
-    }
+        for (String clase : clases) {
+            
+        }//for
+    }//function
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

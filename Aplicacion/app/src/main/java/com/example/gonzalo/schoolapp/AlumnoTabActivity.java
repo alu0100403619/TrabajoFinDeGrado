@@ -25,7 +25,7 @@ public class AlumnoTabActivity extends TabActivity {
 
         //Obtenemos el E-mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
-        //getClase();
+        clase = getIntent().getExtras().getString(getString(R.string.bbdd_class));
 
         //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
@@ -35,15 +35,13 @@ public class AlumnoTabActivity extends TabActivity {
         //Alumno Tab
         intent = new Intent().setClass(this, AlumnoActivity.class);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.bbdd_class), clase);
         spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string.alumnos)).setContent(intent);
         tabHost.addTab(spec);
 
         //Teachers Tab
         intent = new Intent().setClass(this, TeachersActivity.class);
-        //TODO Pasar el mail del alumno y obtener la clase desde el TeachersActivity??
-        //Log.i("AlumnoTabActivity", "Clase: " + clase); //NULL-----------------------------
-        //intent.putExtra(getString(R.string.bbdd_class), clase);
-        intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.bbdd_class), clase);
         spec = tabHost.newTabSpec("profesores").setIndicator(getString(R.string.teachers)).setContent(intent);
         tabHost.addTab(spec);
 
@@ -54,26 +52,6 @@ public class AlumnoTabActivity extends TabActivity {
 
         tabHost.setCurrentTab(0);
     }
-
-    /*public void getClase() {
-        //Obtenemos la clase del Usuario
-        Query currentUser = aluRef.orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
-        currentUser.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Map<String, Object> me = (Map<String, Object>) dataSnapshot.getValue();
-                clase = me.get(getString(R.string.bbdd_class)).toString();
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {}
-        });//currentUser
-    }//*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
