@@ -43,16 +43,16 @@ public class TeachersTabActivity extends TabActivity {
         tabHost.addTab(spec);
 
         //Tab Padres
-        /*intent = new Intent().setClass(this, ExpandableFathersActivity.class);
-        intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent = new Intent().setClass(this, ExpandableFahtersActivity.class);
+        intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         spec = tabHost.newTabSpec("Padres").setIndicator(getString(R.string._padres)).setContent(intent);
-        tabHost.addTab(spec);*/
+        tabHost.addTab(spec);
 
         //Tab Alumnos
-        /*intent = new Intent().setClass(this, ExpandableAlumnosActivity.class);
-        intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent = new Intent().setClass(this, ExpandableAlumnosActivity.class);
+        intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string._alumnos)).setContent(intent);
-        tabHost.addTab(spec);*/
+        tabHost.addTab(spec);
 
         //Tab Notificaciones
         intent = new Intent().setClass(this, NotificationsActivity.class);

@@ -43,7 +43,8 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
 
         //Obtenemos las clases
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
-        //Obtenemos las clases
+
+        //Obtenemos el mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
 
         //Obtener el elemento xml
@@ -57,13 +58,14 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
         expListView.setAdapter(listAdapter);
     }
 
+    //TODO Arreglar
     public void prepareListData() {
-
         //Adding Header Data
-        listDataHeader = clases;
+        listDataHeader = new ArrayList<>(clases);
         listDataChild = new HashMap<String, List<String>>();
         //Adding Child Data
-        for (final String clase : clases) {
+        for (int i = 0; i < listDataHeader.size(); i++) {
+            index = i-1;
             auxList.clear();
             Query teachersQuery = teachersRef.orderByChild(getString(R.string.bbdd_teacher_class));
             teachersQuery.addChildEventListener(new ChildEventListener() {
@@ -72,6 +74,7 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
                     Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                     Map<String, Object> classMap = (Map<String, Object>) values.get(getString(R.string.bbdd_teacher_class));
                     Set<String> keys = classMap.keySet();
+                    String clase = listDataHeader.get(index);
                     for (String key : keys) {
                         if (clase.equals(classMap.get(key))) {
                             String name = values.get(getString(R.string.bbdd_name)) + " " +
@@ -98,7 +101,6 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
             }//if
         }//for
         //Quitar los header que esten vacios
-        //CREO QUE EL ERROR PUEDE ESTAR AQUI---------------------------------------------------
         for (int i = 0; i < listDataHeader.size(); i++) {
             if ((listDataChild.get(listDataHeader.get(i)) == null) && ((i+1) < listDataHeader.size())) {
                 listDataHeader.remove(i+1);

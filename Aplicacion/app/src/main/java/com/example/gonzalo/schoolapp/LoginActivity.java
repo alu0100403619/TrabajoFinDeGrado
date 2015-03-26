@@ -210,7 +210,6 @@ public class LoginActivity extends ActionBarActivity {
                 clases.add(data.get(getString(R.string.bbdd_class)).toString());
             }//for
         }
-        Log.i("LoginActivity", "Clases: " + clases);
         return clases;
     }
 
