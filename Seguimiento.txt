@@ -225,4 +225,18 @@ Mar 20
 	asíncronas. Hay que buscar un mecanismo para garantizar que el código avanza
   solamente cuando la consulta ha sido satisfecha.
 --------------------------
+Mar 27 SIN REUNIÓN
+Buenas tardes, le iba a mandar un correo para comentarle que no he hecho
+avances significativos debido a las consultas y para postergar la reunión para
+después de semana santa . La espera activa me bloquea la actividad, por eso he
+pensado en traer los datos completos de una clase y meterlos en un arraylist y
+después agruparlos, quizá no sea la mejor opción pero no se me ocurre otra
+cosa. Mi siguiente pasa tras eso sería las notificaciones push. 
+Muchas gracias.
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
 
