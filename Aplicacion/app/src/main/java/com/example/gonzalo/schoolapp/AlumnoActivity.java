@@ -30,29 +30,11 @@ public class AlumnoActivity extends ListActivity {
         alus = new ArrayList<>();
         myName = clase = "";
 
-        //Obtenemos el Mail
+        //Obtenemos el Mail y la Clase
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        clase = getIntent().getExtras().getString(getString(R.string.bbdd_class));
 
-        //Obtenemos la clase del Usuario
-        Query currentUser = aluRef.orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
-        currentUser.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Map<String, Object> me = (Map<String, Object>) dataSnapshot.getValue();
-                clase = me.get(getString(R.string.bbdd_class)).toString();
-                myName = me.get(getString(R.string.bbdd_name)).toString();
-                preparingData();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {}
-        });//currentUser
+        preparingData();
     }
 
     public void preparingData(){
@@ -62,11 +44,13 @@ public class AlumnoActivity extends ListActivity {
         getClassmates.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //TODO no meter al propio usuario
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 String name = values.get(getString(R.string.bbdd_name)) + " "+
                         values.get(getString(R.string.bbdd_lastname));
-                 alus.add(name);
+                String email = values.get(getString(R.string.bbdd_mail)).toString();
+                if (!email.equals(mail)) {
+                    alus.add(name);
+                }//if
 
                 //Seteamos el ArrayAdapter
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(AlumnoActivity.this,

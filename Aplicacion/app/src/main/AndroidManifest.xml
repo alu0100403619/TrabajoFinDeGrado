@@ -38,6 +38,18 @@
             android:name=".TeachersTabActivity"
             android:label="@string/title_activity_teachers_tab" >
         </activity>
+        <activity
+            android:name=".ExpandableTeachersActivity"
+            android:label="@string/title_activity_expandable_teachers" >
+        </activity>
+        <activity
+            android:name=".ExpandableFahtersActivity"
+            android:label="@string/title_activity_expandable_fahters" >
+        </activity>
+        <activity
+            android:name=".ExpandableAlumnosActivity"
+            android:label="@string/title_activity_expandable_alumnos" >
+        </activity>
     </application>
 
 </manifest>
