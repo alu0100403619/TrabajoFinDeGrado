@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class TeachersTabActivity extends TabActivity {
 
-    String mail;
+    String mail, school;
     ArrayList<String> clases;
     Firebase teachersRef;
 
@@ -28,6 +28,7 @@ public class TeachersTabActivity extends TabActivity {
 
         //Obtener mail y las clases
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
 
         //Añadiendo las Tabs
@@ -39,18 +40,21 @@ public class TeachersTabActivity extends TabActivity {
         intent = new Intent().setClass(this, ExpandableTeachersActivity.class);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+        intent.putExtra(getString(R.string.bbdd_center), school);
         spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Padres
         intent = new Intent().setClass(this, ExpandableFahtersActivity.class);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+        intent.putExtra(getString(R.string.bbdd_center), school);
         spec = tabHost.newTabSpec("Padres").setIndicator(getString(R.string._padres)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Alumnos
         intent = new Intent().setClass(this, ExpandableAlumnosActivity.class);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+        intent.putExtra(getString(R.string.bbdd_center), school);
         spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string._alumnos)).setContent(intent);
         tabHost.addTab(spec);
 
@@ -58,7 +62,7 @@ public class TeachersTabActivity extends TabActivity {
         intent = new Intent().setClass(this, NotificationsActivity.class);
         spec = tabHost.newTabSpec("notificaciones").setIndicator(getString(R.string.notificaciones)).setContent(intent);
         tabHost.addTab(spec);
-
+        
         tabHost.setCurrentTab(0);
     }
 

@@ -2,7 +2,6 @@ package com.example.gonzalo.schoolapp;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
@@ -23,11 +22,12 @@ public class ExpandableAlumnosActivity extends ActionBarActivity {
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
-    List<String> listDataHeader, auxList;
+    List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
     ArrayList<String> clases;
     Firebase alumnosRef;
-    int index = 0;
+    String school;
+    ArrayList<Alumno> alumnos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,67 +38,66 @@ public class ExpandableAlumnosActivity extends ActionBarActivity {
 
         alumnosRef = new Firebase (getString(R.string.aluRef));
         clases = new ArrayList<>();
-        auxList = new ArrayList<>();
+        alumnos = new ArrayList<>();
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
 
         //Obtenemos las clases
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
+
+        //Obtenemos el colegio
+        school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
 
         //Preparar los datos
-        prepareListData();
+        getAlumnos();
+    }
+
+    public void getAlumnos() {
+        Query alusQuery = alumnosRef.orderByChild(getString(R.string.bbdd_center)).equalTo(school);
+        alusQuery.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
+                Alumno alumno = new Alumno(values);
+                alumnos.add(alumno);
+                //Preparar los datos
+                prepareListData();
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });//teachersQuery
+    }
+
+    public void prepareListData() {
+        String name = "";
+        for (int i = 0; i < clases.size(); i++) {
+            List<String> auxList = new ArrayList<>();
+            //Adding Header Data
+            if (!listDataChild.containsKey(clases.get(i))) {
+                listDataHeader.add(clases.get(i));
+            }//if
+            for (Alumno alumno : alumnos) {
+                //Adding Child Data
+                name = alumno.getName() + " " + alumno.getLastname();
+                if ((alumno.getClassroom().equals(clases.get(i))) && (!auxList.contains(name))){
+                    auxList.add(name);
+                }//if
+            }//for teacher
+            listDataChild.put(listDataHeader.get(i), auxList);
+        }//for clase
 
         //Adaptador
         listAdapter = new ExpandableListAdapter (this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
-    }
-
-    //TODO Arreglar
-    public void prepareListData() {
-        //Adding Header Data
-        listDataHeader = new ArrayList<>(clases);
-        listDataChild = new HashMap<String, List<String>>();
-        //Adding Child Data
-        for (int i = 0; i < listDataHeader.size(); i++) {
-            index = i-1;
-            auxList.clear();
-            Query aluQuery = alumnosRef.orderByChild(getString(R.string.bbdd_class)).equalTo(listDataHeader.get(i));
-            aluQuery.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
-                    String classRoom = values.get(getString(R.string.bbdd_class)).toString();
-                    Log.i("ExpAlumnosActivity", "clase: " + listDataHeader.get(index)+" --- classRoom: "+classRoom);
-                    if (classRoom.equals(listDataHeader.get(index))) {
-                        String name = values.get(getString(R.string.bbdd_name)) + " " +
-                                values.get(getString(R.string.bbdd_lastname));
-                        Log.i("ExpAlumnosActivity", "Se añade " + name + " a " + index);
-                        if (!auxList.contains(name)) {
-                            auxList.add(name);
-                        }//if auxList
-                    }//if classRoom
-                    listDataChild.put(listDataHeader.get(index), auxList);
-                }
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {}
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {}
-            });//aluQuery
-            Log.i("ExpAlumnosActivity", "---------------Cambiamos de clase--------------- a "+
-            listDataHeader.get(i));
-        }//for
-
-        //Quitar los header que esten vacios
-        for (int i = 0; i < listDataHeader.size(); i++) {
-            if ((listDataChild.get(listDataHeader.get(i)) == null) && ((i+1) < listDataHeader.size())) {
-                listDataHeader.remove(i+1);
-            }//if
-        }//for
     }//function
 
     @Override

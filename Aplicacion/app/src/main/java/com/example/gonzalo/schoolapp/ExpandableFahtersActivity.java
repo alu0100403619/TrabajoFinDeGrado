@@ -2,6 +2,7 @@ package com.example.gonzalo.schoolapp;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
@@ -26,8 +27,10 @@ public class ExpandableFahtersActivity extends ActionBarActivity {
     List<String> listDataHeader, auxList;
     HashMap<String, List<String>> listDataChild;
     ArrayList<String> clases;
+    String school;
     Firebase fathersRef;
-    int index = 0;
+    ArrayList<Father> fathers;
+    Father father;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,69 +41,78 @@ public class ExpandableFahtersActivity extends ActionBarActivity {
 
         fathersRef = new Firebase (getString(R.string.madreRef));
         clases = new ArrayList<>();
-        auxList = new ArrayList<>();
+        fathers = new ArrayList<>();
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
 
         //Obtenemos las clases
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
 
+        //Obtenemos el colegio
+        school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
+        Log.i("ExpFathAct", "School: "+school);
+
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
 
-        //Preparar los datos
-        prepareListData();
+        //Obtenemos los profes del centro
+        getFathers();
+    }
+
+    public void getFathers () {
+        Query fathersQuery = fathersRef.orderByChild(getString(R.string.bbdd_center));
+        fathersQuery.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Map<String, Object> child;
+                Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
+                Map<String, Object> childrens = (Map<String, Object>) values.get(getString(R.string.bbdd_children));
+                Set<String> keys = childrens.keySet();
+                for (String key: keys) {
+                    child = (Map<String, Object>) childrens.get(key);
+                    if (child.get(getString(R.string.bbdd_center)).equals(school)) {
+                        Father father = new Father (values);
+                        //Si el array no lo contiene, mete al padre
+                        if (!fathers.contains(father)) {
+                            fathers.add(father);
+                        }//if
+                    }//if
+                }//for keys
+                //Preparar los datos
+                prepareListData();
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });//fathersQuery
+    }//function
+
+    public void prepareListData() {
+        String name = "";
+        for (int i = 0; i < clases.size(); i++) {
+            List<String> auxList = new ArrayList<>();
+            //Adding Header Data
+            if (!listDataChild.containsKey(clases.get(i))) {
+                listDataHeader.add(clases.get(i));
+            }//if
+            for (Father father : fathers) {
+                //Adding Child Data
+                name = father.getName() + " " + father.getLastname();
+                if ((father.getClassrooms().contains(clases.get(i))) && (!auxList.contains(name))){
+                    auxList.add(name);
+                }//if
+            }//for teacher
+            listDataChild.put(listDataHeader.get(i), auxList);
+        }//for clase
 
         //Adaptador
         listAdapter = new ExpandableListAdapter (this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
-    }
-
-    //TODO Arreglar
-    public void prepareListData() {
-        //Adding Header Data
-        listDataHeader = new ArrayList<>(clases);
-        listDataChild = new HashMap<String, List<String>>();
-        //Adding Child Data
-        for (int i = 0; i < listDataHeader.size(); i++) {
-            index = i-1;
-            auxList.clear();
-            Query fathersQuery = fathersRef.orderByChild(getString(R.string.bbdd_children));
-            fathersQuery.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    Map<String, Object> child;
-                    Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
-                    Map<String, Object> children = (Map<String, Object>)
-                            values.get(getString(R.string.bbdd_children));
-                    Set<String> keys = children.keySet();
-                    for (String key: keys) {
-                        child = (Map<String, Object>) children.get(key);
-                        String classRoom = child.get(getString(R.string.bbdd_class)).toString();
-                        if (classRoom.equals(listDataHeader.get(index))){
-                            String name = values.get(getString(R.string.bbdd_name)) + " " +
-                                    values.get(getString(R.string.bbdd_lastname));
-                            if (!auxList.contains(name)) {
-                                auxList.add(name);
-                            }//if auxList
-                        }//if clasroom
-                    }//for key
-                    listDataChild.put(listDataHeader.get(index), auxList);
-                }
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {}
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {}
-            });//fathersQuery
-        }//for
-        //Quitar los header que esten vacios
-        for (int i = 0; i < listDataHeader.size(); i++) {
-            if ((listDataChild.get(listDataHeader.get(i)) == null) && ((i+1) < listDataHeader.size())) {
-                listDataHeader.remove(i+1);
-            }//if
-        }//for
     }//function
 
     @Override
