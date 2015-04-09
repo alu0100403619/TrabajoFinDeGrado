@@ -2,6 +2,7 @@ package com.example.gonzalo.schoolapp;
 
 import android.app.TabActivity;
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,18 +13,18 @@ import com.firebase.client.Firebase;
 import java.util.ArrayList;
 
 
-public class TeachersTabActivity extends TabActivity {
+public class FathersTabActivity extends TabActivity {
 
     String mail, school;
     ArrayList<String> clases;
-    Firebase teachersRef;
+    Firebase fathersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teachers_tab);
+        setContentView(R.layout.activity_fathers_tab);
         Firebase.setAndroidContext(this);
-        teachersRef = new Firebase (getString(R.string.profeRef));
+        fathersRef = new Firebase (getString(R.string.profeRef));
         clases = new ArrayList<>();
 
         //Obtener mail, colegio y las clases
@@ -31,18 +32,10 @@ public class TeachersTabActivity extends TabActivity {
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
 
-        //AÃ±adiendo las Tabs
+        //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec;
         Intent intent;
-
-        //Tab Profesores
-        intent = new Intent().setClass(this, ExpandableTeachersActivity.class);
-        intent.putExtra(getString(R.string.bbdd_mail), mail);
-        intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
-        intent.putExtra(getString(R.string.bbdd_center), school);
-        spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
-        tabHost.addTab(spec);
 
         //Tab Padres
         intent = new Intent().setClass(this, ExpandableFahtersActivity.class);
@@ -52,11 +45,11 @@ public class TeachersTabActivity extends TabActivity {
         spec = tabHost.newTabSpec("Padres").setIndicator(getString(R.string._padres)).setContent(intent);
         tabHost.addTab(spec);
 
-        //Tab Alumnos
-        intent = new Intent().setClass(this, ExpandableAlumnosActivity.class);
+        intent = new Intent().setClass(this, ExpandableTeachersActivity.class);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_center), school);
-        spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string._alumnos)).setContent(intent);
+        spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Notificaciones
@@ -70,7 +63,7 @@ public class TeachersTabActivity extends TabActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_teachers_tab, menu);
+        getMenuInflater().inflate(R.menu.menu_fathers_tab, menu);
         return true;
     }
 

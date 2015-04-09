@@ -66,5 +66,8 @@
     <string name="title_activity_expandable_teachers">ExpandableTeachersActivity</string>
     <string name="title_activity_expandable_fahters">ExpandableFahtersActivity</string>
     <string name="title_activity_expandable_alumnos">ExpandableAlumnosActivity</string>
+    <string name="title_activity_fathers_tab">FathersTabActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

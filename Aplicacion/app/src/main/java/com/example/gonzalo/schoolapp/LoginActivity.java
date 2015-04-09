@@ -3,6 +3,7 @@ package com.example.gonzalo.schoolapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -168,14 +169,16 @@ public class LoginActivity extends ActionBarActivity {
                         LoginActivity.this.finish();
                     }
                     else if (userType.equals(getString(R.string._padres))) {
-                        //Intent intent = new Intent(LoginActivity.this, FathersTabActivity.class);
-                        //intent.putExtra(getString(R.string.bbdd_mail), mail);
-                        //intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
-                        //intent.putExtra(getString(R.string.bbdd_center), colegios);
-                        //startActivity(intent);
-                        //LoginActivity.this.finish();
-                        Toast.makeText(LoginActivity.this,
-                                getString(R.string.mother), Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, FathersTabActivity.class);
+                        intent.putExtra(getString(R.string.bbdd_mail), mail);
+                        intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+                        //Suponemos que todos los hijos de un padre están el mismo colegio
+                        intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
+                        startActivity(intent);
+                        LoginActivity.this.finish();
+                        //Log.i("LoginActivity", "Colegios: "+colegios);
+                        /*Toast.makeText(LoginActivity.this,
+                                getString(R.string.mother), Toast.LENGTH_LONG).show();//*/
                     }
                 }
 
@@ -190,6 +193,7 @@ public class LoginActivity extends ActionBarActivity {
     }//funciton
 
     public ArrayList<String> getUserClass (Map<String, Object> values) {
+        String clase, school;
         ArrayList<String> clases = new ArrayList<>();
         Map<String, Object> data = null, tempMap = null;
         Set<String> keys = values.keySet();
@@ -204,7 +208,10 @@ public class LoginActivity extends ActionBarActivity {
             tempMap = (Map<String, Object>) data.get(getString(R.string.bbdd_teacher_class));
             keys = tempMap.keySet();
             for (String key: keys) {
-                clases.add(tempMap.get(key).toString());
+                clase = tempMap.get(key).toString();
+                if (!clases.contains(clase)) {
+                    clases.add(clase);
+                }//if
             }//for
             colegios.add(data.get(getString(R.string.bbdd_center)).toString());
         }
@@ -214,8 +221,14 @@ public class LoginActivity extends ActionBarActivity {
             keys = tempMap.keySet();
             for (String key: keys) {
                 data = (Map<String, Object>) tempMap.get(key);
-                clases.add(data.get(getString(R.string.bbdd_class)).toString());
-                colegios.add(data.get(getString(R.string.bbdd_center)).toString());
+                clase = data.get(getString(R.string.bbdd_class)).toString();
+                school = data.get(getString(R.string.bbdd_center)).toString();
+                if (!clases.contains(clase)) {
+                    clases.add(clase);
+                }
+                if (!colegios.contains(school)) {
+                    colegios.add(school);
+                }
             }//for
         }
         return clases;

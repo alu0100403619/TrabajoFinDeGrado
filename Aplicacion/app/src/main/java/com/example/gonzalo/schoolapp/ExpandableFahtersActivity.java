@@ -27,10 +27,9 @@ public class ExpandableFahtersActivity extends ActionBarActivity {
     List<String> listDataHeader, auxList;
     HashMap<String, List<String>> listDataChild;
     ArrayList<String> clases;
-    String school;
+    String school, mail;
     Firebase fathersRef;
     ArrayList<Father> fathers;
-    Father father;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,9 @@ public class ExpandableFahtersActivity extends ActionBarActivity {
 
         //Obtenemos el colegio
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
-        Log.i("ExpFathAct", "School: "+school);
+
+        //Obtenemos el mail
+        mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
@@ -73,7 +74,7 @@ public class ExpandableFahtersActivity extends ActionBarActivity {
                     if (child.get(getString(R.string.bbdd_center)).equals(school)) {
                         Father father = new Father (values);
                         //Si el array no lo contiene, mete al padre
-                        if (!fathers.contains(father)) {
+                        if ((!fathers.contains(father)) && (!father.getMail().equals(mail))) {
                             fathers.add(father);
                         }//if
                     }//if

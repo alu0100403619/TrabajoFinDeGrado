@@ -66,7 +66,7 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Teacher teacher = new Teacher(values);
-                if (!mail.equals(teacher.getMail())) {
+                if ((!teachers.contains(teacher)) && (!mail.equals(teacher.getMail()))) {
                     teachers.add(teacher);
                 }
                 //Preparar los datos
