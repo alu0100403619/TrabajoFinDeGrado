@@ -2,6 +2,7 @@ package com.example.gonzalo.schoolapp;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import com.firebase.client.ChildEventListener;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class AlumnoActivity extends ListActivity {
 
     List<String> alus;
-    String mail, clase, myName;
+    String mail, clase, school;
     Firebase aluRef;
 
     public void onCreate (Bundle savedInstanceBundle) {
@@ -28,19 +29,19 @@ public class AlumnoActivity extends ListActivity {
         Firebase.setAndroidContext(this);
         aluRef = new Firebase (getString(R.string.aluRef));
         alus = new ArrayList<>();
-        myName = clase = "";
+        clase = "";
 
         //Obtenemos el Mail y la Clase
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         clase = getIntent().getExtras().getString(getString(R.string.bbdd_class));
+        school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
 
         preparingData();
     }
 
     public void preparingData(){
-
         //Obtener los alumnos de la misma clase
-        Query getClassmates = aluRef.orderByChild(getString(R.string.bbdd_class)).equalTo(clase);
+        Query getClassmates = aluRef.orderByChild(getString(R.string.bbdd_center)).equalTo(school);
         getClassmates.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -48,7 +49,7 @@ public class AlumnoActivity extends ListActivity {
                 String name = values.get(getString(R.string.bbdd_name)) + " "+
                         values.get(getString(R.string.bbdd_lastname));
                 String email = values.get(getString(R.string.bbdd_mail)).toString();
-                if (!email.equals(mail)) {
+                if ((!email.equals(mail)) && (values.get(getString(R.string.bbdd_class)).equals(clase))) {
                     alus.add(name);
                 }//if
 

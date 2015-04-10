@@ -28,6 +28,7 @@ public class LoginActivity extends ActionBarActivity {
     String userType, mail;
     Firebase rootRef;
     ArrayList<String> clases = new ArrayList<>();
+    ArrayList<String> colegios = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +154,8 @@ public class LoginActivity extends ActionBarActivity {
                         Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_class), clases.get(0));
+                        //El alumno solo va a un colegio
+                        intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
                         startActivity(intent);
                         LoginActivity.this.finish();
                     }
@@ -160,17 +163,22 @@ public class LoginActivity extends ActionBarActivity {
                         Intent intent = new Intent(LoginActivity.this, TeachersTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+                        //Suponemos que un profesor solo da clases en un colegio
+                        intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
                         startActivity(intent);
                         LoginActivity.this.finish();
                     }
                     else if (userType.equals(getString(R.string._padres))) {
-                        //Intent intent = new Intent(LoginActivity.this, FathersTabActivity.class);
-                        //intent.putExtra(getString(R.string.bbdd_mail), mail);
-                        //intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
-                        //startActivity(intent);
-                        //LoginActivity.this.finish();
-                        Toast.makeText(LoginActivity.this,
-                                getString(R.string.mother), Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, FathersTabActivity.class);
+                        intent.putExtra(getString(R.string.bbdd_mail), mail);
+                        intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+                        //Suponemos que todos los hijos de un padre están el mismo colegio
+                        intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
+                        startActivity(intent);
+                        LoginActivity.this.finish();
+                        //Log.i("LoginActivity", "Colegios: "+colegios);
+                        /*Toast.makeText(LoginActivity.this,
+                                getString(R.string.mother), Toast.LENGTH_LONG).show();//*/
                     }
                 }
 
@@ -185,6 +193,7 @@ public class LoginActivity extends ActionBarActivity {
     }//funciton
 
     public ArrayList<String> getUserClass (Map<String, Object> values) {
+        String clase, school;
         ArrayList<String> clases = new ArrayList<>();
         Map<String, Object> data = null, tempMap = null;
         Set<String> keys = values.keySet();
@@ -193,13 +202,18 @@ public class LoginActivity extends ActionBarActivity {
         }
         if (userType.equals(getString(R.string._alumnos))) {
             clases.add(data.get(getString(R.string.bbdd_class)).toString());
+            colegios.add(data.get(getString(R.string.bbdd_center)).toString());
         }
         else if (userType.equals(getString(R.string._profes))) {
             tempMap = (Map<String, Object>) data.get(getString(R.string.bbdd_teacher_class));
             keys = tempMap.keySet();
             for (String key: keys) {
-                clases.add(tempMap.get(key).toString());
+                clase = tempMap.get(key).toString();
+                if (!clases.contains(clase)) {
+                    clases.add(clase);
+                }//if
             }//for
+            colegios.add(data.get(getString(R.string.bbdd_center)).toString());
         }
         else if (userType.equals(getString(R.string._padres))) {
             tempMap = (Map<String, Object>) data.get(getString(R.string.bbdd_children));
@@ -207,7 +221,14 @@ public class LoginActivity extends ActionBarActivity {
             keys = tempMap.keySet();
             for (String key: keys) {
                 data = (Map<String, Object>) tempMap.get(key);
-                clases.add(data.get(getString(R.string.bbdd_class)).toString());
+                clase = data.get(getString(R.string.bbdd_class)).toString();
+                school = data.get(getString(R.string.bbdd_center)).toString();
+                if (!clases.contains(clase)) {
+                    clases.add(clase);
+                }
+                if (!colegios.contains(school)) {
+                    colegios.add(school);
+                }
             }//for
         }
         return clases;

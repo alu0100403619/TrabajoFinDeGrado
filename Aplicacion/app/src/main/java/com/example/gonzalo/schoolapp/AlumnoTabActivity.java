@@ -12,7 +12,7 @@ import com.firebase.client.Firebase;
 
 public class AlumnoTabActivity extends TabActivity {
 
-    String mail, clase;
+    String mail, clase, school;
     Firebase aluRef;
 
     @Override
@@ -26,6 +26,7 @@ public class AlumnoTabActivity extends TabActivity {
         //Obtenemos el E-mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         clase = getIntent().getExtras().getString(getString(R.string.bbdd_class));
+        school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
 
         //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
@@ -36,12 +37,14 @@ public class AlumnoTabActivity extends TabActivity {
         intent = new Intent().setClass(this, AlumnoActivity.class);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_class), clase);
+        intent.putExtra(getString(R.string.bbdd_center), school);
         spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string.alumnos)).setContent(intent);
         tabHost.addTab(spec);
 
         //Teachers Tab
         intent = new Intent().setClass(this, TeachersActivity.class);
         intent.putExtra(getString(R.string.bbdd_class), clase);
+        intent.putExtra(getString(R.string.bbdd_center), school);
         spec = tabHost.newTabSpec("profesores").setIndicator(getString(R.string.teachers)).setContent(intent);
         tabHost.addTab(spec);
 

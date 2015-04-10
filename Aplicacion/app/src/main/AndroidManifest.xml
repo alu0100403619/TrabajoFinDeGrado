@@ -50,6 +50,10 @@
             android:name=".ExpandableAlumnosActivity"
             android:label="@string/title_activity_expandable_alumnos" >
         </activity>
+        <activity
+            android:name=".FathersTabActivity"
+            android:label="@string/title_activity_fathers_tab" >
+        </activity>
     </application>
 
 </manifest>
