@@ -234,6 +234,27 @@ después agruparlos, quizá no sea la mejor opción pero no se me ocurre otra
 cosa. Mi siguiente pasa tras eso sería las notificaciones push. 
 Muchas gracias.
 --------------------------
+Abr 10
+- Superada la dificultad del asincronismo de las consultas.
+  En lugar de lanzar varias consultas en un bucle, se lanza una sola.
+- No se usará Google Pull messages sino todo hecho con FireBase
+
+* TRABAJO FUTURO
+- 1 Escribir (Memoria) una especificación de requisitos: qué hace la App, qué
+	funcionalidades tiene. Qué pantallas utiliza para cada cosa.
+
+- IMPLEMENTAR las funcionalidades que faltan (el orden lo eliges tú)
+
+  Secundario (pero hay que hacerlo)
+- Todos los menús y botones, en Español
+- Dotar YA de una cierta 'estética' y sobre todo, navegabilidad a la App.
+- Si al registrar un padre, el hijo que trata de asociar, no está registrado,
+	que vaya a la pantalla de registro de alumnos
+- La App usa datos/Wi-fi. En algún momento hay que evaluar si están activos, y
+	si no, ir a activarlos
+- El usuario olvidó su login
+
+
 --------------------------
 --------------------------
 --------------------------
