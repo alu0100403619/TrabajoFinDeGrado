@@ -10,25 +10,50 @@
 %
 
 \cleardoublepage
-\chapter{Requisitos}
+\chapter{Especificaci\'on de Requisitos}
 \label{chap:requirements}
 
-Con la aplicaci\'on ``College App'' para ``Android'' se crear\'a un sistema de comunicaci\'on escolar, para que los padres/madres/tutores legales, profesores y alumnos del centro puedan estar comunicados de forma continua.
+Con la aplicaci\'on ``College App'' para ``Android'' se pretende crear un sistema de comunicaci\'on escolar, para que los padres/madres/tutores legales, profesores y alumnos del centro puedan estar comunicados de forma continua.\\
+\\ 
+La aplicaci\'on har\'a uso de los servicios en la nube usando los servicios de \href{https://www.firebase.com/}{firebase}.
+Firebase es una web que proporciona servicios en la nube de forma f\'acil y segura, con una integraci\'on bastante sencilla con las nuevas tecnolog\'ias. Ofrece servicios de recuperaci\'on y guardado de datos, registro y log-in de usuarios, reglas de seguridad, simulador y an\'alisis de datos entre otros. Los datos almacenado en este servicio no son datos \href{http://es.wikipedia.org/wiki/SQL}{``SQL''}, si no que son datos \href{http://es.wikipedia.org/wiki/JSON}{``JSON''}.\\
+\\
+La aplicaci\'on tendr\'a una pantalla de bienvenida con unas pesta\~nas de registro, ``log-in'', ayuda y ``acerca de''. En la pantalla de registro se le pedir\'a al usuario una serie de datos a cumplimentar. En la de logueo se le pedirá su direcci\'on de correo y la contrase\~na, el usuario tendr\'a, adem\'as, la posibilidad de solicitar que se le recuerde la contrase\~na por correo.\\
+\\
+Una vez se accede a la aplicaci\'on a trav\'es del e-mail y contrase\~na, \'esta se encarga de clasificar al usuario seg\'un el rol con el que se halla registrado, rellenando los datos de forma correcta seg\'un el perfil seleccionado:
+\begin{itemize}
+	\item Los ``Alumnos'' tienen tres pesta\~nas: alumnos, padres y notificaciones.
+	\item Los ``Profesores'', cuatro pesta\~nas: profesores, padres, alumnos y notificaciones.
+	\item Los ``Padres, Madres o Tutores Legales'', tres pesta\~nas: padres, profesores y notificaciones.\linebreak
+\end{itemize}A continuaci\'on se describir\'a cada una de las pesta\~nas:
+\begin{itemize}
+	\item Alumnos: Esta pesta\~na se rellenar\'a con los datos de los compa\~neros de clase del usuario si es un alumno y si es un profesor con los datos a los que le da clase.
+	\item Profesores: \'Esta se rellenar\'a con los datos de los maestros que le dan clase al alumno si el usuario pertenece a este grupo o  a su hijo si pertenece al grupo de padres y educadores compa\~neros de \'este, si es ense\~nante.
+	\item Padres: Aqu\'i se encontrar\'an los datos de los padres de los alumnos a los que el usuario da clase o los de los progenitores de los compa\~neros de clase.
+	\item Notificaciones: En \'esta se podr\'an encontrar los mensajes que se le manden al usuario, adem\'as de las conversaciones que ha mantenido el usuario. \linebreak
+\end{itemize}Tambi\'en tendremos una opci\'on para mandar circulares a otros usuarios de la aplicaci\'on pudiendo adjuntar archivos para enviar. Los padres podr\'an concertar citas con los profesores y viceversa.
+Al tocar cualquiera de los usuarios que aparecen en las listas, se lanzará un ``chat'' para que los usuarios se comuniquen entre ellos. Al mandar un mensaje \'este se almacenar\'a en los servicios en la nube, en la tabla destinada a los mensajes. Esta tabla contendr\'a el mensaje, el destinatario y el remitente, cuando el dispositivo reciba el mensaje, lo borrará de la tabla para no sobrecargarla.\\
+\\
+Todos los datos estar\'an almacenados en la nube, en concreto en los servicios de ``firebase'' que es propiedad de google.
+
+\section{Sistemas de la Aplicaci\'on}
 
 \begin{itemize}
-	\item Sistema de Registro: Al usuario se le podr\'a pedir los siguientes datos:
+	\item Sistema de Registro: Al usuario se le podr\'a pedir los siguientes datos, seg\'un el rol con el que se registre:
 		\begin{itemize}
 			\item Nombre y Apellidos.
 			\item Rol con el que se va a registrar, ya que en funci\'on de un rol u otro se le pedir\'a distintos datos.
 			\item N\'umero de tel\'efono.
-			\item D.N.I
 			\item Nombre del centro con el que va a hacer el registro.
-			\item Selecci\'on de clase o asignatura, seg\'un lo que imparta el profesor.
+			\item Clase y grupo.
+			\item E-mail y contrase\~na.
 			\item Nombre y Apellidos del alumno.
 			\item Clase en la que est\'a el alumno. %Difrernciar 2 alumnos con = nombre y apellidos en la misma clase.
+			\item Centro en el que est\'a el alumno.
+			\item Curso en el que est\'a el alumno.
 		\end{itemize}
-	\item Sistema de ``Login'': Se le pedir\'a al usuario que ingrese su identificaci\'on, es decir, su D.N.I y contrase\~na.
-	\item Sistema de comunicaci\'on entre alumnos, profesores y padres/madres/tutores legales: Tanto la direcci\'on del centro como los profesores y padres/madres/tutores legales se podr\'an comunicar entre s\'i con un servicio tipo ``chat'', para informar de alguna incidencia, mensaje o notificaci\'on. Este servicio enviar\'a los mensajes a trav\'es de internet usando notificaciones tipo ``push'', tambi\'en se les permitir\'a mandar documentos a trav\'es de la aplicaci\'on.
+	\item Sistema de ``Login'': Se le pedir\'a al usuario que ingrese su identificaci\'on, es decir, su e-mail y contrase\~na.
+	\item Sistema de comunicaci\'on entre alumnos, profesores y padres/madres/tutores legales: Tanto la direcci\'on del centro como los profesores y padres/madres/tutores legales se podr\'an comunicar entre s\'i con un servicio tipo ``chat'', para informar de alguna incidencia, mensaje o notificaci\'on. Este servicio enviar\'a los mensajes a trav\'es de internet usando los servicios de ``firebase'', tambi\'en se les permitir\'a mandar documentos a trav\'es de la aplicaci\'on.
 	\item Sistema de citas: Se podr\'a concertar citas con los padres/madres/Tutores Legales, as\'i como \'estos podr\'an solicitar reuniones con los profesores, estas citas se podr\'an a\~nadir al calendario de Google. Para esto ambos usuarios deber\'an aceptar la cita.
 	\item Lista de contactos, organizada por grupos desplegables, por ejemplo los profesores tendr\'an la lista organizadas por las clases que imparten en el centro en la cual estar\'an los alumnos a los que les d\'e clase.
 \end{itemize}
