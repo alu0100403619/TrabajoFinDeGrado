@@ -253,9 +253,19 @@ Abr 10
 - La App usa datos/Wi-fi. En algún momento hay que evaluar si están activos, y
 	si no, ir a activarlos
 - El usuario olvidó su login
-
-
 --------------------------
+Abr 17
+El 16 de abril de 2015, 18:28, Gonzalo García Martín <dracoyue@gmail.com>
+escribió:
+Buenas tardes, esta semana he estado muy liado y solo he podido avanzar en lo
+que respecta a la memoria.
+
+Por la mañana he estado liado con unos ordenadores nuevos que han llegado a la
+facultad, y la mayor parte de la semana por la tarde he estado de mudanza por
+asuntos personales.
+
+Me gustaría aplazar la reunión de mañana. Muchas Gracias
+
 --------------------------
 --------------------------
 --------------------------
