@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".LoginActivity">
 
-    <ScrollView
+    <ScrollView android:id="@+id/scrollView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
@@ -75,13 +75,24 @@
         </ScrollView>
 
     <Button
-        android:id="@+id/signUpText"
+        android:id="@+id/forgetLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forget_login"
+        android:onClick="resetPassword"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/scrollView"
+        android:layout_alignEnd="@+id/scrollView" />
+
+    <Button
+        android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up_text"
         android:onClick="launchRegister"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/loginButton"
@@ -89,7 +100,7 @@
         android:layout_height="wrap_content"
         android:text="@string/login_button_label"
         android:onClick="login"
-        android:layout_above="@+id/signUpText"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

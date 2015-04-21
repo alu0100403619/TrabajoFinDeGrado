@@ -157,7 +157,8 @@ public class LoginActivity extends ActionBarActivity {
                         //El alumno solo va a un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
                         startActivity(intent);
-                        LoginActivity.this.finish();
+                        //TODO Descomentar
+                        //LoginActivity.this.finish();
                     }
                     else if (userType.equals(getString(R.string._profes))) {
                         Intent intent = new Intent(LoginActivity.this, TeachersTabActivity.class);
@@ -166,19 +167,21 @@ public class LoginActivity extends ActionBarActivity {
                         //Suponemos que un profesor solo da clases en un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
                         startActivity(intent);
-                        LoginActivity.this.finish();
+                        //TODO Descomentar
+                        //LoginActivity.this.finish();
                     }
                     else if (userType.equals(getString(R.string._padres))) {
                         Intent intent = new Intent(LoginActivity.this, FathersTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
-                        //Suponemos que todos los hijos de un padre están el mismo colegio
-                        intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
+                        intent.putExtra(getString(R.string.bbdd_center), colegios);
                         startActivity(intent);
-                        LoginActivity.this.finish();
-                        //Log.i("LoginActivity", "Colegios: "+colegios);
-                        /*Toast.makeText(LoginActivity.this,
-                                getString(R.string.mother), Toast.LENGTH_LONG).show();//*/
+                        //TODO Descomentar
+                        //LoginActivity.this.finish();
+                        //--------------------------------
+                        /*Log.i("LoginActivity", "Colegios: "+colegios);
+                        Toast.makeText(LoginActivity.this,
+                                getString(R.string.father), Toast.LENGTH_LONG).show();//*/
                     }
                 }
 
@@ -238,5 +241,30 @@ public class LoginActivity extends ActionBarActivity {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    public void resetPassword (View view) {
+        mail = mailEditText.getText().toString();
+        Log.i("LoginActivity", "Mail: "+mail);
+        if (mail.isEmpty()) {
+            mailEditText.setError(getString(R.string.field_empty));
+        }//if
+        else {
+            rootRef.resetPassword(mail, new Firebase.ResultHandler() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(LoginActivity.this,
+                            getString(R.string.forget_Password_message),
+                            Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onError(FirebaseError firebaseError) {
+                    Toast.makeText(LoginActivity.this,
+                            getString(R.string.forget_Password_message_error),
+                            Toast.LENGTH_LONG).show();
+                }
+            });//resetPassword
+        }//else
     }
 }

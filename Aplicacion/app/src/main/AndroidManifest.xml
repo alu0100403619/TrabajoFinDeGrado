@@ -54,6 +54,10 @@
             android:name=".FathersTabActivity"
             android:label="@string/title_activity_fathers_tab" >
         </activity>
+        <activity
+            android:name=".FatherExpandableFatherActivity"
+            android:label="@string/title_activity_father_expandable_father" >
+        </activity>
     </application>
 
 </manifest>
