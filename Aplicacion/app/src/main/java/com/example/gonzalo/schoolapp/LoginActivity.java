@@ -2,6 +2,7 @@ package com.example.gonzalo.schoolapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -41,6 +43,12 @@ public class LoginActivity extends ActionBarActivity {
         mailEditText = (EditText) findViewById(R.id.mailField);
         passwordEditText = (EditText) findViewById(R.id.passwordField);
         //TODO si auth != null lanzar la actividad correcta
+
+        if (!Utilities.haveInternet(this)) {
+            //startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            startActivity(intent);
+        }
     }
 
 

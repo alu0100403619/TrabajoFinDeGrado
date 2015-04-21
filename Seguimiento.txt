@@ -251,8 +251,8 @@ Abr 10
 - Si al registrar un padre, el hijo que trata de asociar, no está registrado,
 	que vaya a la pantalla de registro de alumnos
 - La App usa datos/Wi-fi. En algún momento hay que evaluar si están activos, y
-	si no, ir a activarlos
-- El usuario olvidó su login
+	si no, ir a activarlos (Listo)
+- El usuario olvidó su login (Listo)
 --------------------------
 Abr 17
 El 16 de abril de 2015, 18:28, Gonzalo García Martín <dracoyue@gmail.com>

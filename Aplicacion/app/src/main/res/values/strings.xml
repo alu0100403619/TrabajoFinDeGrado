@@ -2,28 +2,24 @@
 <resources>
 
     <string name="app_name">School App</string>
-    <string name="action_settings">Settings</string>
-    <string name="username_hint">User E-mail</string>
-    <string name="password_hint">Password</string>
-    <string name="login_button_label">Login</string>
-    <string name="sign_up_text">Sign Up</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="username_hint">Correo de Usuario</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button_label">Acceder</string>
+    <string name="sign_up_text">Registro</string>
     <string name="alumno">Alumno</string>
     <string name="teacher">Profesor</string>
-    <string name="mother">Madre/Padre/Tutor Legal</string>
-    <string name="title_activity_contact">ContactActivity</string>
+    <string name="father">Madre/Padre/Tutor Legal</string>
     <string name="rol">Rol</string>
     <string name="teachers">Profesores</string>
     <string name="alumnos">Alumnos</string>
     <string name="notificaciones">Notificaciones</string>
-    <string name="title_activity_alumno_tab">AlumnoTabActivity</string>
     <string name="circulares">Circulares</string>
     <string name="Dates">Citas</string>
-    <string name="title_activity_circulares">CircularesActivity</string>
     <string name="send">Enviar</string>
     <string name="text_hint">Mensaje a enviar...</string>
     <string name="contactos">Contactos</string>
     <string name="asunto">Asunto</string>
-    <string name="title_activity_register">RegisterActivity</string>
     <string name="submit">Registrar</string>
     <string name="usertype_promt">Tipo de Usuaro</string>
     <string name="name">Nombre</string>
@@ -41,6 +37,8 @@
     <string name="alumno_lastname">Apellidos Alumno</string>
     <string name="alumno_course_group">Curso y Grupo Alumno</string>
     <string name="alumno_center">Centro Alumno</string>
+    <string name="size">size</string>
+    <string name="forget_login">Nueva Contraseña</string>
 
     <string-array name="usertype_array">
         <item>Alumno</item>
@@ -57,17 +55,22 @@
     <string name="bbdd_rol">rol</string>
     <string name="bbdd_class">clase</string>
     <string name="bbdd_teacher_class">clases</string>
-    <string name="bbdd_mother_alumno">alumnos</string>
+    <string name="bbdd_father_alumno">alumnos</string>
     <string name="bbdd_children">hijos</string>
     <string name="bbdd_name_children">nombreHijo</string>
     <string name="bbdd_lastname_children">apellidoHijo</string>
 
+    <string name="hello_world">Hello world!</string>
+
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_alumno_tab">AlumnoTabActivity</string>
+    <string name="title_activity_circulares">CircularesActivity</string>
     <string name="title_activity_teachers_tab">TeachersTabActivity</string>
     <string name="title_activity_expandable_teachers">ExpandableTeachersActivity</string>
     <string name="title_activity_expandable_fahters">ExpandableFahtersActivity</string>
     <string name="title_activity_expandable_alumnos">ExpandableAlumnosActivity</string>
     <string name="title_activity_fathers_tab">FathersTabActivity</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_contact">ContactActivity</string>
+    <string name="title_activity_father_expandable_father">FatherExpandableFatherActivity</string>
 
 </resources>

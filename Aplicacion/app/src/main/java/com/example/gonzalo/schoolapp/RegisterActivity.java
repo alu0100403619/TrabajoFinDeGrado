@@ -55,7 +55,7 @@ public class RegisterActivity extends ActionBarActivity {
                     course_groupLL.setVisibility(View.VISIBLE);
                     aluDataLL.setVisibility(View.GONE);
                 }
-                else if (selected.equals(getString(R.string.mother))) {
+                else if (selected.equals(getString(R.string.father))) {
                     ref = new Firebase (getString(R.string.madreRef));
                     course_groupLL.setVisibility(View.GONE);
                     aluDataLL.setVisibility(View.VISIBLE);
@@ -169,7 +169,7 @@ public class RegisterActivity extends ActionBarActivity {
             }//for
             infoMap.put(getString(R.string.bbdd_teacher_class), clasesMap);
         }
-        else if (selected.equals(getString(R.string.mother))) {
+        else if (selected.equals(getString(R.string.father))) {
             //TODO Comprobar que el alumno existe en la BBDD
             String aluName = ((EditText) findViewById(R.id.text_alu_name)).getText().toString();
             String aluLastname = ((EditText) findViewById(R.id.text_alu_lastname)).getText()
@@ -188,7 +188,7 @@ public class RegisterActivity extends ActionBarActivity {
             uuid = UUID.randomUUID().toString();
             aluMap.put(uuid, infoAlu);
 
-            infoMap.put(getString(R.string.bbdd_mother_alumno),aluMap);
+            infoMap.put(getString(R.string.bbdd_father_alumno),aluMap);
         }
 
         //Actualizamos la BBDD

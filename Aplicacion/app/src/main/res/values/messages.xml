@@ -9,4 +9,8 @@
     <string name="login_error">Error de Login: </string>
     <string name="course_group_help">Si es usted profesor puede poner los diferentes cursos/grupos
         a los que da clase separados por comas. 1A, 2B, 3C, ...</string>
+    <string name="forget_Password_message">Se le ha mandado al correo con el que se registró un
+        mensaje para que restaure su contraseña</string>
+    <string name="forget_Password_message_error">No se le ha podido mandar al correo con el que se
+        registró el mensaje para que restaure su contraseña</string>
 </resources>
