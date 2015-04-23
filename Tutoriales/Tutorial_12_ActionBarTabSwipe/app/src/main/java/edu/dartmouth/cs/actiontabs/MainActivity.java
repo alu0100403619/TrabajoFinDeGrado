@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
     private SlidingTabLayout slidingTabLayout;
     private ViewPager viewPager;
     private ArrayList<Fragment> fragments;
-    private ActionTabsViewPagerAdapter myViewPageAdapter;
+    private TabsViewPagerAdapter myViewPageAdapter;
 
 	/** Called when the activity is first created. */
 	@Override

@@ -1,8 +1,8 @@
 package com.example.gonzalo.schoolapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +25,7 @@ import java.util.UUID;
 //https://tausiq.wordpress.com/2013/01/19/android-input-field-validation/
 //http://stackoverflow.com/questions/11535011/edittext-field-is-required-before-moving-on-to-another-activity
 
-public class RegisterActivity extends ActionBarActivity {
+public class RegisterActivity extends Activity {
 
     Spinner spinner1;
     LinearLayout course_groupLL, aluDataLL;

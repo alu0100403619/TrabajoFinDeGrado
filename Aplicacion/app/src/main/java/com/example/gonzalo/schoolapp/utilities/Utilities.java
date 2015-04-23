@@ -17,7 +17,7 @@ public class Utilities {
     private static boolean mobileConnected = false;
     private static Context myContext;
 
-    //En la actividad que se llama a esta función usarla con this
+    //En la actividad que se llama a esta funci&oacute;n usarla con this
     public static boolean haveInternet (Context context) {
         myContext = context;
         ConnectivityManager connMgr =(ConnectivityManager) myContext.getSystemService(Context.CONNECTIVITY_SERVICE);

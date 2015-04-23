@@ -62,6 +62,19 @@
 
     <string name="hello_world">Hello world!</string>
 
+    <!-- Welcome Tabs -->
+    <!-- string name="register">Registro</string>
+    <string name="login">Acceso</string>
+    <string name="help">Ayuda</string>
+    <string name="about_me">Sobre Mi</string -->
+    <string-array name="tabs_array">
+        <item>Registro</item>
+        <item>Acceso</item>
+        <item>Ayuda</item>
+        <item>Sobre Mi</item>
+    </string-array>
+
+    <!-- Activity's Titles -->
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_alumno_tab">AlumnoTabActivity</string>
     <string name="title_activity_circulares">CircularesActivity</string>
@@ -73,5 +86,7 @@
     <string name="title_activity_contact">ContactActivity</string>
     <string name="title_activity_father_expandable_father">FatherExpandableFatherActivity</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="welcome_image_description">Imagen de Bienvenida</string>
 
 </resources>

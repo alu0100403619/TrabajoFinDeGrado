@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView android:scaleType="centerCrop"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" android:src="@drawable/welcome2"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_button_label"
+        android:id="@+id/login_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="launchLogin" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up_text"
+        android:id="@+id/register_button"
+        android:layout_below="@+id/login_button"
+        android:layout_centerHorizontal="true"
+        android:onClick="launchRegister" />
+
+</RelativeLayout>

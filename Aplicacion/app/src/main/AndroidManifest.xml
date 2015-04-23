@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".LoginActivity"
+            android:name=".WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,12 +56,12 @@
             android:label="@string/title_activity_fathers_tab" >
         </activity>
         <activity
-            android:name=".FatherExpandableFatherActivity"
+            android:name=".FatherExpandableFathersActivity"
             android:label="@string/title_activity_father_expandable_father" >
         </activity>
         <activity
-            android:name=".WelcomeActivity"
-            android:label="@string/title_activity_welcome" >
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" >
         </activity>
     </application>
 
