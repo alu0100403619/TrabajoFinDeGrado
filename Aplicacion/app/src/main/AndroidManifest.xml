@@ -59,6 +59,10 @@
             android:name=".FatherExpandableFatherActivity"
             android:label="@string/title_activity_father_expandable_father" >
         </activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:label="@string/title_activity_welcome" >
+        </activity>
     </application>
 
 </manifest>

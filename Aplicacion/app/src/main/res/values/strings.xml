@@ -72,5 +72,6 @@
     <string name="title_activity_fathers_tab">FathersTabActivity</string>
     <string name="title_activity_contact">ContactActivity</string>
     <string name="title_activity_father_expandable_father">FatherExpandableFatherActivity</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
 
 </resources>
