@@ -246,11 +246,11 @@ Abr 10
 - IMPLEMENTAR las funcionalidades que faltan (el orden lo eliges tú)
 
   Secundario (pero hay que hacerlo)
-- Todos los menús y botones, en Español
+X Todos los menús y botones, en Español
 - Dotar YA de una cierta 'estética' y sobre todo, navegabilidad a la App.
 - Si al registrar un padre, el hijo que trata de asociar, no está registrado,
 	que vaya a la pantalla de registro de alumnos
-- La App usa datos/Wi-fi. En algún momento hay que evaluar si están activos, y
+X La App usa datos/Wi-fi. En algún momento hay que evaluar si están activos, y
 	si no, ir a activarlos (Listo)
 - El usuario olvidó su login (Listo)
 --------------------------
@@ -265,6 +265,21 @@ facultad, y la mayor parte de la semana por la tarde he estado de mudanza por
 asuntos personales.
 
 Me gustaría aplazar la reunión de mañana. Muchas Gracias
+--------------------------
+Abr 24
+
+- Mejora la especificación de requisitos. Si hay que repetir texto, se hace.
+  Rol profesor: 
+	  Sus dato son ....
+  Rol estudiante
+	  Sus datos son ...
+- Sigue 
+- Ojo a la terminología al redactar: mandar mensajes, tocar usuario, ...
+- Dota de mayor estética a las diferentes pantallas (que no sean tan
+	"básicas").
+- Mete notificaciones, alumnos, profesores, etc. de prueba para ver cómo "se
+	ven" esos elementos en la app.
+
 
 --------------------------
 --------------------------
