@@ -44,11 +44,6 @@ public class LoginActivity extends Activity {
         passwordEditText = (EditText) findViewById(R.id.passwordField);
         //TODO si auth != null lanzar la actividad correcta
 
-        if (!Utilities.haveInternet(this)) {
-            //startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
-            Intent intent = new Intent(Settings.ACTION_SETTINGS);
-            startActivity(intent);
-        }
     }
 
 
@@ -68,7 +63,8 @@ public class LoginActivity extends Activity {
         //TODO Boton de Salir
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

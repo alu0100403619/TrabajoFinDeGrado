@@ -10,11 +10,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.gonzalo.schoolapp.fragments.AboutFragment;
 import com.example.gonzalo.schoolapp.fragments.AboutMeFragment;
-import com.example.gonzalo.schoolapp.fragments.HelpFragment;
 import com.example.gonzalo.schoolapp.fragments.WelcomeFragment;
 import com.example.gonzalo.schoolapp.utilities.TabsViewPagerAdapter;
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.example.gonzalo.schoolapp.view.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ public class WelcomeActivity extends Activity {
         // Creamos una lista de fragmentos en orden.
         fragments = new ArrayList<>();
         fragments.add(new WelcomeFragment());
-        fragments.add(new HelpFragment());
+        fragments.add(new AboutFragment());
         fragments.add(new AboutMeFragment());
 
         // use FragmentPagerAdapter to bind the slidingTabLayout (tabs with different titles)
@@ -82,13 +84,33 @@ public class WelcomeActivity extends Activity {
     }
 
     public void launchLogin(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        if (!Utilities.haveInternet(this)) {
+            //startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+            Toast.makeText(WelcomeActivity.this,
+                    getString(R.string.wifi_data_error),
+                    Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void launchRegister(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
+        if (!Utilities.haveInternet(this)) {
+            //startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+            Toast.makeText(WelcomeActivity.this,
+                    getString(R.string.wifi_data_error),
+                    Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        }
     }
 
 }

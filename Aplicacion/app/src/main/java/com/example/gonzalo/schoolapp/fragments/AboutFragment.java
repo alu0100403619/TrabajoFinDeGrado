@@ -11,11 +11,11 @@ import com.example.gonzalo.schoolapp.R;
 /**
  * Created by Gonzalo on 23/04/2015.
  */
-public class HelpFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_help, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 }

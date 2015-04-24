@@ -13,4 +13,10 @@
         mensaje para que restaure su contraseña</string>
     <string name="forget_Password_message_error">No se le ha podido mandar al correo con el que se
         registró el mensaje para que restaure su contraseña</string>
+    <string name="wifi_data_error">Esta aplicación usa internet, por favor asegúrese de que tiene
+        conexión a internet (Datos o Wifi).</string>
+    <string name="about_message">Esta aplicaión trta de mejorar la comunicación entre los profesores,
+        alumnos y padres/Madres/Tutores Legales.</string>
+    <string name="about_me_message">Alumno de la Escuela Superior de Ingeniería y Tecnologías. TFG</string>
+
 </resources>

@@ -1,11 +1,12 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- TODO Color de la letra de los TextView = negra  -->
     </style>
 
-    <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- TODO Color de la letra de los TextView = negra  -->
+    <style name="roundedCorners" parent="AppTheme">
+        <item name="android:shape">ring</item>
+        <item name="android:radius">10dip</item>
     </style>
 
 </resources>
