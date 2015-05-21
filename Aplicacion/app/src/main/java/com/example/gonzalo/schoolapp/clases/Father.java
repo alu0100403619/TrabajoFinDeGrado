@@ -1,12 +1,10 @@
-package com.example.gonzalo.schoolapp;
+package com.example.gonzalo.schoolapp.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 /**

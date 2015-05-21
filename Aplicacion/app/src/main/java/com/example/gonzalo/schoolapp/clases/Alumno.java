@@ -1,54 +1,29 @@
-package com.example.gonzalo.schoolapp;
+package com.example.gonzalo.schoolapp.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.Set;
 
 /**
- * Created by Gonzalo on 03/04/2015.
+ * Created by Gonzalo on 07/04/2015.
  */
-public class Teacher implements Parcelable {
-
+public class Alumno implements Parcelable {
     private String name;
     private String lastname;
     private String school;
+    private String classroom;
     private String mail;
     private String telephone;
-    private ArrayList<String> classRooms;
-    private String rol = "Profesor";
+    private String rol = "Alumno";
 
-    Teacher (Map<String, Object> values) {
-        classRooms = new ArrayList<>();
-        setTelephone((String) values.get("telefono"));
+    public Alumno(Map<String, Object> values) {
         setName((String) values.get("nombre"));
         setLastname((String) values.get("apellido"));
         setSchool((String) values.get("centro"));
+        setClassroom((String) values.get("clase"));
         setMail((String) values.get("mail"));
-        //ClassRooms
-        Map<String, Object> classes = (Map<String, Object>) values.get("clases");
-        setClassRooms(classes);
-    }
-
-    public ArrayList<String> getClassRooms() {
-        return classRooms;
-    }
-
-    public void setClassRooms(Map<String, Object> classRooms) {
-        Set<String> keys = classRooms.keySet();
-        for (String key : keys) {
-            this.classRooms.add((String) classRooms.get(key));
-        }//for
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+        setTelephone((String) values.get("telefono"));
     }
 
     public String getName() {
@@ -75,16 +50,32 @@ public class Teacher implements Parcelable {
         this.school = school;
     }
 
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
+
     public String getMail() {
         return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getTelephone() {
+        return telephone;
     }
 
     public String getRol() {
         return rol;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     @Override
@@ -92,21 +83,18 @@ public class Teacher implements Parcelable {
         return name + " " + lastname;
     }
 
-    /* private ArrayList<String> classRooms; */
-    public boolean equals (Teacher teacher) {
+    public boolean equals (Alumno alumno) {
         boolean same = false;
-        if ((name.equals(teacher.getName())) && (lastname.equals(teacher.getLastname())) &&
-                (school.equals(teacher.getSchool())) && (mail.equals(teacher.getMail())) &&
-                (telephone.equals(teacher.getTelephone())) &&
-                (classRooms.containsAll(teacher.getClassRooms()))) {
+        if ((name.equals(alumno.getName())) && (lastname.equals(alumno.getLastname())) &&
+                (school.equals(alumno.getSchool())) && (classroom.equals(alumno.classroom)) &&
+                (mail.equals(alumno.getMail())) && (telephone.equals(alumno.getTelephone()))) {
             same = true;
         }
         return same;
     }
 
     //*****Parte de la interfaz Parcelable*****//
-    public Teacher (Parcel in) {
-        classRooms = new ArrayList<>();
+    public Alumno(Parcel in) {
         readFromParcel(in);
     }
 
@@ -120,9 +108,9 @@ public class Teacher implements Parcelable {
         dest.writeString(name);
         dest.writeString(lastname);
         dest.writeString(school);
+        dest.writeString(classroom);
         dest.writeString(mail);
         dest.writeString(telephone);
-        dest.writeStringList(classRooms);
         dest.writeString(rol);
     }
 
@@ -130,21 +118,21 @@ public class Teacher implements Parcelable {
         name = in.readString();
         lastname = in.readString();
         school = in.readString();
+        classroom = in.readString();
         mail = in.readString();
         telephone = in.readString();
-        in.readStringList(classRooms);
         rol = in.readString();
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator () {
         @Override
-        public Teacher createFromParcel (Parcel in) {
-            return new Teacher(in);
+        public Alumno createFromParcel (Parcel in) {
+            return new Alumno(in);
         }
 
         @Override
-        public Teacher[] newArray(int size) {
-            return new Teacher[size];
+        public Alumno[] newArray(int size) {
+            return new Alumno[size];
         }
-    };//Parcelable.creator
+    };//Parcelable.creator*/
 }

@@ -1,4 +1,4 @@
-package com.example.gonzalo.schoolapp;
+package com.example.gonzalo.schoolapp.ExpandableListAdapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -8,20 +8,23 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import com.example.gonzalo.schoolapp.clases.Father;
+import com.example.gonzalo.schoolapp.R;
+
 import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by Gonzalo on 19/05/2015.
  */
-public class ExpandableListAdapterAlumno extends BaseExpandableListAdapter {
+public class ExpandableListAdapterFather extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> listDataHeader;
-    private HashMap<String, List<Alumno>> listDataChild;
+    private HashMap<String, List<Father>> listDataChild;
 
-    public ExpandableListAdapterAlumno (Context context, List<String> listDataHeader,
-                                         HashMap<String, List<Alumno>> listDataChild) {
+    public ExpandableListAdapterFather (Context context, List<String> listDataHeader,
+                                         HashMap<String, List<Father>> listDataChild) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listDataChild;
@@ -42,7 +45,7 @@ public class ExpandableListAdapterAlumno extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final Alumno childText = (Alumno) getChild(groupPosition, childPosition);
+        final Father childText = (Father) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context

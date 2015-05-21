@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
 
+import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterFather;
+import com.example.gonzalo.schoolapp.clases.Father;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;

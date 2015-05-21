@@ -1,4 +1,4 @@
-package com.example.gonzalo.schoolapp;
+package com.example.gonzalo.schoolapp.ExpandableListAdapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import com.example.gonzalo.schoolapp.R;
+import com.example.gonzalo.schoolapp.clases.Teacher;
 
 import java.util.HashMap;
 import java.util.List;

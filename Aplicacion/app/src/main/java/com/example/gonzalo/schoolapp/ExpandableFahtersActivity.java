@@ -3,7 +3,6 @@ package com.example.gonzalo.schoolapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterFather;
+import com.example.gonzalo.schoolapp.clases.Father;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;

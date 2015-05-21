@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterTeacher;
+import com.example.gonzalo.schoolapp.clases.Teacher;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;

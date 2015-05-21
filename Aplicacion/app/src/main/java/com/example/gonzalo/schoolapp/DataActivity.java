@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Father;
+import com.example.gonzalo.schoolapp.clases.Teacher;
+
 import java.util.ArrayList;
 
 
