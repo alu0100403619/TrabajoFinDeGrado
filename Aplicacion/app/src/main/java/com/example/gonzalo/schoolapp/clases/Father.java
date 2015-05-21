@@ -140,7 +140,7 @@ public class Father implements Parcelable {
         lastname = in.readString();
         mail = in.readString();
         telephone = in.readString();
-        in.readTypedList(childrens, Father.CREATOR);
+        in.readTypedList(childrens, Alumno.CREATOR);
         rol = in.readString();
     }
 

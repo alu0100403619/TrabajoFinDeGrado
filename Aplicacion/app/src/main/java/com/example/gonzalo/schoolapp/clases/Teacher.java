@@ -20,7 +20,7 @@ public class Teacher implements Parcelable {
     private ArrayList<String> classRooms;
     private String rol = "Profesor";
 
-    Teacher (Map<String, Object> values) {
+    public Teacher (Map<String, Object> values) {
         classRooms = new ArrayList<>();
         setTelephone((String) values.get("telefono"));
         setName((String) values.get("nombre"));

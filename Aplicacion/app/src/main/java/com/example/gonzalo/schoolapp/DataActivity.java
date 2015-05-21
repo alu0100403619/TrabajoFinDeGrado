@@ -37,13 +37,6 @@ public class DataActivity extends Activity {
         childrenGroupLL = (LinearLayout) findViewById(R.id.children_group);
 
         rol = getIntent().getExtras().getString(getString(R.string.rol));
-        //TODO Esto es un Parche
-        if (rol == null) {
-            rol = "Padre";
-        }
-        //rol = getIntent().getStringExtra(getString(R.string.rol));
-        //Log.i("DataActivity", getString(R.string.rol)+": "+rol);
-        //Log.i("DataActivity", "Bundle: "+getIntent().getExtras());
         switch (rol) {
             case "Alumno":
                 Alumno alumno = getIntent().getExtras().getParcelable(getString(R.string.person));
@@ -121,12 +114,7 @@ public class DataActivity extends Activity {
         classRoomsTextView.setText(classRooms);
     }
 
-    //TODO Arreglar esta Parte
     public void setData (Father father) {
-        Log.i("DataActivity", "F.Childrens: "+father.getChildrens());//Se me pierde un hijo por el camino
-        Log.i("DataActivity", "F.Rol: "+father.getRol());//Se pierde por el camino
-        //CULPABLE Parcelable
-
         LinearLayout schoolGroup = (LinearLayout) findViewById(R.id.school_group);
         LinearLayout courseGroupGroup = (LinearLayout) findViewById(R.id.course_group_group);
         LinearLayout childs = (LinearLayout) findViewById(R.id.childs);
@@ -145,7 +133,7 @@ public class DataActivity extends Activity {
             Alumno alumno = (Alumno) childrens.get(i);
             if (alumno != null) {
                 TextView childNumber = new TextView(this);
-                childNumber.setText("##" + getString(R.string.son_label) + " " + i + "##");
+                childNumber.setText(" ##" + getString(R.string.son_label) + " " + (i + 1) + "##");
                 TextView childName = new TextView(this);
                 //childName.setText(child.getName());
                 childName.setText(alumno.getName());

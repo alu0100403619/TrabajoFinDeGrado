@@ -74,10 +74,6 @@ public class ExpandableFahtersActivity extends Activity {
                             get(groupPosition)).get(childPosition).getRol());//*/ //Se pierde por el camino
                     intent.putExtra(getString(R.string.person),
                             listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
-//------------------------------------------------------------------------------------------------
-                    Log.i("ExpFatherActivity", "hijos: " + listDataChild.get(listDataHeader.
-                            get(groupPosition)).get(childPosition).getChildrens());
-//------------------------------------------------------------------------------------------------
                     startActivity(intent);
                     return true;
                 }//if
