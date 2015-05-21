@@ -1,11 +1,14 @@
 package com.example.gonzalo.schoolapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -19,12 +22,12 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ExpandableTeachersActivity extends ActionBarActivity {
+public class ExpandableTeachersActivity extends Activity {
 
-    ExpandableListAdapter listAdapter;
+    ExpandableListAdapterTeacher listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    HashMap<String, List<Teacher>> listDataChild;
     ArrayList<String> clases;
     Firebase teachersRef;
     String mail, school;
@@ -34,14 +37,14 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expandable_teachers);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         Firebase.setAndroidContext(this);
 
         teachersRef = new Firebase (getString(R.string.profeRef));
         clases = new ArrayList<>();
         teachers = new ArrayList<>();
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataChild = new HashMap<String, List<Teacher>>();
 
         //Obtenemos las clases
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
@@ -54,6 +57,37 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
+
+        //Listener Click Largo
+        expListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                if (expListView.getPackedPositionType(id) == expListView.PACKED_POSITION_TYPE_CHILD) {
+                    int groupPosition = expListView.getPackedPositionGroup(id);
+                    int childPosition = expListView.getPackedPositionChild(id);
+                    Intent intent = new Intent(ExpandableTeachersActivity.this, DataActivity.class);
+                    intent.putExtra(getString(R.string.person),
+                            listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
+                    intent.putExtra(getString(R.string.rol),listDataChild.get(listDataHeader.
+                            get(groupPosition)).get(childPosition).getRol());
+                    startActivity(intent);
+                    return true;
+                }//if
+                return false;
+            }
+        });
+
+        //Listener Click Normal
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                Toast.makeText(getApplicationContext(),"ClickData-->"+
+                                listDataHeader.get(groupPosition) + " : " +
+                                listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition),
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
         //Obtenemos los profes del centro
         getTeachers();
@@ -84,25 +118,23 @@ public class ExpandableTeachersActivity extends ActionBarActivity {
     }//function
 
     public void prepareListData() {
-        String name = "";
         for (int i = 0; i < clases.size(); i++) {
-            List<String> auxList = new ArrayList<>();
+            List<Teacher> auxList = new ArrayList<>();
             //Adding Header Data
             if (!listDataChild.containsKey(clases.get(i))) {
                 listDataHeader.add(clases.get(i));
             }//if
             for (Teacher teacher : teachers) {
                 //Adding Child Data
-                name = teacher.getName() + " " + teacher.getLastname();
-                if ((teacher.getClassRooms().contains(clases.get(i))) && (!auxList.contains(name))){
-                    auxList.add(name);
+                if ((teacher.getClassRooms().contains(clases.get(i))) && (!auxList.contains(teacher))){
+                    auxList.add(teacher);
                 }//if
             }//for teacher
             listDataChild.put(listDataHeader.get(i), auxList);
         }//for clase
 
         //Adaptador
-        listAdapter = new ExpandableListAdapter (this, listDataHeader, listDataChild);
+        listAdapter = new ExpandableListAdapterTeacher (this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
     }//function*/
 

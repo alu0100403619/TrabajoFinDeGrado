@@ -56,13 +56,21 @@ public class FathersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         spec = tabHost.newTabSpec("Padres").setIndicator(getString(R.string._padres)).setContent(intent);
-        tabHost.addTab(spec);//*/
+        tabHost.addTab(spec);
 
         //Tab Profes
-        /*intent = new Intent().setClass(this, ExpandableTeachersActivity.class);
+
+        if (schools.size() == 1) {
+            intent = new Intent().setClass(this, ExpandableTeachersActivity.class);
+            intent.putExtra(getString(R.string.bbdd_center), schools.get(0));
+        }
+        else {
+            //TODO A probar
+            //intent = new Intent().setClass(this, TeacherExpandableTeachersActivity.class);
+            intent.putExtra(getString(R.string.bbdd_center), schools);
+        }
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
-        intent.putExtra(getString(R.string.bbdd_center), schools);
         spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
         tabHost.addTab(spec);//*/
 

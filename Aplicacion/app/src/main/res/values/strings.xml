@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">School App</string>
+    <string name="person">person</string>
     <string name="action_settings">Ajustes</string>
     <string name="username_hint">Correo de Usuario</string>
     <string name="password_hint">Contraseña</string>
@@ -35,8 +36,10 @@
     <string name="empty"></string>
     <string name="alumno_name">Nombre Alumno</string>
     <string name="alumno_lastname">Apellidos Alumno</string>
+    <string name="alumno_mail">E-Mail Alumno</string>
     <string name="alumno_course_group">Curso y Grupo Alumno</string>
     <string name="alumno_center">Centro Alumno</string>
+    <string name="alu_course_group_hint">Alumno: 1A, 2C, 3B...</string>
     <string name="size">size</string>
     <string name="forget_login">Nueva Contraseña</string>
 
@@ -45,6 +48,17 @@
         <item>Profesor</item>
         <item>Madre/Padre/Tutor Legal</item>
     </string-array>
+
+    <!-- Etiquetas -->
+    <string name="name_label">Nombre: </string>
+    <string name="lastname_label">Apellidos: </string>
+    <string name="college_label">Centro: </string>
+    <string name="telephone_label">Teléfono: </string>
+    <string name="mail_label">E-mail: </string>
+    <string name="course_group_label">Curso y Grupo: </string>
+    <string name="teacher_class_label">Cursos y Grupos: </string>
+    <string name="sons_label">Hijos: </string>
+    <string name="son_label">Hijo</string>
 
     <!-- Claves para la BBDD -->
     <string name="bbdd_mail">mail</string>
@@ -60,19 +74,23 @@
     <string name="bbdd_name_children">nombreHijo</string>
     <string name="bbdd_lastname_children">apellidoHijo</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="help_dialog_title">Ayuda sobre Curso y Grupo</string>
+    <string name="help_ok_dialog">Aceptar</string>
 
-    <!-- Welcome Tabs -->
-    <!-- string name="register">Registro</string>
-    <string name="login">Acceso</string>
-    <string name="help">Ayuda</string>
-    <string name="about_me">Sobre Mi</string -->
     <string-array name="tabs_array">
         <item>Registro</item>
         <item>Acceso</item>
         <item>Ayuda</item>
         <item>Sobre Mi</item>
     </string-array>
+
+    <!-- My Data -->
+    <string name="my_name">Gonzalo J. García Martín</string>
+    <string name="my_email">dracoyue@gmail.com</string>
+    <string name="my_telephone">654132662</string>
+    <string name="my_adress">C// Estado de Aragua, Nº 5, 1º. La Laguna</string>
+    <string name="my_school">Escuela Técnica Superior de Ingenierías y Tecnologías</string>
+    <string name="my_studies">Ingeniería Informática</string>
 
     <!-- Activity's Titles -->
     <string name="title_activity_register">RegisterActivity</string>
@@ -88,5 +106,8 @@
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="welcome_image_description">Imagen de Bienvenida</string>
+    <string name="title_activity_data">DataActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

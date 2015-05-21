@@ -22,7 +22,7 @@ import java.util.Set;
 
 public class FatherExpandableFathersActivity extends ActionBarActivity {
 
-    ExpandableListAdapter listAdapter;
+    ExpandableListAdapterFather listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader, auxList;
     HashMap<String, List<String>> listDataChild;
@@ -38,7 +38,7 @@ public class FatherExpandableFathersActivity extends ActionBarActivity {
         getSupportActionBar().hide();
         Firebase.setAndroidContext(this);
 
-        fathersRef = new Firebase (getString(R.string.madreRef));
+        fathersRef = new Firebase (getString(R.string.padreRef));
         clases = new ArrayList<>();
         schools = new ArrayList<>();
         fathers = new ArrayList<>();

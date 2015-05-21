@@ -12,16 +12,16 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Gonzalo on 18/03/2015.
+ * Created by Gonzalo on 19/05/2015.
  */
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+public class ExpandableListAdapterAlumno extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> listDataHeader;
-    private HashMap<String, List<String>> listDataChild;
+    private HashMap<String, List<Alumno>> listDataChild;
 
-    public ExpandableListAdapter (Context context, List<String> listDataHeader,
-                                  HashMap<String, List<String>> listDataChild) {
+    public ExpandableListAdapterAlumno (Context context, List<String> listDataHeader,
+                                         HashMap<String, List<Alumno>> listDataChild) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listDataChild;
@@ -42,7 +42,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childText = (String) getChild(groupPosition, childPosition);
+        final Alumno childText = (Alumno) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
@@ -53,7 +53,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.listItem);
 
-        txtListChild.setText(childText);
+        txtListChild.setText(childText.toString());
         return convertView;
     }
 

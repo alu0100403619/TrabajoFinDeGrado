@@ -2,11 +2,21 @@
 
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- TODO Color de la letra de los TextView = negra  -->
+        <item name="android:buttonStyle">@style/CustomButton</item>
+        <item name="android:editTextStyle">@style/CustomEditText</item>
     </style>
 
-    <style name="roundedCorners" parent="AppTheme">
-        <item name="android:shape">ring</item>
-        <item name="android:radius">10dip</item>
+    <style name="CustomButton" parent="android:Widget.Button">
+        <item name="android:background">@drawable/rounded_corners</item>
+        <item name="android:textColor">@color/White</item>
+    </style>
+
+    <style name="CustomEditText" parent="android:Widget.EditText">
+        <item name="android:background">@drawable/custom_edit_text</item>
+    </style>
+
+    <style name="CustomTextView" parent="android:Widget.TextView">
+
     </style>
 
 </resources>

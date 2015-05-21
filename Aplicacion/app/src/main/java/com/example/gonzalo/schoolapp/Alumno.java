@@ -1,19 +1,21 @@
 package com.example.gonzalo.schoolapp;
 
-import android.util.Log;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.Map;
 
 /**
  * Created by Gonzalo on 07/04/2015.
  */
-public class Alumno {
-    String name;
-    String Lastname;
-    String school;
-    String classroom;
-    String mail;
-    String telephone;
+public class Alumno implements Parcelable {
+    private String name;
+    private String lastname;
+    private String school;
+    private String classroom;
+    private String mail;
+    private String telephone;
+    private String rol = "Alumno";
 
     public Alumno(Map<String, Object> values) {
         setName((String) values.get("nombre"));
@@ -33,11 +35,11 @@ public class Alumno {
     }
 
     public String getLastname() {
-        return Lastname;
+        return lastname;
     }
 
     public void setLastname(String lastname) {
-        Lastname = lastname;
+        this.lastname = lastname;
     }
 
     public String getSchool() {
@@ -68,19 +70,69 @@ public class Alumno {
         return telephone;
     }
 
+    public String getRol() {
+        return rol;
+    }
+
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
     @Override
     public String toString() {
-        return "Alumno{" +
-                "name='" + name + '\'' +
-                ", Lastname='" + Lastname + '\'' +
-                ", school='" + school + '\'' +
-                ", classroom='" + classroom + '\'' +
-                ", mail='" + mail + '\'' +
-                ", telephone='" + telephone + '\'' +
-                '}';
+        return name + " " + lastname;
     }
+
+    public boolean equals (Alumno alumno) {
+        boolean same = false;
+        if ((name.equals(alumno.getName())) && (lastname.equals(alumno.getLastname())) &&
+                (school.equals(alumno.getSchool())) && (classroom.equals(alumno.classroom)) &&
+                (mail.equals(alumno.getMail())) && (telephone.equals(alumno.getTelephone()))) {
+            same = true;
+        }
+        return same;
+    }
+
+    //*****Parte de la interfaz Parcelable*****//
+    public Alumno(Parcel in) {
+        readFromParcel(in);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(lastname);
+        dest.writeString(school);
+        dest.writeString(classroom);
+        dest.writeString(mail);
+        dest.writeString(telephone);
+        dest.writeString(rol);
+    }
+
+    public void readFromParcel(Parcel in) {
+        name = in.readString();
+        lastname = in.readString();
+        school = in.readString();
+        classroom = in.readString();
+        mail = in.readString();
+        telephone = in.readString();
+        rol = in.readString();
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator () {
+        @Override
+        public Alumno createFromParcel (Parcel in) {
+            return new Alumno(in);
+        }
+
+        @Override
+        public Alumno[] newArray(int size) {
+            return new Alumno[size];
+        }
+    };//Parcelable.creator*/
 }

@@ -1,9 +1,13 @@
 package com.example.gonzalo.schoolapp;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -21,7 +25,7 @@ import java.util.Set;
  */
 public class TeachersActivity extends ListActivity {
 
-    List<String> classTeachers;
+    List<Teacher> classTeachers;
     String clase, school;
     Firebase teacherRef;
     ArrayList<Teacher> teachers;
@@ -39,6 +43,32 @@ public class TeachersActivity extends ListActivity {
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
 
         preparingData();
+
+        //Listener para click largo
+        this.getListView().setLongClickable(true);
+        this.getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(TeachersActivity.this, DataActivity.class);
+                intent.putExtra(getString(R.string.person), classTeachers.get(position));
+                intent.putExtra(getString(R.string.rol), classTeachers.get(position).getRol());
+                startActivity(intent);
+                /*Toast.makeText(TeachersActivity.this, "LongClickData: " + classTeachers.get(position),
+                        Toast.LENGTH_SHORT).show();//*/
+                return true;
+            }
+        });
+
+        //Listener para click normal
+        this.getListView().setClickable(true);
+        this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //TODO Mandar a ChatActivity
+                Toast.makeText(TeachersActivity.this, "ClickData: " + classTeachers.get(position),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void preparingData(){
@@ -51,13 +81,11 @@ public class TeachersActivity extends ListActivity {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Log.i("TeachersActivity", "Values: "+values);
                 Teacher teacher = new Teacher(values);
-                String name = values.get(getString(R.string.bbdd_name)) + " "+
-                        values.get(getString(R.string.bbdd_lastname));
-                if ((teacher.getClassRooms().contains(clase)) && (!classTeachers.contains(name))) {
-                    classTeachers.add(name);
+                if ((teacher.getClassRooms().contains(clase)) && (!classTeachers.contains(teacher))) {
+                    classTeachers.add(teacher);
                 }//if
                 //Seteamos el ArrayAdapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(TeachersActivity.this,
+                ArrayAdapter<Teacher> adapter = new ArrayAdapter<Teacher>(TeachersActivity.this,
                         R.layout.list_item_layout,
                         classTeachers);
                 setListAdapter(adapter);

@@ -1,5 +1,7 @@
 package com.example.gonzalo.schoolapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -10,12 +12,13 @@ import java.util.Set;
 /**
  * Created by Gonzalo on 07/04/2015.
  */
-public class Father {
-    String name;
-    String lastname;
-    String mail;
-    String telephone;
-    ArrayList<Alumno> childrens;
+public class Father implements Parcelable {
+    private String name;
+    private String lastname;
+    private String mail;
+    private String telephone;
+    private ArrayList<Alumno> childrens;
+    private String rol = "Padre";
 
     public Father(Map<String, Object> values) {
         childrens = new ArrayList<>();
@@ -89,18 +92,70 @@ public class Father {
         return name;
     }
 
+    public String getRol() {
+        return rol;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Father--->{" +
-                "name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", mail='" + mail + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", childrens=" + childrens +
-                '}';
+        return name + " " + lastname;
     }
+
+    public boolean equals (Father father) {
+        boolean same = false;
+        if ((name.equals(father.getName())) && (lastname.equals(father.getLastname())) &&
+                (mail.equals(father.getMail())) && (telephone.equals(father.getTelephone())) &&
+                (childrens.containsAll(father.getChildrens()))) {
+            same = true;
+        }
+        return same;
+    }
+
+    //*****Parte de la interfaz Parcelable*****//
+    //TODO No funciona Bien
+    public Father(Parcel in) {
+        childrens = new ArrayList<Alumno> ();
+        readFromParcel(in);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(lastname);
+        dest.writeString(mail);
+        dest.writeString(telephone);
+        dest.writeTypedList(childrens);
+        dest.writeString(rol);
+    }
+
+    public void readFromParcel(Parcel in) {
+        name = in.readString();
+        lastname = in.readString();
+        mail = in.readString();
+        telephone = in.readString();
+        in.readTypedList(childrens, Father.CREATOR);
+        rol = in.readString();
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator () {
+        @Override
+        public Father createFromParcel (Parcel in) {
+            return new Father(in);
+        }
+
+        @Override
+        public Father[] newArray(int size) {
+            return new Father[size];
+        }
+    };//Parcelable.creator*/
+
 }

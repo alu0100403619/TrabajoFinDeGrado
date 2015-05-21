@@ -17,6 +17,7 @@
         conexión a internet (Datos o Wifi).</string>
     <string name="about_message">Esta aplicaión trta de mejorar la comunicación entre los profesores,
         alumnos y padres/Madres/Tutores Legales.</string>
-    <string name="about_me_message">Alumno de la Escuela Superior de Ingeniería y Tecnologías. TFG</string>
+    <string name="about_me_message">Alumno de la Escuela Superior de Ingeniería y Tecnologías.
+        Trabajo de Fin de Grado para la carrera de Ingeniería Informática.</string>
 
 </resources>
