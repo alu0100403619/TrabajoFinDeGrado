@@ -311,6 +311,9 @@ avances significativos, pero hay avances. He tenido unos problemas para pasar
 objetos entre actividades Pero ya está resuelto. Estoy trabajando en la parte
 del chat. Solo queda eso, el estilo, y un par de TODO's
 --------------------------
+May 28
+
+Gonzalo se ha olvidado de la reunión de hoy, porque pensaba que era mañana.
 --------------------------
 --------------------------
 --------------------------
