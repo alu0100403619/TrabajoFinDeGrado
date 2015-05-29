@@ -32,7 +32,7 @@ public class ExpandableAlumnosActivity extends Activity {
     HashMap<String, List<Alumno>> listDataChild;
     ArrayList<String> clases;
     Firebase alumnosRef;
-    String school;
+    String school, myName, mail;
     ArrayList<Alumno> alumnos;
 
     @Override
@@ -50,9 +50,11 @@ public class ExpandableAlumnosActivity extends Activity {
 
         //Obtenemos las clases
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
+        mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
 
         //Obtenemos el colegio
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
+        myName = getIntent().getExtras().getString(getString(R.string.myName));
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
@@ -80,10 +82,19 @@ public class ExpandableAlumnosActivity extends Activity {
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(getApplicationContext(), "ClickData-->" +
+                /*Toast.makeText(getApplicationContext(), "ClickData-->" +
                                 listDataHeader.get(groupPosition) + " : " +
                                 listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition),
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();//*/
+                String name = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getName() + " " +
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getLastname();
+                Intent intent = new Intent(ExpandableAlumnosActivity.this, Chat2Activity.class);
+                intent.putExtra(getString(R.string.name), name);
+                intent.putExtra(getString(R.string.mail), mail);
+                intent.putExtra(getString(R.string.mail_remitter),
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
+                intent.putExtra(getString(R.string.myName), myName);
+                startActivity(intent);
                 return true;
             }
         });

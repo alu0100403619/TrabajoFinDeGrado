@@ -27,7 +27,7 @@ import java.util.Set;
 public class LoginActivity extends Activity {
 
     EditText mailEditText, passwordEditText;
-    String userType, mail;
+    String userType, mail, myName;
     Firebase rootRef;
     ArrayList<String> clases = new ArrayList<>();
     ArrayList<String> colegios = new ArrayList<>();
@@ -157,6 +157,7 @@ public class LoginActivity extends Activity {
                     if (userType.equals(getString(R.string._alumnos))) {
                         Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
+                        intent.putExtra(getString(R.string.myName), myName);
                         intent.putExtra(getString(R.string.bbdd_class), clases.get(0));
                         //El alumno solo va a un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
@@ -168,6 +169,7 @@ public class LoginActivity extends Activity {
                         Intent intent = new Intent(LoginActivity.this, TeachersTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+                        intent.putExtra(getString(R.string.myName), myName);
                         //Suponemos que un profesor solo da clases en un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
                         startActivity(intent);
@@ -179,6 +181,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
                         intent.putExtra(getString(R.string.bbdd_center), colegios);
+                        intent.putExtra(getString(R.string.myName), myName);
                         startActivity(intent);
                         //TODO Descomentar
                         //LoginActivity.this.finish();
@@ -238,6 +241,8 @@ public class LoginActivity extends Activity {
                 }
             }//for
         }
+        myName = data.get(getString(R.string.bbdd_name)) + " " +
+                data.get(getString(R.string.bbdd_lastname));
         return clases;
     }
 

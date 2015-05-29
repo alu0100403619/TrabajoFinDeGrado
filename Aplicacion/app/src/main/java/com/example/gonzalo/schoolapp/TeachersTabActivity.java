@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class TeachersTabActivity extends TabActivity {
 
-    String mail, school;
+    String mail, school, myName;
     ArrayList<String> clases;
     Firebase teachersRef;
 
@@ -29,6 +29,7 @@ public class TeachersTabActivity extends TabActivity {
         //Obtener mail, colegio y las clases
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
+        myName = getIntent().getExtras().getString(getString(R.string.myName));
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
 
         //Añadiendo las Tabs
@@ -41,6 +42,7 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_center), school);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
         tabHost.addTab(spec);
 
@@ -49,6 +51,7 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_center), school);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("Padres").setIndicator(getString(R.string._padres)).setContent(intent);
         tabHost.addTab(spec);
 
@@ -56,11 +59,15 @@ public class TeachersTabActivity extends TabActivity {
         intent = new Intent().setClass(this, ExpandableAlumnosActivity.class);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_center), school);
+        intent.putExtra(getString(R.string.myName), myName);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
         spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string._alumnos)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Notificaciones
         intent = new Intent().setClass(this, NotificationsActivity.class);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("notificaciones").setIndicator(getString(R.string.notificaciones)).setContent(intent);
         tabHost.addTab(spec);
 

@@ -33,7 +33,7 @@ public class ExpandableFahtersActivity extends Activity {
     List<String> listDataHeader;
     HashMap<String, List<Father>> listDataChild;
     ArrayList<String> clases;
-    String school, mail;
+    String school, mail, myName;
     Firebase fathersRef;
     ArrayList<Father> fathers;
 
@@ -58,6 +58,7 @@ public class ExpandableFahtersActivity extends Activity {
 
         //Obtenemos el mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        myName = getIntent().getExtras().getString(getString(R.string.myName));
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
@@ -85,10 +86,15 @@ public class ExpandableFahtersActivity extends Activity {
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(getApplicationContext(), "ClickData-->" +
-                                listDataHeader.get(groupPosition) + " : " +
-                                listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition),
-                        Toast.LENGTH_SHORT).show();
+                String name = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getName() + " " +
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getLastname();
+                Intent intent = new Intent(ExpandableFahtersActivity.this, Chat2Activity.class);
+                intent.putExtra(getString(R.string.name), name);
+                intent.putExtra(getString(R.string.mail), mail);
+                intent.putExtra(getString(R.string.mail_remitter),
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
+                intent.putExtra(getString(R.string.myName), myName);
+                startActivity(intent);
                 return true;
             }
         });

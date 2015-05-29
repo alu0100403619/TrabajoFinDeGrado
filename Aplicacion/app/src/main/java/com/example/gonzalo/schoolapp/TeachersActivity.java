@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.example.gonzalo.schoolapp.Chat2Activity;
+import com.example.gonzalo.schoolapp.clases.Message;
 import com.example.gonzalo.schoolapp.clases.Teacher;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -26,7 +28,7 @@ import java.util.Map;
 public class TeachersActivity extends ListActivity {
 
     List<Teacher> classTeachers;
-    String clase, school;
+    String clase, school, myName, mail;
     Firebase teacherRef;
     ArrayList<Teacher> teachers;
 
@@ -41,6 +43,8 @@ public class TeachersActivity extends ListActivity {
         //Obtenemos la Clase
         clase = getIntent().getExtras().getString(getString(R.string.bbdd_class));
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
+        mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        myName = getIntent().getExtras().getString(getString(R.string.myName));
 
         preparingData();
 
@@ -64,9 +68,14 @@ public class TeachersActivity extends ListActivity {
         this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO Mandar a ChatActivity
-                Toast.makeText(TeachersActivity.this, "ClickData: " + classTeachers.get(position),
-                        Toast.LENGTH_SHORT).show();
+                String name = classTeachers.get(position).getName() + " " +
+                        classTeachers.get(position).getLastname();
+                Intent intent = new Intent(TeachersActivity.this, Chat2Activity.class);
+                intent.putExtra(getString(R.string.name), name);
+                intent.putExtra(getString(R.string.mail), mail);
+                intent.putExtra(getString(R.string.mail_remitter), classTeachers.get(position).getMail());
+                intent.putExtra(getString(R.string.myName), myName);
+                startActivity(intent);
             }
         });
     }

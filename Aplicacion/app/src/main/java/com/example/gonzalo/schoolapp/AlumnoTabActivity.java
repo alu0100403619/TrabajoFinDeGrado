@@ -12,7 +12,7 @@ import com.firebase.client.Firebase;
 
 public class AlumnoTabActivity extends TabActivity {
 
-    String mail, clase, school;
+    String mail, clase, school, myName;
     Firebase aluRef;
 
     @Override
@@ -27,6 +27,7 @@ public class AlumnoTabActivity extends TabActivity {
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         clase = getIntent().getExtras().getString(getString(R.string.bbdd_class));
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
+        myName = getIntent().getExtras().getString(getString(R.string.myName));
 
         //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
@@ -38,6 +39,7 @@ public class AlumnoTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_class), clase);
         intent.putExtra(getString(R.string.bbdd_center), school);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string.alumnos)).setContent(intent);
         tabHost.addTab(spec);
 
@@ -45,11 +47,15 @@ public class AlumnoTabActivity extends TabActivity {
         intent = new Intent().setClass(this, TeachersActivity.class);
         intent.putExtra(getString(R.string.bbdd_class), clase);
         intent.putExtra(getString(R.string.bbdd_center), school);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("profesores").setIndicator(getString(R.string.teachers)).setContent(intent);
         tabHost.addTab(spec);
 
         //Notificaciones Tab
         intent = new Intent().setClass(this, NotificationsActivity.class);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("notificaciones").setIndicator(getString(R.string.notificaciones)).setContent(intent);
         tabHost.addTab(spec);
 

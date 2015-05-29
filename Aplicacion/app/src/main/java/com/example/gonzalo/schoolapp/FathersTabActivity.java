@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class FathersTabActivity extends TabActivity {
 
-    String mail;
+    String mail, myName;
     ArrayList<String> clases, schools;
     Firebase fathersRef;
 
@@ -37,11 +37,12 @@ public class FathersTabActivity extends TabActivity {
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         schools = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_center));
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
+        myName = getIntent().getExtras().getString(getString(R.string.myName));
 
         //Add Tabs
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec;
-        Intent intent;
+        Intent intent = null;
 
         //Tab Padres
         if (schools.size() == 1) {
@@ -50,16 +51,16 @@ public class FathersTabActivity extends TabActivity {
         }
         else {
             //TODO A probar
-            intent = new Intent().setClass(this, FatherExpandableFathersActivity.class);
-            intent.putExtra(getString(R.string.bbdd_center), schools);
+            //intent = new Intent().setClass(this, FatherExpandableFathersActivity.class);
+            //intent.putExtra(getString(R.string.bbdd_center), schools);
         }//else
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("Padres").setIndicator(getString(R.string._padres)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Profes
-
         if (schools.size() == 1) {
             intent = new Intent().setClass(this, ExpandableTeachersActivity.class);
             intent.putExtra(getString(R.string.bbdd_center), schools.get(0));
@@ -67,15 +68,18 @@ public class FathersTabActivity extends TabActivity {
         else {
             //TODO A probar
             //intent = new Intent().setClass(this, TeacherExpandableTeachersActivity.class);
-            intent.putExtra(getString(R.string.bbdd_center), schools);
+            //intent.putExtra(getString(R.string.bbdd_center), schools);
         }
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
         tabHost.addTab(spec);//*/
 
         //Tab Notificaciones
         intent = new Intent().setClass(this, NotificationsActivity.class);
+        intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.myName), myName);
         spec = tabHost.newTabSpec("notificaciones").setIndicator(getString(R.string.notificaciones)).setContent(intent);
         tabHost.addTab(spec);
 

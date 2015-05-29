@@ -16,7 +16,19 @@
     </style>
 
     <style name="CustomTextView" parent="android:Widget.TextView">
+        <item name="android:textAppearance">?android:textAppearanceListItem</item>
+    </style>
 
+    <style name="ListItem" parent="AppTheme">
+        <item name="android:textAppearance">?android:textAppearanceListItem</item>
+    </style>
+
+    <style name="text" parent="AppTheme">
+        <item name="android:textAppearance">?android:textAppearance</item>
+    </style>
+
+    <style name="ListSubItem" parent="AppTheme">
+        <item name="android:textAppearance">?android:textAppearanceListItemSecondary</item>
     </style>
 
 </resources>

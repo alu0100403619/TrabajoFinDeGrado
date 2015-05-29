@@ -4,9 +4,11 @@
     <string name="profeRef">https://schoolapplication.firebaseio.com/profesores</string>
     <string name="aluRef">https://schoolapplication.firebaseio.com/alumnos</string>
     <string name="padreRef">https://schoolapplication.firebaseio.com/padres</string>
+    <string name="mensajesRef">https://schoolapplication.firebaseio.com/mensajes</string>
 
     <string name="_alumnos">alumnos</string>
     <string name="_padres">padres</string>
     <string name="_profes">profesores</string>
+    <string name="_mensajes">mensajes</string>
 
 </resources>

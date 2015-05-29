@@ -24,6 +24,7 @@
     <string name="submit">Registrar</string>
     <string name="usertype_promt">Tipo de Usuaro</string>
     <string name="name">Nombre</string>
+    <string name="myName">MiNombre</string>
     <string name="lastname">Apellidos</string>
     <string name="college">Centro</string>
     <string name="telephone">Teléfono</string>
@@ -42,6 +43,9 @@
     <string name="alu_course_group_hint">Alumno: 1A, 2C, 3B...</string>
     <string name="size">size</string>
     <string name="forget_login">Nueva Contraseña</string>
+    <string name="reading_true">Leido</string>
+    <string name="reading_false">No Leido</string>
+    <string name="mail_remitter">mailRemitter</string>
 
     <string-array name="usertype_array">
         <item>Alumno</item>
@@ -73,6 +77,18 @@
     <string name="bbdd_children">hijos</string>
     <string name="bbdd_name_children">nombreHijo</string>
     <string name="bbdd_lastname_children">apellidoHijo</string>
+    <string name="bbdd_addressee">destinatario</string>
+    <string name="bbdd_mail_remitter">mail_remitente</string>
+    <string name="bbdd_message">mensaje</string>
+    <string name="bbdd_remitter">remitente</string>
+    <string name="bbdd_date">fecha</string>
+    <string name="bbdd_date_day">dia</string>
+    <string name="bbdd_date_month">mes</string>
+    <string name="bbdd_date_year">anno</string>
+    <string name="bbdd_date_hour">hora</string>
+    <string name="bbdd_date_minutes">minutos</string>
+    <string name="bbdd_system">System</string>
+                   <!-- FIN BBDD -->
 
     <string name="help_dialog_title">Ayuda sobre Curso y Grupo</string>
     <string name="help_ok_dialog">Aceptar</string>
@@ -107,6 +123,8 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="welcome_image_description">Imagen de Bienvenida</string>
     <string name="title_activity_data">DataActivity</string>
+    <string name="title_activity_chat_2">ChatActivity</string>
+    <string name="title_activity_chat">ChatActivity</string>
 
     <string name="hello_world">Hello world!</string>
 
