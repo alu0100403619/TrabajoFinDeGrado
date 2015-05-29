@@ -32,7 +32,7 @@ public class ExpandableTeachersActivity extends Activity {
     HashMap<String, List<Teacher>> listDataChild;
     ArrayList<String> clases;
     Firebase teachersRef;
-    String mail, school;
+    String mail, school, myName;
     ArrayList<Teacher> teachers;
 
     @Override
@@ -53,6 +53,7 @@ public class ExpandableTeachersActivity extends Activity {
 
         //Obtenemos el mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        myName = getIntent().getExtras().getString(getString(R.string.myName));
 
         //Obtenemos el colegio
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
@@ -83,10 +84,15 @@ public class ExpandableTeachersActivity extends Activity {
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(getApplicationContext(),"ClickData-->"+
-                                listDataHeader.get(groupPosition) + " : " +
-                                listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition),
-                        Toast.LENGTH_SHORT).show();
+                String name = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getName() + " " +
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getLastname();
+                Intent intent = new Intent(ExpandableTeachersActivity.this, Chat2Activity.class);
+                intent.putExtra(getString(R.string.name), name);
+                intent.putExtra(getString(R.string.mail), mail);
+                intent.putExtra(getString(R.string.mail_remitter),
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
+                intent.putExtra(getString(R.string.myName), myName);
+                startActivity(intent);
                 return true;
             }
         });
