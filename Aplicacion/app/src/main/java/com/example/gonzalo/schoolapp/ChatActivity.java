@@ -95,7 +95,8 @@ public class ChatActivity extends ListActivity {
     }
 
     public void send (View view) {
-        String messageInput = ((EditText) findViewById(R.id.messageInput)).getText().toString();
+        EditText messageInputEditText = (EditText) findViewById(R.id.messageInput);
+        String messageInput = messageInputEditText.getText().toString();
         Calendar calendar = Calendar.getInstance();
         Date date = new Date(calendar.get(calendar.DAY_OF_MONTH),
                 calendar.get(calendar.MONTH) + 1, calendar.get(calendar.YEAR),
@@ -106,23 +107,21 @@ public class ChatActivity extends ListActivity {
         //Mandar el mensaje a la BBDD mientras el name no sea System
         sendToDataBase(message);
 
-        //TODO Refresh the view
-        refresh();
+        //Refresh the view
+        messageInputEditText.setText(getString(R.string.empty));
+        chatAdapter.notifyDataSetChanged();
     }
 
-
-    protected void refresh() {
-        Log.i("ChatActivity", "refresh");
-        MessageSQLHelper messageSQLHelper = new MessageSQLHelper(this);
-        messageSQLHelper.addConversation(mail, mailRemitter);
-        String newIdConversation = messageSQLHelper.getIdConversation(mailRemitter);
+    @Override
+    protected void onDestroy () {
+        Log.i("ChatActivity", "OnDestroy");
+        //MessageSQLHelper messageSQLHelper = new MessageSQLHelper(this);
+        messageBBDD.addConversation(mail, mailRemitter);
+        String newIdConversation = messageBBDD.getIdConversation(mailRemitter);
         for (Message message: messages) {
-            messageSQLHelper.addMessage(message, newIdConversation);
+            messageBBDD.addMessage(message, newIdConversation);
         }
-
-        EditText messageInput = (EditText) findViewById(R.id.messageInput);
-        messageInput.setText(getString(R.string.empty));
-        chatAdapter.notifyDataSetChanged();
+        super.onDestroy();
     }
 
     public void sendToDataBase(Message message) {

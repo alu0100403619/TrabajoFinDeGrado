@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TabHost;
 import android.widget.Toolbar;
 
@@ -28,6 +29,7 @@ public class FathersTabActivity extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fathers_tab);
+        getActionBar().setTitle(getString(R.string.ActionBar_father));
         Firebase.setAndroidContext(this);
         fathersRef = new Firebase (getString(R.string.profeRef));
         clases = new ArrayList<>();
@@ -57,7 +59,8 @@ public class FathersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
-        spec = tabHost.newTabSpec("Padres").setIndicator(getString(R.string._padres)).setContent(intent);
+        spec = tabHost.newTabSpec(getString(R.string.tab_fathers))
+                .setIndicator(getString(R.string.tab_fathers)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Profes
@@ -73,14 +76,16 @@ public class FathersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.myName), myName);
-        spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
+        spec = tabHost.newTabSpec(getString(R.string.tab_teachers))
+                .setIndicator(getString(R.string.tab_teachers)).setContent(intent);
         tabHost.addTab(spec);//*/
 
         //Tab Notificaciones
         intent = new Intent().setClass(this, NotificationsActivity.class);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
-        spec = tabHost.newTabSpec("notificaciones").setIndicator(getString(R.string.notificaciones)).setContent(intent);
+        spec = tabHost.newTabSpec(getString(R.string.tab_notifications))
+                .setIndicator(getString(R.string.tab_notifications)).setContent(intent);
         tabHost.addTab(spec);
 
         tabHost.setCurrentTab(0);
@@ -106,6 +111,11 @@ public class FathersTabActivity extends TabActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void launchCirculares(View view) {
+        Intent intent = new Intent(this, CircularesActivity.class);
+        startActivity(intent);
     }
 
 }//class

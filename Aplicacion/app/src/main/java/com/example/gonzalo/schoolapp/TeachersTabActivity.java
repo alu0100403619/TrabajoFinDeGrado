@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TabHost;
 
 import com.firebase.client.Firebase;
@@ -22,6 +23,7 @@ public class TeachersTabActivity extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teachers_tab);
+        getActionBar().setTitle(getString(R.string.ActionBar_teacher));
         Firebase.setAndroidContext(this);
         teachersRef = new Firebase (getString(R.string.profeRef));
         clases = new ArrayList<>();
@@ -43,7 +45,8 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_center), school);
         intent.putExtra(getString(R.string.myName), myName);
-        spec = tabHost.newTabSpec("Profesores").setIndicator(getString(R.string._profes)).setContent(intent);
+        spec = tabHost.newTabSpec(getString(R.string.tab_teachers))
+                .setIndicator(getString(R.string.tab_teachers)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Padres
@@ -52,7 +55,8 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_center), school);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
-        spec = tabHost.newTabSpec("Padres").setIndicator(getString(R.string._padres)).setContent(intent);
+        spec = tabHost.newTabSpec(getString(R.string.tab_fathers))
+                .setIndicator(getString(R.string.tab_fathers)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Alumnos
@@ -61,14 +65,16 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_center), school);
         intent.putExtra(getString(R.string.myName), myName);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
-        spec = tabHost.newTabSpec("alumnos").setIndicator(getString(R.string._alumnos)).setContent(intent);
+        spec = tabHost.newTabSpec(getString(R.string.tab_teachers_alumnos))
+                .setIndicator(getString(R.string.tab_teachers_alumnos)).setContent(intent);
         tabHost.addTab(spec);
 
         //Tab Notificaciones
         intent = new Intent().setClass(this, NotificationsActivity.class);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
-        spec = tabHost.newTabSpec("notificaciones").setIndicator(getString(R.string.notificaciones)).setContent(intent);
+        spec = tabHost.newTabSpec(getString(R.string.tab_notifications))
+                .setIndicator(getString(R.string.tab_notifications)).setContent(intent);
         tabHost.addTab(spec);
 
         tabHost.setCurrentTab(0);
@@ -94,5 +100,10 @@ public class TeachersTabActivity extends TabActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void launchCirculares(View view) {
+        Intent intent = new Intent(this, CircularesActivity.class);
+        startActivity(intent);
     }
 }

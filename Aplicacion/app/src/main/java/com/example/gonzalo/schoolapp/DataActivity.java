@@ -128,7 +128,6 @@ public class DataActivity extends Activity {
         mailTextView.setText(father.getMail());
         telephoneTextView.setText(father.getTelephone());
 
-        //for (Alumno child: childrens) {
         for (int i = 0; i < childrens.size(); i++) {
             Alumno alumno = (Alumno) childrens.get(i);
             if (alumno != null) {

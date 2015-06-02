@@ -31,4 +31,16 @@
         <item name="android:textAppearance">?android:textAppearanceListItemSecondary</item>
     </style>
 
+    <style name="BackgroundMessageAlumno" parent="AppTheme">
+        <item name="android:background">@color/DarkSeaGreen</item>
+    </style>
+
+    <style name="BackgroundMessageFather" parent="AppTheme">
+        <item name="android:background">@color/SkyBlue</item>
+    </style>
+
+    <style name="BackgroundMessageTeacher" parent="AppTheme">
+        <item name="android:background">@color/Salmon</item>
+    </style>
+
 </resources>

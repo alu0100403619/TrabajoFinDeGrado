@@ -76,7 +76,7 @@ public class LoginActivity extends Activity {
         Query rolQuery = rootRef.child(getString(R.string._alumnos))
                 .orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
         rolQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            //Alumno
+            //Alu
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userType = dataSnapshot.getKey();
@@ -125,7 +125,7 @@ public class LoginActivity extends Activity {
                     });
                 }//if no alumno
                 else {
-                    //Alumno
+                    //Alu
                     Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                     clases = getUserClass (values);
                 }

@@ -59,7 +59,7 @@ public class RegisterActivity extends Activity {
         telephoneEditText = (EditText) findViewById(R.id.text_telephone);
         passwordEditText = (EditText) findViewById(R.id.text_password);
         clasesEditText = (EditText) findViewById(R.id.text_course_group);
-        //Alumno
+        //Alu
         aluNameEditText = (EditText) findViewById(R.id.text_alu_name);
         aluMailEditText= (EditText) findViewById(R.id.text_alu_mail);
         aluLastnameEditText = (EditText) findViewById(R.id.text_alu_lastname);

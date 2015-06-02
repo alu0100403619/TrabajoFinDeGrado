@@ -35,6 +35,7 @@ public class NotificationsActivity extends ListActivity {
     ArrayList<Message> messagesList;
     ArrayList<String> messagesListView, mailsList;
     ArrayList<Integer> numberMessages;
+    NotifyAdapter notifyAdapter;
 
     public void onCreate (Bundle savedInstanceBundle) {
         super.onCreate(savedInstanceBundle);
@@ -65,8 +66,7 @@ public class NotificationsActivity extends ListActivity {
                 for (Message message : messagesList) {
                     if ((itemMail.equals(message.getMailRemitter())) && (!messages.contains(message))) {
                         messages.add(message);
-                        //TODO a probar
-                        //messagesList.remove(message);
+                        messagesList.remove(message);
                     }//if
                 }//for
 
@@ -78,8 +78,11 @@ public class NotificationsActivity extends ListActivity {
                 intent.putExtra(getString(R.string.mail_remitter), messages.get(0).getMailRemitter());
                 intent.putExtra(getString(R.string.myName), myName);
 
-                //TODO Borrar al hacer click
-                
+                //Borrar al hacer click
+                //notifyAdapter.remove(position);
+                messagesListView.remove(mailsList.indexOf(messages.get(0).getMailRemitter()));
+                numberMessages.remove(mailsList.indexOf(messages.get(0).getMailRemitter()));
+                notifyAdapter.notifyDataSetChanged();
 
                 startActivity(intent);
 
@@ -102,12 +105,8 @@ public class NotificationsActivity extends ListActivity {
                     numberMessages.add(1);
                 }
                 else {
-                    int pos = messagesListView.indexOf(message.getMailRemitter());
-                    int number = numberMessages.get(pos) + 1;//ERROR???
-                    Log.i("NotificationsActivity", "mailRemitter: "+message.getMailRemitter());
-                    Log.i("NotificationsActivity", "pos: "+pos);
-                    Log.i("NotificationsActivity", messagesListView.toString());
-                    Log.i("NotificationsActivity", numberMessages.toString());
+                    int pos = mailsList.indexOf(message.getMailRemitter());
+                    int number = numberMessages.get(pos) + 1;
                     numberMessages.add(pos, number);
                 }
 
@@ -115,8 +114,9 @@ public class NotificationsActivity extends ListActivity {
                 messageRef.child(dataSnapshot.getKey()).removeValue();
 
                 //Seteamos el ArrayAdapter
-                setListAdapter(new NotifyAdapter(NotificationsActivity.this, messagesListView,
-                        numberMessages));
+                notifyAdapter = new NotifyAdapter(NotificationsActivity.this, messagesListView,
+                        numberMessages);
+                setListAdapter(notifyAdapter);
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}

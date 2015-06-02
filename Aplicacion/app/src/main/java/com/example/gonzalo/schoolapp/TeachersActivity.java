@@ -110,4 +110,9 @@ public class TeachersActivity extends ListActivity {
             public void onCancelled(FirebaseError firebaseError) {}
         });
     }
+
+    public void launchCirculares(View view) {
+        Intent intent = new Intent(this, CircularesActivity.class);
+        startActivity(intent);
+    }
 }

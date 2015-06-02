@@ -108,6 +108,19 @@
     <string name="my_school">Escuela Técnica Superior de Ingenierías y Tecnologías</string>
     <string name="my_studies">Ingeniería Informática</string>
 
+    <!-- Tabs' Titles -->
+    <string name="tab_alumnos">Mi Clase</string>
+    <string name="tab_teachers_alumnos">Mis Alumnos</string>
+    <string name="tab_alumnos_teachers">Mis Profesores</string>
+    <string name="tab_teachers">Profesores</string>
+    <string name="tab_fathers">Padres</string>
+    <string name="tab_notifications">Notificaciones Nuevas</string>
+
+    <!-- ActionBar's Titles -->
+    <string name="ActionBar_alumno">Rol: Alumno</string>
+    <string name="ActionBar_teacher">Rol: Profesor</string>
+    <string name="ActionBar_father">Rol: Padre/Madre/Tutor Legal</string>
+
     <!-- Activity's Titles -->
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_alumno_tab">AlumnoTabActivity</string>

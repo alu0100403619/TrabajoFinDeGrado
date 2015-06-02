@@ -76,10 +76,6 @@ public class AlumnoActivity extends ListActivity {
                 intent.putExtra(getString(R.string.mail_remitter), alus.get(position).getMail());
                 intent.putExtra(getString(R.string.myName), myName);
                 startActivity(intent);
-
-                //TODO mandar al ChatActivity
-                Toast.makeText(AlumnoActivity.this, "ClickData: " + alus.get(position),
-                        Toast.LENGTH_SHORT).show();
             }
         });
     }

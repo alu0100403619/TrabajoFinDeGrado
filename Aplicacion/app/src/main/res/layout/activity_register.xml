@@ -95,7 +95,7 @@
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/ic_action_secure"/>
 
-            <!-- Datos del Alumno -->
+            <!-- Datos del Alu -->
             <LinearLayout android:id="@+id/alumno_data"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:orientation="vertical">
@@ -153,7 +153,7 @@
                     android:layout_gravity="center_horizontal"/>
 
             </LinearLayout>
-            <!-- Fin Datos del Alumno -->
+            <!-- Fin Datos del Alu -->
 
             <Button android:id="@+id/submit"
                 android:layout_width="wrap_content"

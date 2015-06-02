@@ -32,6 +32,11 @@ public class NotifyAdapter extends BaseAdapter {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public void remove(int position) {
+        names.remove(position);
+        numberMessages.remove(position);
+    }
+
     @Override
     public int getCount() {
         return names.size();
@@ -57,6 +62,10 @@ public class NotifyAdapter extends BaseAdapter {
         user.number = (TextView) view.findViewById(R.id.number_messages);
         user.name.setText(names.get(position));
         user.number.setText(numberMessages.get(position).toString());
+
+        //Segun el rol:
+        //user.name.setTextAppearance(context, R.style.BackgroundMessageAlumno); //Funciona
+
 
         //Listeners
         /*view.setOnLongClickListener(new View.OnLongClickListener() {
