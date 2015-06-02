@@ -79,11 +79,7 @@ public class NotificationsActivity extends ListActivity {
                 intent.putExtra(getString(R.string.myName), myName);
 
                 //TODO Borrar al hacer click
-                //mailsList.remove(position); //NO
-                //messagesListView.remove(position); //NO
-                //int pos = messagesListView.indexOf(messages.get(0).getMailRemitter());
-                //messagesListView.remove(pos);
-                //numberMessages.remove(pos);
+                
 
                 startActivity(intent);
 

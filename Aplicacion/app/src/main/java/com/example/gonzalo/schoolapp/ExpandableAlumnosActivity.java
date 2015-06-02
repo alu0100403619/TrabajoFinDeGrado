@@ -82,10 +82,6 @@ public class ExpandableAlumnosActivity extends Activity {
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                /*Toast.makeText(getApplicationContext(), "ClickData-->" +
-                                listDataHeader.get(groupPosition) + " : " +
-                                listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition),
-                        Toast.LENGTH_SHORT).show();//*/
                 String name = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getName() + " " +
                         listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getLastname();
                 Intent intent = new Intent(ExpandableAlumnosActivity.this, Chat2Activity.class);

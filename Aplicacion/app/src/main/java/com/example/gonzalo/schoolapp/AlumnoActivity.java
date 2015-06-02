@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.Adapters.NotifyAdapter;
@@ -72,6 +77,9 @@ public class AlumnoActivity extends ListActivity {
                 intent.putExtra(getString(R.string.myName), myName);
                 startActivity(intent);
 
+                //TODO mandar al ChatActivity
+                Toast.makeText(AlumnoActivity.this, "ClickData: " + alus.get(position),
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }

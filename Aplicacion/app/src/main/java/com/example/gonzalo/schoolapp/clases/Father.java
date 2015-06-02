@@ -2,7 +2,6 @@ package com.example.gonzalo.schoolapp.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
