@@ -25,6 +25,7 @@
     <string name="usertype_promt">Tipo de Usuaro</string>
     <string name="name">Nombre</string>
     <string name="myName">MiNombre</string>
+    <string name="myRol">MiRol</string>
     <string name="lastname">Apellidos</string>
     <string name="college">Centro</string>
     <string name="telephone">Teléfono</string>
@@ -88,6 +89,7 @@
     <string name="bbdd_date_hour">hora</string>
     <string name="bbdd_date_minutes">minutos</string>
     <string name="bbdd_system">System</string>
+    <string name="bbdd_rol_remitter">rol_remitente</string>
                    <!-- FIN BBDD -->
 
     <string name="help_dialog_title">Ayuda sobre Curso y Grupo</string>

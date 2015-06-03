@@ -32,7 +32,7 @@ public class ExpandableTeachersActivity extends Activity {
     HashMap<String, List<Teacher>> listDataChild;
     ArrayList<String> clases;
     Firebase teachersRef;
-    String mail, school, myName;
+    String mail, school, myName, myRol;
     ArrayList<Teacher> teachers;
 
     @Override
@@ -54,6 +54,7 @@ public class ExpandableTeachersActivity extends Activity {
         //Obtenemos el mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Obtenemos el colegio
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
@@ -92,6 +93,7 @@ public class ExpandableTeachersActivity extends Activity {
                 intent.putExtra(getString(R.string.mail_remitter),
                         listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
                 intent.putExtra(getString(R.string.myName), myName);
+                intent.putExtra(getString(R.string.myRol), myRol);
                 startActivity(intent);
                 return true;
             }

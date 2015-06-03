@@ -30,11 +30,12 @@ import java.util.Queue;
  */
 public class NotificationsActivity extends ListActivity {
 
-    String mail, myName;
+    String mail, myName, myRol;
     Firebase messageRef;
     ArrayList<Message> messagesList;
     ArrayList<String> messagesListView, mailsList;
     ArrayList<Integer> numberMessages;
+    ArrayList<String> rolRemitterMessages;
     NotifyAdapter notifyAdapter;
 
     public void onCreate (Bundle savedInstanceBundle) {
@@ -43,12 +44,14 @@ public class NotificationsActivity extends ListActivity {
         messageRef = new Firebase(getString(R.string.mensajesRef));
         messagesList = new ArrayList<>(); //Todos los mensajes
         messagesListView = new ArrayList<>(); //Nombres de los que nos mandan mensajes
+        rolRemitterMessages = new ArrayList<>(); //Roles de los que nos mandan mensajes
         mailsList = new ArrayList<>(); //Mails de los que nos mandan mensajes
         numberMessages = new ArrayList<>(); //Numero de Mensajes del remitente, su pos coincide con MessageListView
 
         //Obtenemos el Mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Preparamos los datos
         preparingData();
@@ -60,7 +63,6 @@ public class NotificationsActivity extends ListActivity {
         this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(NotificationsActivity.this, "mail: " + mailsList.get(position), Toast.LENGTH_LONG).show();
                 String itemMail = mailsList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
                 for (Message message : messagesList) {
@@ -77,11 +79,14 @@ public class NotificationsActivity extends ListActivity {
                 intent.putExtra(getString(R.string.mail), mail);
                 intent.putExtra(getString(R.string.mail_remitter), messages.get(0).getMailRemitter());
                 intent.putExtra(getString(R.string.myName), myName);
+                intent.putExtra(getString(R.string.myRol), myRol);
 
                 //Borrar al hacer click
                 //notifyAdapter.remove(position);
-                messagesListView.remove(mailsList.indexOf(messages.get(0).getMailRemitter()));
-                numberMessages.remove(mailsList.indexOf(messages.get(0).getMailRemitter()));
+                int pos = mailsList.indexOf(messages.get(0).getMailRemitter());
+                messagesListView.remove(pos);
+                numberMessages.remove(pos);
+                rolRemitterMessages.remove(pos);
                 notifyAdapter.notifyDataSetChanged();
 
                 startActivity(intent);
@@ -103,11 +108,13 @@ public class NotificationsActivity extends ListActivity {
                     mailsList.add(message.getMailRemitter());
                     messagesListView.add(message.getRemitter());
                     numberMessages.add(1);
+                    rolRemitterMessages.add((String) values.get(getString(R.string.bbdd_rol_remitter)));
                 }
                 else {
                     int pos = mailsList.indexOf(message.getMailRemitter());
                     int number = numberMessages.get(pos) + 1;
                     numberMessages.add(pos, number);
+                    //El rol ya esta en el ArrayList
                 }
 
                 //Borrar el mensaje de la BBDD
@@ -115,7 +122,7 @@ public class NotificationsActivity extends ListActivity {
 
                 //Seteamos el ArrayAdapter
                 notifyAdapter = new NotifyAdapter(NotificationsActivity.this, messagesListView,
-                        numberMessages);
+                        numberMessages, rolRemitterMessages);
                 setListAdapter(notifyAdapter);
             }
             @Override

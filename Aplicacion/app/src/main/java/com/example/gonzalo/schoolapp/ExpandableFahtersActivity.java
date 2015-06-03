@@ -33,7 +33,7 @@ public class ExpandableFahtersActivity extends Activity {
     List<String> listDataHeader;
     HashMap<String, List<Father>> listDataChild;
     ArrayList<String> clases;
-    String school, mail, myName;
+    String school, mail, myName, myRol;
     Firebase fathersRef;
     ArrayList<Father> fathers;
 
@@ -59,6 +59,7 @@ public class ExpandableFahtersActivity extends Activity {
         //Obtenemos el mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
@@ -94,6 +95,7 @@ public class ExpandableFahtersActivity extends Activity {
                 intent.putExtra(getString(R.string.mail_remitter),
                         listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
                 intent.putExtra(getString(R.string.myName), myName);
+                intent.putExtra(getString(R.string.myRol), myRol);
                 startActivity(intent);
                 return true;
             }

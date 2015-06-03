@@ -27,7 +27,7 @@ import java.util.Set;
 public class LoginActivity extends Activity {
 
     EditText mailEditText, passwordEditText;
-    String userType, mail, myName;
+    String userType, mail, myName, myRol;
     Firebase rootRef;
     ArrayList<String> clases = new ArrayList<>();
     ArrayList<String> colegios = new ArrayList<>();
@@ -158,6 +158,7 @@ public class LoginActivity extends Activity {
                         Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.myName), myName);
+                        intent.putExtra(getString(R.string.myRol), myRol);
                         intent.putExtra(getString(R.string.bbdd_class), clases.get(0));
                         //El alumno solo va a un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
@@ -170,6 +171,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
                         intent.putExtra(getString(R.string.myName), myName);
+                        intent.putExtra(getString(R.string.myRol), myRol);
                         //Suponemos que un profesor solo da clases en un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
                         startActivity(intent);
@@ -182,6 +184,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
                         intent.putExtra(getString(R.string.bbdd_center), colegios);
                         intent.putExtra(getString(R.string.myName), myName);
+                        intent.putExtra(getString(R.string.myRol), myRol);
                         startActivity(intent);
                         //TODO Descomentar
                         //LoginActivity.this.finish();
@@ -211,10 +214,12 @@ public class LoginActivity extends Activity {
             data = (Map<String, Object>) values.get(key);
         }
         if (userType.equals(getString(R.string._alumnos))) {
+            myRol = "Alumno";
             clases.add(data.get(getString(R.string.bbdd_class)).toString());
             colegios.add(data.get(getString(R.string.bbdd_center)).toString());
         }
         else if (userType.equals(getString(R.string._profes))) {
+            myRol = "Profesor";
             tempMap = (Map<String, Object>) data.get(getString(R.string.bbdd_teacher_class));
             keys = tempMap.keySet();
             for (String key: keys) {
@@ -226,6 +231,7 @@ public class LoginActivity extends Activity {
             colegios.add(data.get(getString(R.string.bbdd_center)).toString());
         }
         else if (userType.equals(getString(R.string._padres))) {
+            myRol = "Padre";
             tempMap = (Map<String, Object>) data.get(getString(R.string.bbdd_children));
             data.clear();
             keys = tempMap.keySet();

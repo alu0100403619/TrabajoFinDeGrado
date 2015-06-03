@@ -32,7 +32,7 @@
     </style>
 
     <style name="BackgroundMessageAlumno" parent="AppTheme">
-        <item name="android:background">@color/DarkSeaGreen</item>
+        <item name="android:background">@color/LightGreen</item>
     </style>
 
     <style name="BackgroundMessageFather" parent="AppTheme">

@@ -29,7 +29,7 @@ public class FatherExpandableFathersActivity extends ActionBarActivity {
     List<String> listDataHeader, auxList;
     HashMap<String, List<String>> listDataChild;
     ArrayList<String> clases, schools;
-    String mail, myName;
+    String mail, myName, myRol;
     Firebase fathersRef;
     ArrayList<Father> fathers;
 
@@ -56,6 +56,7 @@ public class FatherExpandableFathersActivity extends ActionBarActivity {
         //Obtenemos el mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);

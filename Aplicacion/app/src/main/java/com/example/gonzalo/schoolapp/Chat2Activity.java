@@ -32,7 +32,7 @@ import java.util.UUID;
  */
 public class Chat2Activity extends ListActivity {
 
-    String chatName, mail, myName, mailRemitter, idConversation;
+    String chatName, mail, myName, mailRemitter, idConversation, myRol;
     ArrayList<Message> messages, tempMessages;
     MessageSQLHelper messageBBDD;
     Firebase messageRef;
@@ -58,6 +58,7 @@ public class Chat2Activity extends ListActivity {
 
         //Obtener el Nombre
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Cargar Mensajes Previos Almacenados en la memoria de la BBDD
         if (idConversation != null) {
@@ -102,7 +103,7 @@ public class Chat2Activity extends ListActivity {
         Date date = new Date(calendar.get(calendar.DAY_OF_MONTH),
                 calendar.get(calendar.MONTH) + 1, calendar.get(calendar.YEAR),
                 calendar.getTime().getHours(), calendar.getTime().getMinutes());
-        Message message = new Message(mail, myName, messageInput, date);
+        Message message = new Message(mail, myName, messageInput, date, myRol);
         messages.add(message);
 
         //Mandar el mensaje a la BBDD mientras el name no sea System
@@ -139,6 +140,7 @@ public class Chat2Activity extends ListActivity {
         messageMap.put(getString(R.string.bbdd_mail_remitter), mail);
         messageMap.put(getString(R.string.bbdd_message), message.getMessage());
         messageMap.put(getString(R.string.bbdd_remitter), myName);
+        messageMap.put(getString(R.string.bbdd_rol_remitter), myRol);
 
         String uuid = UUID.randomUUID().toString();
         messageRef.child(uuid).updateChildren(messageMap);

@@ -32,7 +32,7 @@ import java.util.Map;
 public class AlumnoActivity extends ListActivity {
 
     List<Alumno> alus;
-    String mail, clase, school, myName;
+    String mail, clase, school, myName, myRol;
     Firebase aluRef;
 
     public void onCreate (Bundle savedInstanceBundle) {
@@ -47,6 +47,7 @@ public class AlumnoActivity extends ListActivity {
         clase = getIntent().getExtras().getString(getString(R.string.bbdd_class));
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         preparingData();
 
@@ -75,6 +76,7 @@ public class AlumnoActivity extends ListActivity {
                 intent.putExtra(getString(R.string.mail), mail);
                 intent.putExtra(getString(R.string.mail_remitter), alus.get(position).getMail());
                 intent.putExtra(getString(R.string.myName), myName);
+                intent.putExtra(getString(R.string.myRol), myRol);
                 startActivity(intent);
             }
         });

@@ -28,7 +28,7 @@ import java.util.Map;
 public class TeachersActivity extends ListActivity {
 
     List<Teacher> classTeachers;
-    String clase, school, myName, mail;
+    String clase, school, myName, mail, myRol;
     Firebase teacherRef;
     ArrayList<Teacher> teachers;
 
@@ -45,6 +45,7 @@ public class TeachersActivity extends ListActivity {
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         preparingData();
 
@@ -57,8 +58,6 @@ public class TeachersActivity extends ListActivity {
                 intent.putExtra(getString(R.string.person), classTeachers.get(position));
                 intent.putExtra(getString(R.string.rol), classTeachers.get(position).getRol());
                 startActivity(intent);
-                /*Toast.makeText(TeachersActivity.this, "LongClickData: " + classTeachers.get(position),
-                        Toast.LENGTH_SHORT).show();//*/
                 return true;
             }
         });
@@ -75,6 +74,7 @@ public class TeachersActivity extends ListActivity {
                 intent.putExtra(getString(R.string.mail), mail);
                 intent.putExtra(getString(R.string.mail_remitter), classTeachers.get(position).getMail());
                 intent.putExtra(getString(R.string.myName), myName);
+                intent.putExtra(getString(R.string.myRol), myRol);
                 startActivity(intent);
             }
         });

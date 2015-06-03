@@ -32,7 +32,7 @@ public class ExpandableAlumnosActivity extends Activity {
     HashMap<String, List<Alumno>> listDataChild;
     ArrayList<String> clases;
     Firebase alumnosRef;
-    String school, myName, mail;
+    String school, myName, mail, myRol;
     ArrayList<Alumno> alumnos;
 
     @Override
@@ -55,6 +55,7 @@ public class ExpandableAlumnosActivity extends Activity {
         //Obtenemos el colegio
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Obtener el elemento xml
         expListView = (ExpandableListView) findViewById(R.id.expListView);
@@ -90,6 +91,7 @@ public class ExpandableAlumnosActivity extends Activity {
                 intent.putExtra(getString(R.string.mail_remitter),
                         listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
                 intent.putExtra(getString(R.string.myName), myName);
+                intent.putExtra(getString(R.string.myRol), myRol);
                 startActivity(intent);
                 return true;
             }

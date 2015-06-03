@@ -13,15 +13,17 @@ public class Message implements Parcelable{
     private String mailRemitter; //Mail Remitente
     private String remitter; //Remitente
     private String message; //Mensaje
+    private String rolRemmiter; //Rol Remitente
     private String state; //Estado: leido--> true, no leido --> false
     private Date date; //Fecha
 
     public Message() {}
 
-    public Message(String mailRemitter, String remitter, String message, Date date) {
+    public Message(String mailRemitter, String remitter, String message, Date date, String rolRemitter) {
         setMailRemitter(mailRemitter);
         setRemitter(remitter);
         setMessage(message);
+        setRolRemmiter(rolRemitter);
         setState("No Leido");
         setDate(date);
     }
@@ -30,6 +32,7 @@ public class Message implements Parcelable{
         setMailRemitter((String) values.get("mail_remitente"));
         setRemitter((String) values.get("remitente"));
         setMessage((String) values.get("mensaje"));
+        setRolRemmiter((String) values.get("rol_remitente"));
         setState("No Leido");
         Map<String, Object> dateValue = (Map<String, Object>) values.get("fecha");
         date = new Date(dateValue);
@@ -75,9 +78,17 @@ public class Message implements Parcelable{
         this.date = date;
     }
 
+    public String getRolRemmiter() {
+        return rolRemmiter;
+    }
+
+    public void setRolRemmiter(String rolRemmiter) {
+        this.rolRemmiter = rolRemmiter;
+    }
+
     public String show () {
-        return getMailRemitter() + ", " + getRemitter() + ", " + getMessage() + ", " + getState() +
-                ", " + getDate();
+        return getMailRemitter() + ", " + getRemitter() + ", " + getMessage() + ", " +
+                getRolRemmiter() + ", " +getState() + ", " + getDate();
     }
 
     @Override
@@ -109,6 +120,7 @@ public class Message implements Parcelable{
         dest.writeString(mailRemitter);
         dest.writeString(remitter);
         dest.writeString(message);
+        dest.writeString(rolRemmiter);
         dest.writeString(state);
         dest.writeValue(date);
     }
@@ -117,6 +129,7 @@ public class Message implements Parcelable{
         mailRemitter = in.readString();
         remitter = in.readString();
         message = in.readString();
+        rolRemmiter = in.readString();
         state = in.readString();
         date = (Date) in.readValue(Date.class.getClassLoader());
     }

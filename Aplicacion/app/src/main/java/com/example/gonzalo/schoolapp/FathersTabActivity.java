@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class FathersTabActivity extends TabActivity {
 
-    String mail, myName;
+    String mail, myName, myRol;
     ArrayList<String> clases, schools;
     Firebase fathersRef;
 
@@ -40,6 +40,7 @@ public class FathersTabActivity extends TabActivity {
         schools = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_center));
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
+        myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Add Tabs
         TabHost tabHost = getTabHost();
@@ -59,6 +60,7 @@ public class FathersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
+        intent.putExtra(getString(R.string.myRol), myRol);
         spec = tabHost.newTabSpec(getString(R.string.tab_fathers))
                 .setIndicator(getString(R.string.tab_fathers)).setContent(intent);
         tabHost.addTab(spec);
@@ -76,6 +78,7 @@ public class FathersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         intent.putExtra(getString(R.string.myName), myName);
+        intent.putExtra(getString(R.string.myRol), myRol);
         spec = tabHost.newTabSpec(getString(R.string.tab_teachers))
                 .setIndicator(getString(R.string.tab_teachers)).setContent(intent);
         tabHost.addTab(spec);//*/
@@ -84,6 +87,7 @@ public class FathersTabActivity extends TabActivity {
         intent = new Intent().setClass(this, NotificationsActivity.class);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
+        intent.putExtra(getString(R.string.myRol), myRol);
         spec = tabHost.newTabSpec(getString(R.string.tab_notifications))
                 .setIndicator(getString(R.string.tab_notifications)).setContent(intent);
         tabHost.addTab(spec);
