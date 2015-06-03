@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:fillViewport="false">
-        <LinearLayout
+        <LinearLayout android:id="@+id/form"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
@@ -55,13 +55,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/telephone"
-                android:inputType="phone"
+                android:inputType="phone" android:maxLength="9"
                 android:ems="10" android:drawableLeft="@drawable/ic_action_phone"/>
 
             <EditText android:id="@+id/text_college"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/college"
+                android:inputType="text"
                 android:drawableLeft="@drawable/ic_action_university_filled"/>
 
             <LinearLayout android:id="@+id/course_group"
@@ -125,11 +126,18 @@
                     android:inputType="textPersonName"
                     android:drawableLeft="@drawable/ic_action_person"/>
 
+                <EditText android:id="@+id/text_alu_telephone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/alumno_telephone"
+                    android:inputType="phone" android:maxLength="9"
+                    android:drawableLeft="@drawable/ic_action_phone"/>
+
                 <EditText android:id="@+id/text_alu_mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/alumno_mail"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     android:drawableLeft="@drawable/ic_action_email"/>
 
                 <EditText android:id="@+id/text_alu_center"
@@ -155,10 +163,37 @@
             </LinearLayout>
             <!-- Fin Datos del Alu -->
 
+            <!-- Datos de otros Alumnos -->
+            <LinearLayout android:id="@+id/other_alumno"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
+            <!-- Fin Datos de otros Alumnos -->
+
+            <LinearLayout android:id="@+id/childs"
+                android:layout_width="fill_parent" android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageButton android:id="@+id/add_child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_new"
+                    android:layout_alignParentLeft="true"
+                    android:onClick="addChild" />
+
+                <ImageButton android:id="@+id/remove_child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_minus"
+                    android:layout_alignParentRight="true"
+                    android:onClick="removeAllOtherChilds" />
+
+            </LinearLayout>
+
             <Button android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/submit"
+                android:text="@string/submit" android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"
                 android:onClick="submit" />
         <!-- Fin del LinearLayout y del ScrollView -->

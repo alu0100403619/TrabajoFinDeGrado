@@ -113,7 +113,6 @@ public class Father implements Parcelable {
     }
 
     //*****Parte de la interfaz Parcelable*****//
-    //TODO No funciona Bien
     public Father(Parcel in) {
         childrens = new ArrayList<Alumno> ();
         readFromParcel(in);

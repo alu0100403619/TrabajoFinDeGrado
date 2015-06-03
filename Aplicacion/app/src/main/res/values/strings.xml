@@ -35,13 +35,15 @@
     <string name="course_group">Curso y Grupo</string>
     <string name="course_group_hint">1A, 2C, 3B...</string>
     <string name="alumno_data">**** Datos del Alumno ****</string>
+    <string name="other_alumno_data">**** Datos de Otro Alumno ****</string>
     <string name="empty"></string>
     <string name="alumno_name">Nombre Alumno</string>
     <string name="alumno_lastname">Apellidos Alumno</string>
+    <string name="alumno_telephone">Telefono Alumno</string>
     <string name="alumno_mail">E-Mail Alumno</string>
     <string name="alumno_course_group">Curso y Grupo Alumno</string>
     <string name="alumno_center">Centro Alumno</string>
-    <string name="alu_course_group_hint">Alumno: 1A, 2C, 3B...</string>
+    <string name="alu_course_group_hint">Curso y Grupo Alumno: 1A, 2C, 3B...</string>
     <string name="size">size</string>
     <string name="forget_login">Nueva Contraseña</string>
     <string name="reading_true">Leido</string>

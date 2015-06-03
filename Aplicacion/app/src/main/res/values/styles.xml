@@ -1,7 +1,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- TODO Color de la letra de los TextView = negra  -->
         <item name="android:buttonStyle">@style/CustomButton</item>
         <item name="android:editTextStyle">@style/CustomEditText</item>
     </style>

@@ -5,24 +5,29 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-//TODO Hacer los campos required como en HTML
+//Hacer los campos required como en HTML
 //http://www.donnfelker.com/android-validation-with-edittext/
 //https://tausiq.wordpress.com/2013/01/19/android-input-field-validation/
 //http://stackoverflow.com/questions/11535011/edittext-field-is-required-before-moving-on-to-another-activity
@@ -33,13 +38,16 @@ public class RegisterActivity extends Activity {
     LinearLayout course_groupLL, aluDataLL;
     Firebase ref;
     AlertDialog dialog;
+    //ImageButton addChildImageButton;
     EditText mailEditText, nameEditText, lastnameEditText, schoolEditText, telephoneEditText,
             passwordEditText, clasesEditText;
     String mail, name, lastname, school, telephone, password, clases, selected;
-    //alumno
+    //Alumno
     EditText aluNameEditText, aluLastnameEditText, aluCourseGroupEditText, aluCenterEditText,
-            aluMailEditText;
-    String aluName, aluLastname, aluCourseGroup, aluCenter, aluMail;
+            aluMailEditText, aluTelephoneEditText;
+    String aluName, aluLastname, aluCourseGroup, aluCenter, aluMail, aluTelephone;
+    LinearLayout otherAlumnoLL, childsLL;
+    ArrayList<LinearLayout> otherChildrens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +55,13 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
         Firebase.setAndroidContext(this);
 
+        otherChildrens = new ArrayList<>();
+
         spinner1 = (Spinner) findViewById(R.id.spinner_1);
         course_groupLL = (LinearLayout) findViewById(R.id.course_group);
         aluDataLL = (LinearLayout) findViewById(R.id.alumno_data);
+        //addChildImageButton = (ImageButton) findViewById(R.id.add_child);
+        childsLL = (LinearLayout) findViewById(R.id.childs);
 
         //Obtenemos los datos del XML
         mailEditText = (EditText) findViewById(R.id.text_mail);
@@ -59,12 +71,14 @@ public class RegisterActivity extends Activity {
         telephoneEditText = (EditText) findViewById(R.id.text_telephone);
         passwordEditText = (EditText) findViewById(R.id.text_password);
         clasesEditText = (EditText) findViewById(R.id.text_course_group);
-        //Alu
+        //Alumno
         aluNameEditText = (EditText) findViewById(R.id.text_alu_name);
         aluMailEditText= (EditText) findViewById(R.id.text_alu_mail);
         aluLastnameEditText = (EditText) findViewById(R.id.text_alu_lastname);
         aluCourseGroupEditText = (EditText) findViewById(R.id.text_alu_course_group);
         aluCenterEditText = (EditText) findViewById(R.id.text_alu_center);
+        aluTelephoneEditText = (EditText) findViewById(R.id.text_alu_telephone);
+        otherAlumnoLL = (LinearLayout) findViewById(R.id.other_alumno);
 
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -74,14 +88,17 @@ public class RegisterActivity extends Activity {
                     ref = new Firebase(getString(R.string.aluRef));
                     course_groupLL.setVisibility(View.VISIBLE);
                     aluDataLL.setVisibility(View.GONE);
+                    childsLL.setVisibility(View.GONE);
                 } else if (selected.equals(getString(R.string.teacher))) {
                     ref = new Firebase(getString(R.string.profeRef));
                     course_groupLL.setVisibility(View.VISIBLE);
                     aluDataLL.setVisibility(View.GONE);
+                    childsLL.setVisibility(View.GONE);
                 } else if (selected.equals(getString(R.string.father))) {
                     ref = new Firebase(getString(R.string.padreRef));
                     course_groupLL.setVisibility(View.GONE);
                     aluDataLL.setVisibility(View.VISIBLE);
+                    childsLL.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -157,6 +174,7 @@ public class RegisterActivity extends Activity {
         }//if !haveEmptyFields
     }//function
 
+    //TODO Revisar
     public void sendToBbdd() {
 
         String selected = String.valueOf(spinner1.getSelectedItem());
@@ -187,13 +205,13 @@ public class RegisterActivity extends Activity {
             infoMap.put(getString(R.string.bbdd_teacher_class), clasesMap);
         }
         else if (selected.equals(getString(R.string.father))) {
-            //TODO Comprobar que el alumno existe en la BBDD
-            //TODO si no, registrarlo
+            //TODO Comprobar que el alumno existe en la BBDD si no, registrarlo
             aluName = aluNameEditText.getText().toString();
             aluLastname = aluLastnameEditText.getText().toString();
             aluCourseGroup = aluCourseGroupEditText.getText().toString();
             aluCenter = aluCenterEditText.getText().toString();
             aluMail = aluMailEditText.getText().toString();
+            aluTelephone = aluTelephoneEditText.getText().toString();
 
             Map<String, Object> aluMap = new HashMap<String, Object>();
             Map<String, Object> infoAlu = new HashMap<String, Object>();
@@ -202,6 +220,7 @@ public class RegisterActivity extends Activity {
             infoAlu.put(getString(R.string.bbdd_center), aluCenter);
             infoAlu.put(getString(R.string.bbdd_class), aluCourseGroup);
             infoAlu.put(getString(R.string.bbdd_mail), aluMail);
+            infoAlu.put(getString(R.string.bbdd_telephone), aluTelephone);
             uuid = UUID.randomUUID().toString();
             aluMap.put(uuid, infoAlu);
 
@@ -278,6 +297,7 @@ public class RegisterActivity extends Activity {
             aluLastname = aluLastnameEditText.getText().toString();
             aluCourseGroup = aluCourseGroupEditText.getText().toString();
             aluCenter = aluCenterEditText.getText().toString();
+            aluTelephone = aluTelephoneEditText.getText().toString();
 
             if (aluName.isEmpty()) {
                 aluNameEditText.setError(getString(R.string.field_empty));
@@ -299,8 +319,134 @@ public class RegisterActivity extends Activity {
                 aluMailEditText.setError(getString(R.string.field_empty));
                 result = true;
             }
+            if (aluTelephone.isEmpty()) {
+                aluTelephoneEditText.setError(getString(R.string.field_empty));
+                result = true;
+            }
+            if (otherChildrens.size() > 0) {
+                for (int i = 0; i < otherChildrens.size(); i++) {
+                    LinearLayout otherChildLL = otherChildrens.get(i);
+                    //Obtenemos los eltos XML
+                    EditText otherAluNameET = (EditText) otherChildLL.getChildAt(2);
+                    EditText otherAluLastnameET = (EditText) otherChildLL.getChildAt(3);
+                    EditText otherAluTelephoneET = (EditText) otherChildLL.getChildAt(4);
+                    EditText otherAluMailET = (EditText) otherChildLL.getChildAt(5);
+                    EditText otherAluCenterET = (EditText) otherChildLL.getChildAt(6);
+                    EditText otherAluCourseGroupET = (EditText) otherChildLL.getChildAt(7);
+
+                    //Obtenemos los datos en los editText
+                    String otherAluName = otherAluNameET.getText().toString();
+                    String otherAluLastname = otherAluLastnameET.getText().toString();
+                    String otherAluTelephone = otherAluTelephoneET.getText().toString();
+                    String otherAluMail = otherAluMailET.getText().toString();
+                    String otherAluCenter = otherAluCenterET.getText().toString();
+                    String otherAluCourseGroup = otherAluCourseGroupET.getText().toString();
+
+                    if (otherAluName.isEmpty()) {
+                        otherAluNameET.setError(getString(R.string.field_empty));
+                    }
+                    if (otherAluLastname.isEmpty()) {
+                        otherAluLastnameET.setError(getString(R.string.field_empty));
+                    }
+                    if (otherAluTelephone.isEmpty()) {
+                        otherAluTelephoneET.setError(getString(R.string.field_empty));
+                    }
+                    if (otherAluMail.isEmpty()) {
+                        otherAluMailET.setError(getString(R.string.field_empty));
+                    }
+                    if (otherAluCenter.isEmpty()) {
+                        otherAluCenterET.setError(getString(R.string.field_empty));
+                    }
+                    if (otherAluCourseGroup.isEmpty()) {
+                        otherAluCourseGroupET.setError(getString(R.string.field_empty));
+                    }
+                }//for
+            }//if
         }
         return result;
+    }
+
+    public void addChild (View view) {
+
+        String selected = String.valueOf(spinner1.getSelectedItem());
+        if (selected.equals(getString(R.string.father))) {
+
+            TextView emptyText = new TextView(this); //Child 0
+            emptyText.setText(getString(R.string.empty));
+
+            TextView infoText = new TextView(this); //Child 1
+            infoText.setGravity(Gravity.CENTER_HORIZONTAL);
+            infoText.setText(getString(R.string.other_alumno_data));
+
+            EditText otherAluName = new EditText(this); //Child 2
+            otherAluName.setHint(getString(R.string.alumno_name));
+            otherAluName.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+            otherAluName.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_action_person, 0, 0, 0);
+            otherAluName.setLayoutParams(aluNameEditText.getLayoutParams());
+
+            EditText otherAluLastname = new EditText(this); //Child 3
+            otherAluLastname.setHint(getString(R.string.alumno_lastname));
+            otherAluLastname.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+            otherAluLastname.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_action_person, 0, 0, 0);
+            otherAluLastname.setLayoutParams(aluLastnameEditText.getLayoutParams());
+
+            EditText otherAluTelephone = new EditText(this); //Child 4
+            otherAluTelephone.setHint(getString(R.string.alumno_telephone));
+            otherAluTelephone.setInputType(InputType.TYPE_CLASS_PHONE);
+            otherAluTelephone.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_action_phone, 0, 0, 0);
+            otherAluTelephone.setLayoutParams(aluTelephoneEditText.getLayoutParams());
+
+            EditText otherAluMail = new EditText(this); //Child 5
+            otherAluMail.setHint(getString(R.string.alumno_mail));
+            otherAluMail.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            otherAluMail.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_action_email, 0, 0, 0);
+            otherAluMail.setLayoutParams(aluMailEditText.getLayoutParams());
+
+            EditText otherAluCenter = new EditText(this); //Child 6
+            otherAluCenter.setHint(getString(R.string.alumno_center));
+            otherAluCenter.setInputType(InputType.TYPE_CLASS_TEXT);
+            otherAluCenter.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_action_university_filled, 0, 0, 0);
+            otherAluCenter.setLayoutParams(aluCenterEditText.getLayoutParams());
+
+            EditText otherAluCourseGroup = new EditText(this); //Child 7
+            otherAluCourseGroup.setHint(getString(R.string.alu_course_group_hint));
+            otherAluCourseGroup.setInputType(InputType.TYPE_CLASS_TEXT);
+            otherAluCourseGroup.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_action_group, 0, 0, 0);
+            otherAluCourseGroup.setLayoutParams(aluCourseGroupEditText.getLayoutParams());
+
+            TextView emptyText2 = new TextView(this); //Child 8
+            emptyText2.setText(getString(R.string.empty));
+
+            LinearLayout newAluDAtaLL = new LinearLayout(this);
+            newAluDAtaLL.setOrientation(LinearLayout.VERTICAL);
+            newAluDAtaLL.setLayoutParams(aluDataLL.getLayoutParams());
+
+            newAluDAtaLL.addView(emptyText);
+            newAluDAtaLL.addView(infoText);
+            newAluDAtaLL.addView(otherAluName);
+            newAluDAtaLL.addView(otherAluLastname);
+            newAluDAtaLL.addView(otherAluTelephone);
+            newAluDAtaLL.addView(otherAluMail);
+            newAluDAtaLL.addView(otherAluCenter);
+            newAluDAtaLL.addView(otherAluCourseGroup);
+            newAluDAtaLL.addView(emptyText2);
+
+            otherChildrens.add(newAluDAtaLL);
+            otherAlumnoLL.addView(newAluDAtaLL);
+        }//if
+    }
+
+    public void removeAllOtherChilds (View view) {
+        if (otherChildrens.size() > 0){
+            otherChildrens.remove(otherChildrens.size() - 1);
+            otherAlumnoLL.removeAllViews();
+        }
     }
 
 }//class
