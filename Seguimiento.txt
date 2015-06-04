@@ -316,19 +316,36 @@ Gonzalo se ha olvidado de la reunión de hoy, porque pensaba que era mañana.
 --------------------------
 May 29
 
-- Al registrar un nuevo usuario (padre) ¿cómo se gestionan los Centros
-	(colegios)?
-- Hacer comprobaciones de corrección en los diferentes tipos de campos:
-	e-mail, teléfono, et.
-- Debe comprobar al registrar que el usuario pone todos los campos.
+-- Al registrar un nuevo usuario (padre) ¿cómo se gestionan los Centros (colegios)?
+-- Hacer comprobaciones de corrección en los diferentes tipos de campos: e-mail, teléfono, et.
++ Debe comprobar al registrar que el usuario pone todos los campos.
 - El registro no funciona.
-- La app se detiene al entrar en algunas vistas
-- Distinguir con colores de texto de quien procede un mensaje. P. ej. si soy
++ La app se detiene al entrar en algunas vistas
++ Distinguir con colores de texto de quien procede un mensaje. P. ej. si soy
 	un alumno, veo con un color los msgs de profes y con otro color los de
 	compañeros.
-- Cambiar las etiquetas para que sean más intuitivas: "Mis profesores" "Mis
++ Cambiar las etiquetas para que sean más intuitivas: "Mis profesores" "Mis
 	alumnos", ...
 
+--------------------------
+Jun 4
+
+- Futuro: hacer un diagrama de flujo de transición entre las diferentes
+	Activities de la app.
+- Trabajar en la Memoria al mismo tiempo que en la app.
+- Analiza la lógica de circulares y citas (¿qué hacen? ¿qué significa cada
+	cosa? ¿qué comportamiento tiene?). Especificación de requisitos.
+- Trabaja en el estilo de alguna/s de las pantallas
+-- Al registrar un nuevo usuario (padre) ¿cómo se gestionan los Centros (colegios)?
+-- Hacer comprobaciones de corrección en los diferentes tipos de campos: e-mail, teléfono, et.
+- La Activity Ayuda hay que acabarla
+- Alimenta la BD con padre1, padre2, ... padre7
+  alu1, alu2, ..., alu7
+	profe1, profe2,... profe7
+- Necesito una especificación de requisitos
+--------------------------
+--------------------------
+--------------------------
 --------------------------
 --------------------------
 --------------------------
