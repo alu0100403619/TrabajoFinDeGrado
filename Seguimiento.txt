@@ -344,6 +344,10 @@ Jun 4
 	profe1, profe2,... profe7
 - Necesito una especificación de requisitos
 --------------------------
+El 10 de junio de 2015, 18:52, Gonzalo García Martín <dracoyue@gmail.com> escribió:
+Con respecto a la reunión de mañana, me gustaría posponerla ya que esta semana
+me centrado en trabajar solo la memoria y me gustaría hacerlo en otras tareas
+de las que me marcó. 
 --------------------------
 --------------------------
 --------------------------
