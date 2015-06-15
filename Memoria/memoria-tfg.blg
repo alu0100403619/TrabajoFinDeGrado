@@ -44,6 +44,5 @@ Warning--entry type for "17:jdk:online" isn't style-file defined
 --line 148 of file Bibliografia/bibliography.bib
 Warning--entry type for "18:google:online" isn't style-file defined
 --line 157 of file Bibliografia/bibliography.bib
-Warning--I didn't find a database entry for "prueba:online"
 Warning--there's a month but no year in 17:jdk:online
-(There were 18 warnings)
+(There were 17 warnings)
