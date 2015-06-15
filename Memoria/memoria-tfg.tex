@@ -1,16 +1,129 @@
-\documentclass[10pt,a4paper]{report}
+\documentclass[spanish,a4paper,14pt,oneside]{report}
+
+\usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-\usepackage[latin1]{inputenc}
 \usepackage[pdftex]{graphicx}
 \usepackage{hyperref}
+\usepackage{url}
 \graphicspath{{Imagenes/}}
+\usepackage{listings}
+\usepackage{color}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\CollegeApp}{\texttt{CollegeApp}{}}
+%\usepackage{biblatex}
+%\usepackage[dvips]{graphicx}
+%\usepackage[dvips]{epsfig}
+%\usepackage{alltt}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{multirow}
+%\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 
+%%%%%%%%%%%%%%ESTILO PARA CÓDIGO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{violet}{rgb}{0.5,0,0.5}
+\definecolor{navy}{rgb}{0,0,0.5}
+\definecolor{hellgelb}{rgb}{0.95,0.95,0.92}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+
+\lstset{
+	float=htbp,
+	language = Java,
+	basicstyle=\ttfamily\small,
+	identifierstyle=\color{colIdentifier},
+	keywordstyle=\color{colKeys},
+	stringstyle=\color{colString},
+	commentstyle=\color{colComments},
+	columns=flexible,
+	tabsize=3,
+	frame=single,
+	extendedchars=true,
+	showspaces=false,
+	showstringspaces=false,
+	numbers=left,
+	numberstyle=\tiny,
+	breaklines=true,
+	backgroundcolor=\color{hellgelb},
+	breakautoindent=true,
+	captionpos=b,
+	breakatwhitespace=true,
+	aboveskip=10pt,
+	belowskip=10pt,
+}
+
+\renewcommand{\lstlistingname}{Listado} % Los títulos de los códigos insertados se denotan con Listado...
+%\renewcommand{\lstlistingname}{Ejemplo} % Los títulos de los códigos insertados se denotan con Ejemplo...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\CollegeApp}{\texttt{SchoolApp }{}}
+
+\newenvironment{summary}{
+	\par
+	\noindent
+	\begin{center}
+		\textbf{Abstract}
+	\end{center}
+	\begin{itshape}
+		\par
+		\noindent
+	\end{itshape}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+	%%%%%%Capitulos definitivos%%%%%%
+	\include{Previos/Portada}
+	\include{Previos/Certificado}
+	\include{Previos/Agradecimientos}
+	\include{Previos/Licencia}
+	\include{Previos/Resumen}
+	\include{Previos/Summary}
+	
+	%%%%%%%%%%Numeracion en romanos%%%%%%%%%%
+	\renewcommand{\thepage}{\roman{page}}
+	\setcounter{page}{1}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%Índices
+	\tableofcontents
+	\newpage{\pagestyle{empty}}
+	\listoffigures
+	\newpage{\pagestyle{empty}}
+	%\listoftables
+	%\newpage{\pagestyle{empty}}
+	\renewcommand{\lstlistlistingname}{Índice de Códigos} % Para que no aparezca listings
+	\lstlistoflistings
+	\newpage{\pagestyle{empty}}
+	
+	%%%Numeracion a partir del capitulo 1%%%%
+	\renewcommand{\thepage}{\arabic{page}}
+	\setcounter{page}{1}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\include{Capitulos/Cap1_Introduccion}
+	\include{Capitulos/Cap2_EspecificacionRequisitos}
+	%\include{Capitulos/Cap3_Objetivos}
+	%\include{Capitulos/Cap4_Antecedentes}
+	%\include{Capitulos/Cap5_Problemas}
+	%\include{Capitulos/Cap6_Fases}
+	%\include{Capitulos/Cap7_DesarrolloProyecto}
+	%\include{Capitulos/Cap8_Conclusiones_LineasFuturas}
+	%\include{Capitulos/Cap9_Cap7English}
+	%\include{Capitulos/Cap10_Presupuesto} %?????????????????????
+	%\include{Capitulos/AnexosApendices}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%Capitulos Provisionales%%%%%%
+	
 	\include{Capitulos/CapB_Requisitos}
 	\include{Capitulos/CapC_DiagramaClases}
 	\include{Capitulos/TODO}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%Bibliografía
+	\bibliographystyle{unsrt}
+	\bibliography{Bibliografia/bibliography}
+	%\bibliography{Bibliografia/bibliografia}
+	
 \end{document}

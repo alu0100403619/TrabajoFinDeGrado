@@ -19,12 +19,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 //Hacer los campos required como en HTML
@@ -36,9 +40,8 @@ public class RegisterActivity extends Activity {
 
     Spinner spinner1;
     LinearLayout course_groupLL, aluDataLL;
-    Firebase ref;
+    Firebase ref, childRef;
     AlertDialog dialog;
-    //ImageButton addChildImageButton;
     EditText mailEditText, nameEditText, lastnameEditText, schoolEditText, telephoneEditText,
             passwordEditText, clasesEditText;
     String mail, name, lastname, school, telephone, password, clases, selected;
@@ -54,13 +57,14 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Firebase.setAndroidContext(this);
+        childRef = new Firebase(getString(R.string.aluRef));
 
         otherChildrens = new ArrayList<>();
+        aluName = aluLastname = aluCourseGroup = aluCenter = aluMail = aluTelephone = "";
 
         spinner1 = (Spinner) findViewById(R.id.spinner_1);
         course_groupLL = (LinearLayout) findViewById(R.id.course_group);
         aluDataLL = (LinearLayout) findViewById(R.id.alumno_data);
-        //addChildImageButton = (ImageButton) findViewById(R.id.add_child);
         childsLL = (LinearLayout) findViewById(R.id.childs);
 
         //Obtenemos los datos del XML
@@ -133,16 +137,20 @@ public class RegisterActivity extends Activity {
 
     public void submit (View view) {
 
+        Log.i("RegisterActivity", "Registrando Usuario...");
         if (!haveEmptyFields()) {
+            Log.i("RegisterActivity", "No hay Campos Vacios");
             final Firebase rootRef = new Firebase (getString(R.string.rootRef));
             rootRef.createUser(mail, password, new Firebase.ResultHandler() {
                 @Override
                 public void onSuccess() {
+                    Log.i("RegisterActivity", "Usuario Creado");
+                    //Meter al usuario en la BBDD
                     sendToBbdd();
                     //login
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    /*Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    RegisterActivity.this.finish();
+                    RegisterActivity.this.finish();//*/
 
                     /*rootRef.authWithPassword(mail, password,
                             new Firebase.AuthResultHandler() {
@@ -174,20 +182,18 @@ public class RegisterActivity extends Activity {
         }//if !haveEmptyFields
     }//function
 
-    //TODO Revisar
     public void sendToBbdd() {
 
+        Log.i("RegisterActivity", "Registrando Usuario");
         String selected = String.valueOf(spinner1.getSelectedItem());
-        String uuid = UUID.randomUUID().toString();
-        Firebase regRef = ref.child(uuid);
 
         //Metemos en un HashMap los datos
-        Map<String, Object> infoMap = new HashMap<String, Object>();
-        infoMap.put(getString(R.string.bbdd_mail), mail);
+        final Map<String, Object> infoMap = new HashMap<String, Object>();
         infoMap.put(getString(R.string.bbdd_name), name);
         infoMap.put(getString(R.string.bbdd_lastname), lastname);
-        infoMap.put(getString(R.string.bbdd_center), school);
         infoMap.put(getString(R.string.bbdd_telephone), telephone);
+        infoMap.put(getString(R.string.bbdd_center), school);
+        infoMap.put(getString(R.string.bbdd_mail), mail);
 
         if (selected.equals(getString(R.string.alumno))) {
             String clase = ((EditText) findViewById(R.id.text_course_group)).getText().toString();
@@ -199,36 +205,153 @@ public class RegisterActivity extends Activity {
             String[] clases = clase.split(",");
             Map<String, Object> clasesMap = new HashMap<String, Object>();
             for (int i = 0; i < clases.length; i++) {
-                uuid = UUID.randomUUID().toString();
-                clasesMap.put(uuid, clases[i]);
+                String newUuid = UUID.randomUUID().toString();
+                clasesMap.put(newUuid, clases[i]);
             }//for
             infoMap.put(getString(R.string.bbdd_teacher_class), clasesMap);
         }
         else if (selected.equals(getString(R.string.father))) {
-            //TODO Comprobar que el alumno existe en la BBDD si no, registrarlo
-            aluName = aluNameEditText.getText().toString();
-            aluLastname = aluLastnameEditText.getText().toString();
-            aluCourseGroup = aluCourseGroupEditText.getText().toString();
-            aluCenter = aluCenterEditText.getText().toString();
-            aluMail = aluMailEditText.getText().toString();
-            aluTelephone = aluTelephoneEditText.getText().toString();
+            Log.i("RegisterActivity", "Comprobando si existe el Alumno");
+            //Comprobar que el alumno existe en la BBDD si no, registrarlo
+            String mailChild = ((EditText) findViewById(R.id.text_alu_mail)).getText().toString();
+            final Firebase childRef = new Firebase(getString(R.string.aluRef));
+            Query existChild= childRef.orderByChild(getString(R.string.bbdd_mail)).equalTo(mailChild);
+            existChild.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    //Si el alumno no existe
+                    if (dataSnapshot == null) {
+                        Log.i("RegisterActivity", "Alumno No Existente");
 
-            Map<String, Object> aluMap = new HashMap<String, Object>();
-            Map<String, Object> infoAlu = new HashMap<String, Object>();
-            infoAlu.put(getString(R.string.bbdd_name), aluName);
-            infoAlu.put(getString(R.string.bbdd_lastname), aluLastname);
-            infoAlu.put(getString(R.string.bbdd_center), aluCenter);
-            infoAlu.put(getString(R.string.bbdd_class), aluCourseGroup);
-            infoAlu.put(getString(R.string.bbdd_mail), aluMail);
-            infoAlu.put(getString(R.string.bbdd_telephone), aluTelephone);
-            uuid = UUID.randomUUID().toString();
-            aluMap.put(uuid, infoAlu);
+                        aluName = aluNameEditText.getText().toString();
+                        aluLastname = aluLastnameEditText.getText().toString();
+                        aluTelephone = aluTelephoneEditText.getText().toString();
+                        aluCourseGroup = aluCourseGroupEditText.getText().toString();
+                        aluCenter = aluCenterEditText.getText().toString();
+                        aluMail = aluMailEditText.getText().toString();
 
-            infoMap.put(getString(R.string.bbdd_father_alumno),aluMap);
-        }
+                        Map<String, Object> aluMap = new HashMap<String, Object>();
+                        Map<String, Object> infoAlu = new HashMap<String, Object>();
+                        infoAlu.put(getString(R.string.bbdd_name), aluName);
+                        infoAlu.put(getString(R.string.bbdd_lastname), aluLastname);
+                        infoAlu.put(getString(R.string.bbdd_center), aluCenter);
+                        infoAlu.put(getString(R.string.bbdd_class), aluCourseGroup);
+                        infoAlu.put(getString(R.string.bbdd_mail), aluMail);
+                        infoAlu.put(getString(R.string.bbdd_telephone), aluTelephone);
+                        String newUuid = UUID.randomUUID().toString();
+                        aluMap.put(newUuid, infoAlu);
 
-        //Actualizamos la BBDD
-        regRef.updateChildren(infoMap);
+                        infoMap.put(getString(R.string.bbdd_father_alumno),aluMap);
+
+                        //Actualizamos la base dde datos con la informacion del alumno inexistente
+                        childRef.child(newUuid).updateChildren(infoAlu);
+                    }//if
+                    //Si el alumno existe
+                    else {
+                        //{ key = alumnos, value = {1d3eca0e-ee79-4c40-9809-890c79c4f134={telefono=647116339, nombre=Fabiana, centro=IES Buenavista, apellido=Hernandez Palenzuela, mail=copo2005@hotmail.com, clase=1A}} }
+                        Map<String, Object> dataSnapshotValue = (Map<String, Object>) dataSnapshot.getValue();
+                        //{1d3eca0e-ee79-4c40-9809-890c79c4f134={telefono=647116339, nombre=Fabiana, centro=IES Buenavista, apellido=Hernandez Palenzuela, mail=copo2005@hotmail.com, clase=1A}}
+                        Object[] keyArray = dataSnapshotValue.keySet().toArray();
+                        String key = keyArray[0].toString();
+                        Map<String, Object> values = (Map<String, Object>) dataSnapshotValue.get(key);
+                        Log.i("RegisterActivity", "values: "+values);
+                        Log.i("RegisterActivity", "valuesName: " + values.get(getString(R.string.bbdd_name)));
+
+                        aluName = values.get(getString(R.string.bbdd_name)).toString();
+                        aluLastname = values.get(getString(R.string.bbdd_lastname)).toString();
+                        aluTelephone = values.get(getString(R.string.bbdd_telephone)).toString();
+                        aluCourseGroup = values.get(getString(R.string.bbdd_class)).toString();
+                        aluCenter = values.get(getString(R.string.bbdd_center)).toString();
+                        aluMail = values.get(getString(R.string.bbdd_mail)).toString();
+
+                        Map<String, Object> aluMap = new HashMap<String, Object>();
+                        Map<String, Object> infoAlu = new HashMap<String, Object>();
+                        infoAlu.put(getString(R.string.bbdd_name), aluName);
+                        infoAlu.put(getString(R.string.bbdd_lastname), aluLastname);
+                        infoAlu.put(getString(R.string.bbdd_center), aluCenter);
+                        infoAlu.put(getString(R.string.bbdd_class), aluCourseGroup);
+                        infoAlu.put(getString(R.string.bbdd_mail), aluMail);
+                        infoAlu.put(getString(R.string.bbdd_telephone), aluTelephone);
+
+                        aluMap.put(key, infoAlu);
+                        infoMap.put(getString(R.string.bbdd_father_alumno),aluMap);
+                    }//else
+                }
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {}
+            });//addListenerForSingleValue
+
+            //Other Childs
+            if (otherChildrens.size() > 0) {
+                for (int i = 0; i < otherChildrens.size(); i++) {
+                    final LinearLayout  childLL = otherChildrens.get(i);
+                    mailChild = ((EditText) childLL.getChildAt(5)).getText().toString();
+                    existChild = childRef.orderByChild(getString(R.string.bbdd_mail)).equalTo(mailChild);
+                    existChild.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            //si el alumno no existe
+                            if (dataSnapshot == null) {
+                                aluName = ((EditText) childLL.getChildAt(2)).getText().toString();
+                                aluLastname = ((EditText) childLL.getChildAt(3)).getText().toString();
+                                aluTelephone = ((EditText) childLL.getChildAt(4)).getText().toString();
+                                aluMail = ((EditText) childLL.getChildAt(5)).getText().toString();
+                                aluCenter = ((EditText) childLL.getChildAt(6)).getText().toString();
+                                aluCourseGroup = ((EditText) childLL.getChildAt(7)).getText().toString();
+
+                                Map<String, Object> aluMap = new HashMap<String, Object>();
+                                Map<String, Object> infoAlu = new HashMap<String, Object>();
+                                infoAlu.put(getString(R.string.bbdd_name), aluName);
+                                infoAlu.put(getString(R.string.bbdd_lastname), aluLastname);
+                                infoAlu.put(getString(R.string.bbdd_center), aluCenter);
+                                infoAlu.put(getString(R.string.bbdd_class), aluCourseGroup);
+                                infoAlu.put(getString(R.string.bbdd_mail), aluMail);
+                                infoAlu.put(getString(R.string.bbdd_telephone), aluTelephone);
+                                String newUuid = UUID.randomUUID().toString();
+                                aluMap.put(newUuid, infoAlu);
+
+                                infoMap.put(getString(R.string.bbdd_father_alumno), aluMap);
+
+                                //Actualizamos la base dde datos con la informacion del alumno
+                                // inexistente
+                                childRef.child(newUuid).updateChildren(infoAlu);
+                            }//if
+                            //Si el alumno existe
+                            else {
+                                Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
+                                String key = values.keySet().toArray()[0].toString();
+
+                                aluName = values.get(getString(R.string.bbdd_name)).toString();
+                                aluLastname = values.get(getString(R.string.bbdd_lastname)).toString();
+                                aluTelephone = values.get(getString(R.string.bbdd_telephone)).toString();
+                                aluCourseGroup = values.get(getString(R.string.bbdd_class)).toString();
+                                aluCenter = values.get(getString(R.string.bbdd_center)).toString();
+                                aluMail = values.get(getString(R.string.bbdd_mail)).toString();
+
+                                Map<String, Object> aluMap = new HashMap<String, Object>();
+                                Map<String, Object> infoAlu = new HashMap<String, Object>();
+                                infoAlu.put(getString(R.string.bbdd_name), aluName);
+                                infoAlu.put(getString(R.string.bbdd_lastname), aluLastname);
+                                infoAlu.put(getString(R.string.bbdd_center), aluCenter);
+                                infoAlu.put(getString(R.string.bbdd_class), aluCourseGroup);
+                                infoAlu.put(getString(R.string.bbdd_mail), aluMail);
+                                infoAlu.put(getString(R.string.bbdd_telephone), aluTelephone);
+
+                                aluMap.put(key, infoAlu);
+                                infoMap.put(getString(R.string.bbdd_father_alumno),aluMap);
+                            }//else
+                        }
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {}
+                    });//addListenerForSingleValue
+                }//for otherChildrens
+            }//if > 0
+        }//if padre
+
+        //TODO no actualiza
+        //Actualizamos la BBDD con la Info del Padre
+        String regUuid = UUID.randomUUID().toString();
+        ref.child(regUuid).updateChildren(infoMap);
     }//function
 
     public void launchHelp (View view) {
@@ -264,30 +387,37 @@ public class RegisterActivity extends Activity {
         aluMail = aluMailEditText.getText().toString();
 
         if (mail.isEmpty()) {
+            Log.i("RegisterActivity", "mail Vacio");
             mailEditText.setError(getString(R.string.field_empty));
             result = true;
         }
         if (name.isEmpty()) {
+            Log.i("RegisterActivity", "name Vacio");
             nameEditText.setError(getString(R.string.field_empty));
             result = true;
         }
         if (lastname.isEmpty()) {
+            Log.i("RegisterActivity", "lastname Vacio");
             lastnameEditText.setError(getString(R.string.field_empty));
             result = true;
         }
         if (school.isEmpty()) {
+            Log.i("RegisterActivity", "center Vacio");
             schoolEditText.setError(getString(R.string.field_empty));
             result = true;
         }
         if (telephone.isEmpty()) {
+            Log.i("RegisterActivity", "telephone Vacio");
             telephoneEditText.setError(getString(R.string.field_empty));
             result = true;
         }
         if (password.isEmpty()) {
+            Log.i("RegisterActivity", "pass Vacio");
             passwordEditText.setError(getString(R.string.field_empty));
             result = true;
         }
-        if (clases.isEmpty()) {
+        if  ((!selected.equals(getString(R.string.father))) && (clases.isEmpty())) {
+            Log.i("RegisterActivity", "clases Vacio");
             clasesEditText.setError(getString(R.string.field_empty));
             result = true;
         }
@@ -300,26 +430,32 @@ public class RegisterActivity extends Activity {
             aluTelephone = aluTelephoneEditText.getText().toString();
 
             if (aluName.isEmpty()) {
+                Log.i("RegisterActivity", "aluName Vacio");
                 aluNameEditText.setError(getString(R.string.field_empty));
                 result = true;
             }
             if (aluLastname.isEmpty()) {
+                Log.i("RegisterActivity", "aluLastname Vacio");
                 aluLastnameEditText.setError(getString(R.string.field_empty));
                 result = true;
             }
             if (aluCourseGroup.isEmpty()) {
+                Log.i("RegisterActivity", "aluCourseGroup Vacio");
                 aluCourseGroupEditText.setError(getString(R.string.field_empty));
                 result = true;
             }
             if (aluCenter.isEmpty()) {
+                Log.i("RegisterActivity", "aluCenter Vacio");
                 aluCenterEditText.setError(getString(R.string.field_empty));
                 result = true;
             }
             if (aluMail.isEmpty()) {
+                Log.i("RegisterActivity", "aluMail Vacio");
                 aluMailEditText.setError(getString(R.string.field_empty));
                 result = true;
             }
             if (aluTelephone.isEmpty()) {
+                Log.i("RegisterActivity", "aluTelephone Vacio");
                 aluTelephoneEditText.setError(getString(R.string.field_empty));
                 result = true;
             }
@@ -343,22 +479,34 @@ public class RegisterActivity extends Activity {
                     String otherAluCourseGroup = otherAluCourseGroupET.getText().toString();
 
                     if (otherAluName.isEmpty()) {
+                        Log.i("RegisterActivity", "otherAluname Vacio");
                         otherAluNameET.setError(getString(R.string.field_empty));
+                        result = true;
                     }
                     if (otherAluLastname.isEmpty()) {
+                        Log.i("RegisterActivity", "otherAlulastName Vacio");
                         otherAluLastnameET.setError(getString(R.string.field_empty));
+                        result = true;
                     }
                     if (otherAluTelephone.isEmpty()) {
+                        Log.i("RegisterActivity", "otherAluTelephone Vacio");
                         otherAluTelephoneET.setError(getString(R.string.field_empty));
+                        result = true;
                     }
                     if (otherAluMail.isEmpty()) {
+                        Log.i("RegisterActivity", "otherAluMail Vacio");
                         otherAluMailET.setError(getString(R.string.field_empty));
+                        result = true;
                     }
                     if (otherAluCenter.isEmpty()) {
+                        Log.i("RegisterActivity", "otherAluCenter Vacio");
                         otherAluCenterET.setError(getString(R.string.field_empty));
+                        result = true;
                     }
                     if (otherAluCourseGroup.isEmpty()) {
+                        Log.i("RegisterActivity", "otherAluCourseGroup Vacio");
                         otherAluCourseGroupET.setError(getString(R.string.field_empty));
+                        result = true;
                     }
                 }//for
             }//if

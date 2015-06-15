@@ -27,7 +27,7 @@
     <string name="myName">MiNombre</string>
     <string name="myRol">MiRol</string>
     <string name="lastname">Apellidos</string>
-    <string name="college">Centro</string>
+    <string name="college">Centro Escolar</string>
     <string name="telephone">Teléfono</string>
     <string name="letter">Letra</string>
     <string name="mail">E-mail</string>
@@ -143,6 +143,6 @@
     <string name="title_activity_chat_2">ChatActivity</string>
     <string name="title_activity_chat">ChatActivity</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="value">value</string>
 
 </resources>
