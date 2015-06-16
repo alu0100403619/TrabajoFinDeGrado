@@ -2,19 +2,21 @@
 \contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Tecnolog\IeC {\'\i }as}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Selecci\IeC {\'o}n}{2}{subsection.1.1.1}
-\contentsline {subsection}{\numberline {1.1.2}Otros IDE's: Eclipse}{2}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.2}Otros IDE's: Eclipse\cite {19:eclipse:online}}{2}{subsection.1.1.2}
 \contentsline {subsubsection}{Instalaci\IeC {\'o}n de Eclipse}{2}{section*.4}
-\contentsline {subsection}{\numberline {1.1.3}Otros Servicios en la Nube: Parse}{2}{subsection.1.1.3}
-\contentsline {subsubsection}{Instalaci\IeC {\'o}n de Parse}{2}{section*.5}
-\contentsline {section}{\numberline {1.2}Instalaci\IeC {\'o}n}{2}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}AndroidStudio}{2}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Firebase}{3}{subsection.1.2.2}
-\contentsline {chapter}{\numberline {2}Especificaci\IeC {\'o}n de Requisitos}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Funcionalidades}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Pantallas}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}Sistemas de la Aplicaci\IeC {\'o}n}{7}{section.2.3}
-\contentsline {chapter}{\numberline {3}Especificaci\IeC {\'o}n de Requisitos Cap B}{8}{chapter.3}
-\contentsline {section}{\numberline {3.1}Sistemas de la Aplicaci\IeC {\'o}n}{10}{section.3.1}
-\contentsline {section}{\numberline {3.2}Roles}{11}{section.3.2}
-\contentsline {chapter}{\numberline {4}Diagrama de Clases}{12}{chapter.4}
-\contentsline {chapter}{\numberline {5}TODO}{13}{chapter.5}
+\contentsline {subsection}{\numberline {1.1.3}Otros Servicios en la Nube: Parse\cite {16:parse:online}}{2}{subsection.1.1.3}
+\contentsline {subsubsection}{Instalaci\IeC {\'o}n de Parse}{3}{section*.5}
+\contentsline {section}{\numberline {1.2}Instalaci\IeC {\'o}n}{6}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}AndroidStudio}{6}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Firebase}{7}{subsection.1.2.2}
+\contentsline {section}{\numberline {1.3}Tutoriales}{11}{section.1.3}
+\contentsline {chapter}{\numberline {2}Especificaci\IeC {\'o}n de Requisitos}{12}{chapter.2}
+\contentsline {section}{\numberline {2.1}Funcionalidades}{12}{section.2.1}
+\contentsline {section}{\numberline {2.2}Actividades}{13}{section.2.2}
+\contentsline {section}{\numberline {2.3}Sistemas de la Aplicaci\IeC {\'o}n}{15}{section.2.3}
+\contentsline {section}{\numberline {2.4}Roles}{16}{section.2.4}
+\contentsline {chapter}{\numberline {3}Objetivos}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Objetivos Generales}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}Objetivos Espec\IeC {\'\i }ficos}{17}{section.3.2}
+\contentsline {chapter}{\numberline {4}TODO}{18}{chapter.4}
+\contentsline {chapter}{\numberline {A}Diagrama de Clases}{19}{appendix.Alph1}

@@ -7,9 +7,9 @@ A level-1 auxiliary file: Previos/Resumen.aux
 A level-1 auxiliary file: Previos/Summary.aux
 A level-1 auxiliary file: Capitulos/Cap1_Introduccion.aux
 A level-1 auxiliary file: Capitulos/Cap2_EspecificacionRequisitos.aux
-A level-1 auxiliary file: Capitulos/CapB_Requisitos.aux
-A level-1 auxiliary file: Capitulos/CapC_DiagramaClases.aux
+A level-1 auxiliary file: Capitulos/Cap3_Objetivos.aux
 A level-1 auxiliary file: Capitulos/TODO.aux
+A level-1 auxiliary file: Apendices/ApendiceA_DiagramaClases.aux
 The style file: unsrt.bst
 Database file #1: Bibliografia/bibliography.bib
 Warning--entry type for "1:androidstudio:online" isn't style-file defined
@@ -33,16 +33,127 @@ Warning--entry type for "9:jquery:online" isn't style-file defined
 Warning--entry type for "10:ios:online" isn't style-file defined
 --line 83 of file Bibliografia/bibliography.bib
 Warning--entry type for "11:rest:online" isn't style-file defined
---line 92 of file Bibliografia/bibliography.bib
+--line 93 of file Bibliografia/bibliography.bib
 Warning--entry type for "12:ide:online" isn't style-file defined
---line 101 of file Bibliografia/bibliography.bib
+--line 102 of file Bibliografia/bibliography.bib
 Warning--entry type for "13:androidstudiodescarga:online" isn't style-file defined
---line 110 of file Bibliografia/bibliography.bib
+--line 111 of file Bibliografia/bibliography.bib
 Warning--entry type for "14:java:online" isn't style-file defined
---line 119 of file Bibliografia/bibliography.bib
+--line 120 of file Bibliografia/bibliography.bib
+Warning--entry type for "15:eclipse:online" isn't style-file defined
+--line 130 of file Bibliografia/bibliography.bib
+Warning--entry type for "19:eclipse:online" isn't style-file defined
+--line 140 of file Bibliografia/bibliography.bib
+Warning--entry type for "20:andoirdSDK:online" isn't style-file defined
+--line 150 of file Bibliografia/bibliography.bib
+Warning--entry type for "21:jdt:online" isn't style-file defined
+--line 159 of file Bibliografia/bibliography.bib
+Warning--entry type for "16:parse:online" isn't style-file defined
+--line 168 of file Bibliografia/bibliography.bib
 Warning--entry type for "17:jdk:online" isn't style-file defined
---line 148 of file Bibliografia/bibliography.bib
+--line 177 of file Bibliografia/bibliography.bib
 Warning--entry type for "18:google:online" isn't style-file defined
---line 157 of file Bibliografia/bibliography.bib
+--line 186 of file Bibliografia/bibliography.bib
+Warning--entry type for "22:javascript:online" isn't style-file defined
+--line 196 of file Bibliografia/bibliography.bib
+Warning--entry type for "23:osx:online" isn't style-file defined
+--line 206 of file Bibliografia/bibliography.bib
+Warning--entry type for "24:unity:online" isn't style-file defined
+--line 216 of file Bibliografia/bibliography.bib
+Warning--entry type for "25:php:online" isn't style-file defined
+--line 225 of file Bibliografia/bibliography.bib
+Warning--entry type for "26:arduino:online" isn't style-file defined
+--line 235 of file Bibliografia/bibliography.bib
+Warning--entry type for "27:embeddedC:online" isn't style-file defined
+--line 244 of file Bibliografia/bibliography.bib
+Warning--entry type for "28:c:online" isn't style-file defined
+--line 254 of file Bibliografia/bibliography.bib
+Warning--entry type for "29:firstapp:online" isn't style-file defined
+--line 264 of file Bibliografia/bibliography.bib
+Warning--entry type for "30:actionbar:online" isn't style-file defined
+--line 274 of file Bibliografia/bibliography.bib
+Warning--entry type for "31:diferentdevices:online" isn't style-file defined
+--line 284 of file Bibliografia/bibliography.bib
+Warning--entry type for "32:lifecycle:online" isn't style-file defined
+--line 294 of file Bibliografia/bibliography.bib
+Warning--entry type for "33:fragments:online" isn't style-file defined
+--line 304 of file Bibliografia/bibliography.bib
+Warning--entry type for "34:savingdata:online" isn't style-file defined
+--line 314 of file Bibliografia/bibliography.bib
+Warning--entry type for "35:interacting:online" isn't style-file defined
+--line 324 of file Bibliografia/bibliography.bib
+Warning--entry type for "36:sharingsimpledata:online" isn't style-file defined
+--line 334 of file Bibliografia/bibliography.bib
+Warning--entry type for "37:sharingfiles:online" isn't style-file defined
+--line 344 of file Bibliografia/bibliography.bib
+Warning--entry type for "38:nfc:online" isn't style-file defined
+--line 354 of file Bibliografia/bibliography.bib
+Warning--entry type for "39:audio:online" isn't style-file defined
+--line 364 of file Bibliografia/bibliography.bib
+Warning--entry type for "40:photos:online" isn't style-file defined
+--line 374 of file Bibliografia/bibliography.bib
+Warning--entry type for "41:printing:online" isn't style-file defined
+--line 384 of file Bibliografia/bibliography.bib
+Warning--entry type for "42:bitmaps:online" isn't style-file defined
+--line 394 of file Bibliografia/bibliography.bib
+Warning--entry type for "43:opengl:online" isn't style-file defined
+--line 404 of file Bibliografia/bibliography.bib
+Warning--entry type for "44:transitions:online" isn't style-file defined
+--line 414 of file Bibliografia/bibliography.bib
+Warning--entry type for "45:animations:online" isn't style-file defined
+--line 424 of file Bibliografia/bibliography.bib
+Warning--entry type for "46:connecting:online" isn't style-file defined
+--line 434 of file Bibliografia/bibliography.bib
+Warning--entry type for "47:networks:online" isn't style-file defined
+--line 444 of file Bibliografia/bibliography.bib
+Warning--entry type for "48:cloud:online" isn't style-file defined
+--line 454 of file Bibliografia/bibliography.bib
+Warning--entry type for "49:adapters:online" isn't style-file defined
+--line 464 of file Bibliografia/bibliography.bib
+Warning--entry type for "50:securityprivacity:online" isn't style-file defined
+--line 474 of file Bibliografia/bibliography.bib
+Warning--entry type for "51:testing:online" isn't style-file defined
+--line 484 of file Bibliografia/bibliography.bib
+Warning--entry type for "52:parse:online" isn't style-file defined
+--line 494 of file Bibliografia/bibliography.bib
+Warning--entry type for "53:firebase:online" isn't style-file defined
+--line 504 of file Bibliografia/bibliography.bib
+Warning--entry type for "54:expandable:online" isn't style-file defined
+--line 514 of file Bibliografia/bibliography.bib
+Warning--entry type for "55:tabhostswipe:online" isn't style-file defined
+--line 524 of file Bibliografia/bibliography.bib
+Warning--entry type for "56:actionbartab:online" isn't style-file defined
+--line 534 of file Bibliografia/bibliography.bib
+Warning--there's a month but no year in 16:parse:online
 Warning--there's a month but no year in 17:jdk:online
-(There were 17 warnings)
+Warning--there's a month but no year in 21:jdt:online
+Warning--there's a month but no year in 20:andoirdSDK:online
+Warning--there's a month but no year in 29:firstapp:online
+Warning--there's a month but no year in 30:actionbar:online
+Warning--there's a month but no year in 31:diferentdevices:online
+Warning--there's a month but no year in 32:lifecycle:online
+Warning--there's a month but no year in 33:fragments:online
+Warning--there's a month but no year in 34:savingdata:online
+Warning--there's a month but no year in 35:interacting:online
+Warning--there's a month but no year in 36:sharingsimpledata:online
+Warning--there's a month but no year in 37:sharingfiles:online
+Warning--there's a month but no year in 38:nfc:online
+Warning--there's a month but no year in 39:audio:online
+Warning--there's a month but no year in 40:photos:online
+Warning--there's a month but no year in 41:printing:online
+Warning--there's a month but no year in 42:bitmaps:online
+Warning--there's a month but no year in 43:opengl:online
+Warning--there's a month but no year in 44:transitions:online
+Warning--there's a month but no year in 45:animations:online
+Warning--there's a month but no year in 46:connecting:online
+Warning--there's a month but no year in 47:networks:online
+Warning--there's a month but no year in 48:cloud:online
+Warning--there's a month but no year in 49:adapters:online
+Warning--there's a month but no year in 50:securityprivacity:online
+Warning--there's a month but no year in 51:testing:online
+Warning--there's a month but no year in 52:parse:online
+Warning--there's a month but no year in 53:firebase:online
+Warning--there's a month but no year in 54:expandable:online
+Warning--there's a month but no year in 55:tabhostswipe:online
+Warning--there's a month but no year in 56:actionbartab:online
+(There were 88 warnings)

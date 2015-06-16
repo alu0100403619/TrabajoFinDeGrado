@@ -13,84 +13,129 @@
 \chapter{Especificación de Requisitos}
 \label{chap:requirements}
 
-\section{Funcionalidades}
+	\section{Funcionalidades}
+		A continuación se describen las funcionalidades de la aplicación:
+		\begin{itemize} 
+			\item {\bf Registro}: Tras rellenar el formulario y accionar el botón de registro, \CollegeApp enviará los datos a la Firebase. Éstos serán almacenados en la base de datos, en sus tablas correspondientes. También creará al usuario correspondiente para que tenga acceso a la aplicación.
+			\item {\bf Acceso}: El usuario introducirá su dirección de correo electrónico y contraseña en los campos destinados a ello. El dispositivo móvil se autenticará contra el servicio de Firebase y si todo es correcto permitirá el acceso.
+			\item {\bf Recuerdo de Contraseña}: La aplicación solicitará al servicio en la nube una contraseña temporal para que el usuario pueda acceder, tras lo cual tendrá que editar su contraseña en \CollegeApp.
+			\item {\bf Contactos}: Se recuperarán todos los usuarios relacionados con la persona que esté usando la aplicación. Esto permitirá que se puedan comunicar.
+			\item {\bf chat}: Los usuarios se podrán enviar mensajes entre sí, éstos se almacenaran en Firebase para ser recuperados por la aplicación y luego borrados de la nube. La comunicación será del tipo alumno-profesor, padre-profesor y viceversa.
+			\item {\bf Notificaciones}: \CollegeApp recuperará de la base de datos todos los mensajes que tenga el usuario, para después borrarlos de su almacenamiento en la nube.
+			\item {\bf Circulares}: Aviso que se mandará a todos los integrantes de una clase, e incluso de varias. Estos mensajes se almacenarán en la nube y serán recuperados por la aplicación, que los eliminará de su almacenamiento en internet.
+			\item {\bf Citas}: Una vez concertada una cita con un profesor, se podrá mandar al calendario de Google para tenerla registrada.
+			\item {\bf Visualización de Datos}: El usuario podrá visualizar la información de sus contactos con una selección larga en uno de ellos.
+			\item {\bf Edición de datos}: Se podrá editar los datos en el dispositivo móvil, tras lo cual se actualizarán en la base de datos almacenada en la nube. 
+		\end{itemize}
 
-\section{Pantallas}
-La aplicación tendrá una pantalla de bienvenida con tres pestañas:
-	\begin{itemize}
-		\item Bienvenido: Aquí se mostrará los botones para acceder a la aplicación y para el registro de usuarios.
-		\item Ayuda: En esta pestaña se obtendrá una pequeña ayuda sobre la aplicación.
-		\item Sobre el Autor: Se mostrará la información sobre el autor de la aplicación.
-	\end{itemize}
-	En la pantalla de registro se le pedirá al usuario una serie de datos a cumplimentar según su rol: 
-	\begin{itemize}
-		\item Alumno:
-			\begin{itemize}
-				\item Nombre.
-				\item Apellidos.
-				\item Teléfono.
-				\item Centro Escolar.
-				\item Grupo y Curso al que pertenece: 1A, 2C, 3B... Solo podrá poner un curso y un grupo.
-				\item Correo electrónico.
-				\item Contraseña.
-			\end{itemize}
-		\item Profesor:
-			\begin{itemize}
-				\item Nombre.
-				\item Apellidos.
-				\item Teléfono.
-				\item Centro Escolar.
-				\item Grupo y Curso al que pertenece: 1A, 2C, 3B... Podrá poner varios cursos y grupos separados por comas.
-				\item Correo electrónico.
-				\item Contraseña.
-			\end{itemize}
-		\item Padre/Madre/Tutor Legal:
-			\begin{itemize}
-				\item Nombre.
-				\item Apellidos.
-				\item Teléfono.
-				\item Centro Escolar al que asiste el alumno del que es padre.
-				\item Correo electrónico.
-				\item Contraseña.
-				\item Nombre del alumno del que es padre.
-				\item Apellidos del alumno del que es padre.
-				\item Correo electrónico del alumno del que es padre.
-				\item Centro escolar del alumno del que es padre.
-				\item Curso y grupo del alumno del que es padre 1A, 2C, 3B... Solo podrá poner un curso y un grupo.
-			\end{itemize}
-	\end{itemize}
-	En la de acceso se le pedirá su dirección de correo y la contraseña, el usuario tendrá, además, la posibilidad de solicitar que se le recuerde la contraseña por correo.
-	\bigskip
-	Una vez se accede a la aplicación a través del e-mail y contraseña, ésta se encarga de clasificar al usuario según el rol con el que se halla registrado, rellenando los datos de forma correcta según el perfil seleccionado. A continuación se describirá cada una de las pestañas en sus respectivos roles:
-	\bigskip
-	\begin{itemize}
-		\item Alumnos:
-			\begin{itemize}
-				\item Alumnos: Esta pestaña contendrá los datos de los compañeros de clase del usuario.
-				\item Profesores: Ésta se rellenará con los datos de los profesores que le dan clase al alumno.
-				\item Notificaciones: En ésta se podrán encontrar los nombres de quienes envíen mensajes al usuario.
-			\end{itemize}
-		\item Profesores:
-			\begin{itemize}
-				\item Profesores: Aquí podremos encontrar los compañeros que dan clase a los grupos a los que el usuario da clase.
-				\item Padres: Esta pestaña se rellenará con los padres de los alumnos a los que el profesor da clase.
-				\item Alumnos: Aquí podremos encontrar a los alumnos a los que el profesor da clase
-				\item Notificaciones: En ésta se podrán encontrar los nombres de quienes envíen mensajes al usuario.
-			\end{itemize}
-		\item Padres:
-			\begin{itemize}
-				\item Padres: En esta pestaña se encontrarán los padres de los compañeros de clase del hijo/s del usuario.
-				\item Profesores: Aquí estarán los profesores que dan clase al hijo/s del usuario.
-				\item Notificaciones: En ésta se podrán encontrar los nombres de quienes envíen mensajes al usuario.
-			\end{itemize}
-	\end{itemize}
-									
-	También tendremos una opción para enviar circulares a otros usuarios de la aplicación pudiendo adjuntar archivos. Los padres podrán concertar citas con los profesores y viceversa.
-	Al seleccionar cualquiera de los usuarios que aparecen en las listas, se lanzará un ``chat'' para que los usuarios se comuniquen entre ellos. Al enviar un mensaje éste se almacenará en los servicios en la nube, en la tabla destinada a los mensajes. Esta tabla contendrá el mensaje, el destinatario y el remitente. Cuando el dispositivo reciba el mensaje, lo borrará de la tabla para no sobrecargarla.
+	%\section{Pantallas}
+	\section{Actividades}
+		La aplicación tendrá una pantalla de bienvenida con tres pestañas:
+		\begin{itemize}
+			\item Bienvenido: Aquí se mostrará los botones para acceder a la aplicación y para el registro de usuarios.
+			\item Ayuda: En esta pestaña se obtendrá una pequeña ayuda sobre la aplicación.
+			\item Sobre el Autor: Se mostrará la información sobre el autor de la aplicación.
+		\end{itemize}
+		
+		En la pantalla de registro se le pedirá al usuario una serie de datos a cumplimentar según su rol: 
+		\begin{itemize}
+			\item Alumno:
+				\begin{itemize}
+					\item Nombre.
+					\item Apellidos.
+					\item Teléfono.
+					\item Centro Escolar.
+					\item Grupo y Curso al que pertenece: 1A, 2C, 3B... Solo podrá poner un curso y un grupo.
+					\item Correo electrónico.
+					\item Contraseña.
+				\end{itemize}
+			\item Profesor:
+				\begin{itemize}
+					\item Nombre.
+					\item Apellidos.
+					\item Teléfono.
+					\item Centro Escolar.
+					\item Grupo y Curso al que pertenece: 1A, 2C, 3B... Podrá poner varios cursos y grupos separados por comas.
+					\item Correo electrónico.
+					\item Contraseña.
+				\end{itemize}
+			\item Padre/Madre/Tutor Legal:
+				\begin{itemize}
+					\item Nombre.
+					\item Apellidos.
+					\item Teléfono.
+					\item Centro Escolar al que asiste el alumno del que es padre.
+					\item Correo electrónico.
+					\item Contraseña.
+					\item Nombre del alumno del que es padre.
+					\item Apellidos del alumno del que es padre.
+					\item Correo electrónico del alumno del que es padre.
+					\item Centro escolar del alumno del que es padre.
+					\item Curso y grupo del alumno del que es padre 1A, 2C, 3B... Solo podrá poner un curso y un grupo.
+				\end{itemize}
+		\end{itemize}
+		
+		En la pantalla de acceso se le pedirá su dirección de correo y la contraseña, el usuario tendrá, además, la posibilidad de solicitar que se le recuerde la contraseña por correo.
+		
+		\bigskip
+		Una vez se accede a la aplicación a través del e-mail y contraseña, ésta se encarga de clasificar al usuario según el rol con el que se halla registrado, rellenando los datos de forma correcta según el perfil seleccionado. A continuación se describirá cada una de las pestañas en sus respectivos roles:
+		\bigskip
+		\begin{itemize}
+			\item Alumnos:
+				\begin{itemize}
+					\item Alumnos: Esta pestaña contendrá los datos de los compañeros de clase del usuario.
+					\item Profesores: Ésta se rellenará con los datos de los profesores que le dan clase al alumno.
+					\item Notificaciones: En ésta se podrán encontrar los nombres de quienes envíen mensajes al usuario.
+				\end{itemize}
+			\item Profesores:
+				\begin{itemize}
+					\item Profesores: Aquí podremos encontrar los compañeros que dan clase a los grupos a los que el usuario da clase.
+					\item Padres: Esta pestaña se rellenará con los padres de los alumnos a los que el profesor da clase.
+					\item Alumnos: Aquí podremos encontrar a los alumnos a los que el profesor da clase
+					\item Notificaciones: En ésta se podrán encontrar los nombres de quienes envíen mensajes al usuario.
+				\end{itemize}
+			\item Padres:
+				\begin{itemize}
+					\item Padres: En esta pestaña se encontrarán los padres de los compañeros de clase del hijo/s del usuario.
+					\item Profesores: Aquí estarán los profesores que dan clase al hijo/s del usuario.
+					\item Notificaciones: En ésta se podrán encontrar los nombres de quienes envíen mensajes al usuario.
+				\end{itemize}
+		\end{itemize}
+										
+		Los profesores tendrán una opción para enviar circulares a otros usuarios de la aplicación. Los padres podrán concertar citas con los profesores y viceversa.
+		Al seleccionar cualquiera de los usuarios que aparecen en las listas, se lanzará un ``chat'' para que los usuarios se comuniquen entre ellos. Al enviar un mensaje éste se almacenará en los servicios en la nube, en la tabla destinada a los mensajes. Esta tabla contendrá el mensaje, el destinatario y el remitente. Cuando el dispositivo reciba el mensaje, lo borrará de la tabla para no sobrecargarla.
+		
+		\bigskip
+		Al hacer una selección larga, se podrán ver los datos del usuario que se selecciona.
 	
-	\bigskip
-	Al hacer una selección larga, se podrán ver los datos del usuario que se selecciona.
+		Todos los datos estarán almacenados en la nube, en concreto en los servicios de Firebase\cite{6:firebase:online} que es propiedad de Google\cite{18:google:online}.
 
-	Todos los datos estarán almacenados en la nube, en concreto en los servicios de Firebase\cite{6:firebase:online} que es propiedad de Google\cite{18:google:online}.
+	\section{Sistemas de la Aplicación}
+		\begin{itemize}
+			\item Sistema de Registro: Al usuario se le podrá pedir los siguientes datos, según el rol con el que se registre:
+			\begin{itemize}
+				\item Nombre y Apellidos.
+				\item Rol con el que se va a registrar, ya que en función de un rol u otro se le pedirá distintos datos.
+				\item Número de teléfono.
+				\item Nombre del centro con el que va a hacer el registro.
+				\item Clase y grupo.
+				\item E-mail y contraseña.
+				\item Nombre y Apellidos del alumno.
+				\item Clase en la que está el alumno.
+				\item Centro en el que está el alumno.
+				\item Curso en el que está el alumno.
+			\end{itemize}
+			\item Sistema de ``acceso'': Se le pedirá al usuario que ingrese su identificación, es decir, su e-mail y contraseña.
+			\item Sistema de comunicación entre alumnos, profesores y padres/madres/tutores legales: Tanto los profesores como los padres/madres/tutores legales se podrán comunicar entre sí con un servicio tipo ``chat'', para informar de alguna incidencia, mensaje o notificación. Este servicio enviará los mensajes a través de internet usando los servicios de ``firebase''.
+			\item Sistema de citas: Se podrá concertar citas con los padres/madres/Tutores Legales, así como éstos podrán solicitar reuniones con los profesores, estas citas se podrán añadir al calendario de Google.
+			\item Lista de contactos, organizada por grupos desplegables, por ejemplo los profesores tendrán la lista organizadas por las clases que impartan en el centro.
+		\end{itemize}
+	
+		Esto permitirá establecer un sistema de comunicaciones entre los profesores y los padres de alumnos.
 
-\section{Sistemas de la Aplicación}
+	\section{Roles}
+		\begin{itemize}
+			\item Alumnos: Se podrá comunicar con los profesores, pudiendo solicitar citas y recibir circulares.
+			\item Profesores: Se podrá comunicar con los alumnos y padres, pudiendo solicitar citas y enviar circulares. Los padres y alumnos en la lista de contactos estarán organizados por las clases que impartan en el centro.
+			\item Padre/Madre/Tutor Legal: Se podrá comunicar con los profesores, pudiendo recibir circulares y solicitar citas. Los profesores en la lista de contactos estarán organizados las clases que impartan a los alumnos con los que el progenitor esté relacionado.
+		\end{itemize}
