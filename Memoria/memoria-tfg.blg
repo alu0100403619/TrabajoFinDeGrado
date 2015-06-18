@@ -8,8 +8,11 @@ A level-1 auxiliary file: Previos/Summary.aux
 A level-1 auxiliary file: Capitulos/Cap1_Introduccion.aux
 A level-1 auxiliary file: Capitulos/Cap2_EspecificacionRequisitos.aux
 A level-1 auxiliary file: Capitulos/Cap3_Objetivos.aux
+A level-1 auxiliary file: Capitulos/Cap4_Antecedentes.aux
+A level-1 auxiliary file: Capitulos/Cap5_Problemas.aux
 A level-1 auxiliary file: Capitulos/TODO.aux
 A level-1 auxiliary file: Apendices/ApendiceA_DiagramaClases.aux
+A level-1 auxiliary file: Apendices/ApendiceB_DiagramaActividades.aux
 The style file: unsrt.bst
 Database file #1: Bibliografia/bibliography.bib
 Warning--entry type for "1:androidstudio:online" isn't style-file defined
@@ -124,6 +127,8 @@ Warning--entry type for "55:tabhostswipe:online" isn't style-file defined
 --line 524 of file Bibliografia/bibliography.bib
 Warning--entry type for "56:actionbartab:online" isn't style-file defined
 --line 534 of file Bibliografia/bibliography.bib
+Warning--entry type for "57:nube:online" isn't style-file defined
+--line 544 of file Bibliografia/bibliography.bib
 Warning--there's a month but no year in 16:parse:online
 Warning--there's a month but no year in 17:jdk:online
 Warning--there's a month but no year in 21:jdt:online
@@ -156,4 +161,5 @@ Warning--there's a month but no year in 53:firebase:online
 Warning--there's a month but no year in 54:expandable:online
 Warning--there's a month but no year in 55:tabhostswipe:online
 Warning--there's a month but no year in 56:actionbartab:online
-(There were 88 warnings)
+Warning--there's a month but no year in 57:nube:online
+(There were 90 warnings)

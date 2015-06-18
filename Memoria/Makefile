@@ -15,9 +15,44 @@ BASURA   = *.dvi *.bbl *.aux *.toc *.lof *.lot *.lol *.log *.blg *.out *~ *.pdf 
 
 MASTER   = memoria-tfg.tex
 SRC      = \
-						Capitulos/CapB_Requisitos.tex \
-						Capitulos/CapC_DiagramaClases.tex \
+						Previos/Portada.tex \
+						Previos/Certificado.tex \
+						Previos/Agradecimientos.tex \
+						Previos/Licencia.tex \
+						Previos/Resumen.tex \
+						Previos/Summary.tex \
+						
+						Capitulos/Cap1_Introduccion.tex \
+						Capitulos/Cap2_EspecificacionRequisitos.tex \
+						Capitulos/Cap3_Objetivos.tex \
+						Capitulos/Cap4_Antecedentes.tex \
+						Capitulos/Cap5_Problemas.tex \
 						Capitulos/TODO.tex \
+						
+						Apendices/ApendiceA_DiagramaClases.tex \
+						Apendices/ApendiceB_DiagramaActividades.tex \
+						
+						Imagenes/logo_vertical.jpg \
+						Imagenes/CollegeAppDiagramaActividades.png \
+						Imagenes/CollegeAppDiagramaClases.png \
+						Imagenes/Librería Firebase.png \
+						Imagenes/Packages.png \
+						Imagenes/SdkManager.png \
+						Imagenes/Licencias/by_88x31.png \
+						Imagenes/Licencias/by-nc_88x31.png \
+						Imagenes/Licencias/by-nc-nd_88x31.png \
+						Imagenes/Licencias/by-nc-sa_88x31.png \
+						Imagenes/Licencias/by-nd_88x31.png \
+						Imagenes/Licencias/by-sa_88x31.png \
+						
+						Code/appbuildgradle.gradle \
+						Code/build.gradle \
+						Code/buildgradle.gradle \
+						Code/buildParse.gradle \
+						Code/duplicidadbuild.gradle \
+						Code/support13build.gradle \
+						Code/FirebaseExample.java \
+						Code/ParseExample.java \
 
 DVI = $(MASTER:.tex=.dvi)
 BIB = $(MASTER:.tex=.bib)
@@ -51,9 +86,10 @@ clean:
 
 del:
 	$(RM) -R $(BASURA);
-	cd bibliografia;    $(RM) -R $(BASURA);  \
-	cd ../capitulos;    $(RM) -R $(BASURA);  \
-	cd ../previo;       $(RM) -R $(BASURA);  \
+	cd Bibliografia;    $(RM) -R $(BASURA);  \
+	cd ../Capitulos;    $(RM) -R $(BASURA);  \
+	cd ../Previos;       $(RM) -R $(BASURA);  \
+	cd ../Apendices;       $(RM) -R $(BASURA);  \
 
 mrproper:
 	$(MAKE) delete
