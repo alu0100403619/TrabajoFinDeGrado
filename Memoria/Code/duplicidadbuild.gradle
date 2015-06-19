@@ -1,0 +1,23 @@
+apply plugin: 'com.android.application'
+
+android {
+    //...
+
+    defaultConfig {
+        //...
+    }
+    buildTypes {
+        release {
+            //...
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    //...
+}

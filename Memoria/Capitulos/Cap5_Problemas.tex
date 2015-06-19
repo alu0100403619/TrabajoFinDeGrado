@@ -1,0 +1,77 @@
+%
+% ---------------------------------------------------
+%
+% Trabajo de Final de Grado:
+% Author: Gonzalo Jesús García Martín <dracoyue@gmail.com>
+% Capítulo: Objetivos
+% Fichero: Cap5_Problemas.tex
+%
+% ----------------------------------------------------
+%
+
+\cleardoublepage
+\chapter{Problemas}
+\label{chap:troubles}
+
+	\begin{enumerate}
+		\item {\bf Android Studio no render target}
+			\begin{itemize}
+				\item {\em Solución}:
+					\begin{enumerate}
+						\item Asegurarse de que hay un dispositivo real o virtual seleccionado.
+						\item Tener una versión de Android seleccionada.
+						\item Versiones necesarias para el desarrollo dela aplicación en Android instaladas.
+						\item Crear un nuevo Dispositivo Virtual (AVD).
+						% Meter dibujo de AVD
+						\item reiniciar Android Studio.
+					\end{enumerate}
+			\end{itemize}
+		%
+		\item {\bf Fallo al encontrar com.android.support:appcompat-v7:16.+}
+			\begin{itemize}
+				\item {\bf Solución}: Actualizar en las dependencias del archivo ``build.gradle'', en el directorio ``app'' que está en la raíz del proyecto, la librería a la última versión disponible de forma manual.
+			\end{itemize}
+		%
+		\item {\bf Fallo al encontrar Java}
+			\begin{itemize}
+				\item {\bf Solución}: Si java ya está instalado, averiguar el directorio. Una vez echo esto necesitas volver a establecer la variable de ámbito indicando la localización correcta.
+				Selecciona Iniciar \textgreater Equipo \textgreater Propiedades \textgreater Configuración Avanzada del Sistema.
+				Entonces abre la pestaña Opciones Avanzadas \textgreater Variables de Entorno y añade una nueva variable de sistema llamada JAVA\_HOME que redirija a tu directorio JDK, por ejemplo ``C:{\textbackslash}Program Files{\textbackslash}Java{\textbackslash}jdk1.7.0\_21''. 
+			\end{itemize}
+		\item {\bf Duplicidad en las dependencias de los paquetes}
+			\begin{itemize}
+				\item {\bf Solución}: Si se tiene un error de construcción compilando sobre archivos duplicados, se puede excluir esos ficheros añadiendo la directiva {\it packagingOptions} al archivo {\it build.gradle} que está en el directorio {\it app}.
+				
+				\lstinputlisting[float,language=Java,caption={Solución a la duplicidad en build.gradle},label={code:duplicidadbuild}]{Code/duplicidadbuild.gradle}
+			\end{itemize}
+			
+		\newpage
+		\item {\bf Porblemas con import android.support.v13}
+			\begin{itemize}
+				\item {\bf Solución}: Añadir en las dependencias del archivo ``build.gradle'', en el directorio ``app'' que está en la raíz del proyecto, la orden ``compile 'com.android.support:support-v13:21.+' '' de forma manual.
+				
+				\noindent
+				\lstinputlisting[float,language=Java,caption={Solución al problema supportV13},label={code:supportv13}]{Code/support13build.gradle}
+			\end{itemize}
+			
+		\newpage
+		\item {\bf Problemas con Gradle}
+			\begin{itemize}
+				\item {\bf Solución}:
+					\begin{enumerate}
+						\item En el archivo ``buil.gradle'' que está en el directorio raíz del proyecto añadir la dependencia de forma manual: {\it classpath 'com.android.tools.build:gradle:1.0.0'}.
+						\item En el archivo ``buil.gradle'' que está en el directorio ``app'' en la raíz del proyecto añadir dentro de ``release'' de forma manual:
+							minifyEnabled false\\
+							proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+					\end{enumerate}
+					\noindent
+					\lstinputlisting[float,language=Java,caption={Solución en build.gradle},label={code:buildGradle}]{Code/buildgradle.gradle}
+					\lstinputlisting[float,language=Java,caption={Solución en app/build.gradle},label={code:appBuildGradle}]{Code/appbuildgradle.gradle}
+			\end{itemize}
+		
+		\newpage
+		\item {\bf SDK no encontrado}
+			\begin{itemize}
+				\item {\bf Solución}: Si Android Studio no encuentra el SDK y está instalado seleccionar {\it Windows \textgreater Preferencias \textgreater Android \textgreater Localización SDK} y establecer el directorio donde se tiene instalado.
+			\end{itemize}
+	\end{enumerate}
