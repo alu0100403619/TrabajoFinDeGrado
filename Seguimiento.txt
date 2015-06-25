@@ -330,19 +330,19 @@ May 29
 --------------------------
 Jun 4
 
-- Futuro: hacer un diagrama de flujo de transición entre las diferentes
++ Futuro: hacer un diagrama de flujo de transición entre las diferentes
 	Activities de la app.
 - Trabajar en la Memoria al mismo tiempo que en la app.
 - Analiza la lógica de circulares y citas (¿qué hacen? ¿qué significa cada
 	cosa? ¿qué comportamiento tiene?). Especificación de requisitos.
-- Trabaja en el estilo de alguna/s de las pantallas
--- Al registrar un nuevo usuario (padre) ¿cómo se gestionan los Centros (colegios)?
++ Trabaja en el estilo de alguna/s de las pantallas
++- Al registrar un nuevo usuario (padre) ¿cómo se gestionan los Centros (colegios)?
 -- Hacer comprobaciones de corrección en los diferentes tipos de campos: e-mail, teléfono, et.
 - La Activity Ayuda hay que acabarla
-- Alimenta la BD con padre1, padre2, ... padre7
++ Alimenta la BD con padre1, padre2, ... padre7
   alu1, alu2, ..., alu7
 	profe1, profe2,... profe7
-- Necesito una especificación de requisitos
++ Necesito una especificación de requisitos
 --------------------------
 Jun 10 CANCELADA
 El 10 de junio de 2015, 18:52, Gonzalo García Martín <dracoyue@gmail.com> escribió:
@@ -363,6 +363,20 @@ Respecto a lo de Iván no se si me dará tiempo de asistir ya que después de la
 presentación no hay transportes disponibles. 
 Muchas gracias por su comprensión.
 --------------------------
+Jun 25
+
+- Completar las Actividades 1, 2, 3, y 4
+  Actividad2ProyectoTFG.pdf
+	Se trata de pequeños (1-2 páginas) ficheros pdf con el trabajo realizado en
+	cada caso.
+
+Hacer que funcione
+  a) Registro
+	b) Acabar la Pantalla de ayuda.
+- Poner la App en un idioma adicional: Inglés
+- Evitar los "cuelgues" de la app
+
+
 --------------------------
 --------------------------
 --------------------------
