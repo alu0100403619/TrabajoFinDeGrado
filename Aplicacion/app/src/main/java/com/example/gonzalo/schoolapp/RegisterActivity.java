@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -19,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -31,6 +34,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import com.example.gonzalo.schoolapp.utilities.Utilities;
+
 //Hacer los campos required como en HTML
 //http://www.donnfelker.com/android-validation-with-edittext/
 //https://tausiq.wordpress.com/2013/01/19/android-input-field-validation/
@@ -38,19 +43,20 @@ import java.util.UUID;
 
 public class RegisterActivity extends Activity {
 
-    Spinner spinner1;
+    Spinner spinner1, spinner2;
     LinearLayout course_groupLL, aluDataLL;
-    Firebase ref, childRef;
+    Firebase ref, childRef, schoolsRef;
     AlertDialog dialog;
     EditText mailEditText, nameEditText, lastnameEditText, schoolEditText, telephoneEditText,
             passwordEditText, clasesEditText;
-    String mail, name, lastname, school, telephone, password, clases, selected;
+    String mail, name, lastname, school, telephone, password, clases, selected, selected2 = " ";
     //Alumno
     EditText aluNameEditText, aluLastnameEditText, aluCourseGroupEditText, aluCenterEditText,
             aluMailEditText, aluTelephoneEditText;
     String aluName, aluLastname, aluCourseGroup, aluCenter, aluMail, aluTelephone;
     LinearLayout otherAlumnoLL, childsLL;
     ArrayList<LinearLayout> otherChildrens;
+    ArrayList<String> schools;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +64,15 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
         Firebase.setAndroidContext(this);
         childRef = new Firebase(getString(R.string.aluRef));
+        schoolsRef = new Firebase(getString(R.string.colesRef));
 
         otherChildrens = new ArrayList<>();
+        //schools = new ArrayList<>();
+        schools = getSchools();
         aluName = aluLastname = aluCourseGroup = aluCenter = aluMail = aluTelephone = "";
 
         spinner1 = (Spinner) findViewById(R.id.spinner_1);
+        spinner2 = (Spinner) findViewById(R.id.spinner_2);
         course_groupLL = (LinearLayout) findViewById(R.id.course_group);
         aluDataLL = (LinearLayout) findViewById(R.id.alumno_data);
         childsLL = (LinearLayout) findViewById(R.id.childs);
@@ -71,10 +81,11 @@ public class RegisterActivity extends Activity {
         mailEditText = (EditText) findViewById(R.id.text_mail);
         nameEditText = (EditText) findViewById(R.id.text_name);
         lastnameEditText = (EditText) findViewById(R.id.text_lastname);
-        schoolEditText = (EditText) findViewById(R.id.text_college);
+        //schoolEditText = (EditText) findViewById(R.id.text_college);
         telephoneEditText = (EditText) findViewById(R.id.text_telephone);
         passwordEditText = (EditText) findViewById(R.id.text_password);
         clasesEditText = (EditText) findViewById(R.id.text_course_group);
+
         //Alumno
         aluNameEditText = (EditText) findViewById(R.id.text_alu_name);
         aluMailEditText= (EditText) findViewById(R.id.text_alu_mail);
@@ -103,6 +114,33 @@ public class RegisterActivity extends Activity {
                     course_groupLL.setVisibility(View.GONE);
                     aluDataLL.setVisibility(View.VISIBLE);
                     childsLL.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
+        schools.add(getString(R.string.select_school));
+        schools.add(getString(R.string.add_school));
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, schools);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner2.setAdapter(spinnerAdapter);
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selected2 = String.valueOf(spinner2.getSelectedItem());
+                if ((!selected2.equals(getString(R.string.add_school))) &&
+                        (!selected2.equals(getString(R.string.select_school)))) {
+                    school = selected2;
+                    aluCenterEditText.setText(selected2);
+                }
+                if (selected2.equals(getString(R.string.add_school))) {
+                    launchPrompt();
                 }
             }
 
@@ -355,11 +393,11 @@ public class RegisterActivity extends Activity {
     }//function
 
     public void launchHelp (View view) {
-        createDialog();
+        createHelpDialog();
         dialog.show();
     }
 
-    public void createDialog() {
+    public void createHelpDialog() {
         //Constructor
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //Annadiendo Botones
@@ -375,18 +413,57 @@ public class RegisterActivity extends Activity {
         dialog = builder.create();
     }
 
+    public void launchPrompt() {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.prompt, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set prompt.xml to alertdialog builder
+        alertDialogBuilder.setView(promptView);
+
+        final EditText schoolEditText = (EditText) promptView.findViewById(R.id.schoolEditText);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.save),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // get user input and set it to result
+                                // edit text
+                                school = schoolEditText.getText().toString();
+                                String uuid = UUID.randomUUID().toString();
+                                Map<String, Object> schoolMap = new HashMap<String, Object>();
+                                schoolMap.put(uuid, school);
+                                schoolsRef.updateChildren(schoolMap);
+                            }
+                        })
+                .setNegativeButton(getString(R.string.back),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
     public boolean haveEmptyFields () {
         boolean result = false;
         mail = mailEditText.getText().toString();
         name = nameEditText.getText().toString();
         lastname = lastnameEditText.getText().toString();
-        school = schoolEditText.getText().toString();
+        //school = schoolEditText.getText().toString();
         telephone = telephoneEditText.getText().toString();
         password = passwordEditText.getText().toString();
         clases = clasesEditText.getText().toString();
         aluMail = aluMailEditText.getText().toString();
 
-        if (mail.isEmpty()) {
+        if ((mail.isEmpty()) || (!Utilities.isMail(mail))) {
             Log.i("RegisterActivity", "mail Vacio");
             mailEditText.setError(getString(R.string.field_empty));
             result = true;
@@ -401,12 +478,13 @@ public class RegisterActivity extends Activity {
             lastnameEditText.setError(getString(R.string.field_empty));
             result = true;
         }
-        if (school.isEmpty()) {
+        if ((selected2.equals(getString(R.string.add_school))) ||
+                (selected2.equals(getString(R.string.select_school)))) {
             Log.i("RegisterActivity", "center Vacio");
-            schoolEditText.setError(getString(R.string.field_empty));
+            schoolEditText.setError(getString(R.string.select_school));
             result = true;
-        }
-        if (telephone.isEmpty()) {
+        }//*/
+        if ((telephone.isEmpty()) || (!Utilities.isTelephone(telephone))) {
             Log.i("RegisterActivity", "telephone Vacio");
             telephoneEditText.setError(getString(R.string.field_empty));
             result = true;
@@ -416,10 +494,17 @@ public class RegisterActivity extends Activity {
             passwordEditText.setError(getString(R.string.field_empty));
             result = true;
         }
-        if  ((!selected.equals(getString(R.string.father))) && (clases.isEmpty())) {
-            Log.i("RegisterActivity", "clases Vacio");
+        if  ((selected.equals(getString(R.string.teacher))) && (clases.isEmpty())) {
+            Log.i("RegisterActivity", "Profe clases Vacio");
             clasesEditText.setError(getString(R.string.field_empty));
             result = true;
+        }
+        if (selected.equals(getString(R.string.alumno))) {
+            if ((clases.isEmpty()) || (!Utilities.isOneClass(clases))) {
+                Log.i("RegisterActivity", "Alumno clases Vacio o son varias o esta en minuscula");
+                clasesEditText.setError(getString(R.string.error_class_format));
+                result = true;
+            }
         }
         //si es un padre comprobar que los datos del hijo no estan vacios
         if (selected.equals(getString(R.string.father))) {
@@ -439,24 +524,26 @@ public class RegisterActivity extends Activity {
                 aluLastnameEditText.setError(getString(R.string.field_empty));
                 result = true;
             }
-            if (aluCourseGroup.isEmpty()) {
+            if ((aluCourseGroup.isEmpty()) || (!Utilities.isOneClass(aluCourseGroup))) {
                 Log.i("RegisterActivity", "aluCourseGroup Vacio");
-                aluCourseGroupEditText.setError(getString(R.string.field_empty));
+                aluCourseGroupEditText.setError(getString(R.string.error_class_format));
                 result = true;
             }
-            if (aluCenter.isEmpty()) {
+            if ((aluCenter.isEmpty()) || (aluCenter.equals(getString(R.string.add_school))) ||
+                    (aluCenter.equals(getString(R.string.select_school))) ||
+                    (!schools.contains(aluCenter))) {
                 Log.i("RegisterActivity", "aluCenter Vacio");
-                aluCenterEditText.setError(getString(R.string.field_empty));
+                aluCenterEditText.setError(getString(R.string.select_school));
                 result = true;
             }
-            if (aluMail.isEmpty()) {
+            if ((aluMail.isEmpty()) || (!Utilities.isMail(aluMail))) {
                 Log.i("RegisterActivity", "aluMail Vacio");
-                aluMailEditText.setError(getString(R.string.field_empty));
+                aluMailEditText.setError(getString(R.string.mail_format_error));
                 result = true;
             }
-            if (aluTelephone.isEmpty()) {
+            if ((aluTelephone.isEmpty()) || (!Utilities.isTelephone(aluTelephone))) {
                 Log.i("RegisterActivity", "aluTelephone Vacio");
-                aluTelephoneEditText.setError(getString(R.string.field_empty));
+                aluTelephoneEditText.setError(getString(R.string.telephone_format_error));
                 result = true;
             }
             if (otherChildrens.size() > 0) {
@@ -488,24 +575,27 @@ public class RegisterActivity extends Activity {
                         otherAluLastnameET.setError(getString(R.string.field_empty));
                         result = true;
                     }
-                    if (otherAluTelephone.isEmpty()) {
+                    if ((otherAluTelephone.isEmpty()) || (!Utilities.isTelephone(otherAluTelephone))) {
                         Log.i("RegisterActivity", "otherAluTelephone Vacio");
-                        otherAluTelephoneET.setError(getString(R.string.field_empty));
                         result = true;
                     }
-                    if (otherAluMail.isEmpty()) {
+                    if ((otherAluMail.isEmpty()) || (!Utilities.isMail(otherAluMail))) {
                         Log.i("RegisterActivity", "otherAluMail Vacio");
-                        otherAluMailET.setError(getString(R.string.field_empty));
+                        otherAluMailET.setError(getString(R.string.mail_format_error));
                         result = true;
                     }
-                    if (otherAluCenter.isEmpty()) {
+                    if ((otherAluCenter.isEmpty()) ||
+                            (otherAluCenter.equals(getString(R.string.add_school))) ||
+                            (otherAluCenter.equals(getString(R.string.select_school))) ||
+                            (!schools.contains(otherAluCenter))) {
                         Log.i("RegisterActivity", "otherAluCenter Vacio");
-                        otherAluCenterET.setError(getString(R.string.field_empty));
+                        otherAluCenterET.setError(getString(R.string.select_school));
                         result = true;
                     }
-                    if (otherAluCourseGroup.isEmpty()) {
+                    if ((otherAluCourseGroup.isEmpty()) ||
+                    (!Utilities.isOneClass(otherAluCourseGroup))) {
                         Log.i("RegisterActivity", "otherAluCourseGroup Vacio");
-                        otherAluCourseGroupET.setError(getString(R.string.field_empty));
+                        otherAluCourseGroupET.setError(getString(R.string.error_class_format));
                         result = true;
                     }
                 }//for
@@ -560,6 +650,7 @@ public class RegisterActivity extends Activity {
             otherAluCenter.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     R.drawable.ic_action_university_filled, 0, 0, 0);
             otherAluCenter.setLayoutParams(aluCenterEditText.getLayoutParams());
+            otherAluCenter.setText(selected2);
 
             EditText otherAluCourseGroup = new EditText(this); //Child 7
             otherAluCourseGroup.setHint(getString(R.string.alu_course_group_hint));
@@ -595,6 +686,38 @@ public class RegisterActivity extends Activity {
             otherChildrens.remove(otherChildrens.size() - 1);
             otherAlumnoLL.removeAllViews();
         }
+    }
+
+    public ArrayList<String> getSchools() {
+        final ArrayList<String> tmp = new ArrayList<>();
+        Query allSchools = schoolsRef;
+        allSchools.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.i("RegisterActivity", "value: " + dataSnapshot.getValue());
+                //String key = dataSnapshot.getKey();
+                if (!tmp.contains(dataSnapshot.getValue().toString())) {
+                    tmp.add(dataSnapshot.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });//query
+        return tmp;
     }
 
 }//class

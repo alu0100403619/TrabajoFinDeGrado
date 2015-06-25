@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterFather;
@@ -36,6 +37,7 @@ public class ExpandableFahtersActivity extends Activity {
     String school, mail, myName, myRol;
     Firebase fathersRef;
     ArrayList<Father> fathers;
+    TextView messageTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,12 @@ public class ExpandableFahtersActivity extends Activity {
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Obtener el elemento xml
+        messageTextView = (TextView) findViewById(R.id.message);
+        if (myRol.equals(getString(R.string.teacher))) {
+            messageTextView.setText(getString(R.string.teacher_select_course));
+        } else {
+            messageTextView.setText(getString(R.string.father_select_course));
+        }
         expListView = (ExpandableListView) findViewById(R.id.expListView);
 
         //Listener Click Largo
@@ -73,7 +81,7 @@ public class ExpandableFahtersActivity extends Activity {
                     int childPosition = expListView.getPackedPositionChild(id);
                     Intent intent = new Intent(ExpandableFahtersActivity.this, DataActivity.class);
                     intent.putExtra(getString(R.string.rol), listDataChild.get(listDataHeader.
-                            get(groupPosition)).get(childPosition).getRol());//*/ //Se pierde por el camino
+                            get(groupPosition)).get(childPosition).getRol());
                     intent.putExtra(getString(R.string.person),
                             listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
                     startActivity(intent);
@@ -118,7 +126,7 @@ public class ExpandableFahtersActivity extends Activity {
                     child = (Map<String, Object>) childrens.get(key);
                     if (child.get(getString(R.string.bbdd_center)).equals(school)) {
                         Father father = new Father (values);
-                        //Si el array no lo contiene, mete al padre
+                        //Si el array no lo contiene, mete al padre. Se Repiten---------------------------------
                         if ((!fathers.contains(father)) && (!father.getMail().equals(mail))) {
                             fathers.add(father);
                         }//if

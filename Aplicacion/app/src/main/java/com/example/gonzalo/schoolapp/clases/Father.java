@@ -102,11 +102,18 @@ public class Father implements Parcelable {
         return name + " " + lastname;
     }
 
-    public boolean equals (Father father) {
+    /*public boolean equals (Father father) {
         boolean same = false;
         if ((name.equals(father.getName())) && (lastname.equals(father.getLastname())) &&
-                (mail.equals(father.getMail())) && (telephone.equals(father.getTelephone())) &&
-                (childrens.containsAll(father.getChildrens()))) {
+                (mail.equals(father.getMail())) && (telephone.equals(father.getTelephone()))) {
+            same = true;
+        }
+        return same;
+    }//*/
+
+    public boolean equals (Father father) {
+        boolean same = false;
+        if (mail.equals(father.getMail())) {
             same = true;
         }
         return same;

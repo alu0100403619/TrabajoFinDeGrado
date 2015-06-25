@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterAlumno;
@@ -34,6 +35,7 @@ public class ExpandableAlumnosActivity extends Activity {
     Firebase alumnosRef;
     String school, myName, mail, myRol;
     ArrayList<Alumno> alumnos;
+    TextView messageTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,12 @@ public class ExpandableAlumnosActivity extends Activity {
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
 
         //Obtener el elemento xml
+        messageTextView = (TextView) findViewById(R.id.message);
+        if (myRol.equals(getString(R.string.teacher))) {
+            messageTextView.setText(getString(R.string.teacher_select_course));
+        } else {
+            messageTextView.setText(getString(R.string.father_select_course));
+        }
         expListView = (ExpandableListView) findViewById(R.id.expListView);
 
         //Listener Click Largo

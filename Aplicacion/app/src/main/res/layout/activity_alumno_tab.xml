@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="5dp"
+    android:padding="5dp" android:background="@drawable/registerwater"
     android:weightSum="1">
 
     <TabHost xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,21 +27,11 @@
 
         </LinearLayout>
     </TabHost>
-    <LinearLayout android:orientation="horizontal"
+
+    <Button android:id="@+id/DatesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:text="@string/Dates"
+        android:layout_gravity="center_horizontal"/>
 
-        <Button android:id="@+id/circularesButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/circulares"
-            android:onClick="launchCirculares" />
-
-        <Button android:id="@+id/DatesButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Dates" />
-
-    </LinearLayout>
 </LinearLayout>

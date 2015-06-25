@@ -88,6 +88,12 @@ public class AlumnoTabActivity extends TabActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_modify) {
+            Intent intent = new Intent(this, MyDataActivity.class);
+            intent.putExtra(getString(R.string.bbdd_mail), mail);
+            intent.putExtra(getString(R.string.bbdd_rol), myRol);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

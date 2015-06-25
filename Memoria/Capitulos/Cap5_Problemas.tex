@@ -74,4 +74,10 @@
 			\begin{itemize}
 				\item {\bf Solución}: Si Android Studio no encuentra el SDK y está instalado seleccionar {\it Windows \textgreater Preferencias \textgreater Android \textgreater Localización SDK} y establecer el directorio donde se tiene instalado.
 			\end{itemize}
+			
+		\item {\bf Consultas Asíncronas}
+			\begin{itemize}
+				\item {\bf Solución}: Existen dos tipos de consultas en Firebase, las que devuelven un solo resultado (``{\it addListenerForSingleValueEvent}'') y las que devuelven varios resultados (``{\it addChildEventListener}''). Éstas últimas se quedan esperando por si se modifican datos de la base de datos.
+				La solución sería removerlo al final de su uso (``{\it ref.removeEventListener(originalListener);}'') o tener una sola consulta del segundo tipo por actividad.
+			\end{itemize}
 	\end{enumerate}

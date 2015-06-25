@@ -3,6 +3,16 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:buttonStyle">@style/CustomButton</item>
         <item name="android:editTextStyle">@style/CustomEditText</item>
+        <item name="android:actionBarStyle">@style/CustomActionBar</item>
+    </style>
+
+    <style name="CustomActionBar" parent="android:Widget.ActionBar">
+        <item name="android:background">@color/Navy</item>
+        <item name="android:titleTextStyle">@style/titleTextStyle</item>
+    </style>
+
+    <style name="titleTextStyle" parent="android:Widget.Holo.Light.ActionBar">
+        <item name="android:textColor">@color/MintCream</item>
     </style>
 
     <style name="CustomButton" parent="android:Widget.Button">
@@ -40,6 +50,32 @@
 
     <style name="BackgroundMessageTeacher" parent="AppTheme">
         <item name="android:background">@color/Salmon</item>
+    </style>
+
+    <style name="WelcomeTabs" parent="android:Widget">
+        <item name="android:background">@drawable/tabs2</item>
+        <item name="android:textColor">@color/MintCream</item>
+    </style>
+
+    <style name="listItemeffect" parent="android:Widget.ListView">
+        <item name="android:background">@drawable/listeffect</item>
+        <item name="android:textColor">@color/MintCream</item>
+    </style>
+
+    <style name="listGroupeffect" parent="android:Widget.ListView">
+        <item name="android:background">@drawable/groupeffect</item>
+        <item name="android:textColor">@color/DarkGreen</item>
+    </style>
+
+    <style name="textViewafter" parent="android:Widget.TextView">
+        <item name="android:typeface">sans</item>
+        <item name="android:textColor">@color/MidnightBlue</item>
+        <item name="android:background">@color/YellowGreen</item>
+    </style>
+
+    <style name="chatEditText" parent="android:Widget.EditText">
+        <item name="android:background">@drawable/chatedittext</item>
+        <item name="android:textColor">@color/DarkGreen</item>
     </style>
 
 </resources>

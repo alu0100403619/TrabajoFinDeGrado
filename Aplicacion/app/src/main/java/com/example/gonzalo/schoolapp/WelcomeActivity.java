@@ -52,9 +52,8 @@ public class WelcomeActivity extends Activity {
                 fragments);
         viewPager.setAdapter(tabsViewPageAdapter);
 
-        //Asegur&eacute;monos de que las tabs est&aacute;n bien espaciadas.
-        //slidingTabLayout.setDistributeEvenly(true);
-        slidingTabLayout.setDistributeEvenly(false);
+        //Aseguremonos de que las tabs esten bien espaciadas.
+        slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
     }
 

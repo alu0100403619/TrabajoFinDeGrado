@@ -1,0 +1,138 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.gonzalo.schoolapp.MyDataActivity">
+
+    <ScrollView android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:id="@+id/scrollChild"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout android:id="@+id/child1"
+                android:layout_width="wrap_content" android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <LinearLayout android:id="@+id/name_group" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+                    <TextView android:id="@+id/name_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/name_label" />
+                    <EditText android:id="@+id/name"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" android:editable="false"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/lastname_group" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+                    <TextView android:id="@+id/lastname_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/lastname_label" />
+                    <EditText android:id="@+id/lastname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:inputType="textPersonName" android:editable="false"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/mail_group" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+                    <TextView android:id="@+id/mail_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/mail_label"/>
+                    <EditText android:id="@+id/mail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:inputType="textPersonName" android:editable="false"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/telephone_group" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+                    <TextView android:id="@+id/telephone_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/telephone_label" />
+                    <EditText android:id="@+id/telephone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:inputType="textPersonName" android:editable="false"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/school_group" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+                    <TextView android:id="@+id/school_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/college_label" />
+                    <TextView android:id="@+id/school"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/course_group_group" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+                    <TextView android:id="@+id/course_group_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/course_group_label" />
+                    <EditText android:id="@+id/course_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:inputType="textPersonName" android:editable="false"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/children_group"
+                    android:layout_width="wrap_content" android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView android:id="@+id/children_label"
+                        android:layout_width="wrap_content" android:text="@string/sons_label"
+                        android:layout_height="wrap_content" />
+                    <LinearLayout android:id="@+id/childs" android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView android:id="@+id/empty1"
+                    android:text="@string/empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent" />
+
+            </LinearLayout>
+
+            <TextView android:id="@+id/empty2"
+                android:text="@string/empty"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" />
+
+            <LinearLayout android:id="@+id/child2"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" android:layout_gravity="center_horizontal" >
+
+                <Button android:id="@+id/modify_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:onClick="modify"
+                    android:text="@string/modify" android:layout_below="@id/scrollView" />
+
+                <Button android:id="@+id/change_password_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:onClick="launchChangePassword"
+                    android:text="@string/change_password" android:layout_below="@id/scrollView"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

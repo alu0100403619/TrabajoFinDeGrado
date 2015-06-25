@@ -1,5 +1,4 @@
 package com.example.gonzalo.noteapp;
-//...
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -7,9 +6,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 public class MainActivity extends ListActivity {
-    public static final String APPLICATION_ID = "ID de la Aplicacion: h...8f";
-    public static final String CLIENT_KEY = "Clave de Cliente: H...ga";
-    //...
+    public static final String APPLICATION_ID = "ID de la Aplicacion";
+    public static final String CLIENT_KEY = "Clave de Cliente";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,9 +16,7 @@ public class MainActivity extends ListActivity {
         Parse.initialize(this, APPLICATION_ID, CLIENT_KEY);
         //Para autenticacion de Usuarios
         ParseUser currentUser = ParseUser.getCurrentUser();
-        //...
     }
-    //...
     private void refreshPostList() {
         Object[] authors = {null, ParseUser.getCurrentUser()};
         //Ejemplo de consulta a Parse
@@ -38,12 +34,9 @@ public class MainActivity extends ListActivity {
                         posts.add(note);
                     }//for
                     ((ArrayAdapter<Note>) getListAdapter()).notifyDataSetChanged();
-                }//if
-                else {
+                } else {
                     Log.d(getClass().getSimpleName(), "Error: " + e.getMessage());
                 }//else
-            }
-        });//query.findInBackground
+            }});//query.findInBackground
     }
-    //...
 }//class

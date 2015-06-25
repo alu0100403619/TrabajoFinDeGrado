@@ -65,6 +65,8 @@ public class NotificationsActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String itemMail = mailsList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
+                //TODO error en mi tablet pero no en mi movil (A veces)
+                //java.util.ConcurrentModificationException
                 for (Message message : messagesList) {
                     if ((itemMail.equals(message.getMailRemitter())) && (!messages.contains(message))) {
                         messages.add(message);
@@ -111,6 +113,7 @@ public class NotificationsActivity extends ListActivity {
                     rolRemitterMessages.add((String) values.get(getString(R.string.bbdd_rol_remitter)));
                 }
                 else {
+                    //TODO Error en mi tablet, pero no en mi movil (A veces)
                     int pos = mailsList.indexOf(message.getMailRemitter());
                     int number = numberMessages.get(pos) + 1;
                     numberMessages.add(pos, number);

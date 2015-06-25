@@ -19,5 +19,11 @@
         alumnos y padres/Madres/Tutores Legales.</string>
     <string name="about_me_message">Alumno de la Escuela Superior de Ingeniería y Tecnologías.
         Trabajo de Fin de Grado para la carrera de Ingeniería Informática.</string>
+    <string name="correct_change_password_message">La contraseña se ha cambiado
+        correctamente.</string>
+    <string name="incorrect_change_password_message">Error en el cambio de contraseña: </string>
+    <string name="telephone_format_error">Error en el formato de Telefono. Ejplos: 609875432 / 712345689 / +34609875432 / +34712345689</string>
+    <string name="mail_format_error">Error en el formato de mail. Ejplo: alguien@dominio.com</string>
+    <string name="error_class_format">Error en el formato de clase. Ejplo: 1A</string>
 
 </resources>

@@ -4,8 +4,11 @@
     <string name="app_name">School App</string>
     <string name="person">person</string>
     <string name="action_settings">Ajustes</string>
+    <string name="action_modify">Modificar Datos</string>
     <string name="username_hint">Correo de Usuario</string>
     <string name="password_hint">Contraseña</string>
+    <string name="new_password_hint">Nueva Contraseña</string>
+    <string name="old_password_hint">Vieja Contraseña</string>
     <string name="login_button_label">Acceder</string>
     <string name="sign_up_text">Registro</string>
     <string name="alumno">Alumno</string>
@@ -37,6 +40,7 @@
     <string name="alumno_data">**** Datos del Alumno ****</string>
     <string name="other_alumno_data">**** Datos de Otro Alumno ****</string>
     <string name="empty"></string>
+    <string name="email">email</string>
     <string name="alumno_name">Nombre Alumno</string>
     <string name="alumno_lastname">Apellidos Alumno</string>
     <string name="alumno_telephone">Telefono Alumno</string>
@@ -49,6 +53,15 @@
     <string name="reading_true">Leido</string>
     <string name="reading_false">No Leido</string>
     <string name="mail_remitter">mailRemitter</string>
+    <string name="modify">Modificar</string>
+    <string name="save">Guardar</string>
+    <string name="change_password">Cambiar Contraseña</string>
+    <string name="save_password">Guardar Contraseña</string>
+    <string name="back">Volver</string>
+    <string name="add_school">Añadir Colegio...</string>
+    <string name="select_school">Seleccionar Colegio</string>
+    <string name="teacher_select_course">Seleccione uno de los cursos en los que da clase: </string>
+    <string name="father_select_course">Seleccione uno de los cursos en los que tenga hijos: </string>
 
     <string-array name="usertype_array">
         <item>Alumno</item>
@@ -92,6 +105,7 @@
     <string name="bbdd_date_minutes">minutos</string>
     <string name="bbdd_system">System</string>
     <string name="bbdd_rol_remitter">rol_remitente</string>
+    <string name="bbdd_schools">colegios</string>
                    <!-- FIN BBDD -->
 
     <string name="help_dialog_title">Ayuda sobre Curso y Grupo</string>
@@ -144,5 +158,14 @@
     <string name="title_activity_chat">ChatActivity</string>
 
     <string name="value">value</string>
+    <string name="title_activity_my_data">MyDataActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+
+    <!-- Tabs Title -->
+    <string name="welcomeTab">Bienvenido</string>
+    <string name="helpTab">Ayuda</string>
+    <string name="aboutMeTab">Sobre Mi</string>
 
 </resources>

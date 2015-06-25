@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content" android:padding="8dp" >
 
-    <TextView android:id="@+id/groupHeader"
+    <TextView android:id="@+id/groupHeader" style="@style/listGroupeffect"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
