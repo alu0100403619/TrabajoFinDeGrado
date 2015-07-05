@@ -375,8 +375,19 @@ Hacer que funcione
 	b) Acabar la Pantalla de ayuda.
 - Poner la App en un idioma adicional: Inglés
 - Evitar los "cuelgues" de la app
+--------------------------
+El 1 de julio de 2015, 20:41, Gonzalo García Martín <dracoyue@gmail.com>
+escribió:
 
-
+Buenas tardes, si es posible me gustaría aplazar la reunión a la semana
+que viene, por que el lunes y martes he estado liado en la beca de las
+aulas de informática porque eran los últimos días y había que dejar listas
+unas cuantas aulas y esta mañana me la he pasado en el dentista. No le he
+podido dedicar mucho tiempo al proyecto.
+Muchas gracias.
+--------------------------
+--------------------------
+--------------------------
 --------------------------
 --------------------------
 --------------------------
