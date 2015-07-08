@@ -1,0 +1,7 @@
+C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\classes\debug
+C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-48b94e05f32f780edd460074dc65c72baa9cc81a.jar
+C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-d87cb2990caac293febf190d7ef9155719175769.jar
+C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-949e7bfa14375d7241f1fa0a2942d6d31aafe6ed.jar
+C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\classes-5a5857cb611dc4c38875b55ebea82b2ecf310fbf.jar
+C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\Parse-1.8.1-dac678fd9ba386e4ff088475d668c1ad80598d7e.jar
+C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\classes-f9313d7ee83a0c7c4560a4a61d610e5788319304.jar

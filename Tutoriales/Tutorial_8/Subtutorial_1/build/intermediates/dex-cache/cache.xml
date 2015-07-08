@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-949e7bfa14375d7241f1fa0a2942d6d31aafe6ed.jar" />
+    </item>
+    <item
+        jar="C:\Users\Gonzalo\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-48b94e05f32f780edd460074dc65c72baa9cc81a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\libs\Parse-1.8.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd491448169a0c142a786164b249139d2407a6f9">
+        <dex dex="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\Parse-1.8.1-dac678fd9ba386e4ff088475d668c1ad80598d7e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\classes-5a5857cb611dc4c38875b55ebea82b2ecf310fbf.jar" />
+    </item>
+    <item
+        jar="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\libs\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-d87cb2990caac293febf190d7ef9155719175769.jar" />
+    </item>
+    <item
+        jar="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Gonzalo\AndroidStudioProjects\NoteApp\app\build\intermediates\pre-dexed\debug\classes-f9313d7ee83a0c7c4560a4a61d610e5788319304.jar" />
+    </item>
+
+</items>
