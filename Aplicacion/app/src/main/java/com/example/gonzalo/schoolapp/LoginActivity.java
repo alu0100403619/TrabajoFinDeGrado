@@ -140,15 +140,18 @@ public class LoginActivity extends Activity {
         final String mail = mailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-        if (mail.isEmpty()) {
+        if (mail.isEmpty()){
             mailEditText.setError(getString(R.string.field_empty));
+        }
+        else if (!Utilities.isMail(mail)) {
+            mailEditText.setError(getString(R.string.mail_format_error));
         }
 
         if (password.isEmpty()) {
             passwordEditText.setError(getString(R.string.field_empty));
         }
 
-        if ((!mail.isEmpty()) && (!password.isEmpty())) {
+        if ((!mail.isEmpty()) && (!password.isEmpty()) && (Utilities.isMail(mail))) {
             userType = setTypeUser();
             rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
                 @Override

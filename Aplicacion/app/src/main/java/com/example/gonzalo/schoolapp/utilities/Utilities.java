@@ -72,22 +72,32 @@ public class Utilities {
         return id;
     }
 
+    //Funciona Bien
     public static boolean isTelephone(String telephone) {
-        //exreg ^([+]\d{2})?(6|7)\d{8}$
-        //654132662
-        //+34654132
         String expReg = "^([+]\\d{2})?(6|7)\\d{8}$";
         return telephone.matches(expReg);
     }
 
+    //Funciona Bien
     public static boolean isMail(String mail) {
         String expReg = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$";
         return mail.matches(expReg);
     }
 
+    //Funciona Bien
+    public static boolean areManyClasses(String classroom) {
+        String expReg = "^(\\d{1}[A-Z])(,(\\d{1}[A-Z]))*$";
+        return classroom.matches(expReg);
+    }
+
+    //Funciona Bien
     public static boolean isOneClass(String classroom) {
         String expReg = "^\\d{1}[A-Z]{1}$";
         return classroom.matches(expReg);
     }
 
+    public static String deleteManySpaces (String chain) {
+        String tmp = chain.trim();
+        return tmp;
+    }
 }//class

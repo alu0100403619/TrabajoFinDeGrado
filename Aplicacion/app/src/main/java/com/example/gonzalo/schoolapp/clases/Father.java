@@ -97,6 +97,10 @@ public class Father implements Parcelable {
         this.name = name;
     }
 
+    public int getCountChildrens () {
+        return childrens.size();
+    }
+
     @Override
     public String toString() {
         return name + " " + lastname;

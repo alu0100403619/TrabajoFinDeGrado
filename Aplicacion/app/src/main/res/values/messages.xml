@@ -25,5 +25,7 @@
     <string name="telephone_format_error">Error en el formato de Telefono. Ejplos: 609875432 / 712345689 / +34609875432 / +34712345689</string>
     <string name="mail_format_error">Error en el formato de mail. Ejplo: alguien@dominio.com</string>
     <string name="error_class_format">Error en el formato de clase. Ejplo: 1A</string>
+    <string name="error_classes_format">Error en el formato de clase. Ejplo: 1A,2B</string>
+    <string name="error_select_school">Seleccione el nuevo colegio al que sus hijos van a ir.</string>
 
 </resources>

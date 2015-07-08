@@ -1,46 +1,61 @@
 package com.example.gonzalo.schoolapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.clases.Alumno;
 import com.example.gonzalo.schoolapp.clases.Father;
 import com.example.gonzalo.schoolapp.clases.Teacher;
+import com.example.gonzalo.schoolapp.utilities.Utilities;
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 
 public class MyDataActivity extends Activity {
 
-    String rol, myMail, key;
-    Firebase ref;
+    String rol, myMail, key, schoolSelected;
+    Object[] childrensKeyArray;
+    Firebase ref, schoolsRef, childRef;
 
     EditText nameEditText, lastnameEditText, mailEditText, telephoneEditText;
     LinearLayout childrenGroupLL;
+    Spinner spinnerSchool, childSchoolSpinner;
+    ArrayList<String> schools;
+    ArrayAdapter<String> spinnerAdapter;
+    ArrayList<Alumno> childrensArrayList;
+    int numberOfChildrens = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_data);
         Firebase.setAndroidContext(this);
+        schoolsRef = new Firebase(getString(R.string.colesRef));
 
         rol = getIntent().getExtras().getString(getString(R.string.bbdd_rol));
         myMail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
@@ -50,21 +65,32 @@ public class MyDataActivity extends Activity {
         mailEditText = (EditText) findViewById(R.id.mail);
         telephoneEditText = (EditText) findViewById(R.id.telephone);
 
+        //Spinner
+        spinnerSchool = (Spinner) findViewById(R.id.spinnerSchool);
+        schools = getSchools();
+        schools.add(getString(R.string.select_school));
+        spinnerAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, schools);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinnerSchool.setAdapter(spinnerAdapter);
+
         nameEditText.setEnabled(false);
         lastnameEditText.setEnabled(false);
         mailEditText.setEnabled(false);
         telephoneEditText.setEnabled(false);
+        spinnerSchool.setEnabled(false);
 
-        childrenGroupLL = (LinearLayout) findViewById(R.id.children_group);
+        childrenGroupLL = (LinearLayout) findViewById(R.id.childs);
 
-        if (rol.equals(getString(R.string.alumno))) {
+        if (rol.equals(getString(R.string.rol_student))) {
             ref = new Firebase(getString(R.string.aluRef));
         }
-        else if (rol.equals(getString(R.string.teacher))) {
+        else if (rol.equals(getString(R.string.rol_teacher))) {
             ref = new Firebase(getString(R.string.profeRef));
         }
-        else if (rol.equals(getString(R.string.father))) {
+        else if (rol.equals(getString(R.string.rol_father))) {
             ref = new Firebase(getString(R.string.padreRef));
+            childRef = new Firebase(getString(R.string.aluRef));
         }
         Query userData = ref.orderByChild(getString(R.string.bbdd_mail)).equalTo(myMail);
         userData.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -74,16 +100,19 @@ public class MyDataActivity extends Activity {
                 Object[] keyArray = dataSnapshotValue.keySet().toArray();
                 key = keyArray[0].toString();
                 Map<String, Object> values = (Map<String, Object>) dataSnapshotValue.get(key);
-                if (rol.equals(getString(R.string.alumno))) {
+                if (rol.equals(getString(R.string.rol_student))) {
                     Alumno alumno = new Alumno(values);
                     setData(alumno);
                 }
-                else if (rol.equals(getString(R.string.teacher))) {
+                else if (rol.equals(getString(R.string.rol_teacher))) {
                     Teacher teacher = new Teacher(values);
                     setData(teacher);
                 }
-                else if (rol.equals(getString(R.string.father))) {
+                else if (rol.equals(getString(R.string.rol_father))) {
                     Father father = new Father(values);
+                    childrensArrayList = father.getChildrens();
+                    Map<String, Object> childrensMap = (Map<String, Object>) values.get(getString(R.string.bbdd_children));
+                    childrensKeyArray = childrensMap.keySet().toArray();
                     setData(father);
                 }
             }
@@ -110,6 +139,9 @@ public class MyDataActivity extends Activity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_add_school) {
+            launchPrompt();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -117,36 +149,33 @@ public class MyDataActivity extends Activity {
     public void setData (Alumno alumno) {
         //***Obtenemos los TextViews
         childrenGroupLL.setVisibility(View.GONE);
-        TextView schoolTextView = (TextView) findViewById(R.id.school);
         EditText courseGroupEditText = (EditText) findViewById(R.id.course_group);
         courseGroupEditText.setEnabled(false);
 
-        nameEditText.setText(" " + alumno.getName());
-        lastnameEditText.setText(" " + alumno.getLastname());
-        courseGroupEditText.setText(" " + alumno.getClassroom());
-        mailEditText.setText(" " + alumno.getMail());
-        telephoneEditText.setText(" " + alumno.getTelephone());
+        nameEditText.setText(alumno.getName());
+        lastnameEditText.setText(alumno.getLastname());
+        courseGroupEditText.setText(alumno.getClassroom());
+        mailEditText.setText(alumno.getMail());
+        telephoneEditText.setText(alumno.getTelephone());
 
-        //TODO Cambiar la modificacion de Colegio
-        schoolTextView.setText(" " + alumno.getSchool());
+        spinnerSchool.setSelection(spinnerAdapter.getPosition(alumno.getSchool()));
     }
 
     public void setData (Teacher teacher) {
-        String classRooms = " ";
+        String classRooms = "";
         ArrayList<String> clas = teacher.getClassRooms();
         EditText classRoomsEditText = (EditText) findViewById(R.id.course_group);
         classRoomsEditText.setEnabled(false);
-        TextView schoolTextView = (TextView) findViewById(R.id.school);
         TextView classRoomsTextViewLabel = (TextView) findViewById(R.id.course_group_label);
         classRoomsTextViewLabel.setText(getString(R.string.teacher_class_label));
         childrenGroupLL.setVisibility(View.GONE);
 
-        nameEditText.setText(" " + teacher.getName());
-        lastnameEditText.setText(" " + teacher.getLastname());
-        mailEditText.setText(" " + teacher.getMail());
-        telephoneEditText.setText(" " + teacher.getTelephone());
-        //TODO Cambiar la modificacion de colegio
-        schoolTextView.setText(" " + teacher.getSchool());
+        nameEditText.setText(teacher.getName());
+        lastnameEditText.setText(teacher.getLastname());
+        mailEditText.setText(teacher.getMail());
+        telephoneEditText.setText(teacher.getTelephone());
+
+        spinnerSchool.setSelection(spinnerAdapter.getPosition(teacher.getSchool()));
 
         for (int i = 0; i < clas.size(); i++) {
             classRooms += clas.get(i);
@@ -158,47 +187,89 @@ public class MyDataActivity extends Activity {
     }
 
     public void setData (Father father) {
+        numberOfChildrens = father.getCountChildrens();
         LinearLayout schoolGroup = (LinearLayout) findViewById(R.id.school_group);
         LinearLayout courseGroupGroup = (LinearLayout) findViewById(R.id.course_group_group);
         LinearLayout childs = (LinearLayout) findViewById(R.id.childs);
         schoolGroup.setVisibility(View.GONE);
         courseGroupGroup.setVisibility(View.GONE);
-        ArrayList<Alumno> childrens = father.getChildrens();
-        Log.i("DataActivity", "Hijos: " + childrens);
+        //childrensArrayList = father.getChildrens();
 
         nameEditText.setText(father.getName());
         lastnameEditText.setText(father.getLastname());
         mailEditText.setText(father.getMail());
         telephoneEditText.setText(father.getTelephone());
 
-        for (int i = 0; i < childrens.size(); i++) {
-            Alumno alumno = (Alumno) childrens.get(i);
+        for (int i = 0; i < childrensArrayList.size(); i++) {
+            Alumno alumno = (Alumno) childrensArrayList.get(i);
             if (alumno != null) {
-                TextView childNumber = new TextView(this);
-                childNumber.setText(" ##" + getString(R.string.son_label) + " " + (i + 1) + "##");
-                //TextView childName = new TextView(this);
-                EditText childName = new EditText(this);
+                //LinearLayout's
+                LinearLayout childNameGroup = new LinearLayout(this);
+                LinearLayout childLastnameGroup = new LinearLayout(this);
+                LinearLayout childSchoolGroup = new LinearLayout(this);
+                LinearLayout childCoursegroupGroup = new LinearLayout(this);
+
+                //Orientation LinearLayout's
+                childNameGroup.setOrientation(LinearLayout.HORIZONTAL);
+                childLastnameGroup.setOrientation(LinearLayout.HORIZONTAL);
+                childSchoolGroup.setOrientation(LinearLayout.HORIZONTAL);
+                childCoursegroupGroup.setOrientation(LinearLayout.HORIZONTAL);
+
+                //TextView's
+                TextView emptySeparator = new TextView(this);
+                TextView childNameLabel = new TextView(new ContextThemeWrapper(this, R.style.SonDataContactLabel), null, 0);
+                TextView childLastnameLabel = new TextView(new ContextThemeWrapper(this, R.style.SonDataContactLabel), null, 0);
+                TextView childSchoolLabel = new TextView(new ContextThemeWrapper(this, R.style.SonDataContactLabel), null, 0);
+                TextView childCourdsegroupLabel = new TextView(new ContextThemeWrapper(this, R.style.SonDataContactLabel), null, 0);
+
+                //SetText
+                emptySeparator.setText(getString(R.string.empty));
+                childNameLabel.setText(getString(R.string.name_label));
+                childLastnameLabel.setText(getString(R.string.lastname_label));
+                childSchoolLabel.setText(getString(R.string.college_label));
+                childCourdsegroupLabel.setText(getString(R.string.course_group_label));
+
+                //EditText's
+                EditText childName = new EditText(new ContextThemeWrapper(this, R.style.myDataEditText), null, 0);
+                EditText childLastname = new EditText(new ContextThemeWrapper(this, R.style.myDataEditText), null, 0);
+                EditText childClassroom = new EditText(new ContextThemeWrapper(this, R.style.myDataEditText), null, 0);
+
+                //Spinner
+                childSchoolSpinner = new Spinner(this);
+                childSchoolSpinner.setAdapter(spinnerAdapter);
+
+                //Disable EditText
                 childName.setEnabled(false);
-                childName.setText(alumno.getName());
-                //TextView childLastname = new TextView(this);
-                EditText childLastname = new EditText(this);
                 childLastname.setEnabled(false);
-                childLastname.setText(alumno.getLastname());
-                //TextView childSchool = new TextView(this);
-                EditText childSchool = new EditText(this);
-                childSchool.setEnabled(false);
-                childSchool.setText(alumno.getSchool());
-                //TextView childClassroom = new TextView(this);
-                EditText childClassroom = new EditText(this);
                 childClassroom.setEnabled(false);
+                childSchoolSpinner.setEnabled(false);
+
+                //Set Text EditText
+                childName.setText(alumno.getName());
+                childLastname.setText(alumno.getLastname());
                 childClassroom.setText(alumno.getClassroom());
 
+                //Annadimos a los LinearLayout's
+                childNameGroup.addView(childNameLabel);
+                childNameGroup.addView(childName);
+                childLastnameGroup.addView(childLastnameLabel);
+                childLastnameGroup.addView(childLastname);
+                childSchoolGroup.addView(childSchoolLabel);
+                childSchoolGroup.addView(childSchoolSpinner);
+                childCoursegroupGroup.addView(childCourdsegroupLabel);
+                childCoursegroupGroup.addView(childClassroom);
+
                 //**Annadimos los nuevos elementos
-                childs.addView(childNumber);
-                childs.addView(childName);
-                childs.addView(childLastname);
-                childs.addView(childSchool);
-                childs.addView(childClassroom);
+                if (i == 0) {
+                    childs.addView(emptySeparator);
+                }
+                childs.addView(childNameGroup);
+                childs.addView(childLastnameGroup);
+                childs.addView(childSchoolGroup);
+                childs.addView(childCoursegroupGroup);
+                TextView otherEmptySeparator = new TextView(this);
+                otherEmptySeparator.setText(getString(R.string.empty));
+                childs.addView(otherEmptySeparator);
             }
         }
     }
@@ -211,39 +282,37 @@ public class MyDataActivity extends Activity {
             nameEditText.setEnabled(true);
             lastnameEditText.setEnabled(true);
             telephoneEditText.setEnabled(true);
-            if (rol.equals(getString(R.string.alumno))) {
+            if (rol.equals(getString(R.string.rol_student))) {
+                spinnerSchool.setEnabled(true);
                 EditText courseGroupEditText = (EditText) findViewById(R.id.course_group);
                 courseGroupEditText.setEnabled(true);
             }
-            //Todo Annadir modificacion de la escuels
-            if (rol.equals(getString(R.string.teacher))) {
+            if (rol.equals(getString(R.string.rol_teacher))) {
+                spinnerSchool.setEnabled(true);
                 EditText classRoomsEditText = (EditText) findViewById(R.id.course_group);
                 classRoomsEditText.setEnabled(true);
             }
-            if (rol.equals(getString(R.string.father))) {
+            if (rol.equals(getString(R.string.rol_father))) {
                 for (int i = 0; i < childrenGroupLL.getChildCount(); i++) {
-                    LinearLayout childs = (LinearLayout) childrenGroupLL.getChildAt(i);
-                    Log.i("MyDataActivity", "Nombre Hijo: "+childs.getChildAt(0));
-                    Log.i("MyDataActivity", "Apellido Hijo: "+childs.getChildAt(1));
-                    Log.i("MyDataActivity", "Escuela Hijo: "+childs.getChildAt(2));
-                    Log.i("MyDataActivity", "Clase Hijo: "+childs.getChildAt(3));
-
-                    /*EditText childName = ;
-                    EditText childLastname = ;
-                    EditText childSchool = ;
-                    EditText childClassroom = ;
-
-                    childName.setEnabled(false);
-                    childLastname.setEnabled(false);
-                    childSchool.setEnabled(false);
-                    childClassroom.setEnabled(false);//*/
+                    int eltoEditText = i % getResources().getInteger(R.integer.children_fields);
+                    if (eltoEditText != 0) {
+                        LinearLayout childLL = (LinearLayout) childrenGroupLL.getChildAt(i);
+                        if (eltoEditText != getResources().getInteger(R.integer.children_spinner_field)) {
+                            EditText childEditText = (EditText) childLL.getChildAt(1);
+                            childEditText.setEnabled(true);
+                        } else {
+                            Spinner childSpinner = (Spinner) childLL.getChildAt(1);
+                            childSpinner.setEnabled(true);
+                        }//else
+                    }//if
                 }//for
             }
             modifyButton.setText(getString(R.string.save));
         }
         else if (textButton.equals(getString(R.string.save))) {
-            //TODO Meter en un Mapa Map<String, String>
-            //ref.child(key).updateChildren(values);
+            if (isFormOK(rol)) {
+                save();
+            }
         }
     }
 
@@ -252,6 +321,295 @@ public class MyDataActivity extends Activity {
         intent.putExtra(getString(R.string.bbdd_mail), myMail);
         startActivity(intent);
         this.finish();
+    }
+
+    public ArrayList<String> getSchools() {
+        Firebase schoolsRef = new Firebase(getString(R.string.colesRef));
+        final ArrayList<String> tmp = new ArrayList<>();
+        Query allSchools = schoolsRef;
+        allSchools.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                if (!tmp.contains(dataSnapshot.getValue().toString())) {
+                    tmp.add(dataSnapshot.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });//query
+        return tmp;
+    }
+
+    public void save() {
+        if (rol.equals(getString(R.string.rol_student))) {
+            EditText courseGroupEditText = (EditText) findViewById(R.id.course_group);
+            Map<String, Object> aluMap = new HashMap<>();
+            aluMap.put(getString(R.string.bbdd_name), nameEditText.getText().toString());
+            aluMap.put(getString(R.string.bbdd_lastname), lastnameEditText.getText().toString());
+            aluMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
+            aluMap.put(getString(R.string.bbdd_telephone), telephoneEditText.getText().toString());
+            aluMap.put(getString(R.string.bbdd_center), spinnerSchool.getSelectedItem().toString());
+            aluMap.put(getString(R.string.bbdd_class), courseGroupEditText.getText().toString());
+
+            Log.i("MyDataActivity", "Form OK, Guardando modificaciones de alumno...");
+            ref.child(key).updateChildren(aluMap);
+            this.finish();
+        }
+        else if (rol.equals(getString(R.string.rol_teacher))) {
+            EditText classRoomsEditText = (EditText) findViewById(R.id.course_group);
+            Map<String, Object> teacherMap = new HashMap<>();
+            Map<String, Object> classMap = new HashMap<>();
+            teacherMap.put(getString(R.string.bbdd_name), nameEditText.getText().toString());
+            teacherMap.put(getString(R.string.bbdd_lastname), lastnameEditText.getText().toString());
+            teacherMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
+            teacherMap.put(getString(R.string.bbdd_telephone), telephoneEditText.getText().toString());
+            teacherMap.put(getString(R.string.bbdd_center), spinnerSchool.getSelectedItem().toString());
+            //Clases
+            String [] classrooms = (classRoomsEditText.getText().toString()).split(",");
+            for (String classroom: classrooms){
+                String uuid = UUID.randomUUID().toString();
+                classMap.put(uuid, classroom);
+            }
+            teacherMap.put(getString(R.string.bbdd_teacher_class), classMap);
+
+            Log.i("MyDataActivity", "Form OK, Guardando modificaciones de profesor...");
+            ref.child(key).updateChildren(teacherMap);
+            this.finish();
+        }
+        else if (rol.equals(getString(R.string.rol_father))) {
+            int currentChild = 0, childElto;
+            LinearLayout childLinearLayout;
+            String name = "", lastname = "", school = "", courseGroup = "";
+            Map<String, Object> fatherMap = new HashMap<>();
+            Map<String, Object> infoChildMap = new HashMap<>();
+            Map<String, Object> tempMap = new HashMap<>();
+            fatherMap.put(getString(R.string.bbdd_name), nameEditText.getText().toString());
+            fatherMap.put(getString(R.string.bbdd_lastname), lastnameEditText.getText().toString());
+            fatherMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
+            fatherMap.put(getString(R.string.bbdd_telephone), telephoneEditText.getText().toString());
+            //Get info Childs
+            for (int i = 0; i < childrenGroupLL.getChildCount(); i++) {
+                childElto = (i % getResources().getInteger(R.integer.children_fields));
+                switch (childElto) {
+                    case 1:
+                        childLinearLayout = (LinearLayout) childrenGroupLL.getChildAt(i);
+                        name = ((EditText) childLinearLayout.getChildAt(1)).getText().toString();
+                        tempMap.put(getString(R.string.bbdd_name), name);
+                        childRef.child(childrensKeyArray[currentChild].toString()).
+                                child(getString(R.string.bbdd_name)).setValue(name);
+                        break;
+                    case 2:
+                        childLinearLayout = (LinearLayout) childrenGroupLL.getChildAt(i);
+                        lastname = ((EditText) childLinearLayout.getChildAt(1)).getText().toString();
+                        tempMap.put(getString(R.string.bbdd_lastname), lastname);
+                        childRef.child(childrensKeyArray[currentChild].toString()).
+                                child(getString(R.string.bbdd_lastname)).setValue(lastname);
+                        break;
+                    case 3:
+                        childLinearLayout = (LinearLayout) childrenGroupLL.getChildAt(i);
+                        school = ((Spinner) childLinearLayout.getChildAt(1)).getSelectedItem().toString();
+                        tempMap.put(getString(R.string.bbdd_center), school);
+                        childRef.child(childrensKeyArray[currentChild].toString()).
+                                child(getString(R.string.bbdd_center)).setValue(school);
+                        break;
+                    case 4:
+                        childLinearLayout = (LinearLayout) childrenGroupLL.getChildAt(i);
+                        courseGroup = ((EditText) childLinearLayout.getChildAt(1)).getText().toString();
+                        tempMap.put(getString(R.string.bbdd_class), courseGroup);
+                        childRef.child(childrensKeyArray[currentChild].toString()).
+                                child(getString(R.string.bbdd_class)).setValue(courseGroup);
+                        break;
+                }//switch
+                if ((i != 0) && ((i % getResources().getInteger(R.integer.children_fields)) == 0)) {
+                    Map<String, Object> childMap = new HashMap<>(tempMap);
+                    infoChildMap.put(childrensKeyArray[currentChild].toString(), childMap);
+                    tempMap.clear();
+                    currentChild++;
+                }
+            }//for
+            fatherMap.put(getString(R.string.bbdd_children), infoChildMap);
+            Log.i("MyDataActivity", "padre: " + fatherMap);
+            Log.i("MyDataActivity", "Actualizando datos padre...");
+            ref.child(key).updateChildren(fatherMap);
+            this.finish();
+        }//rol padre
+    }
+
+    public boolean isFormOK(String rol) {
+        boolean formOk = true;
+        String data = "";
+        if (rol.equals(getString(R.string.rol_student))) {
+            EditText courseGroupEditText = (EditText) findViewById(R.id.course_group);
+            data = nameEditText.getText().toString();
+            if (data.isEmpty()) {
+                formOk = false;
+                nameEditText.setError(getString(R.string.field_empty));
+            }
+            data = lastnameEditText.getText().toString();
+            if (data.isEmpty()) {
+                formOk = false;
+                lastnameEditText.setError(getString(R.string.field_empty));
+            }
+            data = mailEditText.getText().toString();
+            if (!Utilities.isMail(data)) {
+                formOk = false;
+                mailEditText.setError(getString(R.string.mail_format_error));
+            }
+            data = telephoneEditText.getText().toString();
+            if (!Utilities.isTelephone(data)) {
+                formOk = false;
+                telephoneEditText.setError(getString(R.string.telephone_format_error));
+            }
+            data = courseGroupEditText.getText().toString();
+            if (!Utilities.isOneClass(data)) {
+                formOk = false;
+                courseGroupEditText.setError(getString(R.string.error_class_format));
+            }
+        } else if (rol.equals(getString(R.string.rol_teacher))) {
+            EditText courseGroupEditText = (EditText) findViewById(R.id.course_group);
+            data = nameEditText.getText().toString();
+            if (data.isEmpty()) {
+                formOk = false;
+                nameEditText.setError(getString(R.string.field_empty));
+            }
+            data = lastnameEditText.getText().toString();
+            if (data.isEmpty()) {
+                formOk = false;
+                lastnameEditText.setError(getString(R.string.field_empty));
+            }
+            data = mailEditText.getText().toString();
+            if (!Utilities.isMail(data)) {
+                formOk = false;
+                mailEditText.setError(getString(R.string.mail_format_error));
+            }
+            data = telephoneEditText.getText().toString();
+            if (!Utilities.isTelephone(data)) {
+                formOk = false;
+                telephoneEditText.setError(getString(R.string.telephone_format_error));
+            }
+            data = courseGroupEditText.getText().toString();
+            data = data.replaceAll(" ", "");
+            if (!Utilities.areManyClasses(data)) {
+                formOk = false;
+                courseGroupEditText.setError(getString(R.string.error_classes_format));
+            }
+        } else if (rol.equals(getString(R.string.rol_father))) {
+            data = nameEditText.getText().toString();
+            if (data.isEmpty()) {
+                formOk = false;
+                nameEditText.setError(getString(R.string.field_empty));
+            }
+            data = lastnameEditText.getText().toString();
+            if (data.isEmpty()) {
+                formOk = false;
+                lastnameEditText.setError(getString(R.string.field_empty));
+            }
+            data = mailEditText.getText().toString();
+            if (!Utilities.isMail(data)) {
+                formOk = false;
+                mailEditText.setError(getString(R.string.mail_format_error));
+            }
+            data = telephoneEditText.getText().toString();
+            if (!Utilities.isTelephone(data)) {
+                formOk = false;
+                telephoneEditText.setError(getString(R.string.telephone_format_error));
+            }
+            for (int i = 0; i < childrenGroupLL.getChildCount(); i++) {
+                EditText chilEdtitText;
+                LinearLayout childLinearLayout;
+                int childElto = (i % getResources().getInteger(R.integer.children_fields));
+                switch (childElto) {
+                    case 1:
+                    case 2:
+                        childLinearLayout = (LinearLayout) childrenGroupLL.getChildAt(childElto);
+                        chilEdtitText = (EditText) (childLinearLayout.getChildAt(1));
+                        if (chilEdtitText.getText().toString().isEmpty()) {
+                            formOk = false;
+                            chilEdtitText.setError(getString(R.string.field_empty));
+                        }//if
+                        break;
+                    case 3:
+                        childLinearLayout = (LinearLayout) childrenGroupLL.getChildAt(childElto);
+                        Spinner childSpinner = (Spinner) (childLinearLayout.getChildAt(1));
+                        data = childSpinner.getSelectedItem().toString();
+                        if ((!schools.contains(data)) || (data.equals(getString(R.string.select_school)))) {
+                            formOk = false;
+                            Toast.makeText(this, getString(R.string.error_select_school), Toast.LENGTH_LONG).show();
+                        }
+                        break;
+                    case 4:
+                        childLinearLayout = (LinearLayout) childrenGroupLL.getChildAt(childElto);
+                        chilEdtitText = (EditText) (childLinearLayout.getChildAt(1));
+                        data = chilEdtitText.getText().toString();
+                        if (!Utilities.isOneClass(data)) {
+                            formOk = false;
+                            chilEdtitText.setError(getString(R.string.error_class_format));
+                        }
+                        break;
+                }//switch*/
+            }//for
+        }//if else if rol
+        return formOk;
+    }
+
+    public void launchPrompt() {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.prompt, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set prompt.xml to alertdialog builder
+        alertDialogBuilder.setView(promptView);
+
+        final EditText schoolEditText = (EditText) promptView.findViewById(R.id.schoolEditText);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.save),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // get user input and set it to result
+                                // edit text
+                                schoolSelected = schoolEditText.getText().toString();
+                                schools.add(schoolSelected);
+                                String uuid = UUID.randomUUID().toString();
+                                Map<String, Object> schoolMap = new HashMap<String, Object>();
+                                schoolMap.put(uuid, schoolSelected);
+                                schoolsRef.updateChildren(schoolMap);
+                                if (!rol.equals(getString(R.string.rol_father))) {
+                                    spinnerSchool.setSelection(spinnerAdapter.getPosition(schoolSelected));
+                                } else {
+                                    childSchoolSpinner.setSelection(spinnerAdapter.getPosition(schoolSelected));
+                                }
+                            }
+                        })
+                .setNegativeButton(getString(R.string.back),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 
 }//class

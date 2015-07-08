@@ -4,6 +4,7 @@
     <string name="app_name">School App</string>
     <string name="person">person</string>
     <string name="action_settings">Ajustes</string>
+    <string name="action_add_school">Añadir Colegio</string>
     <string name="action_modify">Modificar Datos</string>
     <string name="username_hint">Correo de Usuario</string>
     <string name="password_hint">Contraseña</string>
@@ -62,12 +63,19 @@
     <string name="select_school">Seleccionar Colegio</string>
     <string name="teacher_select_course">Seleccione uno de los cursos en los que da clase: </string>
     <string name="father_select_course">Seleccione uno de los cursos en los que tenga hijos: </string>
+    <string name="value">value</string>
+    <string name="editText_class">class android.widget.LinearLayout</string>
 
     <string-array name="usertype_array">
         <item>Alumno</item>
         <item>Profesor</item>
         <item>Madre/Padre/Tutor Legal</item>
     </string-array>
+
+    <!-- Roles -->
+    <string name="rol_teacher">Profesor</string>
+    <string name="rol_father">Padre</string>
+    <string name="rol_student">Alumno</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nombre: </string>
@@ -106,7 +114,7 @@
     <string name="bbdd_system">System</string>
     <string name="bbdd_rol_remitter">rol_remitente</string>
     <string name="bbdd_schools">colegios</string>
-                   <!-- FIN BBDD -->
+    <!-- FIN BBDD -->
 
     <string name="help_dialog_title">Ayuda sobre Curso y Grupo</string>
     <string name="help_ok_dialog">Aceptar</string>
@@ -120,7 +128,7 @@
 
     <!-- My Data -->
     <string name="my_name">Gonzalo J. García Martín</string>
-    <string name="my_email">dracoyue@gmail.com</string>
+    <string name="my_email">alu0100403619@ull.edu.es</string>
     <string name="my_telephone">654132662</string>
     <string name="my_adress">C// Estado de Aragua, Nº 5, 1º. La Laguna</string>
     <string name="my_school">Escuela Técnica Superior de Ingenierías y Tecnologías</string>
@@ -153,14 +161,10 @@
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="welcome_image_description">Imagen de Bienvenida</string>
-    <string name="title_activity_data">DataActivity</string>
+    <string name="title_activity_data">Datos de Contacto</string>
     <string name="title_activity_chat_2">ChatActivity</string>
     <string name="title_activity_chat">ChatActivity</string>
-
-    <string name="value">value</string>
     <string name="title_activity_my_data">MyDataActivity</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_change_password">ChangePasswordActivity</string>
 
     <!-- Tabs Title -->
