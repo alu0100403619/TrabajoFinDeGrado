@@ -86,6 +86,7 @@ public class NotificationsActivity extends ListActivity {
                 //Borrar al hacer click
                 //notifyAdapter.remove(position);
                 int pos = mailsList.indexOf(messages.get(0).getMailRemitter());
+                mailsList.remove(pos);
                 messagesListView.remove(pos);
                 numberMessages.remove(pos);
                 rolRemitterMessages.remove(pos);
@@ -113,11 +114,10 @@ public class NotificationsActivity extends ListActivity {
                     rolRemitterMessages.add((String) values.get(getString(R.string.bbdd_rol_remitter)));
                 }
                 else {
-                    //TODO Error en mi tablet, pero no en mi movil (A veces)
                     int pos = mailsList.indexOf(message.getMailRemitter());
                     int number = numberMessages.get(pos) + 1;
                     numberMessages.add(pos, number);
-                    //El rol ya esta en el ArrayList
+                    //El rol ya esta en el ArrayLis
                 }
 
                 //Borrar el mensaje de la BBDD
