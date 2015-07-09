@@ -70,6 +70,13 @@ public class Chat2Activity extends ListActivity {
         //Cambiar el titulo de la ActionBar
         getActionBar().setTitle(chatName);
 
+        //obtener los mensaje que se le pasan si vienen de NotificationsActivity
+        if (getIntent().getExtras().containsKey(getString(R.string.bbdd_message))) {
+            ArrayList<Message> messagesToNotifications = getIntent().getExtras().
+                    getParcelableArrayList(getString(R.string.bbdd_message));
+            messages.addAll(messagesToNotifications);
+        }//if
+
         //Obtener Mensajes de la Nube
         getCloudMessages();
     }

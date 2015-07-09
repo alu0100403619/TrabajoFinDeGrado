@@ -75,7 +75,8 @@ public class NotificationsActivity extends ListActivity {
                 }//for
 
                 //Lanzar Actividad
-                Intent intent = new Intent(NotificationsActivity.this, ChatActivity.class);
+                //Intent intent = new Intent(NotificationsActivity.this, ChatActivity.class);
+                Intent intent = new Intent(NotificationsActivity.this, Chat2Activity.class);
                 intent.putExtra(getString(R.string.bbdd_message), messages);
                 intent.putExtra(getString(R.string.name), messagesListView.get(position));
                 intent.putExtra(getString(R.string.mail), mail);
