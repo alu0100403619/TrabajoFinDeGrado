@@ -97,7 +97,7 @@ public class ExpandableFahtersActivity extends Activity {
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 String name = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getName() + " " +
                         listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getLastname();
-                Intent intent = new Intent(ExpandableFahtersActivity.this, Chat2Activity.class);
+                Intent intent = new Intent(ExpandableFahtersActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
                 intent.putExtra(getString(R.string.mail_remitter),

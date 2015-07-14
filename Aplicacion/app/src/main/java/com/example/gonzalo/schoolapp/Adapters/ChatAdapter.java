@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.gonzalo.schoolapp.ChatActivity;
 import com.example.gonzalo.schoolapp.R;
-import com.example.gonzalo.schoolapp.clases.Date;
 import com.example.gonzalo.schoolapp.clases.Message;
 
 import java.util.ArrayList;

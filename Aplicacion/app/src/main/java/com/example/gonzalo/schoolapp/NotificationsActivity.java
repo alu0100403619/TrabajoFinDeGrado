@@ -65,8 +65,10 @@ public class NotificationsActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String itemMail = mailsList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
-                //TODO error en mi tablet pero no en mi movil (A veces)
+                //TODO error (A veces)
                 //java.util.ConcurrentModificationException
+                //at java.util.ArrayList$ArrayListIterator.next(ArrayList.java:573)
+                //at com.example.gonzalo.schoolapp.NotificationsActivity$1.onItemClick
                 for (Message message : messagesList) {
                     if ((itemMail.equals(message.getMailRemitter())) && (!messages.contains(message))) {
                         messages.add(message);
@@ -75,8 +77,7 @@ public class NotificationsActivity extends ListActivity {
                 }//for
 
                 //Lanzar Actividad
-                //Intent intent = new Intent(NotificationsActivity.this, ChatActivity.class);
-                Intent intent = new Intent(NotificationsActivity.this, Chat2Activity.class);
+                Intent intent = new Intent(NotificationsActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.bbdd_message), messages);
                 intent.putExtra(getString(R.string.name), messagesListView.get(position));
                 intent.putExtra(getString(R.string.mail), mail);
@@ -85,7 +86,6 @@ public class NotificationsActivity extends ListActivity {
                 intent.putExtra(getString(R.string.myRol), myRol);
 
                 //Borrar al hacer click
-                //notifyAdapter.remove(position);
                 int pos = mailsList.indexOf(messages.get(0).getMailRemitter());
                 mailsList.remove(pos);
                 messagesListView.remove(pos);
@@ -93,11 +93,29 @@ public class NotificationsActivity extends ListActivity {
                 rolRemitterMessages.remove(pos);
                 notifyAdapter.notifyDataSetChanged();
 
-                startActivity(intent);
+                //startActivity(intent);
+                //-----------------------------NUEVA LINEA------------------------------------------
+                startActivityForResult(intent, 1);
+                //-----------------------------FIN NUEVA LINEA--------------------------------------
 
             }//public void onItemClick
         });//setOnITemClickListener
     }
+
+    //----------------------------------------------------------------------------------------------
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                String mailRemitter =data.getStringExtra(getString(R.string.bbdd_mail_remitter));
+                Log.i("NotificationsActivity", "De vuelta del chat: "+mailRemitter);
+            }
+            /*if (resultCode == RESULT_CANCELED) {
+                //Write your code if there's no result
+            }//*/
+        }
+    }
+    //----------------------------------------------------------------------------------------------
 
     public void preparingData() {
         //Obtener los Mensajes
@@ -113,8 +131,7 @@ public class NotificationsActivity extends ListActivity {
                     messagesListView.add(message.getRemitter());
                     numberMessages.add(1);
                     rolRemitterMessages.add((String) values.get(getString(R.string.bbdd_rol_remitter)));
-                }
-                else {
+                } else {
                     int pos = mailsList.indexOf(message.getMailRemitter());
                     int number = numberMessages.get(pos) + 1;
                     numberMessages.add(pos, number);
@@ -129,14 +146,31 @@ public class NotificationsActivity extends ListActivity {
                         numberMessages, rolRemitterMessages);
                 setListAdapter(notifyAdapter);
             }
+
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
             @Override
-            public void onCancelled(FirebaseError firebaseError) {}
+            public void onCancelled(FirebaseError firebaseError) {
+            }
         });//getMessages
     }
+
+    /*@Override
+    protected void onResume () {
+        super.onResume();
+        Toast.makeText(this, "NotificationsActivity onResume", Toast.LENGTH_LONG).show();
+        if (notifyAdapter != null) {
+            notifyAdapter.notifyDataSetChanged();
+        }
+    }//*/
 }//class

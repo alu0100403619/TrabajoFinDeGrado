@@ -6,16 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.gonzalo.schoolapp.Adapters.NotifyAdapter;
 import com.example.gonzalo.schoolapp.clases.Alumno;
-import com.example.gonzalo.schoolapp.clases.Message;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -71,7 +63,7 @@ public class AlumnoActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String name = alus.get(position).getName() + " " +
                         alus.get(position).getLastname();
-                Intent intent = new Intent(AlumnoActivity.this, Chat2Activity.class);
+                Intent intent = new Intent(AlumnoActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
                 intent.putExtra(getString(R.string.mail_remitter), alus.get(position).getMail());

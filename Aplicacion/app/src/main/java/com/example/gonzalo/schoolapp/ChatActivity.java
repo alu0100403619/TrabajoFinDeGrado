@@ -1,27 +1,36 @@
 package com.example.gonzalo.schoolapp;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.example.gonzalo.schoolapp.Adapters.ChatAdapter;
 import com.example.gonzalo.schoolapp.clases.Date;
 import com.example.gonzalo.schoolapp.clases.Message;
 import com.example.gonzalo.schoolapp.database.MessageSQLHelper;
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 
-
+/**
+ * Created by Gonzalo on 29/05/2015.
+ *
+ *
+ */
 public class ChatActivity extends ListActivity {
 
     String chatName, mail, myName, mailRemitter, idConversation, myRol;
@@ -30,16 +39,15 @@ public class ChatActivity extends ListActivity {
     Firebase messageRef;
     ChatAdapter chatAdapter;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         Firebase.setAndroidContext(this);
         messageRef = new Firebase(getString(R.string.mensajesRef));
 
-        messages = new ArrayList<>();
-        tempMessages = new ArrayList<>();
-        messageBBDD = new MessageSQLHelper(this);
+        messages = new ArrayList<>(); //Mensajes
+        tempMessages = new ArrayList<>(); //Mensajes Temporales
+        messageBBDD = new MessageSQLHelper(this); //BBDD
 
         //Obtener el Nombre
         chatName = getIntent().getExtras().getString(getString(R.string.name));
@@ -60,17 +68,18 @@ public class ChatActivity extends ListActivity {
             messageBBDD.deleteConversation(idConversation);
         }
 
-        //Obtener Mensajes del bundle
-        tempMessages = getIntent().getExtras().getParcelableArrayList(getString(R.string.bbdd_message));
-        messages.addAll(tempMessages);
-
         //Cambiar el titulo de la ActionBar
         getActionBar().setTitle(chatName);
 
-        //Seteamos el Adapter
-        //setListAdapter(new ChatAdapter(this, messages));
-        chatAdapter = new ChatAdapter(this, messages);
-        setListAdapter(chatAdapter);
+        //obtener los mensaje que se le pasan si vienen de NotificationsActivity
+        if (getIntent().getExtras().containsKey(getString(R.string.bbdd_message))) {
+            ArrayList<Message> messagesToNotifications = getIntent().getExtras().
+                    getParcelableArrayList(getString(R.string.bbdd_message));
+            messages.addAll(messagesToNotifications);
+        }//if
+
+        //Obtener Mensajes de la Nube
+        getCloudMessages();
     }
 
     @Override
@@ -98,19 +107,24 @@ public class ChatActivity extends ListActivity {
     public void send (View view) {
         EditText messageInputEditText = (EditText) findViewById(R.id.messageInput);
         String messageInput = messageInputEditText.getText().toString();
-        Calendar calendar = Calendar.getInstance();
-        Date date = new Date(calendar.get(calendar.DAY_OF_MONTH),
+        if (!messageInput.isEmpty()) {
+            Calendar calendar = Calendar.getInstance();
+            Date date = new Date(calendar.get(calendar.DAY_OF_MONTH),
                 calendar.get(calendar.MONTH) + 1, calendar.get(calendar.YEAR),
                 calendar.getTime().getHours(), calendar.getTime().getMinutes());
-        Message message = new Message(mail, myName, messageInput, date, myRol);
-        messages.add(message);
+            Message message = new Message(mail, myName, messageInput, date, myRol);
+            messages.add(message);
 
-        //Mandar el mensaje a la BBDD mientras el name no sea System
-        sendToDataBase(message);
+            //Mandar el mensaje a la BBDD mientras el name no sea System
+            sendToDataBase(message);
 
-        //Refresh the view
-        messageInputEditText.setText(getString(R.string.empty));
-        chatAdapter.notifyDataSetChanged();
+            //Refresh the view
+            messageInputEditText.setText(getString(R.string.empty));
+            messageInputEditText.clearFocus();
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);//No Funca
+            //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            chatAdapter.notifyDataSetChanged();
+        }//si messageinput no esta vacio te lo deja mandar
     }
 
     @Override
@@ -122,6 +136,11 @@ public class ChatActivity extends ListActivity {
         for (Message message: messages) {
             messageBBDD.addMessage(message, newIdConversation);
         }
+        //------------------------------------------------------------------------------------------
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(getString(R.string.bbdd_mail_remitter), mailRemitter);
+        setResult(RESULT_OK,returnIntent);
+        //------------------------------------------------------------------------------------------
         super.onDestroy();
     }
 
@@ -143,5 +162,38 @@ public class ChatActivity extends ListActivity {
 
         String uuid = UUID.randomUUID().toString();
         messageRef.child(uuid).updateChildren(messageMap);
+    }
+
+    public void getCloudMessages () {
+        Query getMessages = messageRef.orderByChild(getString(R.string.bbdd_addressee)).equalTo(mail);
+        getMessages.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
+                Message message = new Message(values);
+                if (mailRemitter.equals(message.getMailRemitter())) {
+                    messages.add (message);
+                }//if
+
+                //Seteamos el Adapter
+                chatAdapter = new ChatAdapter(ChatActivity.this, messages);
+                setListAdapter(chatAdapter);
+
+                //Borrar el mensaje de la BBDD
+                messageRef.child(dataSnapshot.getKey()).removeValue();
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });//getMessages
+
+        //Seteamos el Adapter
+        chatAdapter = new ChatAdapter(ChatActivity.this, messages);
+        setListAdapter(chatAdapter);
     }
 }

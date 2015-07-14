@@ -1,14 +1,19 @@
 package com.example.gonzalo.schoolapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.utilities.Utilities;
@@ -152,6 +157,28 @@ public class LoginActivity extends Activity {
         }
 
         if ((!mail.isEmpty()) && (!password.isEmpty()) && (Utilities.isMail(mail))) {
+
+            //loading
+            LayoutInflater layoutInflater = LayoutInflater.from(this);
+            View loadView = layoutInflater.inflate(R.layout.load, null);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+            // set load.xml to alertdialog builder
+            alertDialogBuilder.setView(loadView);
+
+            final ImageView imageViewRotator = (ImageView) loadView.findViewById(R.id.ImageViewRotator);
+            final Animation myRotation = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.animation_rotate_pencil);
+
+            // create alert dialog
+            final AlertDialog alertDialog = alertDialogBuilder.create();
+
+            //start the animation
+            imageViewRotator.startAnimation(myRotation);
+
+            // show it
+            alertDialog.show();
+
             userType = setTypeUser();
             rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
                 @Override
@@ -164,6 +191,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.bbdd_class), clases.get(0));
                         //El alumno solo va a un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
+                        alertDialog.dismiss();
                         startActivity(intent);
                         //TODO Descomentar
                         //LoginActivity.this.finish();
@@ -176,6 +204,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.myRol), myRol);
                         //Suponemos que un profesor solo da clases en un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
+                        alertDialog.dismiss();
                         startActivity(intent);
                         //TODO Descomentar
                         //LoginActivity.this.finish();
@@ -187,6 +216,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.bbdd_center), colegios);
                         intent.putExtra(getString(R.string.myName), myName);
                         intent.putExtra(getString(R.string.myRol), myRol);
+                        alertDialog.dismiss();
                         startActivity(intent);
                         //TODO Descomentar
                         //LoginActivity.this.finish();
@@ -199,6 +229,7 @@ public class LoginActivity extends Activity {
 
                 @Override
                 public void onAuthenticationError(FirebaseError firebaseError) {
+                    alertDialog.dismiss();
                     Toast.makeText(LoginActivity.this,
                             getString(R.string.login_error)
                                     + firebaseError.getMessage(), Toast.LENGTH_LONG).show();

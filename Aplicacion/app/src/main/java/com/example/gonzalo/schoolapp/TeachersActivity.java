@@ -3,14 +3,10 @@ package com.example.gonzalo.schoolapp;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
-import com.example.gonzalo.schoolapp.Chat2Activity;
-import com.example.gonzalo.schoolapp.clases.Message;
 import com.example.gonzalo.schoolapp.clases.Teacher;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -69,7 +65,7 @@ public class TeachersActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String name = classTeachers.get(position).getName() + " " +
                         classTeachers.get(position).getLastname();
-                Intent intent = new Intent(TeachersActivity.this, Chat2Activity.class);
+                Intent intent = new Intent(TeachersActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
                 intent.putExtra(getString(R.string.mail_remitter), classTeachers.get(position).getMail());
@@ -88,7 +84,6 @@ public class TeachersActivity extends ListActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
-                Log.i("TeachersActivity", "Values: "+values);
                 Teacher teacher = new Teacher(values);
                 if ((teacher.getClassRooms().contains(clase)) && (!classTeachers.contains(teacher))) {
                     classTeachers.add(teacher);

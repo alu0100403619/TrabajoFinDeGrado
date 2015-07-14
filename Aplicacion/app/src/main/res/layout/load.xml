@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/registerwater2">
+
+    <ImageView android:id="@+id/ImageViewRotator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_action_load"/>
+
+    <EditText android:id="@+id/empty"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:layout_below="@id/ImageViewRotator"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/NormalEditText"/>
+
+    <EditText android:id="@+id/loadLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/load"
+        android:layout_below="@id/empty"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/NormalEditText"/>
+
+</RelativeLayout>

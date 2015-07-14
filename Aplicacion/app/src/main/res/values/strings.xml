@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">School App</string>
-    <string name="person">person</string>
+
     <string name="action_settings">Ajustes</string>
     <string name="action_add_school">Añadir Colegio</string>
     <string name="action_modify">Modificar Datos</string>
@@ -59,10 +59,13 @@
     <string name="change_password">Cambiar Contraseña</string>
     <string name="save_password">Guardar Contraseña</string>
     <string name="back">Volver</string>
+    <string name="load">Cargando...</string>
     <string name="add_school">Añadir Colegio...</string>
     <string name="select_school">Seleccionar Colegio</string>
     <string name="teacher_select_course">Seleccione uno de los cursos en los que da clase: </string>
     <string name="father_select_course">Seleccione uno de los cursos en los que tenga hijos: </string>
+
+    <string name="person">person</string>
     <string name="value">value</string>
     <string name="editText_class">class android.widget.LinearLayout</string>
 

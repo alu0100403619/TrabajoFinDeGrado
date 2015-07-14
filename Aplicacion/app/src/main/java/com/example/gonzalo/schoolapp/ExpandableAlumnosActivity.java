@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterAlumno;
 import com.example.gonzalo.schoolapp.clases.Alumno;
@@ -93,7 +92,7 @@ public class ExpandableAlumnosActivity extends Activity {
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 String name = listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getName() + " " +
                         listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getLastname();
-                Intent intent = new Intent(ExpandableAlumnosActivity.this, Chat2Activity.class);
+                Intent intent = new Intent(ExpandableAlumnosActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
                 intent.putExtra(getString(R.string.mail_remitter),
