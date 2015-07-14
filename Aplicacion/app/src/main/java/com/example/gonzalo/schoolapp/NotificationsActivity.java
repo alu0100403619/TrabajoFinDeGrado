@@ -107,8 +107,15 @@ public class NotificationsActivity extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK){
-                String mailRemitter =data.getStringExtra(getString(R.string.bbdd_mail_remitter));
-                Log.i("NotificationsActivity", "De vuelta del chat: "+mailRemitter);
+                String mailRemitter = data.getStringExtra(getString(R.string.bbdd_mail_remitter));
+                Log.i("NotificationsActivity", "De vuelta del chat con "+mailRemitter);
+
+                int pos = mailsList.indexOf(mailRemitter);
+                mailsList.remove(pos);
+                messagesListView.remove(pos);
+                numberMessages.remove(pos);
+                rolRemitterMessages.remove(pos);
+                notifyAdapter.notifyDataSetChanged();
             }
             /*if (resultCode == RESULT_CANCELED) {
                 //Write your code if there's no result

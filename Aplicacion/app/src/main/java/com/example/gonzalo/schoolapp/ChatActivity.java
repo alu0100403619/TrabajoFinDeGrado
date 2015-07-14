@@ -1,6 +1,7 @@
 package com.example.gonzalo.schoolapp;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.example.gonzalo.schoolapp.Adapters.ChatAdapter;
@@ -118,19 +120,33 @@ public class ChatActivity extends ListActivity {
             //Mandar el mensaje a la BBDD mientras el name no sea System
             sendToDataBase(message);
 
-            //Refresh the view
             messageInputEditText.setText(getString(R.string.empty));
+
+            //Hide the keyboard
             messageInputEditText.clearFocus();
-            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);//No Funca
-            //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+            //Refresh the view
             chatAdapter.notifyDataSetChanged();
         }//si messageinput no esta vacio te lo deja mandar
     }
 
     @Override
+    public void onBackPressed(){
+        messageBBDD.addConversation(mail, mailRemitter);
+        String newIdConversation = messageBBDD.getIdConversation(mailRemitter);
+        for (Message message: messages) {
+            messageBBDD.addMessage(message, newIdConversation);
+        }
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(getString(R.string.bbdd_mail_remitter), mailRemitter);
+        setResult(RESULT_OK,returnIntent);
+        super.onBackPressed();
+    }
+
+    /*@Override
     protected void onDestroy () {
-        Log.i("ChatActivity", "OnDestroy");
-        //MessageSQLHelper messageSQLHelper = new MessageSQLHelper(this);
         messageBBDD.addConversation(mail, mailRemitter);
         String newIdConversation = messageBBDD.getIdConversation(mailRemitter);
         for (Message message: messages) {
@@ -139,10 +155,12 @@ public class ChatActivity extends ListActivity {
         //------------------------------------------------------------------------------------------
         Intent returnIntent = new Intent();
         returnIntent.putExtra(getString(R.string.bbdd_mail_remitter), mailRemitter);
+        Log.i("ChatActivity", "Mail Remitter: "+mailRemitter);
         setResult(RESULT_OK,returnIntent);
         //------------------------------------------------------------------------------------------
+        Log.i("ChatActivity", "OnDestroy");
         super.onDestroy();
-    }
+    }//*/
 
     public void sendToDataBase(Message message) {
         Map<String, Object> dateMap = new HashMap<String, Object>();

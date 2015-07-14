@@ -2,6 +2,7 @@ package com.example.gonzalo.schoolapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -157,6 +159,12 @@ public class LoginActivity extends Activity {
         }
 
         if ((!mail.isEmpty()) && (!password.isEmpty()) && (Utilities.isMail(mail))) {
+
+            //Hide the keyboard
+            mailEditText.clearFocus();
+            passwordEditText.clearFocus();
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
             //loading
             LayoutInflater layoutInflater = LayoutInflater.from(this);
