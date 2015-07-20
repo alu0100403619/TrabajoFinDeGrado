@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/registerwater2"/>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/Transparent"/>
+            <stroke android:width="2dp" android:color="@color/DarkBlue"/>
+            <!-- Corner Radius -->
+            <corners android:radius="5dp"></corners>
+        </shape>
+    </item>
+
+</layer-list>

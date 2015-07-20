@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//TODO Arreglar
 public class ExpandableFahtersActivity extends Activity {
 
     ExpandableListAdapterFather listAdapter;
@@ -121,12 +120,13 @@ public class ExpandableFahtersActivity extends Activity {
                 Map<String, Object> child;
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Map<String, Object> childrens = (Map<String, Object>) values.get(getString(R.string.bbdd_children));
+                //Log.i("ExpandFatAct", "Keys Hijos: "+childrens.keySet());
                 Set<String> keys = childrens.keySet();
                 for (String key: keys) {
                     child = (Map<String, Object>) childrens.get(key);
                     if (child.get(getString(R.string.bbdd_center)).equals(school)) {
                         Father father = new Father (values);
-                        //Si el array no lo contiene, mete al padre. Se Repiten---------------------------------
+                        //TODO Si el array no lo contiene, mete al padre. Se Repiten---------------------------------
                         if ((!fathers.contains(father)) && (!father.getMail().equals(mail))) {
                             fathers.add(father);
                         }//if

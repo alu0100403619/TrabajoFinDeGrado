@@ -2,6 +2,8 @@ package com.example.gonzalo.schoolapp.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
@@ -22,6 +24,7 @@ public class Father implements Parcelable {
         setName((String) values.get("nombre"));
         setLastname((String) values.get("apellido"));
         setMail((String) values.get("mail"));
+        Log.i("Father", "clase Telefono:"+values.get("telefono").getClass());
         setTelephone((String) values.get("telefono"));
         Map<String, Object> childs = (Map<String, Object>) values.get("hijos");
         setChildrens(childs);

@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" android:background="@drawable/registerwater"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.gonzalo.schoolapp.AddChildActivity">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:fillViewport="false">
+        <LinearLayout android:id="@+id/form"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+            <EditText android:id="@+id/text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:drawableLeft="@drawable/ic_action_person"/>
+
+
+            <EditText android:id="@+id/text_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/lastname"
+                android:inputType="textPersonName"
+                android:drawableLeft="@drawable/ic_action_person"/>
+
+            <EditText android:id="@+id/text_telephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/telephone"
+                android:inputType="phone" android:maxLength="9"
+                android:ems="10" android:drawableLeft="@drawable/ic_action_phone"/>
+
+            <LinearLayout android:id="@+id/school_group"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <TextView android:id="@+id/label_spinner_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bbdd_schools"/>
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/spinner_2"
+                    android:layout_alignParentTop="true"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/course_group"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp">
+                <EditText android:id="@+id/text_course_group"
+                    android:layout_width="226dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/course_group_hint"
+                    android:inputType="text"
+                    android:drawableLeft="@drawable/ic_action_group"/>
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:src="@drawable/ic_action_help"
+                    android:onClick="launchHelp"
+                    android:contentDescription="Help" />
+            </LinearLayout>
+
+            <EditText android:id="@+id/text_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mail"
+                android:inputType="textEmailAddress"
+                android:drawableLeft="@drawable/ic_action_email"/>
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal">
+
+                <Button android:id="@+id/back_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/back"
+                    android:onClick="back" />
+
+                <Button android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_child" android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="addChild" />
+
+            </LinearLayout>
+            <!-- Fin del LinearLayout y del ScrollView -->
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,212 +1,91 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin" android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.gonzalo.schoolapp.RegisterActivity"
-    android:background="@drawable/registerwater">
+    android:background="@drawable/welcome">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/scrollView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:fillViewport="false">
-        <LinearLayout android:id="@+id/form"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </View>
 
-        <LinearLayout android:id="@+id/rol"
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="47dp">
-            <TextView android:id="@+id/label_spinner_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rol"/>
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/spinner_1"
-                android:entries="@array/usertype_array"
-                android:prompt="@string/usertype_promt"
-                android:layout_alignParentTop="true"/>
-            </LinearLayout>
+    <RelativeLayout android:id="@+id/registerStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_linearlayout"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="launchRegisterStudent">
 
+        <ImageView android:id="@+id/studentIcon"
+            android:src="@drawable/ic_action_register_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView android:text="@string/registerStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/studentIcon"/>
 
-            <EditText android:id="@+id/text_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/name"
-                android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_action_person"/>
+    </RelativeLayout>
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </View>
 
-            <EditText android:id="@+id/text_lastname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/lastname"
-                android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_action_person"/>
+    <RelativeLayout android:id="@+id/registerTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_linearlayout"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="launchRegisterTeacher">
 
-            <EditText android:id="@+id/text_telephone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/telephone"
-                android:inputType="phone" android:maxLength="9"
-                android:ems="10" android:drawableLeft="@drawable/ic_action_phone"/>
+        <ImageView android:id="@+id/teacherIcon"
+            android:src="@drawable/ic_action_register_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView android:text="@string/registerTeacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/teacherIcon"/>
 
-            <LinearLayout android:id="@+id/school_group"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="47dp">
-                <TextView android:id="@+id/label_spinner_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bbdd_schools"/>
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/spinner_2"
-                    android:layout_alignParentTop="true"/>
-            </LinearLayout>
+    </RelativeLayout>
 
-            <LinearLayout android:id="@+id/course_group"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="47dp">
-                <EditText android:id="@+id/text_course_group"
-                    android:layout_width="226dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/course_group_hint"
-                    android:inputType="text"
-                    android:drawableLeft="@drawable/ic_action_group"/>
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" android:src="@drawable/ic_action_help"
-                    android:onClick="launchHelp"
-                    android:contentDescription="Help" />
-            </LinearLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </View>
 
-            <EditText android:id="@+id/text_mail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/mail"
-                android:inputType="textEmailAddress"
-                android:drawableLeft="@drawable/ic_action_email"/>
+    <RelativeLayout android:id="@+id/registerFather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_linearlayout"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="launchRegisterFather">
 
-            <EditText android:id="@+id/text_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_action_secure"/>
+        <ImageView android:id="@+id/fatherIcon"
+            android:src="@drawable/ic_action_register_father"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView android:text="@string/registerFather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fatherIcon"/>
 
-            <!-- Datos del Alu -->
-            <LinearLayout android:id="@+id/alumno_data"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:orientation="vertical">
+    </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/empty" android:layout_gravity="center_horizontal"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </View>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/alumno_data"
-                    android:layout_gravity="center_horizontal"/>
-
-                <EditText android:id="@+id/text_alu_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/alumno_name"
-                    android:inputType="textPersonName"
-                    android:drawableLeft="@drawable/ic_action_person"/>
-
-                <EditText android:id="@+id/text_alu_lastname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/alumno_lastname"
-                    android:inputType="textPersonName"
-                    android:drawableLeft="@drawable/ic_action_person"/>
-
-                <EditText android:id="@+id/text_alu_telephone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/alumno_telephone"
-                    android:inputType="phone" android:maxLength="9"
-                    android:drawableLeft="@drawable/ic_action_phone"/>
-
-                <EditText android:id="@+id/text_alu_mail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/alumno_mail"
-                    android:inputType="textEmailAddress"
-                    android:drawableLeft="@drawable/ic_action_email"/>
-
-                <EditText android:id="@+id/text_alu_center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/alumno_center"
-                    android:inputType="text"
-                    android:drawableLeft="@drawable/ic_action_university_filled"/>
-
-                <EditText android:id="@+id/text_alu_course_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/alu_course_group_hint"
-                    android:inputType="text"
-                    android:drawableLeft="@drawable/ic_action_group"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/empty"
-                    android:layout_gravity="center_horizontal"/>
-
-            </LinearLayout>
-            <!-- Fin Datos del Alu -->
-
-            <!-- Datos de otros Alumnos -->
-            <LinearLayout android:id="@+id/other_alumno"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
-            <!-- Fin Datos de otros Alumnos -->
-
-            <LinearLayout android:id="@+id/childs"
-                android:layout_width="fill_parent" android:orientation="horizontal"
-                android:layout_height="wrap_content">
-
-                <ImageButton android:id="@+id/add_child"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_new"
-                    android:layout_alignParentLeft="true"
-                    android:onClick="addChild" />
-
-                <ImageButton android:id="@+id/remove_child"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_minus"
-                    android:layout_alignParentRight="true"
-                    android:onClick="removeAllOtherChilds" />
-
-            </LinearLayout>
-
-            <Button android:id="@+id/submit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/submit" android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:onClick="submit" />
-        <!-- Fin del LinearLayout y del ScrollView -->
-        </LinearLayout>
-    </ScrollView>
-
-</RelativeLayout>
+</LinearLayout>

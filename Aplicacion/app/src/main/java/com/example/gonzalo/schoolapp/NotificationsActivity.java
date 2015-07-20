@@ -65,10 +65,6 @@ public class NotificationsActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String itemMail = mailsList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
-                //TODO error (A veces)
-                //java.util.ConcurrentModificationException
-                //at java.util.ArrayList$ArrayListIterator.next(ArrayList.java:573)
-                //at com.example.gonzalo.schoolapp.NotificationsActivity$1.onItemClick
                 for (Message message : messagesList) {
                     if ((itemMail.equals(message.getMailRemitter())) && (!messages.contains(message))) {
                         messages.add(message);
@@ -92,17 +88,11 @@ public class NotificationsActivity extends ListActivity {
                 numberMessages.remove(pos);
                 rolRemitterMessages.remove(pos);
                 notifyAdapter.notifyDataSetChanged();
-
-                //startActivity(intent);
-                //-----------------------------NUEVA LINEA------------------------------------------
                 startActivityForResult(intent, 1);
-                //-----------------------------FIN NUEVA LINEA--------------------------------------
-
             }//public void onItemClick
         });//setOnITemClickListener
     }
 
-    //----------------------------------------------------------------------------------------------
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
@@ -117,12 +107,8 @@ public class NotificationsActivity extends ListActivity {
                 rolRemitterMessages.remove(pos);
                 notifyAdapter.notifyDataSetChanged();
             }
-            /*if (resultCode == RESULT_CANCELED) {
-                //Write your code if there's no result
-            }//*/
         }
     }
-    //----------------------------------------------------------------------------------------------
 
     public void preparingData() {
         //Obtener los Mensajes
@@ -171,13 +157,4 @@ public class NotificationsActivity extends ListActivity {
             }
         });//getMessages
     }
-
-    /*@Override
-    protected void onResume () {
-        super.onResume();
-        Toast.makeText(this, "NotificationsActivity onResume", Toast.LENGTH_LONG).show();
-        if (notifyAdapter != null) {
-            notifyAdapter.notifyDataSetChanged();
-        }
-    }//*/
 }//class

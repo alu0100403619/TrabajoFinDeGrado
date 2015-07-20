@@ -64,6 +64,9 @@
     <string name="select_school">Seleccionar Colegio</string>
     <string name="teacher_select_course">Seleccione uno de los cursos en los que da clase: </string>
     <string name="father_select_course">Seleccione uno de los cursos en los que tenga hijos: </string>
+    <string name="father_number_children">Número de hijos: </string>
+    <string name="add_children">Añadir hijos: </string>
+    <string name="add_child">Añadir hijo </string>
 
     <string name="person">person</string>
     <string name="value">value</string>
@@ -117,6 +120,8 @@
     <string name="bbdd_system">System</string>
     <string name="bbdd_rol_remitter">rol_remitente</string>
     <string name="bbdd_schools">colegios</string>
+    <string name="exist">exist</string>
+    <string name="key">key</string>
     <!-- FIN BBDD -->
 
     <string name="help_dialog_title">Ayuda sobre Curso y Grupo</string>
@@ -174,5 +179,10 @@
     <string name="welcomeTab">Bienvenido</string>
     <string name="helpTab">Ayuda</string>
     <string name="aboutMeTab">Sobre Mi</string>
+    <string name="title_activity_register_student">RegisterStudentActivity</string>
+
+    <string name="title_activity_register_teacher">RegisterTeacherActivity</string>
+    <string name="title_activity_register_father">RegisterFatherActivity</string>
+    <string name="title_activity_add_child">AddChildActivity</string>
 
 </resources>

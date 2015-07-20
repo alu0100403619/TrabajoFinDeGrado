@@ -145,23 +145,6 @@ public class ChatActivity extends ListActivity {
         super.onBackPressed();
     }
 
-    /*@Override
-    protected void onDestroy () {
-        messageBBDD.addConversation(mail, mailRemitter);
-        String newIdConversation = messageBBDD.getIdConversation(mailRemitter);
-        for (Message message: messages) {
-            messageBBDD.addMessage(message, newIdConversation);
-        }
-        //------------------------------------------------------------------------------------------
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra(getString(R.string.bbdd_mail_remitter), mailRemitter);
-        Log.i("ChatActivity", "Mail Remitter: "+mailRemitter);
-        setResult(RESULT_OK,returnIntent);
-        //------------------------------------------------------------------------------------------
-        Log.i("ChatActivity", "OnDestroy");
-        super.onDestroy();
-    }//*/
-
     public void sendToDataBase(Message message) {
         Map<String, Object> dateMap = new HashMap<String, Object>();
         dateMap.put(getString(R.string.bbdd_date_day), message.getDate().getDay());

@@ -2,7 +2,9 @@ package com.example.gonzalo.schoolapp.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -76,6 +78,21 @@ public class Alumno implements Parcelable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Map<String, Object> toMap() {
+        Map<String, Object> infoMap = new HashMap<>();
+        infoMap.put("nombre", getName());
+        infoMap.put("apellido", getLastname());
+        infoMap.put("centro", getSchool());
+        infoMap.put("clase", getClassroom());
+        infoMap.put("mail", getMail());
+        if (getTelephone() != null){
+            infoMap.put("telefono", getTelephone());
+        } else{
+            infoMap.put("telefono", "000000000");
+        }
+        return infoMap;
     }
 
     @Override

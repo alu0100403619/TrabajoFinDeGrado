@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="registerStudent">Registro de Alumno</string>
+    <string name="registerTeacher">Registro de Profesor</string>
+    <string name="registerFather">Registro de Padre, \nMadre o Tutor Legal</string>
     <string name="prueba">Te has logueado sin usuario</string>
     <string name="mail_empty">La dirección de correo no puede estar vacia</string>
     <string name="mail_incorrect">La dirección no es correcta</string>
@@ -8,7 +11,8 @@
     <string name="register_error">Error de Registro: </string>
     <string name="login_error">Error de Login: </string>
     <string name="course_group_help">Si es usted profesor puede poner los diferentes cursos/grupos
-        a los que da clase separados por comas. 1A, 2B, 3C, ...</string>
+        a los que da clase separados por comas: 1A, 2B, 3C, ...\n Pero si es estudiante solo se le
+        permite poner un curso seguido de una clase: 1A.</string>
     <string name="forget_Password_message">Se le ha mandado al correo con el que se registró un
         mensaje para que restaure su contraseña</string>
     <string name="forget_Password_message_error">No se le ha podido mandar al correo con el que se
@@ -27,5 +31,6 @@
     <string name="error_class_format">Error en el formato de clase. Ejplo: 1A</string>
     <string name="error_classes_format">Error en el formato de clase. Ejplo: 1A,2B</string>
     <string name="error_select_school">Seleccione el nuevo colegio al que sus hijos van a ir.</string>
+    <string name="empty_children">Añada al menos un hijo.</string>
 
 </resources>

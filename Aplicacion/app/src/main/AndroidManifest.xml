@@ -86,6 +86,22 @@
             android:name=".ChangePasswordActivity"
             android:label="@string/title_activity_change_password" >
         </activity>
+        <activity
+            android:name=".RegisterStudentActivity"
+            android:label="@string/title_activity_register_student" >
+        </activity>
+        <activity
+            android:name=".RegisterTeacherActivity"
+            android:label="@string/title_activity_register_teacher" >
+        </activity>
+        <activity
+            android:name=".RegisterFatherActivity"
+            android:label="@string/title_activity_register_father" >
+        </activity>
+        <activity
+            android:name=".AddChildActivity"
+            android:label="@string/title_activity_add_child" >
+        </activity>
     </application>
 
 </manifest>
