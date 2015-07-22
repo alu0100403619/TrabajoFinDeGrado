@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" android:background="@drawable/registerwater"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.gonzalo.schoolapp.ChangeLanguageActivity">
+
+    <RadioGroup android:id="@+id/selectLanguaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton android:id="@+id/spanish" android:text="@string/spanish"
+            android:layout_width="wrap_content" style="@style/DataContactLabel"
+            android:layout_height="wrap_content" android:onClick="selectLanguage"/>
+
+        <RadioButton android:id="@+id/english" android:text="@string/english"
+            android:layout_width="wrap_content" style="@style/DataContactLabel"
+            android:layout_height="wrap_content" android:onClick="selectLanguage"/>
+
+        <RadioButton android:id="@+id/french" android:text="@string/french"
+            android:layout_width="wrap_content" style="@style/DataContactLabel"
+            android:layout_height="wrap_content" android:onClick="selectLanguage"/>
+
+    </RadioGroup>
+
+    <Button android:id="@+id/back_button" android:text="@string/back"
+        android:layout_width="wrap_content" android:onClick="back"
+        android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -32,7 +32,7 @@ public class TeachersActivity extends ListActivity {
         super.onCreate(savedInstanceBundle);
         Firebase.setAndroidContext(this);
 
-        teacherRef = new Firebase(getString(R.string.profeRef));
+        teacherRef = new Firebase(getString(R.string.teacherRef));
         classTeachers = new ArrayList<>();
         teachers = new ArrayList<>();
 

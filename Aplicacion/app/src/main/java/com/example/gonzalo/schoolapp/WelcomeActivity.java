@@ -78,6 +78,11 @@ public class WelcomeActivity extends Activity {
             Intent intent = new Intent(Settings.ACTION_SETTINGS);
             startActivity(intent);
         }
+        else if (id == R.id.action_change_language) {
+            Intent intent = new Intent(this, ChangeLanguageActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -94,6 +99,7 @@ public class WelcomeActivity extends Activity {
         else {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            this.finish();
         }
     }
 

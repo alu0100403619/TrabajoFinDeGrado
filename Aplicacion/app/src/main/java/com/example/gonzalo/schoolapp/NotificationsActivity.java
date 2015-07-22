@@ -41,7 +41,7 @@ public class NotificationsActivity extends ListActivity {
     public void onCreate (Bundle savedInstanceBundle) {
         super.onCreate(savedInstanceBundle);
         Firebase.setAndroidContext(this);
-        messageRef = new Firebase(getString(R.string.mensajesRef));
+        messageRef = new Firebase(getString(R.string.messagesRef));
         messagesList = new ArrayList<>(); //Todos los mensajes
         messagesListView = new ArrayList<>(); //Nombres de los que nos mandan mensajes
         rolRemitterMessages = new ArrayList<>(); //Roles de los que nos mandan mensajes

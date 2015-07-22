@@ -40,7 +40,7 @@ public class FatherExpandableFathersActivity extends ActionBarActivity {
         getSupportActionBar().hide();
         Firebase.setAndroidContext(this);
 
-        fathersRef = new Firebase (getString(R.string.padreRef));
+        fathersRef = new Firebase (getString(R.string.fatherRef));
         clases = new ArrayList<>();
         schools = new ArrayList<>();
         fathers = new ArrayList<>();

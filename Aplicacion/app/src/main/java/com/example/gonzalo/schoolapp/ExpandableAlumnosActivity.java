@@ -43,7 +43,7 @@ public class ExpandableAlumnosActivity extends Activity {
         //getSupportActionBar().hide();
         Firebase.setAndroidContext(this);
 
-        alumnosRef = new Firebase (getString(R.string.aluRef));
+        alumnosRef = new Firebase (getString(R.string.studentRef));
         clases = new ArrayList<>();
         alumnos = new ArrayList<>();
         listDataHeader = new ArrayList<String>();

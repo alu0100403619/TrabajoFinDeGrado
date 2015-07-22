@@ -31,7 +31,7 @@ public class FathersTabActivity extends TabActivity {
         setContentView(R.layout.activity_fathers_tab);
         getActionBar().setTitle(getString(R.string.ActionBar_father));
         Firebase.setAndroidContext(this);
-        fathersRef = new Firebase (getString(R.string.profeRef));
+        fathersRef = new Firebase (getString(R.string.teacherRef));
         clases = new ArrayList<>();
         schools = new ArrayList<>();
 

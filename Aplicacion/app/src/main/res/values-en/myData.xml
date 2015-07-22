@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- My Data -->
+    <string name="my_name">Gonzalo J. García Martín</string>
+    <string name="my_email">alu0100403619@ull.edu.es</string>
+    <string name="my_telephone">654132662</string>
+    <string name="my_adress">C// Estado de Aragua, Nº 5, 1º. La Laguna</string>
+    <string name="my_school">School of Engineering and Technology</string>
+    <string name="my_studies">Computer Engineering</string>
+</resources>

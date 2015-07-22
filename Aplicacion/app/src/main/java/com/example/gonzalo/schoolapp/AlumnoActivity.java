@@ -30,7 +30,7 @@ public class AlumnoActivity extends ListActivity {
     public void onCreate (Bundle savedInstanceBundle) {
         super.onCreate(savedInstanceBundle);
         Firebase.setAndroidContext(this);
-        aluRef = new Firebase (getString(R.string.aluRef));
+        aluRef = new Firebase (getString(R.string.studentRef));
         alus = new ArrayList<>();
         clase = "";
 

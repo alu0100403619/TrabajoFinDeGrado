@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="rootRef">https://schoolapplication.firebaseio.com/</string>
-    <string name="profeRef">https://schoolapplication.firebaseio.com/profesores</string>
-    <string name="aluRef">https://schoolapplication.firebaseio.com/alumnos</string>
-    <string name="padreRef">https://schoolapplication.firebaseio.com/padres</string>
-    <string name="mensajesRef">https://schoolapplication.firebaseio.com/mensajes</string>
-    <string name="colesRef">https://schoolapplication.firebaseio.com/colegios</string>
+    <string name="teacherRef">https://schoolapplication.firebaseio.com/profesores</string>
+    <string name="studentRef">https://schoolapplication.firebaseio.com/alumnos</string>
+    <string name="fatherRef">https://schoolapplication.firebaseio.com/padres</string>
+    <string name="messagesRef">https://schoolapplication.firebaseio.com/mensajes</string>
+    <string name="schoolsRef">https://schoolapplication.firebaseio.com/colegios</string>
 
-    <string name="_alumnos">alumnos</string>
-    <string name="_padres">padres</string>
-    <string name="_profes">profesores</string>
-    <string name="_mensajes">mensajes</string>
-    <string name="_colegios">colegios</string>
+    <string name="_students">alumnos</string>
+    <string name="_fathers">padres</string>
+    <string name="_teachers">profesores</string>
+    <string name="_messages">mensajes</string>
+    <string name="_schools">colegios</string>
+
+    <!-- Claves para la BBDD -->
+    <string name="bbdd_mail">mail</string>
+    <string name="bbdd_name">nombre</string>
+    <string name="bbdd_lastname">apellido</string>
+    <string name="bbdd_center">centro</string>
+    <string name="bbdd_telephone">telefono</string>
+    <string name="bbdd_rol">rol</string>
+    <string name="bbdd_class">clase</string>
+    <string name="bbdd_teacher_class">clases</string>
+    <string name="bbdd_father_alumno">alumnos</string>
+    <string name="bbdd_children">hijos</string>
+    <string name="bbdd_name_children">nombreHijo</string>
+    <string name="bbdd_lastname_children">apellidoHijo</string>
+    <string name="bbdd_addressee">destinatario</string>
+    <string name="bbdd_mail_remitter">mail_remitente</string>
+    <string name="bbdd_message">mensaje</string>
+    <string name="bbdd_remitter">remitente</string>
+    <string name="bbdd_date">fecha</string>
+    <string name="bbdd_date_day">dia</string>
+    <string name="bbdd_date_month">mes</string>
+    <string name="bbdd_date_year">anno</string>
+    <string name="bbdd_date_hour">hora</string>
+    <string name="bbdd_date_minutes">minutos</string>
+    <string name="bbdd_system">System</string>
+    <string name="bbdd_rol_remitter">rol_remitente</string>
+    <string name="bbdd_schools">colegios</string>
+    <string name="exist">exist</string>
+    <string name="key">key</string>
+    <!-- FIN BBDD -->
+
+    <!-- Roles -->
+    <string name="rol_teacher">Profesor</string>
+    <string name="rol_father">Padre</string>
+    <string name="rol_student">Alumno</string>
+
+    <string name="myName">MiNombre</string>
+    <string name="myRol">MiRol</string>
+    <string name="empty"></string>
+    <string name="email">email</string>
+    <string name="mail_remitter">mailRemitter</string>
+
+    <string name="person">person</string>
+    <string name="value">value</string>
+    <string name="size">size</string>
+    <string name="editText_class">class android.widget.LinearLayout</string>
 
 </resources>

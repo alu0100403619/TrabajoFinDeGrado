@@ -48,8 +48,8 @@ public class RegisterFatherActivity extends Activity {
         Firebase.setAndroidContext(this);
 
         rootRef = new Firebase(getString(R.string.rootRef));
-        studentRef = new Firebase(getString(R.string.aluRef));
-        fatherRef = new Firebase(getString(R.string.padreRef));
+        studentRef = new Firebase(getString(R.string.studentRef));
+        fatherRef = new Firebase(getString(R.string.fatherRef));
 
         children = new ArrayList<>();
         childrenExist = new ArrayList<>();
@@ -288,5 +288,12 @@ public class RegisterFatherActivity extends Activity {
 
         // show it
         alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

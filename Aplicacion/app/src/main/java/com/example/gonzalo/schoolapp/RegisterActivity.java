@@ -89,4 +89,11 @@ public class RegisterActivity extends Activity {
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 }//class

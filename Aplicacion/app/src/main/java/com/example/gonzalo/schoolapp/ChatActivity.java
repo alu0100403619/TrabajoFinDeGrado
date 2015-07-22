@@ -45,7 +45,7 @@ public class ChatActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         Firebase.setAndroidContext(this);
-        messageRef = new Firebase(getString(R.string.mensajesRef));
+        messageRef = new Firebase(getString(R.string.messagesRef));
 
         messages = new ArrayList<>(); //Mensajes
         tempMessages = new ArrayList<>(); //Mensajes Temporales

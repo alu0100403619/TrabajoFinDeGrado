@@ -17,7 +17,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".WelcomeActivity"
             android:label="@string/app_name" >
@@ -68,7 +68,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login">
         </activity>
         <activity
             android:name=".DataActivity"
@@ -101,6 +101,10 @@
         <activity
             android:name=".AddChildActivity"
             android:label="@string/title_activity_add_child" >
+        </activity>
+        <activity
+            android:name=".ChangeLanguageActivity"
+            android:label="@string/title_activity_change_language" >
         </activity>
     </application>
 

@@ -25,7 +25,7 @@ public class TeachersTabActivity extends TabActivity {
         setContentView(R.layout.activity_teachers_tab);
         getActionBar().setTitle(getString(R.string.ActionBar_teacher));
         Firebase.setAndroidContext(this);
-        teachersRef = new Firebase (getString(R.string.profeRef));
+        teachersRef = new Firebase (getString(R.string.teacherRef));
         clases = new ArrayList<>();
 
         //Obtener mail, colegio y las clases

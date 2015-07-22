@@ -22,7 +22,7 @@ public class AlumnoTabActivity extends TabActivity {
         setContentView(R.layout.activity_alumno_tab);
         Firebase.setAndroidContext(this);
         getActionBar().setTitle(getString(R.string.ActionBar_alumno));
-        aluRef = new Firebase (getString(R.string.aluRef));
+        aluRef = new Firebase (getString(R.string.studentRef));
 
         //Obtenemos el E-mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));

@@ -55,7 +55,7 @@ public class MyDataActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_data);
         Firebase.setAndroidContext(this);
-        schoolsRef = new Firebase(getString(R.string.colesRef));
+        schoolsRef = new Firebase(getString(R.string.schoolsRef));
 
         rol = getIntent().getExtras().getString(getString(R.string.bbdd_rol));
         myMail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
@@ -83,14 +83,14 @@ public class MyDataActivity extends Activity {
         childrenGroupLL = (LinearLayout) findViewById(R.id.childs);
 
         if (rol.equals(getString(R.string.rol_student))) {
-            ref = new Firebase(getString(R.string.aluRef));
+            ref = new Firebase(getString(R.string.studentRef));
         }
         else if (rol.equals(getString(R.string.rol_teacher))) {
-            ref = new Firebase(getString(R.string.profeRef));
+            ref = new Firebase(getString(R.string.teacherRef));
         }
         else if (rol.equals(getString(R.string.rol_father))) {
-            ref = new Firebase(getString(R.string.padreRef));
-            childRef = new Firebase(getString(R.string.aluRef));
+            ref = new Firebase(getString(R.string.fatherRef));
+            childRef = new Firebase(getString(R.string.studentRef));
         }
         Query userData = ref.orderByChild(getString(R.string.bbdd_mail)).equalTo(myMail);
         userData.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -324,7 +324,7 @@ public class MyDataActivity extends Activity {
     }
 
     public ArrayList<String> getSchools() {
-        Firebase schoolsRef = new Firebase(getString(R.string.colesRef));
+        Firebase schoolsRef = new Firebase(getString(R.string.studentRef));
         final ArrayList<String> tmp = new ArrayList<>();
         Query allSchools = schoolsRef;
         allSchools.addChildEventListener(new ChildEventListener() {

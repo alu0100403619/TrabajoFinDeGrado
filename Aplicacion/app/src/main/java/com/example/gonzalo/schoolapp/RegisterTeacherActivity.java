@@ -51,9 +51,9 @@ public class RegisterTeacherActivity extends Activity {
         setContentView(R.layout.activity_register_teacher);
         Firebase.setAndroidContext(this);
 
-        teacherRef = new Firebase (getString(R.string.profeRef));
+        teacherRef = new Firebase (getString(R.string.teacherRef));
         rootRef = new Firebase (getString(R.string.rootRef));
-        schoolsRef = new Firebase (getString(R.string.colesRef));
+        schoolsRef = new Firebase (getString(R.string.schoolsRef));
         spinner = (Spinner) findViewById(R.id.spinner_2);
 
         teachersClasses = new ArrayList<>();
@@ -374,5 +374,12 @@ public class RegisterTeacherActivity extends Activity {
             }
         }
         return tmpArrayList;
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

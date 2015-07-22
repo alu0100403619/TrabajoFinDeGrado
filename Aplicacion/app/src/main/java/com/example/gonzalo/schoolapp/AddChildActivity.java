@@ -48,8 +48,8 @@ public class AddChildActivity extends Activity {
         setContentView(R.layout.activity_add_child);
         Firebase.setAndroidContext(this);
 
-        childRef = new Firebase (getString(R.string.aluRef));
-        schoolsRef = new Firebase (getString(R.string.colesRef));
+        childRef = new Firebase (getString(R.string.studentRef));
+        schoolsRef = new Firebase (getString(R.string.schoolsRef));
         spinner = (Spinner) findViewById(R.id.spinner_2);
 
         schools = getSchools();

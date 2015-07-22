@@ -44,7 +44,7 @@ public class ExpandableTeachersActivity extends Activity {
         //getSupportActionBar().hide();
         Firebase.setAndroidContext(this);
 
-        teachersRef = new Firebase (getString(R.string.profeRef));
+        teachersRef = new Firebase (getString(R.string.teacherRef));
         clases = new ArrayList<>();
         teachers = new ArrayList<>();
         listDataHeader = new ArrayList<String>();

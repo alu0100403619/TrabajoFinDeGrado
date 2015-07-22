@@ -72,14 +72,26 @@ public class LoginActivity extends Activity {
             Intent intent = new Intent(Settings.ACTION_SETTINGS);
             startActivity(intent);
         }
+        else if (id == R.id.action_change_language) {
+            Intent intent = new Intent(this, ChangeLanguageActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 
     public String setTypeUser () {
         userType = "";
         mail = mailEditText.getText().toString();
-        Query rolQuery = rootRef.child(getString(R.string._alumnos))
+        Query rolQuery = rootRef.child(getString(R.string._students))
                 .orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
         rolQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             //Alu
@@ -89,7 +101,7 @@ public class LoginActivity extends Activity {
                 //Si el usuario no es un alumno
                 if (dataSnapshot.getValue() == null) {
                     //Padre
-                    Query rolQuery2 = rootRef.child(getString(R.string._padres))
+                    Query rolQuery2 = rootRef.child(getString(R.string._fathers))
                             .orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
                     rolQuery2.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -98,7 +110,7 @@ public class LoginActivity extends Activity {
                             //Si el usuario no es un padre
                             if (dataSnapshot.getValue() == null) {
                                 //Profesor
-                                Query rolQuery3 = rootRef.child(getString(R.string._profes))
+                                Query rolQuery3 = rootRef.child(getString(R.string._teachers))
                                         .orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
                                 rolQuery3.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
@@ -191,7 +203,7 @@ public class LoginActivity extends Activity {
             rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
                 @Override
                 public void onAuthenticated(AuthData authData) {
-                    if (userType.equals(getString(R.string._alumnos))) {
+                    if (userType.equals(getString(R.string._students))) {
                         Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.myName), myName);
@@ -204,7 +216,7 @@ public class LoginActivity extends Activity {
                         //TODO Descomentar
                         //LoginActivity.this.finish();
                     }
-                    else if (userType.equals(getString(R.string._profes))) {
+                    else if (userType.equals(getString(R.string._teachers))) {
                         Intent intent = new Intent(LoginActivity.this, TeachersTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
@@ -217,7 +229,7 @@ public class LoginActivity extends Activity {
                         //TODO Descomentar
                         //LoginActivity.this.finish();
                     }
-                    else if (userType.equals(getString(R.string._padres))) {
+                    else if (userType.equals(getString(R.string._fathers))) {
                         Intent intent = new Intent(LoginActivity.this, FathersTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
@@ -254,12 +266,12 @@ public class LoginActivity extends Activity {
         for (String key: keys) {
             data = (Map<String, Object>) values.get(key);
         }
-        if (userType.equals(getString(R.string._alumnos))) {
+        if (userType.equals(getString(R.string._students))) {
             myRol = "Alumno";
             clases.add(data.get(getString(R.string.bbdd_class)).toString());
             colegios.add(data.get(getString(R.string.bbdd_center)).toString());
         }
-        else if (userType.equals(getString(R.string._profes))) {
+        else if (userType.equals(getString(R.string._teachers))) {
             myRol = "Profesor";
             tempMap = (Map<String, Object>) data.get(getString(R.string.bbdd_teacher_class));
             keys = tempMap.keySet();
@@ -271,7 +283,7 @@ public class LoginActivity extends Activity {
             }//for
             colegios.add(data.get(getString(R.string.bbdd_center)).toString());
         }
-        else if (userType.equals(getString(R.string._padres))) {
+        else if (userType.equals(getString(R.string._fathers))) {
             myRol = "Padre";
             tempMap = (Map<String, Object>) data.get(getString(R.string.bbdd_children));
             data.clear();

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">School App</string>
+
+    <string name="action_settings">Paramètres</string>
+    <string name="action_changeLanguage">Changer De Langue</string>
+
+    <string name="action_add_school">Ajouter College</string>
+    <string name="action_modify">Change Data</string>
+    <string name="username_hint">Mail User</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="new_password_hint">Nouveau Mot De Passe</string>
+    <string name="old_password_hint">Ancien Mot De Passe</string>
+    <string name="login_button_label">Se connecter</string>
+    <string name="sign_up_text">Inscription</string>
+    <string name="teachers">Enseignants</string>
+    <string name="alumnos">Étudiants</string>
+    <string name="notificaciones">Notifications</string>
+    <string name="circulares">Circulaires</string>
+    <string name="Dates">Nominations</string>
+    <string name="send">Envoyer</string>
+    <string name="text_hint">Message à envoyer...</string>
+    <string name="contactos">Contacts</string>
+    <string name="asunto">Entreprise</string>
+    <string name="submit">Enregistrement</string>
+    <string name="usertype_promt">Type d\'utilisateur</string>
+    <string name="name">Nom</string>
+    <string name="lastname">Nom de famille</string>
+    <string name="college">École</string>
+    <string name="telephone">Téléphone</string>
+    <string name="letter">Lettre</string>
+    <string name="mail">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="course_group">Cours et Groupe</string>
+    <string name="course_group_hint">1A, 2C, 3B...</string>
+    <string name="alumno_data">**** Données Étudiante ****</string>
+    <string name="other_alumno_data">**** Une autre donnée de l\'étudiant ****</string>
+    <string name="alumno_name">om de l\'étudiant</string>
+    <string name="alumno_lastname">Le nom de l\'étudiant</string>
+    <string name="alumno_telephone">Étudiant de téléphone</string>
+    <string name="alumno_mail">Email étudiant</string>
+    <string name="alumno_course_group">Cours et Student Group</string>
+    <string name="alumno_center">Collège étudiant</string>
+    <string name="alu_course_group_hint">Cours et Student Group: 1A, 2C, 3B...</string>
+    <string name="forget_login">Nouveau Mot De Passe</string>
+    <string name="reading_true">Lire</string>
+    <string name="reading_false">Non lus</string>
+    <string name="modify">Modifier</string>
+    <string name="save">Sauvegarder</string>
+    <string name="change_password">Changer Le Mot De Passe</string>
+    <string name="save_password">Enregistrer Le Mot De Passe</string>
+    <string name="back">Retour</string>
+    <string name="load">Chargement...</string>
+    <string name="add_school">Ajouter l\'école...</string>
+    <string name="select_school">Sélectionnez l\'école</string>
+    <string name="teacher_select_course">Sélectionnez l\'un des cours qu\'il enseigne: </string>
+    <string name="father_select_course">Sélectionnez l\'une des cours qu\'ils ont des enfants: </string>
+    <string name="father_number_children">Nombre d\'enfants: </string>
+    <string name="add_children">Ajouter les enfants: </string>
+    <string name="add_child">Ajouter un enfant </string>
+    <string name="help_dialog_title">Aide Cours et groupe</string>
+    <string name="help_ok_dialog">Accepter</string>
+
+    <!-- Etiquetas -->
+    <string name="name_label">Nom: </string>
+    <string name="lastname_label">Nom de Familie: </string>
+    <string name="college_label">École: </string>
+    <string name="telephone_label">Téléphone: </string>
+    <string name="mail_label">Email: </string>
+    <string name="course_group_label">Cours et Groupe: </string>
+    <string name="teacher_class_label">Cours et Groupes: </string>
+    <string name="sons_label">Enfants: </string>
+    <string name="son_label">fils</string>
+
+    <string-array name="tabs_array">
+        <item>Bienvenue</item>
+        <item>Se Connecter</item>
+        <item>Aidez-Moi</item>
+        <item>Sour Moi</item>
+    </string-array>
+
+    <!-- Tabs\' Titles -->
+    <string name="tab_alumnos">Ma classe</string>
+    <string name="tab_teachers_alumnos">Mes élèves</string>
+    <string name="tab_alumnos_teachers">Mes Professeurs</string>
+    <string name="tab_teachers">Enseignants</string>
+    <string name="tab_fathers">Parents</string>
+    <string name="tab_notifications">Nouvelle Notifications</string>
+
+    <!-- ActionBar\'s Titles -->
+    <string name="ActionBar_alumno">Rôle: Étudiant</string>
+    <string name="ActionBar_teacher">Rôle: Professeur</string>
+    <string name="ActionBar_father">Rôle: Père/Mère/Tuteur</string>
+
+    <!-- Activity\'s Titles -->
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_alumno_tab">AlumnoTabActivity</string>
+    <string name="title_activity_circulares">CircularesActivity</string>
+    <string name="title_activity_teachers_tab">TeachersTabActivity</string>
+    <string name="title_activity_expandable_teachers">ExpandableTeachersActivity</string>
+    <string name="title_activity_expandable_fahters">ExpandableFahtersActivity</string>
+    <string name="title_activity_expandable_alumnos">ExpandableAlumnosActivity</string>
+    <string name="title_activity_fathers_tab">FathersTabActivity</string>
+    <string name="title_activity_contact">ContactActivity</string>
+    <string name="title_activity_father_expandable_father">FatherExpandableFatherActivity</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="welcome_image_description">Bienvenue l\'image</string>
+    <string name="title_activity_data">Datos de Contacto</string>
+    <string name="title_activity_chat_2">ChatActivity</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_my_data">MyDataActivity</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+    <string name="title_activity_register_teacher">RegisterTeacherActivity</string>
+    <string name="title_activity_register_father">RegisterFatherActivity</string>
+    <string name="title_activity_add_child">AddChildActivity</string>
+    <string name="title_activity_register_student">RegisterStudentActivity</string>
+
+    <!-- Tabs Title -->
+    <string name="welcomeTab">Bienvenue</string>
+    <string name="helpTab">Aidez-Moi</string>
+    <string name="aboutMeTab">Sur Moi</string>
+
+    <!-- languajes -->
+    <string name="spanish">Espagnol</string>
+    <string name="english">Anglais</string>
+    <string name="french">Français</string>
+
+    <string-array name="usertype_array">
+        <item>Étudiant</item>
+        <item>Professeur</item>
+        <item>Mère/Père/Tuteur</item>
+    </string-array>
+
+    <string name="alumno">Étudiant</string>
+    <string name="teacher">Professeur</string>
+    <string name="father">Mère/Père/Tuteur</string>
+    <string name="rol">Rôle</string>
+
+</resources>

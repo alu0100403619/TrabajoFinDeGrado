@@ -50,9 +50,9 @@ public class RegisterStudentActivity extends Activity {
         setContentView(R.layout.activity_register_student);
         Firebase.setAndroidContext(this);
 
-        studentRef = new Firebase (getString(R.string.aluRef));
+        studentRef = new Firebase (getString(R.string.studentRef));
         rootRef = new Firebase (getString(R.string.rootRef));
-        schoolsRef = new Firebase (getString(R.string.colesRef));
+        schoolsRef = new Firebase (getString(R.string.schoolsRef));
         spinner = (Spinner) findViewById(R.id.spinner_2);
 
         schools = getSchools();
@@ -353,5 +353,12 @@ public class RegisterStudentActivity extends Activity {
 
         // show it
         alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

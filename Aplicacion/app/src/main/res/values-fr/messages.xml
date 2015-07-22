@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="registerStudent">Dossier de l\'élève.</string>
+    <string name="registerTeacher">Enregistrement de professeur.</string>
+    <string name="registerFather">Inscription parent \nou tuteur.</string>
+    <string name="prueba">Vous avez connecté sans utilisateur.</string>
+    <string name="mail_empty">L\'adresse e-mail ne peut pas être vide.</string>
+    <string name="mail_incorrect">Le courrier est pas correct.</string>
+    <string name="password_empty">Le mot de passe ne peut pas être vide.</string>
+    <string name="field_empty">Ce champ est obligatoire.</string>
+    <string name="register_error">Erreur d\'enregistrement: </string>
+    <string name="login_error">Erreur d\'identification.: </string>
+    <string name="course_group_help">Si vous êtes un enseignant peut mettre les différents
+        cours/groupes qui donne la classe séparées par des virgules: 1A, 2B, 3C, ...\nMais si un
+        étudiant est autorisé à mettre un cours suivi par une classe 1A.</string>
+    <string name="forget_Password_message">Il a envoyé un mail à laquelle un message est enregistré
+        pour réinitialiser votre mot de passe.</string>
+    <string name="forget_Password_message_error">Il n\'a pas été en mesure d\'envoyer un mail à
+        laquelle le message a été enregistré pour réinitialiser votre mot de passe.</string>
+    <string name="wifi_data_error">Cette application utilise l\'Internet, s\'il vous plaît
+        assurez-vous que vous avez une connexion Internet (WiFi ou de données).</string>
+    <string name="about_message">Cette application vise à améliorer la communication entre les
+        enseignants, les élèves et les parents / Mère / Guardian.</string>
+    <string name="about_me_message">Étudiant à l\'École d\'ingénierie et de la technologie.
+        Degré final du projet pour le degré de génie informatique.</string>
+    <string name="correct_change_password_message">Le mot de passe a été changé avec succès.</string>
+    <string name="incorrect_change_password_message">Le changement de mot de passe échouée.: </string>
+    <string name="telephone_format_error">Erreur en format de téléphone. Exples: 609875432 / 712345689 / +34609875432 / +34712345689</string>
+    <string name="mail_format_error">Erreur dans le format de courrier. Exple: alguien@dominio.com</string>
+    <string name="error_class_format">Erreur dans le format de classe. Exple: 1A</string>
+    <string name="error_classes_format">Erreur dans le format de classe. Exple: 1A,2B</string>
+    <string name="error_select_school">Sélectionnez la nouvelle école que leurs enfants iront.</string>
+    <string name="empty_children">Ajouter au moins un enfant.</string>
+
+</resources>
