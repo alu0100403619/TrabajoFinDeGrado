@@ -65,10 +65,11 @@ public class NotificationsActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String itemMail = mailsList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
+
                 for (Message message : messagesList) {
                     if ((itemMail.equals(message.getMailRemitter())) && (!messages.contains(message))) {
                         messages.add(message);
-                        messagesList.remove(message);
+                        //messagesList.remove(message); //Error java.util.ConcurrentModificationException
                     }//if
                 }//for
 
