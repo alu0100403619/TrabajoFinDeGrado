@@ -19,8 +19,6 @@
         message was recorded to reset your password</string>
     <string name="wifi_data_error">This application uses the Internet, please make sure you have
         internet connection (WiFi or data).</string>
-    <string name="about_message">This application aims to improve communication between teachers,
-        students and parents and Guardian.</string>
     <string name="about_me_message">Student at the School of Engineering and Technology.
         Degree Final Project for Computer Engineering degree.</string>
     <string name="correct_change_password_message">The password was changed successfully.</string>
@@ -30,6 +28,48 @@
     <string name="error_class_format">Error class format. Exple: 1A</string>
     <string name="error_classes_format">Error class format. Exple: 1A,2B</string>
     <string name="error_select_school">Select the new school that their children will go..</string>
-    <string name="empty_children">Add at least one child..</string>
+    <string name="empty_children">Add at least one child.</string>
+
+    <string name="about_message">This application aims to improve communication between teachers,
+        students and parents and Guardian.</string>
+    <string name="about_message2">If this is the first time you access the application or not yet
+        registered, please register using the button:</string>
+    <string name="about_message3">This takes you to the selection of the role with which it is
+        recorded:</string>
+    <string name="about_message4">When deciding what kind of user you are going to registar will
+        access a form to fill.</string>
+    <string name="about_message5">If you have already accessed the application or have an account,
+        use the button below:</string>
+    <string name="about_message6">You reach the login screen where you must enter the email with
+        which you registered and password:</string>
+    <string name="about_message7">When you access the application, it is responsible for checking
+        with the database, which is in the cloud, which type of user.</string>
+    <string name="about_message8">Depending on the type of user you are, flanges or other will appear. Roles:
+        \n\n\t<b><i># Student:</i></b>
+        \n\t\t<b>* My class:</b> User classmates.
+        \n\t\t<b>* My teachers:</b> Teacher who teaches the user.
+        \n\t\t<b>* New notifications:</b> Messages it receives from other users of the application.
+        \n\n\t<b><i># Teacher:</i></b>
+        \n\t\t<b>* Teachers:</b> Colleagues who teach some of the courses the user.
+        \n\t\t<b>* Fathers:</b> Parents of students to the class gives the user.
+        \n\t\t<b>* My students:</b> Students who gives the user class.
+        \n\t\t<b>* New notifications:</b> Messages it receives from other users of the application.
+        \n\n\t<b><i># Father:</i></b>
+        \n\t\t<b>* Fathers:</b> Parents of students classmates child user.
+        \n\t\t<b>* Teachers:</b> Teacher who teaches his son user.
+        \n\t\t<b>* New notifications:</b> Messages it receives from other users of the application.</string>
+    <string name="about_message9">If you are a teacher, you can send both circular to all parents
+        and all children of one or more classes with button:</string>
+    <string name="about_message10">All users can send events, ie, schedule appointments in the
+        calendar and even the device of Google. For this use:</string>
+    <string name="about_message11">From any of the contacts listed on the eyelashes with a short
+        selection, you can access a chat that retrieves messages sent and stored in the cloud. This
+        implements instant messaging over the Internet. \ nUsing large selection can view the
+        contact data.</string>
+    <string name="about_message12">From the options in the "ActionBar" can access the user data to
+        modify them. This includes changing your own password.</string>
+    <string name="about_message13">Both from the Welcome screen or from the access, the options of
+        "ActionBar", you can access the device settings, and using the Internet, and the choice of
+        application language.</string>
 
 </resources>

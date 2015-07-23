@@ -13,11 +13,189 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
 
             <TextView android:id="@+id/help" android:text="@string/about_message"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" />
+
+            <TextView android:id="@+id/empty" android:text="@string/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/help"/>
+
+            <TextView android:id="@+id/help2" android:text="@string/about_message2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/empty"/>
+
+            <Button android:id="@+id/register_button" android:text="@string/sign_up_text"
+                android:layout_width="wrap_content" android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" android:layout_below="@id/help2"/>
+
+            <TextView android:id="@+id/empty2" android:text="@string/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/register_button"/>
+
+            <TextView android:id="@+id/help3" android:text="@string/about_message3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/empty2"/>
+
+            <LinearLayout android:id="@+id/registerGroup" android:orientation="horizontal"
+                android:layout_width="fill_parent" android:layout_below="@id/help3"
+                android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+
+                <RelativeLayout android:id="@+id/StudentRelativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView android:id="@+id/registerStudent" android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content" android:src="@drawable/ic_action_register_student"
+                        android:layout_height="wrap_content" />
+
+                    <TextView android:id="@+id/studentText" android:text="@string/alumno"
+                        android:layout_width="wrap_content" android:layout_below="@id/registerStudent"
+                        android:layout_height="wrap_content" android:layout_centerHorizontal="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout android:id="@+id/TeacherRelativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView android:id="@+id/registerTeacher" android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content" android:src="@drawable/ic_action_register_teacher"
+                        android:layout_height="wrap_content" />
+
+                    <TextView android:id="@+id/teacherText" android:text="@string/teacher"
+                        android:layout_width="wrap_content" android:layout_below="@id/registerTeacher"
+                        android:layout_height="wrap_content" android:layout_centerHorizontal="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout android:id="@+id/FatherRelativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView android:id="@+id/registerFather" android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content" android:src="@drawable/ic_action_register_father"
+                        android:layout_height="wrap_content" />
+
+                    <TextView android:id="@+id/fatherText" android:text="@string/father"
+                        android:layout_width="wrap_content" android:layout_below="@id/registerFather"
+                        android:layout_height="wrap_content" android:layout_centerHorizontal="true"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView android:id="@+id/empty3" android:text="@string/empty"
+                android:layout_width="wrap_content" android:layout_below="@id/registerGroup"
+                android:layout_height="wrap_content" />
+
+            <TextView android:id="@+id/help4" android:text="@string/about_message4"
+                android:layout_width="wrap_content" android:layout_below="@id/empty3"
+                android:layout_height="wrap_content" />
+
+            <TextView android:id="@+id/empty4" android:text="@string/empty"
+                android:layout_width="wrap_content" android:layout_below="@id/help4"
+                android:layout_height="wrap_content" />
+
+            <TextView android:id="@+id/help5" android:text="@string/about_message5"
+                android:layout_width="wrap_content" android:layout_below="@id/empty4"
+                android:layout_height="wrap_content" />
+
+            <Button android:id="@+id/login_button" android:text="@string/login_button_label"
+                android:layout_width="wrap_content" android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" android:layout_below="@id/help5"/>
+
+            <TextView android:id="@+id/help6" android:text="@string/about_message6"
+                android:layout_width="wrap_content" android:layout_below="@id/login_button"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout android:id="@+id/loginGroup" android:orientation="vertical"
+                android:layout_width="fill_parent" android:layout_below="@id/help6"
+                android:layout_height="wrap_content">
+
+                <EditText android:id="@+id/userMail" android:hint="@string/mail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_action_email"
+                    android:inputType="textEmailAddress" android:enabled="false"/>
+
+                <EditText android:id="@+id/userPassword"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password_hint"
+                    android:inputType="textPassword" android:enabled="false"/>
+
+            </LinearLayout>
+
+            <TextView android:id="@+id/empty11" android:text="@string/empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_below="@id/loginGroup"/>
+
+            <TextView android:id="@+id/help13" android:text="@string/about_message13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_below="@id/empty11"/>
+
+            <TextView android:id="@+id/empty5" android:text="@string/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/help13"/>
+
+            <TextView android:id="@+id/help7" android:text="@string/about_message7"
+                android:layout_width="wrap_content" android:layout_below="@id/empty5"
+                android:layout_height="wrap_content" />
+
+            <TextView android:id="@+id/empty6" android:text="@string/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/help7"/>
+
+            <TextView android:id="@+id/help8" android:text="@string/about_message8"
+                android:layout_width="wrap_content" android:layout_below="@id/empty6"
+                android:layout_height="wrap_content" />
+
+            <TextView android:id="@+id/empty7" android:text="@string/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/help8"/>
+
+            <TextView android:id="@+id/help9" android:text="@string/about_message9"
+                android:layout_width="wrap_content" android:layout_below="@id/empty7"
+                android:layout_height="wrap_content" />
+
+            <Button android:id="@+id/circulares" android:text="@string/circulares"
+                android:layout_width="wrap_content" android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" android:layout_below="@id/help9"/>
+
+            <TextView android:id="@+id/empty8" android:text="@string/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/circulares"/>
+
+            <TextView android:id="@+id/help10" android:text="@string/about_message10"
+                android:layout_width="wrap_content" android:layout_below="@id/empty8"
+                android:layout_height="wrap_content" />
+
+            <Button android:id="@+id/appointment" android:text="@string/Dates"
+                android:layout_width="wrap_content" android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" android:layout_below="@id/help10"/>
+
+            <TextView android:id="@+id/empty9" android:text="@string/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/appointment"/>
+
+            <TextView android:id="@+id/help11" android:text="@string/about_message11"
+                android:layout_width="wrap_content" android:layout_below="@id/empty9"
+                android:layout_height="wrap_content" />
+
+            <TextView android:id="@+id/empty10" android:text="@string/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@id/help11"/>
+
+            <TextView android:id="@+id/help12" android:text="@string/about_message12"
+                android:layout_width="wrap_content" android:layout_below="@id/empty10"
+                android:layout_height="wrap_content" />
+
+            <Button android:id="@+id/modify" android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content" android:text="@string/modify"
+                android:layout_height="wrap_content" android:layout_below="@id/help12"/>
 
         </RelativeLayout>
 

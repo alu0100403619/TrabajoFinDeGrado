@@ -19,8 +19,6 @@
         laquelle le message a été enregistré pour réinitialiser votre mot de passe.</string>
     <string name="wifi_data_error">Cette application utilise l\'Internet, s\'il vous plaît
         assurez-vous que vous avez une connexion Internet (WiFi ou de données).</string>
-    <string name="about_message">Cette application vise à améliorer la communication entre les
-        enseignants, les élèves et les parents / Mère / Guardian.</string>
     <string name="about_me_message">Étudiant à l\'École d\'ingénierie et de la technologie.
         Degré final du projet pour le degré de génie informatique.</string>
     <string name="correct_change_password_message">Le mot de passe a été changé avec succès.</string>
@@ -31,5 +29,49 @@
     <string name="error_classes_format">Erreur dans le format de classe. Exple: 1A,2B</string>
     <string name="error_select_school">Sélectionnez la nouvelle école que leurs enfants iront.</string>
     <string name="empty_children">Ajouter au moins un enfant.</string>
+
+    <string name="about_message">Cette application vise à améliorer la communication entre les
+        enseignants, les élèves et les parents / Mère / Guardian.</string>
+    <string name="about_message2">Si ceci est la première fois que vous accédez à l\'application ou
+        pas encore enregistré, s\'il vous plaît vous inscrire en utilisant le bouton:</string>
+    <string name="about_message3">Ceci vous amène à la sélection du rôle avec lequel elle est
+        enregistrée:</string>
+    <string name="about_message4">Au moment de décider quel type d\'utilisateur vous allez record va
+        accéder à un formulaire à remplir.</string>
+    <string name="about_message5">Si vous avez déjà accédé à la demande ou avoir un compte,
+        utilisez le bouton ci-dessous:</string>
+    <string name="about_message6">Vous accédez à l\'écran de connexion où vous devez entrer l\'e-mail
+        avec laquelle vous vous êtes inscrit et mot de passe:</string>
+    <string name="about_message7">Lorsque vous accédez à l\'application, il est responsable de la
+        vérification avec la base de données, qui est dans le nuage, quel type d\'utilisateur.</string>
+    <string name="about_message8">Selon le type d\'utilisateur vous êtes, brides ou autres spectacles. Rôles:
+        \n\n\t<b><i># Étudiant:</i></b>
+        \n\t\t<b>* Ma classe:</b> Camarades de classe de l\'utilisateur.
+        \n\t\t<b>* Mes professeurs:</b> Professeur qui enseigne l\'utilisateur.
+        \n\t\t<b>* Nouvelles notifications:</b> Il reçoit des messages provenant d\'autres utilisateurs de l\'application.
+        \n\n\t<b><i># Professeur:</i></b>
+        \n\t\t<b>* Enseignants:</b> Les collègues qui enseignent certains des cours à l\'utilisateur.
+        \n\t\t<b>* Parents:</b> Les parents d\'élèves de la classe donne à l\'utilisateur.
+        \n\t\t<b>* Mes élèves:</b> Les étudiants qui donne la classe d\'utilisateurs.
+        \n\t\t<b>* Nouvelles notifications:</b> Il reçoit des messages provenant d\'autres utilisateurs de l\'application.
+        \n\n\t<b><i># Père:</i></b>
+        \n\t\t<b>* Parents:</b> Les parents d\'élèves camarades de classe enfant utilisateur.
+        \n\t\t<b>* Enseignants:</b> Professeur qui enseigne à son fils l\'utilisateur.
+        \n\t\t<b>* Nouvelles notifications:</b> Il reçoit des messages provenant d\'autres utilisateurs de l\'application.</string>
+    <string name="about_message9">Si vous êtes enseignant, vous pouvez envoyer à la fois circulaire
+        à tous les parents et tous les enfants d\'un ou de plusieurs classes avec le bouton:</string>
+    <string name="about_message10">Tous les utilisateurs peuvent envoyer des événements, à savoir,
+        de planifier des rendez dans le calendrier et même le dispositif de Google. Pour cette
+        utilisation:</string>
+    <string name="about_message11">De l\'un des contacts figurant sur les cils avec une courte
+        sélection, vous pouvez accéder à une conversation qui récupère les messages envoyés et
+        stockés dans le nuage. Ceci implémente la messagerie instantanée sur Internet.\nUtilisation
+        grand choix peut afficher les données de contact.</string>
+    <string name="about_message12">Dans les options de la "Barre D\'action" peuvent accéder aux
+        données de l\'utilisateur de les modifier. Ceci inclut le changement de votre propre mot de
+        passe.</string>
+    <string name="about_message13">Tant partir de l\'écran d\'accueil ou de l\'accès, les options de
+        "Barre D\'action", vous pouvez accéder aux réglages de l\'appareil, et l\'utilisation de
+        l\'Internet, et le choix de la langue de l\'application.</string>
 
 </resources>

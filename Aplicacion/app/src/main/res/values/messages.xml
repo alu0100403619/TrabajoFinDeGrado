@@ -19,18 +19,58 @@
         registró el mensaje para que restaure su contraseña</string>
     <string name="wifi_data_error">Esta aplicación usa internet, por favor asegúrese de que tiene
         conexión a internet (Datos o Wifi).</string>
-    <string name="about_message">Esta aplicaión trta de mejorar la comunicación entre los profesores,
-        alumnos y padres/Madres/Tutores Legales.</string>
     <string name="about_me_message">Alumno de la Escuela Superior de Ingeniería y Tecnologías.
         Trabajo de Fin de Grado para la carrera de Ingeniería Informática.</string>
     <string name="correct_change_password_message">La contraseña se ha cambiado
         correctamente.</string>
     <string name="incorrect_change_password_message">Error en el cambio de contraseña: </string>
-    <string name="telephone_format_error">Error en el formato de Telefono. Ejplos: 609875432 / 712345689 / +34609875432 / +34712345689</string>
+    <string name="telephone_format_error">Error en el formato de Telefono.
+        Ejplos: 609875432 / 712345689 / +34609875432 / +34712345689</string>
     <string name="mail_format_error">Error en el formato de mail. Ejplo: alguien@dominio.com</string>
     <string name="error_class_format">Error en el formato de clase. Ejplo: 1A</string>
     <string name="error_classes_format">Error en el formato de clase. Ejplo: 1A,2B</string>
     <string name="error_select_school">Seleccione el nuevo colegio al que sus hijos van a ir.</string>
     <string name="empty_children">Añada al menos un hijo.</string>
+
+    <string name="about_message">Esta aplicaión trata de mejorar la comunicación entre los profesores,
+        alumnos y padres/Madres/Tutores Legales.</string>
+    <string name="about_message2">Si es la primera vez que accede a la aplicación o todavía no se ha
+        registrado, por favor regístrese usando el botón:</string>
+    <string name="about_message3">Esto le llevará a la selección del rol con el que se registrará:</string>
+    <string name="about_message4">Al decidir con que tipo de usuario se va a registar, accederá un
+        formulario que debe rellenar.</string>
+    <string name="about_message5">Si ya ha accedido a la aplicación o tiene una cuenta, use el
+        siguiente botón:</string>
+    <string name="about_message6">Llegará a la pantalla de acceso donde debe introducir el correo
+        con el que se ha registrado y su contraseña:</string>
+    <string name="about_message7">Al acceder a la aplicaión, ésta se encargará de comprobar con la
+        base de datos, que está en la nube, que tipo de usuario es.</string>
+    <string name="about_message8">Según el tipo de usuario que sea, aparecerán unas pestañas u otras. Roles:
+        \n\n\t<b><i># Alumno:</i></b>
+        \n\t\t<b>* Mi clase:</b> Compañeros de clase del usuario.
+        \n\t\t<b>* Mis profesores:</b> Personal docente que da clase al usuario.
+        \n\t\t<b>* Notificaciones nuevas:</b> Mensajes que recibe de otros usuarios de la aplicación.
+        \n\n\t<b><i># Profesor:</i></b>
+        \n\t\t<b>* Profesores:</b> Compañeros de trabajo que dan clase a alguno de los cursos del usuario.
+        \n\t\t<b>* Padres:</b> Progenitores de los alumnos a los que el usuario da clase.
+        \n\t\t<b>* Mis alumnos:</b> Estudiantes a los que el usuario da clase.
+        \n\t\t<b>* Notificaciones nuevas:</b> Mensajes que recibe de otros usuarios de la aplicación.
+        \n\n\t<b><i># Padre:</i></b>
+        \n\t\t<b>* Padres:</b> Progenitores de alumnos compañeros de clase del hijo del usuario.
+        \n\t\t<b>* Profesores:</b> Personal docente que da clase al hijo del usuario.
+        \n\t\t<b>* Notificaciones nuevas:</b> Mensajes que recibe de otros usuarios de la aplicación.</string>
+    <string name="about_message9">Si es profesor, podrá mandar circulares tanto a todos los padres
+        como a todos los alumnos de una o varias clases con el botón:</string>
+    <string name="about_message10">Todos los usuarios pueden mandar eventos, es decir, programar
+        citas en el calendario del dispositivo e incluso en el de Google. Para esto use:</string>
+    <string name="about_message11">Desde cualquiera de los contactos que aparecen en las pestañas,
+        con una selección corta, se puede acceder a un chat que recupera los mensajes enviados y los
+        almacenados en la nube. Esto implementa una mensajería instantánea a través de internet.
+        \nSi usa la selección larga podrá ver los datos del contacto.</string>
+    <string name="about_message12">Desde las opciones en la "ActionBar" se puede acceder a los datos
+        de usuario para modificarlos. Esto incluye también modificar su propia contraseña.</string>
+    <string name="about_message13">Tanto desde la pantalla de bienvenida como desde la de acceso, en
+        las opciones de la "ActionBar", se puede acceder a los ajustes del dispositivo, ya que usa
+        internet, y a la elección de idioma de la aplicación.</string>
 
 </resources>
