@@ -402,6 +402,31 @@ el registro casi lo tengo pero todavía no está del todo. También he hecho
 otras cosas en la aplicación.
     Muchas gracias
 --------------------------
+Jul 23
+
+LOGROS:
++ Pantalla de ayuda acabada (revisar el texto)
++ Incorpora idiomas
+
+Futuro:
+- Actvidad 2. Redactar algunos párrafos en términos de "futuro"
+- Actividad 3. Haz una purga de referencias que NO sean realmente
+	significativas.
+- Actividad 4. La app estaba decidida desde el 10.dic.2014
+
+- Registro funciona.
+  ¿qué ocurre si un alumno se inscribe en la clase "3X" (que no existe)?
+- Revisar la modificación de datos
+- Evitar que la rotación de la pantalla afecte al idioma.
+
+- La app casca al enviar/recuperar un msg de chat: revisar
+- Trae impresa la lista de usuarios para comprobar que todo funciona OK
+- Necesito instalarme en mi teléfono la app.
+- Mail para recordar traer mi tableta
+--------------------------
+--------------------------
+--------------------------
+--------------------------
 --------------------------
 --------------------------
 --------------------------
