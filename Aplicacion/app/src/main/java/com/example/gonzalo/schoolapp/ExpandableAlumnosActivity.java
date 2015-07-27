@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterAlumno;
 import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -40,7 +41,6 @@ public class ExpandableAlumnosActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expandable_alumnos);
-        //getSupportActionBar().hide();
         Firebase.setAndroidContext(this);
 
         alumnosRef = new Firebase (getString(R.string.studentRef));

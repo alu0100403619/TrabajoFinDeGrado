@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterFather;
 import com.example.gonzalo.schoolapp.clases.Father;
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -42,7 +43,6 @@ public class ExpandableFahtersActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expandable_fahters);
-        //getSupportActionBar().hide();
         Firebase.setAndroidContext(this);
 
         fathersRef = new Firebase (getString(R.string.fatherRef));

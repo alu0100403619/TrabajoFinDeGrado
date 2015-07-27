@@ -1,6 +1,9 @@
 package com.example.gonzalo.schoolapp.utilities;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
@@ -13,6 +16,7 @@ import com.example.gonzalo.schoolapp.clases.Date;
 import com.example.gonzalo.schoolapp.clases.Message;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Gonzalo on 21/04/2015.
@@ -99,5 +103,20 @@ public class Utilities {
     public static String deleteManySpaces (String chain) {
         String tmp = chain.trim();
         return tmp;
+    }
+
+    public static void loadLanguage (Activity activity) {
+        Context context = activity.getApplicationContext();
+        SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.app_name), context.MODE_PRIVATE);
+        String language = preferences.getString(context.getString(R.string.language), Locale.getDefault().toString());
+
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration();
+        config.locale = locale;
+        activity.getBaseContext().getResources().updateConfiguration(config, activity.getBaseContext().
+                getResources().getDisplayMetrics());
+        Log.i("Utilities", "Load Language: " + language);
     }
 }//class

@@ -52,6 +52,7 @@ public class MyDataActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_data);
         Firebase.setAndroidContext(this);

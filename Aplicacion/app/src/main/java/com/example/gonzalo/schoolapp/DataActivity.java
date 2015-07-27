@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.gonzalo.schoolapp.clases.Alumno;
 import com.example.gonzalo.schoolapp.clases.Father;
 import com.example.gonzalo.schoolapp.clases.Teacher;
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class DataActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
 

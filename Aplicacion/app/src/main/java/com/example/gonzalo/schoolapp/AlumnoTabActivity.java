@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TabHost;
 
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.Firebase;
 
 public class AlumnoTabActivity extends TabActivity {
@@ -17,7 +18,7 @@ public class AlumnoTabActivity extends TabActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumno_tab);
         Firebase.setAndroidContext(this);

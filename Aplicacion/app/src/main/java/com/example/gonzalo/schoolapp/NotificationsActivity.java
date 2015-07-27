@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.gonzalo.schoolapp.Adapters.NotifyAdapter;
 import com.example.gonzalo.schoolapp.clases.Alumno;
 import com.example.gonzalo.schoolapp.clases.Message;
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;

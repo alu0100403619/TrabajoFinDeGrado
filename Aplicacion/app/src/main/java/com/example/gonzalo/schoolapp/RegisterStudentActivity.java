@@ -46,6 +46,7 @@ public class RegisterStudentActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_student);
         Firebase.setAndroidContext(this);

@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.gonzalo.schoolapp.utilities.Utilities;
+
 
 public class CircularesActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circulares);
     }

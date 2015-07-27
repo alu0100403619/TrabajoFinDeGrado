@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TabHost;
 
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class TeachersTabActivity extends TabActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teachers_tab);
         getActionBar().setTitle(getString(R.string.ActionBar_teacher));

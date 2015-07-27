@@ -57,6 +57,7 @@
     <string name="person">person</string>
     <string name="value">value</string>
     <string name="size">size</string>
+    <string name="language">language</string>
     <string name="editText_class">class android.widget.LinearLayout</string>
 
 </resources>

@@ -43,6 +43,7 @@ public class RegisterFatherActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_father);
         Firebase.setAndroidContext(this);

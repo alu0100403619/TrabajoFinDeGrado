@@ -3,9 +3,12 @@ package com.example.gonzalo.schoolapp;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +23,7 @@ import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.example.gonzalo.schoolapp.view.SlidingTabLayout;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class WelcomeActivity extends Activity {
@@ -31,6 +35,8 @@ public class WelcomeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
@@ -118,4 +124,19 @@ public class WelcomeActivity extends Activity {
         }
     }
 
+    /*@Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
+        String language = Locale.getDefault().toString();
+        Log.i("WelcomeActivity", "savedInstanceState saving language: "+language);
+        savedInstanceState.putString(getString(R.string.language), language);
+        super.onSaveInstanceState(savedInstanceState);
+    }//*/
+
+    /*@Override
+    public void onConfigurationChanged(Configuration configuration)  {
+        Locale locale = new Locale(Utilities.loadLanguage(this));
+        Locale.setDefault(locale);
+        super.onConfigurationChanged(configuration);
+    }//*/
 }

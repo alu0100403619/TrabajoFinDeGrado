@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
@@ -21,6 +22,7 @@ public class ChangePasswordActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
         Firebase.setAndroidContext(this);

@@ -9,6 +9,7 @@ import android.widget.ExpandableListView;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterFather;
 import com.example.gonzalo.schoolapp.clases.Father;
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;

@@ -16,6 +16,7 @@ import com.example.gonzalo.schoolapp.Adapters.ChatAdapter;
 import com.example.gonzalo.schoolapp.clases.Date;
 import com.example.gonzalo.schoolapp.clases.Message;
 import com.example.gonzalo.schoolapp.database.MessageSQLHelper;
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -42,6 +43,7 @@ public class ChatActivity extends ListActivity {
     ChatAdapter chatAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         Firebase.setAndroidContext(this);

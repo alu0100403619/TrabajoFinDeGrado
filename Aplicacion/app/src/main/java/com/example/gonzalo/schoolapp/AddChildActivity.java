@@ -44,6 +44,7 @@ public class AddChildActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
         Firebase.setAndroidContext(this);

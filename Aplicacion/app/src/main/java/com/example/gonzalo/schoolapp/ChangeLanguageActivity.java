@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.gonzalo.schoolapp.utilities.Utilities;
+
 import java.util.Locale;
 
 
@@ -22,6 +24,7 @@ public class ChangeLanguageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_language);
 
@@ -103,6 +106,16 @@ public class ChangeLanguageActivity extends Activity {
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().
                 getResources().getDisplayMetrics());
-        Locale.setDefault(locale);
+        saveLanguage(locale);
+        //Locale.setDefault(locale);
+    }
+
+    public void saveLanguage(Locale locale) {
+        SharedPreferences preferences = getSharedPreferences(getString(R.string.app_name),MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        String languaje = locale.toString();
+        Log.i("CLA", "Language save: " + languaje);
+        editor.putString(getString(R.string.language), languaje);
+        editor.commit();
     }
 }

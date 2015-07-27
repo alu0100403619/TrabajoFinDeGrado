@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TabHost;
 import android.widget.Toolbar;
 
+import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class FathersTabActivity extends TabActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fathers_tab);
         getActionBar().setTitle(getString(R.string.ActionBar_father));
