@@ -96,6 +96,14 @@ public class ChangeLanguageActivity extends Activity {
     }
 
     @Override
+    public void onBackPressed () {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
+        super.onBackPressed();
+    }
+
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }

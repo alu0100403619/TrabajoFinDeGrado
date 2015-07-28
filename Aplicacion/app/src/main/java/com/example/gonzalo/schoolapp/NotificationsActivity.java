@@ -38,6 +38,7 @@ public class NotificationsActivity extends ListActivity {
     ArrayList<Integer> numberMessages;
     ArrayList<String> rolRemitterMessages;
     NotifyAdapter notifyAdapter;
+    int i = 0;
 
     public void onCreate (Bundle savedInstanceBundle) {
         super.onCreate(savedInstanceBundle);
@@ -67,12 +68,15 @@ public class NotificationsActivity extends ListActivity {
                 String itemMail = mailsList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
 
-                for (Message message : messagesList) {
+                while (i < messagesList.size()) {
+                    Message message = messagesList.get(i);
                     if ((itemMail.equals(message.getMailRemitter())) && (!messages.contains(message))) {
                         messages.add(message);
-                        //messagesList.remove(message); //Error java.util.ConcurrentModificationException
+                        messagesList.remove(message);
+                        i--;
                     }//if
-                }//for
+                    i++;
+                }//while
 
                 //Lanzar Actividad
                 Intent intent = new Intent(NotificationsActivity.this, ChatActivity.class);
@@ -84,6 +88,7 @@ public class NotificationsActivity extends ListActivity {
                 intent.putExtra(getString(R.string.myRol), myRol);
 
                 //Borrar al hacer click
+                //TODO borrar solo si pos != -1 o >= 0??
                 int pos = mailsList.indexOf(messages.get(0).getMailRemitter());
                 mailsList.remove(pos);
                 messagesListView.remove(pos);
@@ -100,14 +105,18 @@ public class NotificationsActivity extends ListActivity {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK){
                 String mailRemitter = data.getStringExtra(getString(R.string.bbdd_mail_remitter));
-                Log.i("NotificationsActivity", "De vuelta del chat con "+mailRemitter);
-
                 int pos = mailsList.indexOf(mailRemitter);
-                mailsList.remove(pos);
-                messagesListView.remove(pos);
-                numberMessages.remove(pos);
-                rolRemitterMessages.remove(pos);
-                notifyAdapter.notifyDataSetChanged();
+                if (pos != -1) {
+                    mailsList.remove(pos); //TODO Error length 12 index -1
+                    messagesListView.remove(pos);
+                    numberMessages.remove(pos);
+                    rolRemitterMessages.remove(pos);
+                    notifyAdapter.notifyDataSetChanged();
+                }
+                if ((mailsList.size() == 0) && (messagesListView.size() == 0) &&
+                        (rolRemitterMessages.size() == 0) && (numberMessages.size() != 0)) {
+                    numberMessages.clear();
+                }//if
             }
         }
     }
