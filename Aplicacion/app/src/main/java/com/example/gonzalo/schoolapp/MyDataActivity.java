@@ -81,17 +81,20 @@ public class MyDataActivity extends Activity {
         telephoneEditText.setEnabled(false);
         spinnerSchool.setEnabled(false);
 
-        childrenGroupLL = (LinearLayout) findViewById(R.id.childs);
+        childrenGroupLL = (LinearLayout) findViewById(R.id.children_group);
+        //childrenGroupLL = (LinearLayout) findViewById(R.id.childs);
 
         if (rol.equals(getString(R.string.rol_student))) {
             ref = new Firebase(getString(R.string.studentRef));
+            childrenGroupLL.setVisibility(View.GONE);
         }
         else if (rol.equals(getString(R.string.rol_teacher))) {
             ref = new Firebase(getString(R.string.teacherRef));
+            childrenGroupLL.setVisibility(View.GONE);
         }
         else if (rol.equals(getString(R.string.rol_father))) {
             ref = new Firebase(getString(R.string.fatherRef));
-            childRef = new Firebase(getString(R.string.studentRef));
+            childrenGroupLL.setVisibility(View.VISIBLE);
         }
         Query userData = ref.orderByChild(getString(R.string.bbdd_mail)).equalTo(myMail);
         userData.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -149,7 +152,6 @@ public class MyDataActivity extends Activity {
 
     public void setData (Alumno alumno) {
         //***Obtenemos los TextViews
-        childrenGroupLL.setVisibility(View.GONE);
         EditText courseGroupEditText = (EditText) findViewById(R.id.course_group);
         courseGroupEditText.setEnabled(false);
 
@@ -169,7 +171,6 @@ public class MyDataActivity extends Activity {
         classRoomsEditText.setEnabled(false);
         TextView classRoomsTextViewLabel = (TextView) findViewById(R.id.course_group_label);
         classRoomsTextViewLabel.setText(getString(R.string.teacher_class_label));
-        childrenGroupLL.setVisibility(View.GONE);
 
         nameEditText.setText(teacher.getName());
         lastnameEditText.setText(teacher.getLastname());
@@ -294,10 +295,11 @@ public class MyDataActivity extends Activity {
                 classRoomsEditText.setEnabled(true);
             }
             if (rol.equals(getString(R.string.rol_father))) {
-                for (int i = 0; i < childrenGroupLL.getChildCount(); i++) {
+                LinearLayout childsGroupLL = (LinearLayout) findViewById(R.id.childs);
+                for (int i = 0; i < childsGroupLL.getChildCount(); i++) {
                     int eltoEditText = i % getResources().getInteger(R.integer.children_fields);
                     if (eltoEditText != 0) {
-                        LinearLayout childLL = (LinearLayout) childrenGroupLL.getChildAt(i);
+                        LinearLayout childLL = (LinearLayout) childsGroupLL.getChildAt(i);
                         if (eltoEditText != getResources().getInteger(R.integer.children_spinner_field)) {
                             EditText childEditText = (EditText) childLL.getChildAt(1);
                             childEditText.setEnabled(true);
@@ -325,7 +327,7 @@ public class MyDataActivity extends Activity {
     }
 
     public ArrayList<String> getSchools() {
-        Firebase schoolsRef = new Firebase(getString(R.string.studentRef));
+        Firebase schoolsRef = new Firebase(getString(R.string.schoolsRef));
         final ArrayList<String> tmp = new ArrayList<>();
         Query allSchools = schoolsRef;
         allSchools.addChildEventListener(new ChildEventListener() {
