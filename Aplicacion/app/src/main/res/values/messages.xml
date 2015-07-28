@@ -31,17 +31,18 @@
     <string name="error_classes_format">Error en el formato de clase. Ejplo: 1A,2B</string>
     <string name="error_select_school">Seleccione el nuevo colegio al que sus hijos van a ir.</string>
     <string name="empty_children">Añada al menos un hijo.</string>
+    <string name="access_account">Debe acceder con su cuenta.</string>
 
     <string name="about_message">Esta aplicaión trata de mejorar la comunicación entre los profesores,
         alumnos y padres/Madres/Tutores Legales.</string>
     <string name="about_message2">Si es la primera vez que accede a la aplicación o todavía no se ha
         registrado, por favor regístrese usando el botón:</string>
-    <string name="about_message3">Esto le llevará a la selección del rol con el que se registrará:</string>
-    <string name="about_message4">Al decidir con que tipo de usuario se va a registar, accederá un
+    <string name="about_message3">Esto le permitirá el acceso a la selección del rol con el que se registrará:</string>
+    <string name="about_message4">Al decidir con que tipo de usuario (rol) se va a registar, accederá un
         formulario que debe rellenar.</string>
-    <string name="about_message5">Si ya ha accedido a la aplicación o tiene una cuenta, use el
-        siguiente botón:</string>
-    <string name="about_message6">Llegará a la pantalla de acceso donde debe introducir el correo
+    <string name="about_message5">Si no es la primera vez que accede a la aplicación o posee una
+        cuenta, use el siguiente botón:</string>
+    <string name="about_message6">Accederá a la pantalla de acceso donde debe introducir el correo
         con el que se ha registrado y su contraseña:</string>
     <string name="about_message7">Al acceder a la aplicaión, ésta se encargará de comprobar con la
         base de datos, que está en la nube, que tipo de usuario es.</string>
@@ -59,18 +60,19 @@
         \n\t\t<b>* Padres:</b> Progenitores de alumnos compañeros de clase del hijo del usuario.
         \n\t\t<b>* Profesores:</b> Personal docente que da clase al hijo del usuario.
         \n\t\t<b>* Notificaciones nuevas:</b> Mensajes que recibe de otros usuarios de la aplicación.</string>
-    <string name="about_message9">Si es profesor, podrá mandar circulares tanto a todos los padres
+    <string name="about_message9">Si es profesor, podrá enviar circulares tanto a todos los padres
         como a todos los alumnos de una o varias clases con el botón:</string>
-    <string name="about_message10">Todos los usuarios pueden mandar eventos, es decir, programar
-        citas en el calendario del dispositivo e incluso en el de Google. Para esto use:</string>
+    <string name="about_message10">Todos los usuarios pueden programar eventos o citas en el
+        calendario del dispositivo e incluso en el de Google. Para esto use:</string>
     <string name="about_message11">Desde cualquiera de los contactos que aparecen en las pestañas,
         con una selección corta, se puede acceder a un chat que recupera los mensajes enviados y los
         almacenados en la nube. Esto implementa una mensajería instantánea a través de internet.
         \nSi usa la selección larga podrá ver los datos del contacto.</string>
-    <string name="about_message12">Desde las opciones en la "ActionBar" se puede acceder a los datos
-        de usuario para modificarlos. Esto incluye también modificar su propia contraseña.</string>
+    <string name="about_message12">Desde las opciones en la "Barra de Título" de la aplicación se
+        puede acceder a los datos de usuario para modificarlos. Esto incluye también modificar su
+        propia contraseña.</string>
     <string name="about_message13">Tanto desde la pantalla de bienvenida como desde la de acceso, en
-        las opciones de la "ActionBar", se puede acceder a los ajustes del dispositivo, ya que usa
-        internet, y a la elección de idioma de la aplicación.</string>
+        las opciones de la "Barra de Título" de la aplicación, se puede acceder a los ajustes del
+        dispositivo, ya que usa internet, y a la selección de idioma de la aplicación.</string>
 
 </resources>

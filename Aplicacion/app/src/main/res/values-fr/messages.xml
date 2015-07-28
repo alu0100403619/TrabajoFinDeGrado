@@ -29,6 +29,7 @@
     <string name="error_classes_format">Erreur dans le format de classe. Exple: 1A,2B</string>
     <string name="error_select_school">Sélectionnez la nouvelle école que leurs enfants iront.</string>
     <string name="empty_children">Ajouter au moins un enfant.</string>
+    <string name="access_account">Vous devez accéder à votre compte.</string>
 
     <string name="about_message">Cette application vise à améliorer la communication entre les
         enseignants, les élèves et les parents / Mère / Guardian.</string>
@@ -67,11 +68,11 @@
         sélection, vous pouvez accéder à une conversation qui récupère les messages envoyés et
         stockés dans le nuage. Ceci implémente la messagerie instantanée sur Internet.\nUtilisation
         grand choix peut afficher les données de contact.</string>
-    <string name="about_message12">Dans les options de la "Barre D\'action" peuvent accéder aux
-        données de l\'utilisateur de les modifier. Ceci inclut le changement de votre propre mot de
-        passe.</string>
+    <string name="about_message12">Dans les options de la "La barre de titre" de l\'application
+        peuvent accéder aux données de l\'utilisateur de les modifier. Ceci inclut le changement de
+        votre propre mot de passe.</string>
     <string name="about_message13">Tant partir de l\'écran d\'accueil ou de l\'accès, les options de
-        "Barre D\'action", vous pouvez accéder aux réglages de l\'appareil, et l\'utilisation de
-        l\'Internet, et le choix de la langue de l\'application.</string>
+        "La barre de titre" de l\'application, vous pouvez accéder aux réglages de l\'appareil, et
+        l\'utilisation de l\'Internet, et le choix de la langue de l\'application.</string>
 
 </resources>

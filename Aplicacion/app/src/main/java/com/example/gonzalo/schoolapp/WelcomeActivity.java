@@ -124,19 +124,8 @@ public class WelcomeActivity extends Activity {
         }
     }
 
-    /*@Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        Utilities.loadLanguage(this);
-        String language = Locale.getDefault().toString();
-        Log.i("WelcomeActivity", "savedInstanceState saving language: "+language);
-        savedInstanceState.putString(getString(R.string.language), language);
-        super.onSaveInstanceState(savedInstanceState);
-    }//*/
+    public void launchPrompt(View view) {
+        Toast.makeText(this, getString(R.string.access_account), Toast.LENGTH_LONG).show();
+    }
 
-    /*@Override
-    public void onConfigurationChanged(Configuration configuration)  {
-        Locale locale = new Locale(Utilities.loadLanguage(this));
-        Locale.setDefault(locale);
-        super.onConfigurationChanged(configuration);
-    }//*/
 }

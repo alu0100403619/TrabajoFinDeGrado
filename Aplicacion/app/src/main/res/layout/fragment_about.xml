@@ -29,7 +29,8 @@
 
             <Button android:id="@+id/register_button" android:text="@string/sign_up_text"
                 android:layout_width="wrap_content" android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content" android:layout_below="@id/help2"/>
+                android:layout_height="wrap_content" android:layout_below="@id/help2"
+                android:onClick="launchRegister"/>
 
             <TextView android:id="@+id/empty2" android:text="@string/empty"
                 android:layout_width="fill_parent"
@@ -105,7 +106,8 @@
 
             <Button android:id="@+id/login_button" android:text="@string/login_button_label"
                 android:layout_width="wrap_content" android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content" android:layout_below="@id/help5"/>
+                android:layout_height="wrap_content" android:layout_below="@id/help5"
+                android:onClick="launchLogin"/>
 
             <TextView android:id="@+id/help6" android:text="@string/about_message6"
                 android:layout_width="wrap_content" android:layout_below="@id/login_button"
@@ -163,7 +165,8 @@
 
             <Button android:id="@+id/circulares" android:text="@string/circulares"
                 android:layout_width="wrap_content" android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content" android:layout_below="@id/help9"/>
+                android:layout_height="wrap_content" android:layout_below="@id/help9"
+                android:onClick="launchPrompt"/>
 
             <TextView android:id="@+id/empty8" android:text="@string/empty"
                 android:layout_width="fill_parent"
@@ -175,7 +178,8 @@
 
             <Button android:id="@+id/appointment" android:text="@string/Dates"
                 android:layout_width="wrap_content" android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content" android:layout_below="@id/help10"/>
+                android:layout_height="wrap_content" android:layout_below="@id/help10"
+                android:onClick="launchPrompt"/>
 
             <TextView android:id="@+id/empty9" android:text="@string/empty"
                 android:layout_width="fill_parent"
@@ -195,7 +199,8 @@
 
             <Button android:id="@+id/modify" android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content" android:text="@string/modify"
-                android:layout_height="wrap_content" android:layout_below="@id/help12"/>
+                android:layout_height="wrap_content" android:layout_below="@id/help12"
+                android:onClick="launchPrompt"/>
 
         </RelativeLayout>
 

@@ -29,6 +29,7 @@
     <string name="error_classes_format">Error class format. Exple: 1A,2B</string>
     <string name="error_select_school">Select the new school that their children will go..</string>
     <string name="empty_children">Add at least one child.</string>
+    <string name="access_account">You must access your account.</string>
 
     <string name="about_message">This application aims to improve communication between teachers,
         students and parents and Guardian.</string>
@@ -66,10 +67,10 @@
         selection, you can access a chat that retrieves messages sent and stored in the cloud. This
         implements instant messaging over the Internet. \ nUsing large selection can view the
         contact data.</string>
-    <string name="about_message12">From the options in the "ActionBar" can access the user data to
-        modify them. This includes changing your own password.</string>
+    <string name="about_message12">From the options in the "Title bar" of the application can access
+        the user data to modify them. This includes changing your own password.</string>
     <string name="about_message13">Both from the Welcome screen or from the access, the options of
-        "ActionBar", you can access the device settings, and using the Internet, and the choice of
-        application language.</string>
+        "Title bar" of the application, you can access the device settings, and using the Internet,
+        and the choice of application language.</string>
 
 </resources>
