@@ -10,9 +10,9 @@
     <string name="field_empty">Este campo es obligatorio</string>
     <string name="register_error">Error de Registro: </string>
     <string name="login_error">Error de Login: </string>
-    <string name="course_group_help">Si es usted profesor puede poner los diferentes cursos/grupos
-        a los que da clase separados por comas: 1A, 2B, 3C, ...\n Pero si es estudiante solo se le
-        permite poner un curso seguido de una clase: 1A.</string>
+    <string name="course_group_help">Si es usted profesor puede seleccionar los diferentes cursos/grupos
+        a los que da clase: 1A, 2B, 3C, ...\n Pero si es estudiante solo se le
+        permite seleccionar una clase: 1A.</string>
     <string name="forget_Password_message">Se le ha mandado al correo con el que se registró un
         mensaje para que restaure su contraseña</string>
     <string name="forget_Password_message_error">No se le ha podido mandar al correo con el que se

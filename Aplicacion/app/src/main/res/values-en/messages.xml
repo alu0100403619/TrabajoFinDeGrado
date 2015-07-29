@@ -10,9 +10,9 @@
     <string name="field_empty">This field is required</string>
     <string name="register_error">Registration Error: </string>
     <string name="login_error">Login Error: </string>
-    <string name="course_group_help">If you are a teacher can put the different courses / groups
-        that gives class separated by commas: 1A, 2B, 3C, ...\nBut if a student is only allowed to
-        put a course followed by a class 1A.</string>
+    <string name="course_group_help">If you are a teacher can select the different courses / groups
+        that gives class: 1A, 2B, 3C, ...\nBut if a student is only allowed to
+        select a class: 1A.</string>
     <string name="forget_Password_message">It has sent mail to which a message is recorded to reset
         your password</string>
     <string name="forget_Password_message_error">He has not been able to send mail to which the

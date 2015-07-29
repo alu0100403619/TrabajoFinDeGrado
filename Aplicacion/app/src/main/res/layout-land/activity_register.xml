@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin" android:orientation="horizontal"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.gonzalo.schoolapp.RegisterActivity"
+    android:background="@drawable/welcome">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </View>
+
+    <RelativeLayout android:id="@+id/registerStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_linearlayout"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="launchRegisterStudent">
+
+        <ImageView android:id="@+id/studentIcon"
+            android:src="@drawable/ic_action_register_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView android:text="@string/registerStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/studentIcon"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </View>
+
+    <RelativeLayout android:id="@+id/registerTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_linearlayout"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="launchRegisterTeacher">
+
+        <ImageView android:id="@+id/teacherIcon"
+            android:src="@drawable/ic_action_register_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView android:text="@string/registerTeacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/teacherIcon"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </View>
+
+    <RelativeLayout android:id="@+id/registerFather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_linearlayout"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="launchRegisterFather">
+
+        <ImageView android:id="@+id/fatherIcon"
+            android:src="@drawable/ic_action_register_father"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView android:text="@string/registerFather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fatherIcon"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </View>
+
+</LinearLayout>

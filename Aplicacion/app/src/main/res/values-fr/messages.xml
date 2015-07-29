@@ -10,9 +10,9 @@
     <string name="field_empty">Ce champ est obligatoire.</string>
     <string name="register_error">Erreur d\'enregistrement: </string>
     <string name="login_error">Erreur d\'identification.: </string>
-    <string name="course_group_help">Si vous êtes un enseignant peut mettre les différents
-        cours/groupes qui donne la classe séparées par des virgules: 1A, 2B, 3C, ...\nMais si un
-        étudiant est autorisé à mettre un cours suivi par une classe 1A.</string>
+    <string name="course_group_help">Si vous êtes un enseignant sélectionnez les différents
+        cours/groupes qui donne la classe: 1A, 2B, 3C, ...\nMais si un
+        étudiant est autorisé à sélectionnez une classe: 1A.</string>
     <string name="forget_Password_message">Il a envoyé un mail à laquelle un message est enregistré
         pour réinitialiser votre mot de passe.</string>
     <string name="forget_Password_message_error">Il n\'a pas été en mesure d\'envoyer un mail à
