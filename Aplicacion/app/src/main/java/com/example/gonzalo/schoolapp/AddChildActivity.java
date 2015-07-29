@@ -36,11 +36,11 @@ import java.util.UUID;
 public class AddChildActivity extends Activity {
 
     Firebase childRef, schoolsRef;
-    Spinner spinner;
-    ArrayList<String> schools;
+    Spinner spinner, classSpinner;
+    ArrayList<String> schools, schoolsKeys, classSchool;
     AlertDialog dialog;
-    ArrayAdapter<String> spinnerAdapter;
-    String key;
+    ArrayAdapter<String> spinnerAdapter, classAdapter;
+    String key, schoolKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +52,16 @@ public class AddChildActivity extends Activity {
         childRef = new Firebase (getString(R.string.studentRef));
         schoolsRef = new Firebase (getString(R.string.schoolsRef));
         spinner = (Spinner) findViewById(R.id.spinner_2);
+        classSpinner = (Spinner) findViewById(R.id.classSpinner);
+
+        schoolsKeys = new ArrayList<>();
+        classSchool = new ArrayList<>();
 
         schools = getSchools();
-
         schools.add(getString(R.string.select_school));
+        schoolsKeys.add(getString(R.string.invalid_key));
         schools.add(getString(R.string.add_school));
+        schoolsKeys.add(getString(R.string.invalid_key));
         spinnerAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, schools);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -66,8 +71,17 @@ public class AddChildActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = String.valueOf(spinner.getSelectedItem());
+                schoolKey = schoolsKeys.get(position);
                 if (selected.equals(getString(R.string.add_school))) {
                     launchPrompt();
+                } else if ((!selected.equals(getString(R.string.add_school))) &&
+                        (!selected.equals(getString(R.string.select_school)))) {
+                    classSchool.clear();
+                    classSchool = getClassrooms(schoolsKeys.get(position));
+                    classSchool.add(0, getString(R.string.add_class));
+                    classSchool.add(0, getString(R.string.select_class));
+                    classAdapter = new ArrayAdapter<String>(AddChildActivity.this, android.R.layout.simple_spinner_item, classSchool);
+                    classSpinner.setAdapter(classAdapter);
                 }
             }
 
@@ -75,7 +89,27 @@ public class AddChildActivity extends Activity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-    }
+
+        //Set the classSpinner
+        classSchool.add(getString(R.string.select_class));
+        classSchool.add(getString(R.string.add_class));
+        classAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, classSchool);
+        classAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        classSpinner.setAdapter(classAdapter);
+        classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //Log.i("RegisterStudentActivity", "Item: "+classSchool.get(position));
+                String selected = classSpinner.getSelectedItem().toString();
+                if (selected.equals(getString(R.string.add_class))) {
+                    launchClassPrompt();
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+    }//function
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,7 +146,7 @@ public class AddChildActivity extends Activity {
                         EditText nameEditText = (EditText) findViewById(R.id.text_name);
                         EditText lastnameEditText = (EditText) findViewById(R.id.text_lastname);
                         EditText telephoneEditText = (EditText) findViewById(R.id.text_telephone);
-                        EditText classroomEditText = (EditText) findViewById(R.id.text_course_group);
+                        String classroom = classSpinner.getSelectedItem().toString();
                         String school = spinner.getSelectedItem().toString();
 
                         Map<String, Object> studentMap = new HashMap<String, Object>();
@@ -120,7 +154,7 @@ public class AddChildActivity extends Activity {
                         studentMap.put(getString(R.string.bbdd_lastname), lastnameEditText.getText().toString());
                         studentMap.put(getString(R.string.bbdd_telephone), telephoneEditText.getText().toString());
                         studentMap.put(getString(R.string.bbdd_center), school);
-                        studentMap.put(getString(R.string.bbdd_class), classroomEditText.getText().toString());
+                        studentMap.put(getString(R.string.bbdd_class), classroom);
                         studentMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
                         Alumno student = new Alumno(studentMap);
                         returnChild(student, false, null);
@@ -155,13 +189,12 @@ public class AddChildActivity extends Activity {
         EditText nameEditText = (EditText) findViewById(R.id.text_name);
         EditText lastnameEditText = (EditText) findViewById(R.id.text_lastname);
         EditText telephoneEditText = (EditText) findViewById(R.id.text_telephone);
-        EditText classroomEditText = (EditText) findViewById(R.id.text_course_group);
         EditText mailEditText = (EditText) findViewById(R.id.text_mail);
 
         String name = nameEditText.getText().toString();
         String lastname = lastnameEditText.getText().toString();
         String telephone = telephoneEditText.getText().toString();
-        String classroom = classroomEditText.getText().toString();
+        String classroom = ((Spinner) findViewById(R.id.classSpinner)).getSelectedItem().toString();
         String mail = mailEditText.getText().toString();
         String school = ((Spinner) findViewById(R.id.spinner_2)).getSelectedItem().toString();
         boolean haveEmptyFields = false;
@@ -181,13 +214,10 @@ public class AddChildActivity extends Activity {
             telephoneEditText.setError(getString(R.string.telephone_format_error));
             haveEmptyFields = true;
         }
-        if (classroom.isEmpty()) {
+        if ((classroom.isEmpty()) || (classroom.equals(getString(R.string.add_class))) ||
+                (classroom.equals(getString(R.string.select_class)))) {
             Log.i("RegStudAct", "classroom Empty");
-            classroomEditText.setError(getString(R.string.field_empty));
-            haveEmptyFields = true;
-        } else if (!Utilities.isOneClass(classroom)) {
-            Log.i("RegStudAct", "Is not One Class");
-            classroomEditText.setError(getString(R.string.error_class_format));
+            Toast.makeText(this, getString(R.string.select_class), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
         if (mail.isEmpty()) {
@@ -215,11 +245,39 @@ public class AddChildActivity extends Activity {
         allSchools.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.i("RegisterActivity", "value: " + dataSnapshot.getValue());
-                //String key = dataSnapshot.getKey();
-                if (!tmp.contains(dataSnapshot.getValue().toString())) {
-                    tmp.add(dataSnapshot.getValue().toString());
-                }
+                Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
+                String name = values.get(getString(R.string.bbdd_name)).toString();
+                if (!schoolsKeys.contains(dataSnapshot.getKey().toString())) {
+                    schoolsKeys.add(dataSnapshot.getKey().toString());
+                }//if key
+                if (!tmp.contains(name)) {
+                    tmp.add(name);
+                    Log.i("RegisterStudentActivity", "Annadida: " + name);
+                }//if name
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });//query
+        return tmp;
+    }
+
+    public ArrayList<String> getClassrooms (String key) {
+        final ArrayList<String> tmp = new ArrayList<>();
+        Query allClassSchool = schoolsRef.child(key).child(getString(R.string.bbdd_teacher_class));
+        allClassSchool.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String classroom = dataSnapshot.getValue().toString();
+                if (!tmp.contains(classroom)) {
+                    tmp.add(classroom);
+                    Log.i("RegisterStudentActivity", "Clase Annadida: " + classroom);
+                }//if name
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
@@ -258,7 +316,64 @@ public class AddChildActivity extends Activity {
                                     String uuid = UUID.randomUUID().toString();
                                     schoolsRef.child(uuid).setValue(school);
                                     schools.add(school);
+                                    schoolsKeys.add(uuid);
+                                    schoolKey = uuid;
                                     spinner.setSelection(spinnerAdapter.getPosition(school));
+                                    //obtener clases de la escuela nueva annadida
+                                    classSchool.clear();
+                                    classSchool = getClassrooms(uuid);
+                                    classSchool.add(0, getString(R.string.add_class));
+                                    classSchool.add(0, getString(R.string.select_class));
+                                    classAdapter = new ArrayAdapter<String>(AddChildActivity.this, android.R.layout.simple_spinner_item, classSchool);
+                                    classSpinner.setAdapter(classAdapter);
+                                }
+                            }
+                        })
+                .setNegativeButton(getString(R.string.back),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
+    public void launchClassPrompt() {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.classprompt, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set prompt.xml to alertdialog builder
+        alertDialogBuilder.setView(promptView);
+
+        final EditText classEditText = (EditText) promptView.findViewById(R.id.classEditText);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.save),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // get user input and set it to result
+                                // edit text
+                                String classroom = classEditText.getText().toString();
+                                if (classroom.isEmpty()) {
+                                    classEditText.setError(getString(R.string.field_empty));
+                                } else if (!Utilities.isOneClass(classroom)) {
+                                    classEditText.setError(getString(R.string.error_class_format));
+                                } else {
+                                    String uuid = UUID.randomUUID().toString();
+                                    schoolsRef.child(schoolKey)
+                                            .child(getString(R.string.bbdd_teacher_class))
+                                            .child(uuid).setValue(classroom);
+
+                                    classSchool.add(classroom);
+                                    classSpinner.setSelection(classAdapter.getPosition(classroom));
                                 }
                             }
                         })

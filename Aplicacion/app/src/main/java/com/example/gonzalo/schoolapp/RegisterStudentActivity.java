@@ -88,10 +88,8 @@ public class RegisterStudentActivity extends Activity {
                     classSpinner.setAdapter(classAdapter);
                 }
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
         //Set the classSpinner
@@ -327,7 +325,6 @@ public class RegisterStudentActivity extends Activity {
         return tmp;
     }
 
-    //public ArrayList<String> getClassrooms (String school) {
     public ArrayList<String> getClassrooms (String key) {
         final ArrayList<String> tmp = new ArrayList<>();
         Query allClassSchool = schoolsRef.child(key).child(getString(R.string.bbdd_teacher_class));
@@ -340,22 +337,14 @@ public class RegisterStudentActivity extends Activity {
                     Log.i("RegisterStudentActivity", "Clase Annadida: " + classroom);
                 }//if name
             }
-
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-            }
-
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-            }
-
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
-
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
+            public void onCancelled(FirebaseError firebaseError) {}
         });//query
         return tmp;
     }
