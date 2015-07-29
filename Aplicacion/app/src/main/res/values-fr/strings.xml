@@ -54,6 +54,8 @@
     <string name="load">Chargement...</string>
     <string name="add_school">Ajouter l\'école...</string>
     <string name="select_school">Sélectionnez l\'école</string>
+    <string name="add_class">Ajouter une classe...</string>
+    <string name="select_class">Sélectionnez la catégorie</string>
     <string name="teacher_select_course">Sélectionnez l\'un des cours qu\'il enseigne: </string>
     <string name="father_select_course">Sélectionnez l\'une des cours qu\'ils ont des enfants: </string>
     <string name="father_number_children">Nombre d\'enfants: </string>

@@ -58,6 +58,8 @@
     <string name="load">Cargando...</string>
     <string name="add_school">Añadir Colegio...</string>
     <string name="select_school">Seleccionar Colegio</string>
+    <string name="add_class">Añadir Clase...</string>
+    <string name="select_class">Seleccionar Clase</string>
     <string name="teacher_select_course">Seleccione uno de los cursos en los que da clase: </string>
     <string name="father_select_course">Seleccione uno de los cursos en los que tenga hijos: </string>
     <string name="father_number_children">Número de hijos: </string>

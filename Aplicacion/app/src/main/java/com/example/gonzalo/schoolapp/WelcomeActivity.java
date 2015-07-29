@@ -121,6 +121,7 @@ public class WelcomeActivity extends Activity {
         else {
             Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
+            this.finish();
         }
     }
 
