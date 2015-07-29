@@ -107,16 +107,12 @@ public class NotificationsActivity extends ListActivity {
                 String mailRemitter = data.getStringExtra(getString(R.string.bbdd_mail_remitter));
                 int pos = mailsList.indexOf(mailRemitter);
                 if (pos != -1) {
-                    mailsList.remove(pos); //TODO Error length 12 index -1
+                    mailsList.remove(pos);
                     messagesListView.remove(pos);
                     numberMessages.remove(pos);
                     rolRemitterMessages.remove(pos);
                     notifyAdapter.notifyDataSetChanged();
                 }
-                if ((mailsList.size() == 0) && (messagesListView.size() == 0) &&
-                        (rolRemitterMessages.size() == 0) && (numberMessages.size() != 0)) {
-                    numberMessages.clear();
-                }//if
             }
         }
     }

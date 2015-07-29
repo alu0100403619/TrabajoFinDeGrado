@@ -179,7 +179,8 @@ public class ChatActivity extends ListActivity {
                 }//if
 
                 //Seteamos el Adapter
-                chatAdapter = new ChatAdapter(ChatActivity.this, messages);
+                //chatAdapter = new ChatAdapter(ChatActivity.this, messages);
+                chatAdapter = new ChatAdapter(ChatActivity.this, messages, mail);
                 setListAdapter(chatAdapter);
 
                 //Borrar el mensaje de la BBDD
@@ -196,7 +197,8 @@ public class ChatActivity extends ListActivity {
         });//getMessages
 
         //Seteamos el Adapter
-        chatAdapter = new ChatAdapter(ChatActivity.this, messages);
+        //chatAdapter = new ChatAdapter(ChatActivity.this, messages);
+        chatAdapter = new ChatAdapter(ChatActivity.this, messages, mail);
         setListAdapter(chatAdapter);
     }
 }

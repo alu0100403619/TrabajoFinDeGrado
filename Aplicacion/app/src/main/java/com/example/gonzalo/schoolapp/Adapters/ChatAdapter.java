@@ -5,7 +5,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gonzalo.schoolapp.R;
@@ -21,14 +23,16 @@ public class ChatAdapter extends BaseAdapter {
     Context context;
     ArrayList<Message> messages;
     private static LayoutInflater inflater = null;
+    String myMail;
 
     public ChatAdapter () {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public ChatAdapter (Activity chatActivity, ArrayList<Message> messages) {
+    public ChatAdapter (Activity chatActivity, ArrayList<Message> messages, String myMail) {
         context = chatActivity;
         this.messages = messages;
+        this.myMail = myMail;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -69,10 +73,20 @@ public class ChatAdapter extends BaseAdapter {
         View view;
 
         view = inflater.inflate(R.layout.list_chat_item, null);
+        LinearLayout chatItem = (LinearLayout) view.findViewById(R.id.chatItem);
+        Message msg = messages.get(position);
+
         message.message = (TextView) view.findViewById(R.id.message_send);
         message.date = (TextView) view.findViewById(R.id.date_message);
         message.message.setText(messages.get(position).getMessage());
         message.date.setText(messages.get(position).getDate().toString());
+
+        if (myMail.equals(msg.getMailRemitter())) {
+            chatItem.setBackgroundResource(R.drawable.bubble_b);
+        }
+        else {
+            chatItem.setBackgroundResource(R.drawable.bubble_a);
+        }
 
         return view;
     }
