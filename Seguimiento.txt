@@ -409,21 +409,43 @@ LOGROS:
 + Incorpora idiomas
 
 Futuro:
-- Actvidad 2. Redactar algunos párrafos en términos de "futuro"
-- Actividad 3. Haz una purga de referencias que NO sean realmente
++ Actvidad 2. Redactar algunos párrafos en términos de "futuro"
++ Actividad 3. Haz una purga de referencias que NO sean realmente
 	significativas.
-- Actividad 4. La app estaba decidida desde el 10.dic.2014
++ Actividad 4. La app estaba decidida desde el 10.dic.2014
 
-- Registro funciona.
++ Registro funciona.
   ¿qué ocurre si un alumno se inscribe en la clase "3X" (que no existe)?
-- Revisar la modificación de datos
-- Evitar que la rotación de la pantalla afecte al idioma.
++ Revisar la modificación de datos
++ Evitar que la rotación de la pantalla afecte al idioma.
 
-- La app casca al enviar/recuperar un msg de chat: revisar
-- Trae impresa la lista de usuarios para comprobar que todo funciona OK
-- Necesito instalarme en mi teléfono la app.
-- Mail para recordar traer mi tableta
++ La app casca al enviar/recuperar un msg de chat: revisar
++ Trae impresa la lista de usuarios para comprobar que todo funciona OK
++ Necesito instalarme en mi teléfono la app.
++ Mail para recordar traer mi tableta
 --------------------------
+Jul 30
+
+Futuro:
+- Añadir botón de "logout" con el nombre "Salir"
+- Los alumnos Pueden NO tener e-mail: pensar una forma alternativa de
+	identificación (DNI?)
+- Al registrar usuarios, mostrar de algún modo campos
+	obligatorios/NoObligatorios
+- El mensaje de recuperación de password, en español.
+- Ponerle un icono a la app
+- Cuando un emisor establece un 'diálogo' a través de msgs con otro usuario de
+	la app, comprobar que los mensajes llegan de uno a otro (hemos visto que no funciona
+	del todo bien).
+- Completar TODO en la memoria.
+- Hay problemas al compilar la memoria: los índices y referencias no aparecen.
+
+- Funcionalidades pendientes:
+  * Circulares: es un 'broadcast' de un emisor a todos los miembros de otros
+	  colectivos a los que puede enviar mensajes
+  * Citas.
+
+Para FdeSande: Calificar las actividades ya subidas
 --------------------------
 --------------------------
 --------------------------
