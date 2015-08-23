@@ -261,6 +261,8 @@ public class RegisterFatherActivity extends Activity {
         }
         if (children.size() == 0) {
             Log.i("RegFatAct", "Have not Childrens");
+            ImageView asterisk1 = (ImageView) findViewById(R.id.asterisk1);
+            asterisk1.setImageResource(R.drawable.ic_action_required_empty);
             Toast.makeText(this, getString(R.string.empty_children), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }

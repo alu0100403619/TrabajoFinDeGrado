@@ -194,6 +194,8 @@ public class RegisterStudentActivity extends Activity {
         if ((classroom.isEmpty()) || (classroom.equals(getString(R.string.add_class))) ||
                 (classroom.equals(getString(R.string.select_class)))) {
             Log.i("RegStudAct", "classroom Empty");
+            ImageView asterisk2 = (ImageView) findViewById(R.id.asterisk2);
+            asterisk2.setImageResource(R.drawable.ic_action_required_empty);
             Toast.makeText(this, getString(R.string.select_school), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
@@ -215,6 +217,8 @@ public class RegisterStudentActivity extends Activity {
         if ((school.isEmpty()) || (school.equals(getString(R.string.add_school))) ||
                 (school.equals(getString(R.string.select_school)))) {
             Log.i("RegStudAct", "school Empty");
+            ImageView asterisk1 = (ImageView) findViewById(R.id.asterisk1);
+            asterisk1.setImageResource(R.drawable.ic_action_required_empty);
             Toast.makeText(this, getString(R.string.select_class), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }

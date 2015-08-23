@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
                 android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_action_person"/>
+                android:drawableLeft="@drawable/ic_action_person"
+                android:drawableEnd="@drawable/ic_action_required" />
 
 
             <EditText android:id="@+id/text_lastname"
@@ -32,14 +33,16 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/lastname"
                 android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_action_person"/>
+                android:drawableLeft="@drawable/ic_action_person"
+                android:drawableEnd="@drawable/ic_action_required"/>
 
             <EditText android:id="@+id/text_telephone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/telephone"
                 android:inputType="phone" android:maxLength="9"
-                android:ems="10" android:drawableLeft="@drawable/ic_action_phone"/>
+                android:ems="10" android:drawableLeft="@drawable/ic_action_phone"
+                android:drawableEnd="@drawable/ic_action_required"/>
 
             <LinearLayout android:id="@+id/school_group"
                 android:orientation="horizontal"
@@ -49,6 +52,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bbdd_schools"/>
+                <ImageView android:id="@+id/asterisk1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:src="@drawable/ic_action_required"
+                    android:contentDescription="Required" />
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
@@ -63,6 +70,10 @@
                 <TextView android:id="@+id/class_label"
                     android:layout_width="wrap_content" android:text="@string/bbdd_class"
                     android:layout_height="wrap_content" />
+                <ImageView android:id="@+id/asterisk2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:src="@drawable/ic_action_required"
+                    android:contentDescription="Required" />
                 <Spinner android:id="@+id/classSpinner"
                     android:layout_width="226dp"
                     android:layout_height="wrap_content" />
@@ -78,14 +89,29 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/mail"
                 android:inputType="textEmailAddress"
-                android:drawableLeft="@drawable/ic_action_email"/>
+                android:drawableLeft="@drawable/ic_action_email"
+                android:drawableEnd="@drawable/ic_action_required"/>
 
             <EditText android:id="@+id/text_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_action_secure"/>
+                android:drawableLeft="@drawable/ic_action_secure"
+                android:drawableEnd="@drawable/ic_action_required"/>
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_required"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/required_fields"/>
+            </LinearLayout>
 
             <Button android:id="@+id/submit"
                 android:layout_width="wrap_content"

@@ -69,6 +69,7 @@
     <string name="help_ok_dialog">Aceptar</string>
     <string name="ok">Vale</string>
     <string name="action_logout">Salir</string>
+    <string name="required_fields">Campos Obligatorios</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nombre: </string>

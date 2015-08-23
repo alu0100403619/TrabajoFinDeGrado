@@ -65,6 +65,7 @@
     <string name="help_ok_dialog">Accepter</string>
     <string name="ok">D\'accord</string>
     <string name="action_logout">Se déconnecter</string>
+    <string name="required_fields">Champs Requis</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nom: </string>
