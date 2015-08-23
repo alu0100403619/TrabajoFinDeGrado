@@ -95,6 +95,13 @@ public class AlumnoTabActivity extends TabActivity {
             intent.putExtra(getString(R.string.bbdd_rol), myRol);
             startActivity(intent);
         }
+        else if (id == R.id.action_logout) {
+            Firebase rootref = new Firebase (getString(R.string.rootRef));
+            Intent intent = new Intent(this, LoginActivity.class);
+            rootref.unauth();
+            startActivity(intent);
+            this.finish();
+        }
 
         return super.onOptionsItemSelected(item);
     }
