@@ -60,12 +60,14 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="47dp">
-                <EditText android:id="@+id/text_course_group"
-                    android:layout_width="226dp"
+                <TextView android:id="@+id/class_label"
+                    android:layout_width="wrap_content" android:text="@string/bbdd_teacher_class"
+                    android:layout_height="wrap_content" />
+                <Button android:id="@+id/classSpinner" android:text="@string/select_class"
+                    android:layout_width="wrap_content" android:textColor="@color/Black"
                     android:layout_height="wrap_content"
-                    android:hint="@string/course_group_hint"
-                    android:inputType="text"
-                    android:drawableLeft="@drawable/ic_action_group"/>
+                    android:onClick="launchClassSelector"
+                    style="?android:attr/spinnerStyle" />
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" android:src="@drawable/ic_action_help"

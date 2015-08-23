@@ -3,6 +3,7 @@ package com.example.gonzalo.schoolapp;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -110,6 +111,15 @@ public class TeachersTabActivity extends TabActivity {
             intent.putExtra(getString(R.string.bbdd_mail), mail);
             intent.putExtra(getString(R.string.bbdd_rol), myRol);
             startActivity(intent);
+        }
+        else if (id == R.id.action_logout) {
+            Log.i("TTA", "Logout");
+            Firebase rootref = new Firebase (getString(R.string.rootRef));
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            rootref.unauth();
+            startActivity(intent);
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);

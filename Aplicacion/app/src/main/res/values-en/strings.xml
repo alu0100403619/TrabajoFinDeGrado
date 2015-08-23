@@ -64,6 +64,8 @@
     <string name="add_child">Add child </string>
     <string name="help_dialog_title">Help about Course and Group</string>
     <string name="help_ok_dialog">Acept</string>
+    <string name="ok">Ok</string>
+    <string name="action_logout">Log Out</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Name: </string>

@@ -63,6 +63,8 @@
     <string name="add_child">Ajouter un enfant </string>
     <string name="help_dialog_title">Aide Cours et groupe</string>
     <string name="help_ok_dialog">Accepter</string>
+    <string name="ok">D\'accord</string>
+    <string name="action_logout">Se déconnecter</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nom: </string>

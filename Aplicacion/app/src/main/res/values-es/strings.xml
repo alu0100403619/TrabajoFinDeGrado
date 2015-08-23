@@ -67,6 +67,8 @@
     <string name="add_child">Añadir hijo </string>
     <string name="help_dialog_title">Ayuda sobre Curso y Grupo</string>
     <string name="help_ok_dialog">Aceptar</string>
+    <string name="ok">Vale</string>
+    <string name="action_logout">Salir</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nombre: </string>
