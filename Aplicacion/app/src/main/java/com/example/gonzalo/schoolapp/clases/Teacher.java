@@ -17,6 +17,7 @@ public class Teacher implements Parcelable {
     private String school;
     private String mail;
     private String telephone;
+    private String dni;
     private ArrayList<String> classRooms;
     private String rol = "Profesor";
 
@@ -27,9 +28,16 @@ public class Teacher implements Parcelable {
         setLastname((String) values.get("apellido"));
         setSchool((String) values.get("centro"));
         setMail((String) values.get("mail"));
+        setDNI((String) values.get("dni"));
         //ClassRooms
         Map<String, Object> classes = (Map<String, Object>) values.get("clases");
         setClassRooms(classes);
+    }
+
+    public String getDNI () {return dni;}
+
+    public void setDNI (String dni) {
+        this.dni = dni;
     }
 
     public ArrayList<String> getClassRooms() {
@@ -122,6 +130,7 @@ public class Teacher implements Parcelable {
         dest.writeString(school);
         dest.writeString(mail);
         dest.writeString(telephone);
+        dest.writeString(dni);
         dest.writeStringList(classRooms);
         dest.writeString(rol);
     }
@@ -132,6 +141,7 @@ public class Teacher implements Parcelable {
         school = in.readString();
         mail = in.readString();
         telephone = in.readString();
+        dni = in.readString();
         in.readStringList(classRooms);
         rol = in.readString();
     }

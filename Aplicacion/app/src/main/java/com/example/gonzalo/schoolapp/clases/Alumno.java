@@ -17,6 +17,7 @@ public class Alumno implements Parcelable {
     private String classroom;
     private String mail;
     private String telephone;
+    private String dni;
     private String rol = "Alumno";
 
     public Alumno(Map<String, Object> values) {
@@ -26,7 +27,12 @@ public class Alumno implements Parcelable {
         setClassroom((String) values.get("clase"));
         setMail((String) values.get("mail"));
         setTelephone((String) values.get("telefono"));
+        setDNI((String) values.get("dni"));
     }
+
+    public String getDNI () { return dni; }
+
+    public void setDNI (String dni) { this.dni = dni; }
 
     public String getName() {
         return name;
@@ -92,6 +98,7 @@ public class Alumno implements Parcelable {
         } else{
             infoMap.put("telefono", "000000000");
         }
+        infoMap.put("dni", getDNI());
         return infoMap;
     }
 
@@ -128,6 +135,7 @@ public class Alumno implements Parcelable {
         dest.writeString(classroom);
         dest.writeString(mail);
         dest.writeString(telephone);
+        dest.writeString(dni);
         dest.writeString(rol);
     }
 
@@ -138,6 +146,7 @@ public class Alumno implements Parcelable {
         classroom = in.readString();
         mail = in.readString();
         telephone = in.readString();
+        dni = in.readString();
         rol = in.readString();
     }
 

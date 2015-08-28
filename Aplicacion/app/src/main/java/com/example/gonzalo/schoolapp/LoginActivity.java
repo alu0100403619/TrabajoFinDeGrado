@@ -125,6 +125,7 @@ public class LoginActivity extends Activity {
                                         }//if no user
                                         else {
                                             //Profesor
+                                            Log.i("LoginActivity", "Teacher dataSnapshot: "+dataSnapshot.getValue());//TODO ------------------
                                             Map<String, Object> values3 = (Map<String, Object>) dataSnapshot.getValue();
                                             clases = getUserClass (values3);
                                         }
@@ -135,6 +136,7 @@ public class LoginActivity extends Activity {
                             }//if no padre
                             else {
                                 //Padre
+                                Log.i("LoginActivity", "Father dataSnapshot: "+dataSnapshot.getValue());//TODO ------------------
                                 Map<String, Object> values2 = (Map<String, Object>) dataSnapshot.getValue();
                                 clases = getUserClass (values2);
                             }
@@ -145,6 +147,7 @@ public class LoginActivity extends Activity {
                 }//if no alumno
                 else {
                     //Alu
+                    Log.i("LoginActivity", "Student dataSnapshot: "+dataSnapshot.getValue());//TODO ------------------
                     Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                     clases = getUserClass (values);
                 }
@@ -214,8 +217,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
                         alertDialog.dismiss();
                         startActivity(intent);
-                        //TODO Descomentar
-                        //LoginActivity.this.finish();
+                        LoginActivity.this.finish();
                     }
                     else if (userType.equals(getString(R.string._teachers))) {
                         Intent intent = new Intent(LoginActivity.this, TeachersTabActivity.class);
@@ -227,8 +229,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
                         alertDialog.dismiss();
                         startActivity(intent);
-                        //TODO Descomentar
-                        //LoginActivity.this.finish();
+                        LoginActivity.this.finish();
                     }
                     else if (userType.equals(getString(R.string._fathers))) {
                         Intent intent = new Intent(LoginActivity.this, FathersTabActivity.class);
@@ -239,12 +240,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.myRol), myRol);
                         alertDialog.dismiss();
                         startActivity(intent);
-                        //TODO Descomentar
-                        //LoginActivity.this.finish();
-                        //--------------------------------
-                        /*Log.i("LoginActivity", "Colegios: "+colegios);
-                        Toast.makeText(LoginActivity.this,
-                                getString(R.string.father), Toast.LENGTH_LONG).show();//*/
+                        LoginActivity.this.finish();
                     }
                 }
 
@@ -267,6 +263,8 @@ public class LoginActivity extends Activity {
         for (String key: keys) {
             data = (Map<String, Object>) values.get(key);
         }
+        myName = data.get(getString(R.string.bbdd_name)) + " " +
+                data.get(getString(R.string.bbdd_lastname));
         if (userType.equals(getString(R.string._students))) {
             myRol = "Alumno";
             clases.add(data.get(getString(R.string.bbdd_class)).toString());
@@ -288,6 +286,7 @@ public class LoginActivity extends Activity {
             myRol = "Padre";
             tempMap = (Map<String, Object>) data.get(getString(R.string.bbdd_children));
             data.clear();
+            keys.clear();
             keys = tempMap.keySet();
             for (String key: keys) {
                 data = (Map<String, Object>) tempMap.get(key);
@@ -301,8 +300,6 @@ public class LoginActivity extends Activity {
                 }
             }//for
         }
-        myName = data.get(getString(R.string.bbdd_name)) + " " +
-                data.get(getString(R.string.bbdd_lastname));
         return clases;
     }
 

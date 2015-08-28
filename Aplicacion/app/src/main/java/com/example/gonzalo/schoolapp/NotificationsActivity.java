@@ -96,6 +96,7 @@ public class NotificationsActivity extends ListActivity {
                 rolRemitterMessages.remove(pos);
                 notifyAdapter.notifyDataSetChanged();
                 startActivityForResult(intent, 1);
+                Log.i("NotificationsActivity", "Eliminar al hacer click");
             }//public void onItemClick
         });//setOnITemClickListener
     }
@@ -112,6 +113,7 @@ public class NotificationsActivity extends ListActivity {
                     numberMessages.remove(pos);
                     rolRemitterMessages.remove(pos);
                     notifyAdapter.notifyDataSetChanged();
+                    Log.i("NotificationsActivity", "Eliminar al Volver del chat con "+mailRemitter);
                 }
             }
         }
@@ -135,7 +137,7 @@ public class NotificationsActivity extends ListActivity {
                     int pos = mailsList.indexOf(message.getMailRemitter());
                     int number = numberMessages.get(pos) + 1;
                     numberMessages.add(pos, number);
-                    //El rol ya esta en el ArrayLis
+                    //El rol ya esta en el ArrayList
                 }
 
                 //Borrar el mensaje de la BBDD
@@ -146,22 +148,14 @@ public class NotificationsActivity extends ListActivity {
                         numberMessages, rolRemitterMessages);
                 setListAdapter(notifyAdapter);
             }
-
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-            }
-
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-            }
-
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
-
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
+            public void onCancelled(FirebaseError firebaseError) {}
         });//getMessages
     }
 }//class

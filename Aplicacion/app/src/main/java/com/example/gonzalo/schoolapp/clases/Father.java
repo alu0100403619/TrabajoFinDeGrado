@@ -16,6 +16,7 @@ public class Father implements Parcelable {
     private String lastname;
     private String mail;
     private String telephone;
+    private String dni;
     private ArrayList<Alumno> childrens;
     private String rol = "Padre";
 
@@ -24,10 +25,17 @@ public class Father implements Parcelable {
         setName((String) values.get("nombre"));
         setLastname((String) values.get("apellido"));
         setMail((String) values.get("mail"));
-        Log.i("Father", "clase Telefono:"+values.get("telefono").getClass());
+        //Log.i("Father", "clase Telefono:"+values.get("telefono").getClass());
         setTelephone((String) values.get("telefono"));
+        setDNI((String) values.get("dni"));
         Map<String, Object> childs = (Map<String, Object>) values.get("hijos");
         setChildrens(childs);
+    }
+
+    public String getDNI () { return dni; }
+
+    public void setDNI (String dni) {
+        this.dni = dni;
     }
 
     public ArrayList<Alumno> getChildrens() {
@@ -143,6 +151,7 @@ public class Father implements Parcelable {
         dest.writeString(lastname);
         dest.writeString(mail);
         dest.writeString(telephone);
+        dest.writeString(dni);
         dest.writeTypedList(childrens);
         dest.writeString(rol);
     }
@@ -152,6 +161,7 @@ public class Father implements Parcelable {
         lastname = in.readString();
         mail = in.readString();
         telephone = in.readString();
+        dni = in.readString();
         in.readTypedList(childrens, Alumno.CREATOR);
         rol = in.readString();
     }
