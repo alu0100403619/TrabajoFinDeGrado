@@ -105,12 +105,16 @@ public class RegisterFatherActivity extends Activity {
                     final String name = ((EditText) findViewById(R.id.text_name)).getText().toString();
                     String lastname = ((EditText) findViewById(R.id.text_lastname)).getText().toString();
                     String telephone = ((EditText) findViewById(R.id.text_telephone)).getText().toString();
+                    final String dni = ((EditText) findViewById(R.id.letterNIE)).getText().toString()
+                            + ((EditText) findViewById(R.id.DNI)).getText().toString()
+                            + ((EditText) findViewById(R.id.letterDNI)).getText().toString();
 
                     Map<String, Object> fatherMap = new HashMap<String, Object>();
                     Map<String, Object> infoMap = new HashMap<String, Object>();
                     fatherMap.put(getString(R.string.bbdd_name), name);
                     fatherMap.put(getString(R.string.bbdd_lastname), lastname);
                     fatherMap.put(getString(R.string.bbdd_telephone), telephone);
+                    fatherMap.put(getString(R.string.bbdd_dni), dni);
                     fatherMap.put(getString(R.string.bbdd_mail), mail);
 
                     for (int i = 0; i < children.size(); i++) {
@@ -144,6 +148,7 @@ public class RegisterFatherActivity extends Activity {
                             intent.putExtra(getString(R.string.bbdd_center), schools);
                             intent.putExtra(getString(R.string.bbdd_teacher_class), classes);
                             intent.putExtra(getString(R.string.myName), name);
+                            intent.putExtra(getString(R.string.dni), dni);
                             intent.putExtra(getString(R.string.myRol), getString(R.string.rol_father));
                             alertDialog.dismiss();
                             startActivity(intent);
@@ -218,12 +223,17 @@ public class RegisterFatherActivity extends Activity {
         EditText telephoneEditText = (EditText) findViewById(R.id.text_telephone);
         EditText mailEditText = (EditText) findViewById(R.id.text_mail);
         EditText passwordEditText = (EditText) findViewById(R.id.text_password);
+        EditText letterNieEditText = (EditText) findViewById(R.id.letterNIE);
+        EditText dniEditText = (EditText) findViewById(R.id.DNI);
+        EditText letterDniEditText = (EditText) findViewById(R.id.letterDNI);
 
         String name = nameEditText.getText().toString();
         String lastname = lastnameEditText.getText().toString();
         String telephone = telephoneEditText.getText().toString();
         String mail = mailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
+        String dni = letterNieEditText.getText().toString() + dniEditText.getText().toString()
+                + letterDniEditText.getText().toString();
         boolean haveEmptyFields = false;
 
         if (name.isEmpty()) {
@@ -243,6 +253,17 @@ public class RegisterFatherActivity extends Activity {
         } else if (!Utilities.isTelephone(telephone))  {
             Log.i("RegFatAct", "is not Telephone");
             telephoneEditText.setError(getString(R.string.telephone_format_error));
+            haveEmptyFields = true;
+        }
+        if (dni.isEmpty()) {
+            ImageView asterisk3 = (ImageView) findViewById(R.id.asterisk3);
+            asterisk3.setImageResource(R.drawable.ic_action_required_empty);
+            Toast.makeText(this, getString(R.string.field_empty), Toast.LENGTH_LONG).show();
+            haveEmptyFields = true;
+        } else if ((!Utilities.isDNI(dni)) && (!Utilities.isNIE(dni))) {
+            ImageView asterisk3 = (ImageView) findViewById(R.id.asterisk3);
+            asterisk3.setImageResource(R.drawable.ic_action_required_empty);
+            Toast.makeText(this, getString(R.string.dni_format_error), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
         if (mail.isEmpty()) {

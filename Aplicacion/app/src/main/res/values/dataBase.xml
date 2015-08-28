@@ -19,6 +19,7 @@
     <string name="bbdd_lastname">apellido</string>
     <string name="bbdd_center">centro</string>
     <string name="bbdd_telephone">telefono</string>
+    <string name="bbdd_dni">dni</string>
     <string name="bbdd_rol">rol</string>
     <string name="bbdd_class">clase</string>
     <string name="bbdd_teacher_class">clases</string>
@@ -28,6 +29,7 @@
     <string name="bbdd_lastname_children">apellidoHijo</string>
     <string name="bbdd_addressee">destinatario</string>
     <string name="bbdd_mail_remitter">mail_remitente</string>
+    <string name="bbdd_dni_remitter">dni_remitente</string>
     <string name="bbdd_message">mensaje</string>
     <string name="bbdd_remitter">remitente</string>
     <string name="bbdd_date">fecha</string>
@@ -49,6 +51,7 @@
     <string name="rol_student">Alumno</string>
 
     <string name="myName">MiNombre</string>
+    <string name="myDNI">MiDNI</string>
     <string name="myRol">MiRol</string>
     <string name="empty"></string>
     <string name="email">email</string>

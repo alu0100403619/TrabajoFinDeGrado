@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class TeachersTabActivity extends TabActivity {
 
-    String mail, school, myName, myRol;
+    String mail, school, myName, myRol, myDNI;
     ArrayList<String> clases;
     Firebase teachersRef;
 
@@ -36,6 +36,7 @@ public class TeachersTabActivity extends TabActivity {
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
+        myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
 
         //Añadiendo las Tabs
@@ -50,6 +51,7 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_center), school);
         intent.putExtra(getString(R.string.myName), myName);
         intent.putExtra(getString(R.string.myRol), myRol);
+        intent.putExtra(getString(R.string.myDNI), myDNI);
         spec = tabHost.newTabSpec(getString(R.string.tab_teachers))
                 .setIndicator(getString(R.string.tab_teachers)).setContent(intent);
         tabHost.addTab(spec);
@@ -61,6 +63,7 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
         intent.putExtra(getString(R.string.myRol), myRol);
+        intent.putExtra(getString(R.string.myDNI), myDNI);
         spec = tabHost.newTabSpec(getString(R.string.tab_fathers))
                 .setIndicator(getString(R.string.tab_fathers)).setContent(intent);
         tabHost.addTab(spec);
@@ -72,6 +75,7 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.myName), myName);
         intent.putExtra(getString(R.string.myRol), myRol);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
+        intent.putExtra(getString(R.string.myDNI), myDNI);
         spec = tabHost.newTabSpec(getString(R.string.tab_teachers_alumnos))
                 .setIndicator(getString(R.string.tab_teachers_alumnos)).setContent(intent);
         tabHost.addTab(spec);
@@ -81,6 +85,7 @@ public class TeachersTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
         intent.putExtra(getString(R.string.myRol), myRol);
+        intent.putExtra(getString(R.string.myDNI), myDNI);
         spec = tabHost.newTabSpec(getString(R.string.tab_notifications))
                 .setIndicator(getString(R.string.tab_notifications)).setContent(intent);
         tabHost.addTab(spec);

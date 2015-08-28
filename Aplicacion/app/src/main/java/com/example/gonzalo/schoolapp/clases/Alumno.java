@@ -109,9 +109,7 @@ public class Alumno implements Parcelable {
 
     public boolean equals (Alumno alumno) {
         boolean same = false;
-        if ((name.equals(alumno.getName())) && (lastname.equals(alumno.getLastname())) &&
-                (school.equals(alumno.getSchool())) && (classroom.equals(alumno.classroom)) &&
-                (mail.equals(alumno.getMail())) && (telephone.equals(alumno.getTelephone()))) {
+        if (dni.equals(alumno.getDNI())){
             same = true;
         }
         return same;

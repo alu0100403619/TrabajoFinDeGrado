@@ -19,7 +19,7 @@ import java.util.List;
 public class MessageSQLHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     // Database Name
     private static final String DATABASE_NAME = "MessagesDB";
 
@@ -32,7 +32,7 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
         String createMessagesTable = "CREATE TABLE messages ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "idConversation TEXT, " +
-                "mailRemitter TEXT, " +
+                "dniRemitter TEXT, " +
                 "remitter TEXT, " +
                 "day TEXT, " +
                 "month TEXT, " +
@@ -43,8 +43,8 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
 
         String createConversationsTable = "CREATE TABLE conversations ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "mailSender TEXT, " +
-                "mailRemitter TEXT )";
+                "dniSender TEXT, " +
+                "dniRemitter TEXT )";
 
         //Creando BBDD
         db.execSQL(createMessagesTable);
@@ -74,9 +74,9 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
     // Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_IDCONVERSATION = "idConversation";
-    private static final String KEY_MAILREMITTER = "mailRemitter";
+    private static final String KEY_DNIREMITTER = "dniRemitter";
     private static final String KEY_REMITTER = "remitter";
-    private static final String KEY_MAILSENDER = "mailSender";
+    private static final String KEY_DNISENDER = "dniSender";
     private static final String KEY_DAY= "day";
     private static final String KEY_MONTH= "month";
     private static final String KEY_YEAR= "year";
@@ -84,7 +84,7 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
     private static final String KEY_MINUTES= "minutes";
     private static final String KEY_MESSAGE = "message";
 
-    private static final String[] COLUMNS_MESSAGE = {KEY_ID, KEY_IDCONVERSATION, KEY_MAILREMITTER,
+    private static final String[] COLUMNS_MESSAGE = {KEY_ID, KEY_IDCONVERSATION, KEY_DNIREMITTER,
             KEY_REMITTER, KEY_DAY, KEY_MONTH, KEY_YEAR, KEY_HOUR, KEY_MINUTES, KEY_MESSAGE};
 
     private static final String[] COLUMNS_CONVERSATION = {KEY_ID};
@@ -98,7 +98,7 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
         // 2. create ContentValues to add key "column"/value
         ContentValues values = new ContentValues();
         values.put(KEY_IDCONVERSATION, idConversation);
-        values.put(KEY_MAILREMITTER, message.getMailRemitter());
+        values.put(KEY_DNIREMITTER, message.getDniRemitter());
         values.put(KEY_REMITTER, message.getRemitter());
         values.put(KEY_DAY, message.getDate().getDay());
         values.put(KEY_MONTH, message.getDate().getMonth());
@@ -117,16 +117,16 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public  void addConversation (String mailSender, String mailRemitter) {
-        Log.d("addConversation", mailSender + "->" + mailRemitter);
+    public  void addConversation (String dniSender, String dniRemitter) {
+        Log.d("addConversation", dniSender + "->" + dniRemitter);
 
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
 
         // 2. create ContentValues to add key "column"/value
         ContentValues values = new ContentValues();
-        values.put(KEY_MAILSENDER, mailSender);
-        values.put(KEY_MAILREMITTER, mailRemitter);
+        values.put(KEY_DNISENDER, dniSender);
+        values.put(KEY_DNIREMITTER, dniRemitter);
 
         // 3. insert
         db.insert(TABLE_CONVERSATIONS, // table
@@ -137,12 +137,12 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public String getIdConversation (String mailRemitter) {
+    public String getIdConversation (String dniRemitter) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_CONVERSATIONS,
                 COLUMNS_CONVERSATION,
-                KEY_MAILREMITTER + " = ?",
-                new String[] {mailRemitter}, null, null, null, null);
+                KEY_DNIREMITTER + " = ?",
+                new String[] {dniRemitter}, null, null, null, null);
         if ((cursor != null) && (cursor.getCount() > 0)) {
             cursor.moveToFirst();
             return cursor.getString(0);
@@ -171,7 +171,7 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 message = new Message();
-                message.setMailRemitter(cursor.getString(2));
+                message.setDniRemitter(cursor.getString(2));
                 message.setRemitter(cursor.getString(3));
                 Date date = new Date();
                 date.setDay(Long.valueOf(cursor.getString(4)));

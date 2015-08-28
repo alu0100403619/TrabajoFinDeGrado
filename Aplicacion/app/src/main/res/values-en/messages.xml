@@ -72,5 +72,6 @@
     <string name="about_message13">Both from the Welcome screen or from the access, the options of
         "Title bar" of the application, you can access the device settings, and using the Internet,
         and the choice of application language.</string>
+    <string name="dni_format_error">Error in the format of DNI: 12345678K / X1234567K</string>
 
 </resources>

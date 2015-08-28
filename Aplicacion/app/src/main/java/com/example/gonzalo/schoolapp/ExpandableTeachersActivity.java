@@ -34,7 +34,7 @@ public class ExpandableTeachersActivity extends Activity {
     HashMap<String, List<Teacher>> listDataChild;
     ArrayList<String> clases;
     Firebase teachersRef;
-    String mail, school, myName, myRol;
+    String mail, school, myName, myRol, myDNI;
     ArrayList<Teacher> teachers;
     TextView messageTextView;
 
@@ -57,6 +57,7 @@ public class ExpandableTeachersActivity extends Activity {
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
+        myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
 
         //Obtenemos el colegio
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
@@ -98,10 +99,11 @@ public class ExpandableTeachersActivity extends Activity {
                 Intent intent = new Intent(ExpandableTeachersActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
-                intent.putExtra(getString(R.string.mail_remitter),
-                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
+                intent.putExtra(getString(R.string.bbdd_dni_remitter),
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getDNI());
                 intent.putExtra(getString(R.string.myName), myName);
                 intent.putExtra(getString(R.string.myRol), myRol);
+                intent.putExtra(getString(R.string.myDNI), myDNI);
                 startActivity(intent);
                 return true;
             }
@@ -118,7 +120,7 @@ public class ExpandableTeachersActivity extends Activity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Teacher teacher = new Teacher(values);
-                if ((!teachers.contains(teacher)) && (!mail.equals(teacher.getMail()))) {
+                if ((!teachers.contains(teacher)) && (!myDNI.equals(teacher.getDNI()))) {
                     teachers.add(teacher);
                 }
                 //Preparar los datos

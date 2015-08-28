@@ -31,10 +31,10 @@ import java.util.Queue;
  */
 public class NotificationsActivity extends ListActivity {
 
-    String mail, myName, myRol;
+    String mail, myName, myRol, myDNI;
     Firebase messageRef;
     ArrayList<Message> messagesList;
-    ArrayList<String> messagesListView, mailsList;
+    ArrayList<String> messagesListView, dnisList;
     ArrayList<Integer> numberMessages;
     ArrayList<String> rolRemitterMessages;
     NotifyAdapter notifyAdapter;
@@ -47,13 +47,14 @@ public class NotificationsActivity extends ListActivity {
         messagesList = new ArrayList<>(); //Todos los mensajes
         messagesListView = new ArrayList<>(); //Nombres de los que nos mandan mensajes
         rolRemitterMessages = new ArrayList<>(); //Roles de los que nos mandan mensajes
-        mailsList = new ArrayList<>(); //Mails de los que nos mandan mensajes
+        dnisList = new ArrayList<>(); //DNIs de los que nos mandan mensajes
         numberMessages = new ArrayList<>(); //Numero de Mensajes del remitente, su pos coincide con MessageListView
 
         //Obtenemos el Mail
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
+        myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
 
         //Preparamos los datos
         preparingData();
@@ -65,12 +66,12 @@ public class NotificationsActivity extends ListActivity {
         this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String itemMail = mailsList.get(position);
+                String itemMail = dnisList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
 
                 while (i < messagesList.size()) {
                     Message message = messagesList.get(i);
-                    if ((itemMail.equals(message.getMailRemitter())) && (!messages.contains(message))) {
+                    if ((itemMail.equals(message.getDniRemitter())) && (!messages.contains(message))) {
                         messages.add(message);
                         messagesList.remove(message);
                         i--;
@@ -83,14 +84,15 @@ public class NotificationsActivity extends ListActivity {
                 intent.putExtra(getString(R.string.bbdd_message), messages);
                 intent.putExtra(getString(R.string.name), messagesListView.get(position));
                 intent.putExtra(getString(R.string.mail), mail);
-                intent.putExtra(getString(R.string.mail_remitter), messages.get(0).getMailRemitter());
+                intent.putExtra(getString(R.string.bbdd_dni_remitter), messages.get(0).getDniRemitter());
                 intent.putExtra(getString(R.string.myName), myName);
                 intent.putExtra(getString(R.string.myRol), myRol);
+                intent.putExtra(getString(R.string.myDNI), myDNI);
 
                 //Borrar al hacer click
                 //TODO borrar solo si pos != -1 o >= 0??
-                int pos = mailsList.indexOf(messages.get(0).getMailRemitter());
-                mailsList.remove(pos);
+                int pos = dnisList.indexOf(messages.get(0).getDniRemitter());
+                dnisList.remove(pos);
                 messagesListView.remove(pos);
                 numberMessages.remove(pos);
                 rolRemitterMessages.remove(pos);
@@ -106,9 +108,9 @@ public class NotificationsActivity extends ListActivity {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK){
                 String mailRemitter = data.getStringExtra(getString(R.string.bbdd_mail_remitter));
-                int pos = mailsList.indexOf(mailRemitter);
+                int pos = dnisList.indexOf(mailRemitter);
                 if (pos != -1) {
-                    mailsList.remove(pos);
+                    dnisList.remove(pos);
                     messagesListView.remove(pos);
                     numberMessages.remove(pos);
                     rolRemitterMessages.remove(pos);
@@ -121,20 +123,20 @@ public class NotificationsActivity extends ListActivity {
 
     public void preparingData() {
         //Obtener los Mensajes
-        Query getMessages = messageRef.orderByChild(getString(R.string.bbdd_addressee)).equalTo(mail);
+        Query getMessages = messageRef.orderByChild(getString(R.string.bbdd_addressee)).equalTo(myDNI);
         getMessages.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Message message = new Message(values);
                 messagesList.add(message);
-                if (!mailsList.contains(message.getMailRemitter())) {
-                    mailsList.add(message.getMailRemitter());
+                if (!dnisList.contains(message.getDniRemitter())) {
+                    dnisList.add(message.getDniRemitter());
                     messagesListView.add(message.getRemitter());
                     numberMessages.add(1);
                     rolRemitterMessages.add((String) values.get(getString(R.string.bbdd_rol_remitter)));
                 } else {
-                    int pos = mailsList.indexOf(message.getMailRemitter());
+                    int pos = dnisList.indexOf(message.getDniRemitter());
                     int number = numberMessages.get(pos) + 1;
                     numberMessages.add(pos, number);
                     //El rol ya esta en el ArrayList

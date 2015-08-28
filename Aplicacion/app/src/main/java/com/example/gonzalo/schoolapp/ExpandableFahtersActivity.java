@@ -34,7 +34,7 @@ public class ExpandableFahtersActivity extends Activity {
     List<String> listDataHeader;
     HashMap<String, List<Father>> listDataChild;
     ArrayList<String> clases;
-    String school, mail, myName, myRol;
+    String school, mail, myName, myRol, myDNI;
     Firebase fathersRef;
     ArrayList<Father> fathers;
     TextView messageTextView;
@@ -61,6 +61,7 @@ public class ExpandableFahtersActivity extends Activity {
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
+        myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
 
         //Obtener el elemento xml
         messageTextView = (TextView) findViewById(R.id.message);
@@ -99,16 +100,17 @@ public class ExpandableFahtersActivity extends Activity {
                 Intent intent = new Intent(ExpandableFahtersActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
-                intent.putExtra(getString(R.string.mail_remitter),
-                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
+                intent.putExtra(getString(R.string.bbdd_dni_remitter),
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getDNI());
                 intent.putExtra(getString(R.string.myName), myName);
+                intent.putExtra(getString(R.string.myDNI), myDNI);
                 intent.putExtra(getString(R.string.myRol), myRol);
                 startActivity(intent);
                 return true;
             }
         });
 
-        //Obtenemos los profes del centro
+        //Obtenemos los padres del centro
         getFathers();
     }
 
@@ -127,7 +129,7 @@ public class ExpandableFahtersActivity extends Activity {
                     if (child.get(getString(R.string.bbdd_center)).equals(school)) {
                         Father father = new Father (values);
                         //TODO Si el array no lo contiene, mete al padre. Se Repiten---------------------------------
-                        if ((!fathers.contains(father)) && (!father.getMail().equals(mail))) {
+                        if ((!fathers.contains(father)) && (!father.getDNI().equals(myDNI))) {
                             fathers.add(father);
                         }//if
                     }//if
@@ -155,6 +157,7 @@ public class ExpandableFahtersActivity extends Activity {
             }//if
             for (Father father : fathers) {
                 //Adding Child Data
+                //TODO PUEDE QUE SE REPITA POR AQUI
                 if ((father.getClassrooms().contains(clases.get(i))) && (!auxList.contains(father))){
                     auxList.add(father);
                 }//if

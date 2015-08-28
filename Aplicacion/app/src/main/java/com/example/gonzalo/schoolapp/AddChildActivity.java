@@ -149,11 +149,15 @@ public class AddChildActivity extends Activity {
                         EditText telephoneEditText = (EditText) findViewById(R.id.text_telephone);
                         String classroom = classSpinner.getSelectedItem().toString();
                         String school = spinner.getSelectedItem().toString();
+                        String dni = ((EditText) findViewById(R.id.letterNIE)).getText().toString()
+                                + ((EditText) findViewById(R.id.DNI)).getText().toString()
+                                + ((EditText) findViewById(R.id.letterDNI)).getText().toString();
 
                         Map<String, Object> studentMap = new HashMap<String, Object>();
                         studentMap.put(getString(R.string.bbdd_name), nameEditText.getText().toString());
                         studentMap.put(getString(R.string.bbdd_lastname), lastnameEditText.getText().toString());
                         studentMap.put(getString(R.string.bbdd_telephone), telephoneEditText.getText().toString());
+                        studentMap.put(getString(R.string.bbdd_dni), dni);
                         studentMap.put(getString(R.string.bbdd_center), school);
                         studentMap.put(getString(R.string.bbdd_class), classroom);
                         studentMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
@@ -191,6 +195,9 @@ public class AddChildActivity extends Activity {
         EditText lastnameEditText = (EditText) findViewById(R.id.text_lastname);
         EditText telephoneEditText = (EditText) findViewById(R.id.text_telephone);
         EditText mailEditText = (EditText) findViewById(R.id.text_mail);
+        EditText letterNieEditText = (EditText) findViewById(R.id.letterNIE);
+        EditText dniEditText = (EditText) findViewById(R.id.DNI);
+        EditText letterDniEditText = (EditText) findViewById(R.id.letterDNI);
 
         String name = nameEditText.getText().toString();
         String lastname = lastnameEditText.getText().toString();
@@ -198,6 +205,8 @@ public class AddChildActivity extends Activity {
         String classroom = ((Spinner) findViewById(R.id.classSpinner)).getSelectedItem().toString();
         String mail = mailEditText.getText().toString();
         String school = ((Spinner) findViewById(R.id.spinner_2)).getSelectedItem().toString();
+        String dni = letterNieEditText.getText().toString() + dniEditText.getText().toString()
+                + letterDniEditText.getText().toString();
         boolean haveEmptyFields = false;
 
         if (name.isEmpty()) {
@@ -215,6 +224,17 @@ public class AddChildActivity extends Activity {
             telephoneEditText.setError(getString(R.string.telephone_format_error));
             haveEmptyFields = true;
         }
+        if (dni.isEmpty()) {
+            ImageView asterisk3 = (ImageView) findViewById(R.id.asterisk3);
+            asterisk3.setImageResource(R.drawable.ic_action_required_empty);
+            Toast.makeText(this, getString(R.string.field_empty), Toast.LENGTH_LONG).show();
+            haveEmptyFields = true;
+        } else if ((!Utilities.isDNI(dni)) && (!Utilities.isNIE(dni))) {
+            ImageView asterisk3 = (ImageView) findViewById(R.id.asterisk3);
+            asterisk3.setImageResource(R.drawable.ic_action_required_empty);
+            Toast.makeText(this, getString(R.string.dni_format_error), Toast.LENGTH_LONG).show();
+            haveEmptyFields = true;
+        }
         if ((classroom.isEmpty()) || (classroom.equals(getString(R.string.add_class))) ||
                 (classroom.equals(getString(R.string.select_class)))) {
             Log.i("RegStudAct", "classroom Empty");
@@ -223,12 +243,7 @@ public class AddChildActivity extends Activity {
             Toast.makeText(this, getString(R.string.select_class), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
-        if (mail.isEmpty()) {
-            Log.i("RegStudAct", "Mail Empty");
-            mailEditText.setError(getString(R.string.field_empty));
-            haveEmptyFields = true;
-        }
-        else if (!Utilities.isMail(mail)) {
+        if ((!mail.isEmpty()) && (!Utilities.isMail(mail))) {
             Log.i("RegStudAct", "Is not Mail");
             mailEditText.setError(getString(R.string.mail_format_error));
             haveEmptyFields = true;

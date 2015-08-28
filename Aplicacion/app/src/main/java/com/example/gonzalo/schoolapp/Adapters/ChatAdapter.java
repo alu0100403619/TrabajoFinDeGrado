@@ -23,16 +23,16 @@ public class ChatAdapter extends BaseAdapter {
     Context context;
     ArrayList<Message> messages;
     private static LayoutInflater inflater = null;
-    String myMail;
+    String myDNI;
 
     public ChatAdapter () {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public ChatAdapter (Activity chatActivity, ArrayList<Message> messages, String myMail) {
+    public ChatAdapter (Activity chatActivity, ArrayList<Message> messages, String myDNI) {
         context = chatActivity;
         this.messages = messages;
-        this.myMail = myMail;
+        this.myDNI = myDNI;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -81,7 +81,7 @@ public class ChatAdapter extends BaseAdapter {
         message.message.setText(messages.get(position).getMessage());
         message.date.setText(messages.get(position).getDate().toString());
 
-        if (myMail.equals(msg.getMailRemitter())) {
+        if (myDNI.equals(msg.getDniRemitter())) {
             chatItem.setBackgroundResource(R.drawable.bubble_b);
         }
         else {

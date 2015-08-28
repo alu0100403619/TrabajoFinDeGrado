@@ -25,7 +25,7 @@ import java.util.Map;
 public class TeachersActivity extends ListActivity {
 
     List<Teacher> classTeachers;
-    String clase, school, myName, mail, myRol;
+    String clase, school, myName, mail, myRol, myDNI;
     Firebase teacherRef;
     ArrayList<Teacher> teachers;
 
@@ -43,6 +43,7 @@ public class TeachersActivity extends ListActivity {
         mail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
+        myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
 
         preparingData();
 
@@ -69,9 +70,10 @@ public class TeachersActivity extends ListActivity {
                 Intent intent = new Intent(TeachersActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
-                intent.putExtra(getString(R.string.mail_remitter), classTeachers.get(position).getMail());
+                intent.putExtra(getString(R.string.bbdd_dni_remitter), classTeachers.get(position).getDNI());
                 intent.putExtra(getString(R.string.myName), myName);
                 intent.putExtra(getString(R.string.myRol), myRol);
+                intent.putExtra(getString(R.string.myDNI), myDNI);
                 startActivity(intent);
             }
         });

@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by Gonzalo on 21/05/2015.
  */
 public class Message implements Parcelable{
-    private String mailRemitter; //Mail Remitente
+    private String dniRemitter; //Mail Remitente
     private String remitter; //Remitente
     private String message; //Mensaje
     private String rolRemmiter; //Rol Remitente
@@ -19,8 +19,8 @@ public class Message implements Parcelable{
 
     public Message() {}
 
-    public Message(String mailRemitter, String remitter, String message, Date date, String rolRemitter) {
-        setMailRemitter(mailRemitter);
+    public Message(String dniRemitter, String remitter, String message, Date date, String rolRemitter) {
+        setDniRemitter(dniRemitter);
         setRemitter(remitter);
         setMessage(message);
         setRolRemmiter(rolRemitter);
@@ -29,7 +29,7 @@ public class Message implements Parcelable{
     }
 
     public Message(Map<String, Object> values) {
-        setMailRemitter((String) values.get("mail_remitente"));
+        setDniRemitter((String) values.get("dni_remitente"));
         setRemitter((String) values.get("remitente"));
         setMessage((String) values.get("mensaje"));
         setRolRemmiter((String) values.get("rol_remitente"));
@@ -38,12 +38,12 @@ public class Message implements Parcelable{
         date = new Date(dateValue);
     }
 
-    public String getMailRemitter() {
-        return mailRemitter;
+    public String getDniRemitter() {
+        return dniRemitter;
     }
 
-    public void setMailRemitter(String mailRemitter) {
-        this.mailRemitter = mailRemitter;
+    public void setDniRemitter(String dniRemitter) {
+        this.dniRemitter = dniRemitter;
     }
 
     public String getRemitter() {
@@ -87,7 +87,7 @@ public class Message implements Parcelable{
     }
 
     public String show () {
-        return getMailRemitter() + ", " + getRemitter() + ", " + getMessage() + ", " +
+        return getDniRemitter() + ", " + getRemitter() + ", " + getMessage() + ", " +
                 getRolRemmiter() + ", " +getState() + ", " + getDate();
     }
 
@@ -98,7 +98,7 @@ public class Message implements Parcelable{
 
     public boolean equals (Message message) {
         boolean same = false;
-        if ((mailRemitter.equals(message.getMailRemitter())) &&
+        if ((dniRemitter.equals(message.getDniRemitter())) &&
                 (this.message.equals(message.getMessage())) && (date.equals(message.getDate()))) {
             same = true;
         }
@@ -117,7 +117,7 @@ public class Message implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mailRemitter);
+        dest.writeString(dniRemitter);
         dest.writeString(remitter);
         dest.writeString(message);
         dest.writeString(rolRemmiter);
@@ -126,7 +126,7 @@ public class Message implements Parcelable{
     }
 
     public void readFromParcel(Parcel in) {
-        mailRemitter = in.readString();
+        dniRemitter = in.readString();
         remitter = in.readString();
         message = in.readString();
         rolRemmiter = in.readString();

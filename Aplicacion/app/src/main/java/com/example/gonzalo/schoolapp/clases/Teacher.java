@@ -100,13 +100,20 @@ public class Teacher implements Parcelable {
         return name + " " + lastname;
     }
 
-    /* private ArrayList<String> classRooms; */
-    public boolean equals (Teacher teacher) {
+    /*public boolean equals (Teacher teacher) {
         boolean same = false;
         if ((name.equals(teacher.getName())) && (lastname.equals(teacher.getLastname())) &&
                 (school.equals(teacher.getSchool())) && (mail.equals(teacher.getMail())) &&
                 (telephone.equals(teacher.getTelephone())) &&
                 (classRooms.containsAll(teacher.getClassRooms()))) {
+            same = true;
+        }
+        return same;
+    }//*/
+
+    public boolean equals (Teacher teacher) {
+        boolean same = false;
+        if (dni.equals(teacher.getDNI())) {
             same = true;
         }
         return same;

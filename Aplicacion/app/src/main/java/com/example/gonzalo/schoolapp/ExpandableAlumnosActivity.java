@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterAlumno;
 import com.example.gonzalo.schoolapp.clases.Alumno;
-import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -33,7 +32,7 @@ public class ExpandableAlumnosActivity extends Activity {
     HashMap<String, List<Alumno>> listDataChild;
     ArrayList<String> clases;
     Firebase alumnosRef;
-    String school, myName, mail, myRol;
+    String school, myName, mail, myRol, myDNI;
     ArrayList<Alumno> alumnos;
     TextView messageTextView;
 
@@ -57,6 +56,7 @@ public class ExpandableAlumnosActivity extends Activity {
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
+        myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
 
         //Obtener el elemento xml
         messageTextView = (TextView) findViewById(R.id.message);
@@ -95,9 +95,10 @@ public class ExpandableAlumnosActivity extends Activity {
                 Intent intent = new Intent(ExpandableAlumnosActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
-                intent.putExtra(getString(R.string.mail_remitter),
-                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getMail());
+                intent.putExtra(getString(R.string.bbdd_dni_remitter),
+                        listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).getDNI());
                 intent.putExtra(getString(R.string.myName), myName);
+                intent.putExtra(getString(R.string.myDNI), myDNI);
                 intent.putExtra(getString(R.string.myRol), myRol);
                 startActivity(intent);
                 return true;

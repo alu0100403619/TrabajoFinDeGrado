@@ -44,6 +44,36 @@
                 android:ems="10" android:drawableLeft="@drawable/ic_action_phone"
                 android:drawableEnd="@drawable/ic_action_required"/>
 
+            <LinearLayout android:id="@+id/dni_group"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <EditText android:id="@+id/letterNIE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="@string/letter_nie"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1" />
+                <EditText android:id="@+id/DNI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="@string/dni"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
+                <EditText android:id="@+id/letterDNI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="@string/letter_dni"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="1" />
+                <ImageView android:id="@+id/asterisk3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_required"/>
+            </LinearLayout>
+
             <LinearLayout android:id="@+id/school_group"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"

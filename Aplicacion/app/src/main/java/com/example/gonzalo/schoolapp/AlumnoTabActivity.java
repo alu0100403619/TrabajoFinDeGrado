@@ -13,7 +13,7 @@ import com.firebase.client.Firebase;
 
 public class AlumnoTabActivity extends TabActivity {
 
-    String mail, clase, school, myName, myRol;
+    String mail, clase, school, myName, myRol, myDNI;
     Firebase aluRef;
 
     @Override
@@ -31,6 +31,7 @@ public class AlumnoTabActivity extends TabActivity {
         school = getIntent().getExtras().getString(getString(R.string.bbdd_center));
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
+        myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
 
         //Añadiendo las Tabs
         TabHost tabHost = getTabHost();
@@ -43,6 +44,7 @@ public class AlumnoTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_class), clase);
         intent.putExtra(getString(R.string.bbdd_center), school);
         intent.putExtra(getString(R.string.myName), myName);
+        intent.putExtra(getString(R.string.myDNI), myDNI);
         intent.putExtra(getString(R.string.myRol), myRol);
         spec = tabHost.newTabSpec(getString(R.string.tab_alumnos))
                 .setIndicator(getString(R.string.tab_alumnos)).setContent(intent);
@@ -54,6 +56,7 @@ public class AlumnoTabActivity extends TabActivity {
         intent.putExtra(getString(R.string.bbdd_center), school);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
+        intent.putExtra(getString(R.string.myDNI), myDNI);
         intent.putExtra(getString(R.string.myRol), myRol);
         spec = tabHost.newTabSpec(getString(R.string.tab_alumnos_teachers))
                 .setIndicator(getString(R.string.tab_alumnos_teachers)).setContent(intent);
@@ -63,6 +66,7 @@ public class AlumnoTabActivity extends TabActivity {
         intent = new Intent().setClass(this, NotificationsActivity.class);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.myName), myName);
+        intent.putExtra(getString(R.string.myDNI), myDNI);
         intent.putExtra(getString(R.string.myRol), myRol);
         spec = tabHost.newTabSpec(getString(R.string.tab_notifications))
                 .setIndicator(getString(R.string.tab_notifications)).setContent(intent);

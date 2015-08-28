@@ -36,7 +36,7 @@ import java.util.UUID;
  */
 public class ChatActivity extends ListActivity {
 
-    String chatName, mail, myName, mailRemitter, idConversation, myRol;
+    String chatName, mail, myName, dniRemitter, idConversation, myRol, myDNI;
     ArrayList<Message> messages, tempMessages;
     MessageSQLHelper messageBBDD;
     Firebase messageRef;
@@ -58,12 +58,13 @@ public class ChatActivity extends ListActivity {
 
         //Obtener mi e-mail
         mail = getIntent().getExtras().getString(getString(R.string.mail));
-        mailRemitter = getIntent().getExtras().getString(getString(R.string.mail_remitter));
-        idConversation = messageBBDD.getIdConversation(mailRemitter);
+        dniRemitter = getIntent().getExtras().getString(getString(R.string.bbdd_dni_remitter));
+        idConversation = messageBBDD.getIdConversation(dniRemitter);
 
         //Obtener el Nombre
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
+        myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
 
         //Cargar Mensajes Previos Almacenados en la memoria de la BBDD
         if (idConversation != null) {
@@ -116,7 +117,7 @@ public class ChatActivity extends ListActivity {
             Date date = new Date(calendar.get(calendar.DAY_OF_MONTH),
                 calendar.get(calendar.MONTH) + 1, calendar.get(calendar.YEAR),
                 calendar.getTime().getHours(), calendar.getTime().getMinutes());
-            Message message = new Message(mail, myName, messageInput, date, myRol);
+            Message message = new Message(myDNI, myName, messageInput, date, myRol);
             messages.add(message);
 
             //Mandar el mensaje a la BBDD mientras el name no sea System
@@ -136,13 +137,13 @@ public class ChatActivity extends ListActivity {
 
     @Override
     public void onBackPressed(){
-        messageBBDD.addConversation(mail, mailRemitter);
-        String newIdConversation = messageBBDD.getIdConversation(mailRemitter);
+        messageBBDD.addConversation(myDNI, dniRemitter);
+        String newIdConversation = messageBBDD.getIdConversation(dniRemitter);
         for (Message message: messages) {
             messageBBDD.addMessage(message, newIdConversation);
         }
         Intent returnIntent = new Intent();
-        returnIntent.putExtra(getString(R.string.bbdd_mail_remitter), mailRemitter);
+        returnIntent.putExtra(getString(R.string.bbdd_dni_remitter), dniRemitter);
         setResult(RESULT_OK,returnIntent);
         super.onBackPressed();
     }
@@ -156,9 +157,9 @@ public class ChatActivity extends ListActivity {
         dateMap.put(getString(R.string.bbdd_date_minutes), message.getDate().getMinutes());
 
         Map<String, Object> messageMap = new HashMap<String, Object>();
-        messageMap.put(getString(R.string.bbdd_addressee), mailRemitter);
+        messageMap.put(getString(R.string.bbdd_addressee), dniRemitter);
         messageMap.put(getString(R.string.bbdd_date), dateMap);
-        messageMap.put(getString(R.string.bbdd_mail_remitter), mail);
+        messageMap.put(getString(R.string.bbdd_dni_remitter), myDNI);
         messageMap.put(getString(R.string.bbdd_message), message.getMessage());
         messageMap.put(getString(R.string.bbdd_remitter), myName);
         messageMap.put(getString(R.string.bbdd_rol_remitter), myRol);
@@ -168,19 +169,19 @@ public class ChatActivity extends ListActivity {
     }
 
     public void getCloudMessages () {
-        Query getMessages = messageRef.orderByChild(getString(R.string.bbdd_addressee)).equalTo(mail);
+        Query getMessages = messageRef.orderByChild(getString(R.string.bbdd_addressee)).equalTo(myDNI);
         getMessages.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Message message = new Message(values);
-                if (mailRemitter.equals(message.getMailRemitter())) {
+                if (dniRemitter.equals(message.getDniRemitter())) {
                     messages.add (message);
                 }//if
 
                 //Seteamos el Adapter
                 //chatAdapter = new ChatAdapter(ChatActivity.this, messages);
-                chatAdapter = new ChatAdapter(ChatActivity.this, messages, mail);
+                chatAdapter = new ChatAdapter(ChatActivity.this, messages, myDNI);
                 setListAdapter(chatAdapter);
 
                 //Borrar el mensaje de la BBDD
@@ -198,7 +199,7 @@ public class ChatActivity extends ListActivity {
 
         //Seteamos el Adapter
         //chatAdapter = new ChatAdapter(ChatActivity.this, messages);
-        chatAdapter = new ChatAdapter(ChatActivity.this, messages, mail);
+        chatAdapter = new ChatAdapter(ChatActivity.this, messages, myDNI);
         setListAdapter(chatAdapter);
     }
 }

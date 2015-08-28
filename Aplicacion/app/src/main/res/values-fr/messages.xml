@@ -74,5 +74,6 @@
     <string name="about_message13">Tant partir de l\'écran d\'accueil ou de l\'accès, les options de
         "La barre de titre" de l\'application, vous pouvez accéder aux réglages de l\'appareil, et
         l\'utilisation de l\'Internet, et le choix de la langue de l\'application.</string>
+    <string name="dni_format_error">Erreur dans le format d\'DNI: 12345678K / X1234567K</string>
 
 </resources>

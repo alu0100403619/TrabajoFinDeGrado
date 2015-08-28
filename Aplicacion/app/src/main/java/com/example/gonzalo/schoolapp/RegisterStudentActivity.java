@@ -162,6 +162,10 @@ public class RegisterStudentActivity extends Activity {
         EditText telephoneEditText = (EditText) findViewById(R.id.text_telephone);
         EditText mailEditText = (EditText) findViewById(R.id.text_mail);
         EditText passwordEditText = (EditText) findViewById(R.id.text_password);
+        EditText letterNieEditText = (EditText) findViewById(R.id.letterNIE);
+        EditText dniEditText = (EditText) findViewById(R.id.DNI);
+        EditText letterDniEditText = (EditText) findViewById(R.id.letterDNI);
+
 
         String name = nameEditText.getText().toString();
         String lastname = lastnameEditText.getText().toString();
@@ -170,6 +174,8 @@ public class RegisterStudentActivity extends Activity {
         String mail = mailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String school = ((Spinner) findViewById(R.id.spinner_2)).getSelectedItem().toString();
+        String dni = letterNieEditText.getText().toString() + dniEditText.getText().toString()
+                + letterDniEditText.getText().toString();
         boolean haveEmptyFields = false;
 
         if (name.isEmpty()) {
@@ -189,6 +195,17 @@ public class RegisterStudentActivity extends Activity {
         } else if (!Utilities.isTelephone(telephone)) {
             Log.i("RegStudAct", "Is Not Telephone");
             telephoneEditText.setError(getString(R.string.telephone_format_error));
+            haveEmptyFields = true;
+        }
+        if (dni.isEmpty()) {
+            ImageView asterisk3 = (ImageView) findViewById(R.id.asterisk3);
+            asterisk3.setImageResource(R.drawable.ic_action_required_empty);
+            Toast.makeText(this, getString(R.string.field_empty), Toast.LENGTH_LONG).show();
+            haveEmptyFields = true;
+        } else if ((!Utilities.isDNI(dni)) && (!Utilities.isNIE(dni))) {
+            ImageView asterisk3 = (ImageView) findViewById(R.id.asterisk3);
+            asterisk3.setImageResource(R.drawable.ic_action_required_empty);
+            Toast.makeText(this, getString(R.string.dni_format_error), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
         if ((classroom.isEmpty()) || (classroom.equals(getString(R.string.add_class))) ||
@@ -242,11 +259,15 @@ public class RegisterStudentActivity extends Activity {
                     String telephone = ((EditText) findViewById(R.id.text_telephone)).getText().toString();
                     final String classroom = ((Spinner) findViewById(R.id.classSpinner)).getSelectedItem().toString();
                     final String school = ((Spinner) findViewById(R.id.spinner_2)).getSelectedItem().toString();
+                    final String dni = ((EditText) findViewById(R.id.letterNIE)).getText().toString()
+                            + ((EditText) findViewById(R.id.DNI)).getText().toString()
+                            + ((EditText) findViewById(R.id.letterDNI)).getText().toString();
 
                     Map<String, Object> aluMap = new HashMap<>();
                     aluMap.put(getString(R.string.bbdd_name), name);
                     aluMap.put(getString(R.string.bbdd_lastname), lastname);
                     aluMap.put(getString(R.string.bbdd_telephone), telephone);
+                    aluMap.put(getString(R.string.bbdd_dni), dni);
                     aluMap.put(getString(R.string.bbdd_mail), mail);
                     aluMap.put(getString(R.string.bbdd_class), classroom);
                     aluMap.put(getString(R.string.bbdd_center), school);
@@ -264,6 +285,7 @@ public class RegisterStudentActivity extends Activity {
                             intent.putExtra(getString(R.string.bbdd_class), classroom);
                             intent.putExtra(getString(R.string.bbdd_center), school);
                             intent.putExtra(getString(R.string.bbdd_name), name);
+                            intent.putExtra(getString(R.string.bbdd_dni), dni);
                             intent.putExtra(getString(R.string.myRol), getString(R.string.rol_student));
                             alertDialog.dismiss();
                             startActivity(intent);

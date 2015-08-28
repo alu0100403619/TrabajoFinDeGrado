@@ -119,4 +119,15 @@ public class Utilities {
                 getResources().getDisplayMetrics());
         Log.i("Utilities", "Load Language: " + language);
     }
+
+    public static boolean isDNI (String dni) {
+        String expReg = "^\\d{8}[A-Z]{1}$";
+        return dni.matches(expReg);
+    }
+
+    public static boolean isNIE (String dni) {
+        String expReg = "^[XYZ]{1}\\d{7}[A-Z]{1}$";
+        return dni.matches(expReg);
+    }
+
 }//class

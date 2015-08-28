@@ -128,7 +128,7 @@ public class Father implements Parcelable {
 
     public boolean equals (Father father) {
         boolean same = false;
-        if (mail.equals(father.getMail())) {
+        if (dni.equals(father.getDNI())) {
             same = true;
         }
         return same;

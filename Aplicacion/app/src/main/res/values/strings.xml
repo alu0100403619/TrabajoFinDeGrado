@@ -70,6 +70,9 @@
     <string name="ok">Vale</string>
     <string name="action_logout">Salir</string>
     <string name="required_fields">Campos Obligatorios</string>
+    <string name="letter_nie">X, Y, Z</string>
+    <string name="dni">12345678</string>
+    <string name="letter_dni">A - Z</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nombre: </string>

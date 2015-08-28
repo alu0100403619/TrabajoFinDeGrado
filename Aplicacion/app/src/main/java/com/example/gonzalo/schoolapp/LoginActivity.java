@@ -34,7 +34,7 @@ import java.util.Set;
 public class LoginActivity extends Activity {
 
     EditText mailEditText, passwordEditText;
-    String userType, mail, myName, myRol;
+    String userType, mail, myName, myRol, myDNI;
     Firebase rootRef;
     ArrayList<String> clases = new ArrayList<>();
     ArrayList<String> colegios = new ArrayList<>();
@@ -125,7 +125,6 @@ public class LoginActivity extends Activity {
                                         }//if no user
                                         else {
                                             //Profesor
-                                            Log.i("LoginActivity", "Teacher dataSnapshot: "+dataSnapshot.getValue());//TODO ------------------
                                             Map<String, Object> values3 = (Map<String, Object>) dataSnapshot.getValue();
                                             clases = getUserClass (values3);
                                         }
@@ -136,7 +135,6 @@ public class LoginActivity extends Activity {
                             }//if no padre
                             else {
                                 //Padre
-                                Log.i("LoginActivity", "Father dataSnapshot: "+dataSnapshot.getValue());//TODO ------------------
                                 Map<String, Object> values2 = (Map<String, Object>) dataSnapshot.getValue();
                                 clases = getUserClass (values2);
                             }
@@ -147,7 +145,6 @@ public class LoginActivity extends Activity {
                 }//if no alumno
                 else {
                     //Alu
-                    Log.i("LoginActivity", "Student dataSnapshot: "+dataSnapshot.getValue());//TODO ------------------
                     Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                     clases = getUserClass (values);
                 }
@@ -212,6 +209,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.myName), myName);
                         intent.putExtra(getString(R.string.myRol), myRol);
+                        intent.putExtra(getString(R.string.myDNI), myDNI);
                         intent.putExtra(getString(R.string.bbdd_class), clases.get(0));
                         //El alumno solo va a un colegio
                         intent.putExtra(getString(R.string.bbdd_center), colegios.get(0));
@@ -223,6 +221,7 @@ public class LoginActivity extends Activity {
                         Intent intent = new Intent(LoginActivity.this, TeachersTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+                        intent.putExtra(getString(R.string.myDNI), myDNI);
                         intent.putExtra(getString(R.string.myName), myName);
                         intent.putExtra(getString(R.string.myRol), myRol);
                         //Suponemos que un profesor solo da clases en un colegio
@@ -235,6 +234,7 @@ public class LoginActivity extends Activity {
                         Intent intent = new Intent(LoginActivity.this, FathersTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
+                        intent.putExtra(getString(R.string.myDNI), myDNI);
                         intent.putExtra(getString(R.string.bbdd_center), colegios);
                         intent.putExtra(getString(R.string.myName), myName);
                         intent.putExtra(getString(R.string.myRol), myRol);
@@ -265,6 +265,7 @@ public class LoginActivity extends Activity {
         }
         myName = data.get(getString(R.string.bbdd_name)) + " " +
                 data.get(getString(R.string.bbdd_lastname));
+        myDNI = data.get(getString(R.string.bbdd_dni)).toString();
         if (userType.equals(getString(R.string._students))) {
             myRol = "Alumno";
             clases.add(data.get(getString(R.string.bbdd_class)).toString());

@@ -73,5 +73,6 @@
     <string name="about_message13">Tanto desde la pantalla de bienvenida como desde la de acceso, en
         las opciones de la "Barra de Título" de la aplicación, se puede acceder a los ajustes del
         dispositivo, ya que usa internet, y a la selección de idioma de la aplicación.</string>
+    <string name="dni_format_error">Error en el formato del DNI: 12345678K / X1234567K</string>
 
 </resources>
