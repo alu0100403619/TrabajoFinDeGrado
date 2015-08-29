@@ -38,7 +38,7 @@ import java.util.UUID;
  */
 public class ChatActivity extends ListActivity {
 
-    String chatName, mail, myName, dniRemitter, idConversation, myRol, myDNI;
+    String chatName, mail, myName, dniRemitter, myRol, myDNI, idConversation;
     ArrayList<Message> messages, tempMessages;
     MessageSQLHelper messageBBDD;
     Firebase messageRef;
@@ -72,6 +72,9 @@ public class ChatActivity extends ListActivity {
         //Cargar Mensajes Previos Almacenados en la memoria de la BBDD
         if (idConversation != null) {
             messages.addAll(messageBBDD.getAllMessagesConversation(idConversation));
+        } else {
+            messageBBDD.addConversation(myDNI, dniRemitter);
+            idConversation = messageBBDD.getIdConversation(dniRemitter);
         }
 
         //Cambiar el titulo de la ActionBar
@@ -81,6 +84,9 @@ public class ChatActivity extends ListActivity {
         if (getIntent().getExtras().containsKey(getString(R.string.bbdd_message))) {
             ArrayList<Message> messagesToNotifications = getIntent().getExtras().
                     getParcelableArrayList(getString(R.string.bbdd_message));
+            for (Message message: messagesToNotifications) {
+                messageBBDD.addMessage(message, idConversation);
+            }
             messages.addAll(messagesToNotifications);
         }//if
 
@@ -163,10 +169,6 @@ public class ChatActivity extends ListActivity {
         String uuid = UUID.randomUUID().toString();
         messageRef.child(uuid).updateChildren(messageMap);
         //mandar a la base de datos local
-        if (idConversation == null) {
-            messageBBDD.addConversation(myDNI, dniRemitter);
-            idConversation = messageBBDD.getIdConversation(dniRemitter);
-        }
         messageBBDD.addMessage(message, idConversation);
     }
 
@@ -178,7 +180,8 @@ public class ChatActivity extends ListActivity {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Message message = new Message(values);
                 if (dniRemitter.equals(message.getDniRemitter())) {
-                    messages.add (message);
+                    messages.add(message);
+                    messageBBDD.addMessage(message, idConversation);
                 }//if
 
                 //Seteamos el Adapter
