@@ -182,7 +182,7 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
                 message.setDate(date);
                 message.setMessage(cursor.getString(9));
 
-                // Add book to books
+                // Add message to messages
                 messages.add(message);
             } while (cursor.moveToNext());
         }

@@ -93,7 +93,10 @@ public class Message implements Parcelable{
 
     @Override
     public String toString() {
-        return remitter;
+        String string = "";
+        string += "De " + remitter + ": " + message;
+        return string;
+        //return remitter;
     }
 
     public boolean equals (Message message) {

@@ -23,6 +23,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 
+import junit.runner.Version;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -60,6 +62,7 @@ public class ChatActivity extends ListActivity {
         mail = getIntent().getExtras().getString(getString(R.string.mail));
         dniRemitter = getIntent().getExtras().getString(getString(R.string.bbdd_dni_remitter));
         idConversation = messageBBDD.getIdConversation(dniRemitter);
+        Log.i("ChatActivity", "idConversation: " + idConversation);
 
         //Obtener el Nombre
         myName = getIntent().getExtras().getString(getString(R.string.myName));
@@ -69,8 +72,6 @@ public class ChatActivity extends ListActivity {
         //Cargar Mensajes Previos Almacenados en la memoria de la BBDD
         if (idConversation != null) {
             messages.addAll(messageBBDD.getAllMessagesConversation(idConversation));
-            messageBBDD.deleteAllMessageConversation(idConversation);
-            messageBBDD.deleteConversation(idConversation);
         }
 
         //Cambiar el titulo de la ActionBar
@@ -137,11 +138,6 @@ public class ChatActivity extends ListActivity {
 
     @Override
     public void onBackPressed(){
-        messageBBDD.addConversation(myDNI, dniRemitter);
-        String newIdConversation = messageBBDD.getIdConversation(dniRemitter);
-        for (Message message: messages) {
-            messageBBDD.addMessage(message, newIdConversation);
-        }
         Intent returnIntent = new Intent();
         returnIntent.putExtra(getString(R.string.bbdd_dni_remitter), dniRemitter);
         setResult(RESULT_OK,returnIntent);
@@ -166,6 +162,12 @@ public class ChatActivity extends ListActivity {
 
         String uuid = UUID.randomUUID().toString();
         messageRef.child(uuid).updateChildren(messageMap);
+        //mandar a la base de datos local
+        if (idConversation == null) {
+            messageBBDD.addConversation(myDNI, dniRemitter);
+            idConversation = messageBBDD.getIdConversation(dniRemitter);
+        }
+        messageBBDD.addMessage(message, idConversation);
     }
 
     public void getCloudMessages () {
@@ -198,7 +200,6 @@ public class ChatActivity extends ListActivity {
         });//getMessages
 
         //Seteamos el Adapter
-        //chatAdapter = new ChatAdapter(ChatActivity.this, messages);
         chatAdapter = new ChatAdapter(ChatActivity.this, messages, myDNI);
         setListAdapter(chatAdapter);
     }
