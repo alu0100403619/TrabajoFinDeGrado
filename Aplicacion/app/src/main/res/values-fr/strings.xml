@@ -15,6 +15,7 @@
     <string name="login_button_label">Se connecter</string>
     <string name="sign_up_text">Inscription</string>
     <string name="teachers">Enseignants</string>
+    <string name="fathers">Parents</string>
     <string name="alumnos">Étudiants</string>
     <string name="notificaciones">Notifications</string>
     <string name="circulares">Circulaires</string>

@@ -20,6 +20,7 @@
     <string name="rol">Rol</string>
     <string name="teachers">Profesores</string>
     <string name="alumnos">Alumnos</string>
+    <string name="fathers">Padres</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="circulares">Circulares</string>
     <string name="Dates">Citas</string>
@@ -152,5 +153,9 @@
 
     <!-- Invalid Keys -->
     <string name="invalid_key">-----</string>
+    <string name="title_activity_students_class_selector">StudentsClassSelector</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_fathers_class_selector">FathersClassSelector</string>
 
 </resources>

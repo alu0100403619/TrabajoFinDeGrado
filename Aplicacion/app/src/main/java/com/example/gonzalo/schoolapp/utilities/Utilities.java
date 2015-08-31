@@ -15,6 +15,7 @@ import com.example.gonzalo.schoolapp.R;
 import com.example.gonzalo.schoolapp.clases.Date;
 import com.example.gonzalo.schoolapp.clases.Message;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -128,6 +129,16 @@ public class Utilities {
     public static boolean isNIE (String dni) {
         String expReg = "^[XYZ]{1}\\d{7}[A-Z]{1}$";
         return dni.matches(expReg);
+    }
+
+    public static boolean containsSomethingString (ArrayList<String> arrayList1, ArrayList<String> arrayList2) {
+        boolean contains = false;
+        for (String string: arrayList1) {
+            if (arrayList2.contains(string)) {
+                contains = true;
+            }
+        }
+        return contains;
     }
 
 }//class

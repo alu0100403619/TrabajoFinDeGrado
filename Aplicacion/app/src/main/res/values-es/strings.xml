@@ -19,6 +19,7 @@
     <string name="father">Madre/Padre/Tutor Legal</string>
     <string name="rol">Rol</string>
     <string name="teachers">Profesores</string>
+    <string name="fathers">Padres</string>
     <string name="alumnos">Alumnos</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="circulares">Circulares</string>

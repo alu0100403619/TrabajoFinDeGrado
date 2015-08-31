@@ -18,6 +18,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -173,4 +174,5 @@ public class ExpandableAlumnosActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

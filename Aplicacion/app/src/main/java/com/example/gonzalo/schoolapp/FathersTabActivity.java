@@ -138,6 +138,11 @@ public class FathersTabActivity extends TabActivity {
 
     public void launchCirculares(View view) {
         Intent intent = new Intent(this, CircularesActivity.class);
+        intent.putExtra(getString(R.string.myName), myName);
+        intent.putExtra(getString(R.string.myRol), myRol);
+        intent.putExtra(getString(R.string.myDNI), myDNI);
+        intent.putExtra(getString(R.string.bbdd_center), schools);
+        intent.putExtra(getString(R.string.bbdd_teacher_class), clases);
         startActivity(intent);
     }
 
