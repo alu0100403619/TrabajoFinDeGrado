@@ -1,6 +1,7 @@
 package com.example.gonzalo.schoolapp;
 
 import android.content.Intent;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -122,7 +123,8 @@ public class FatherExpandableFathersActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

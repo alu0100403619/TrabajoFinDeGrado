@@ -118,5 +118,4 @@ public class AlumnoActivity extends ListActivity {
         startActivity(intent);
         this.finish();
     }
-
 }//class

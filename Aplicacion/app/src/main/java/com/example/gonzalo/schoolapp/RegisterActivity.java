@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
@@ -67,7 +68,8 @@ public class RegisterActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

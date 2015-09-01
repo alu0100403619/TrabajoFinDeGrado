@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -117,7 +118,8 @@ public class FathersTabActivity extends TabActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            startActivity(intent);
         }
         else if (id == R.id.action_modify) {
             Intent intent = new Intent(this, MyDataActivity.class);

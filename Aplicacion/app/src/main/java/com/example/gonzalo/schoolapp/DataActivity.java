@@ -1,7 +1,9 @@
 package com.example.gonzalo.schoolapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,7 +69,8 @@ public class DataActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
