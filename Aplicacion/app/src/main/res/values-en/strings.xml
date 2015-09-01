@@ -75,6 +75,7 @@
     <string name="deleteAccountSucceeded">Account Deleted Succeesfully</string>
     <string name="delete_account_error">Unable to delete the user or account</string>
     <string name="action_empty_chat">Empty Chat</string>
+    <string name="meeting_school">Meeting at School</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Name: </string>

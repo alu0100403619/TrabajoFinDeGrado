@@ -74,6 +74,7 @@
     <string name="deleteAccountSucceeded">Compte supprimé avec succès</string>
     <string name="delete_account_error">Impossible de supprimer l\'utilisateur ou le compte</string>
     <string name="action_empty_chat">Le Chat Vide</string>
+    <string name="meeting_school">Réunion à l\'école</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nom: </string>

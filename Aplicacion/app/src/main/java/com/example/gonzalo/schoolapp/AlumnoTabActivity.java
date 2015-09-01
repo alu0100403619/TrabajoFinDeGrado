@@ -3,6 +3,7 @@ package com.example.gonzalo.schoolapp;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TabHost;
 
 import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.Firebase;
+
+import java.util.Calendar;
 
 public class AlumnoTabActivity extends TabActivity {
 
@@ -113,6 +116,13 @@ public class AlumnoTabActivity extends TabActivity {
 
     public void launchCirculares(View view) {
         Intent intent = new Intent(this, CircularesActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchDates (View view) {
+        Intent intent = new Intent(Intent.ACTION_EDIT);
+        intent.setType("vnd.android.cursor.item/event");
+        intent.putExtra("title", getString(R.string.meeting_school));
         startActivity(intent);
     }
 }
