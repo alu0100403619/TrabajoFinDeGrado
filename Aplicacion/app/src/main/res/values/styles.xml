@@ -18,10 +18,12 @@
     <style name="CustomButton" parent="android:Widget.Button">
         <item name="android:background">@drawable/rounded_corners</item>
         <item name="android:textColor">@color/White</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
     </style>
 
     <style name="CustomEditText" parent="android:Widget.EditText">
         <item name="android:background">@drawable/custom_edit_text</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
     </style>
 
     <style name="CustomTextView" parent="android:Widget.TextView">
@@ -100,6 +102,12 @@
 
     <style name="NormalEditText" parent="android:Widget.EditText">
         <item name="android:background">@color/Transparent</item>
+    </style>
+
+    <style name="DeleteAccount" parent="android:Widget.Button">
+        <item name="android:background">@drawable/rounded_corners_delete</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
     </style>
 
 </resources>

@@ -123,6 +123,7 @@ public class FathersTabActivity extends TabActivity {
             Intent intent = new Intent(this, MyDataActivity.class);
             intent.putExtra(getString(R.string.bbdd_mail), mail);
             intent.putExtra(getString(R.string.bbdd_rol), myRol);
+            intent.putExtra(getString(R.string.bbdd_dni), myDNI);
             startActivity(intent);
         }
         else if (id == R.id.action_logout) {

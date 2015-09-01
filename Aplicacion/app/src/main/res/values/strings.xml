@@ -37,6 +37,7 @@
     <string name="letter">Letra</string>
     <string name="mail">E-mail</string>
     <string name="password">Contraseña</string>
+    <string name="repeat_password">Repita Contraseña</string>
     <string name="course_group">Curso y Grupo</string>
     <string name="course_group_hint">1A, 2C, 3B...</string>
     <string name="alumno_data">**** Datos del Alumno ****</string>
@@ -74,6 +75,11 @@
     <string name="letter_nie">X, Y, Z</string>
     <string name="dni">12345678</string>
     <string name="letter_dni">A - Z</string>
+    <string name="delete_account">Borrar Cuenta</string>
+    <string name="password_not_equals">Las contraseñas no coinciden</string>
+    <string name="action_not_undone">Esta acción no podrá ser desecha</string>
+    <string name="deleteAccountSucceeded">Cuenta Borrada Satisfactoriamente</string>
+    <string name="delete_account_error">No se ha podido borrar el usuario ni su cuenta</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nombre: </string>
@@ -85,6 +91,7 @@
     <string name="teacher_class_label">Cursos y Grupos: </string>
     <string name="sons_label">Hijos: </string>
     <string name="son_label">Hijo</string>
+    <string name="dni_label">D.N.I: </string>
 
     <string-array name="usertype_array">
         <item>Alumno</item>

@@ -88,7 +88,7 @@ public class AlumnoActivity extends ListActivity {
                 Alumno alu = new Alumno(values);
                 String dni = values.get(getString(R.string.bbdd_dni)).toString();
                 if ((values.get(getString(R.string.bbdd_class)).equals(clase)) &&
-                        (!values.get(getString(R.string.bbdd_dni)).equals(myDNI))) {
+                        (!dni.equals(myDNI))) {
                     alus.add(alu);
                 }//if
 

@@ -33,6 +33,7 @@
     <string name="letter">Lettre</string>
     <string name="mail">Email</string>
     <string name="password">Mot de passe</string>
+    <string name="repeat_password">Répetér le mot de passe</string>
     <string name="course_group">Cours et Groupe</string>
     <string name="course_group_hint">1A, 2C, 3B...</string>
     <string name="alumno_data">**** Données Étudiante ****</string>
@@ -67,6 +68,11 @@
     <string name="ok">D\'accord</string>
     <string name="action_logout">Se déconnecter</string>
     <string name="required_fields">Champs Requis</string>
+    <string name="delete_account">Supprimer le Compte</string>
+    <string name="password_not_equals">Les mots de passe ne sont pas égux</string>
+    <string name="action_not_undone">Cette action ne peut être annulée</string>
+    <string name="deleteAccountSucceeded">Compte supprimé avec succès</string>
+    <string name="delete_account_error">Impossible de supprimer l\'utilisateur ou le compte</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nom: </string>

@@ -43,6 +43,18 @@
                         android:inputType="textPersonName" android:editable="false"/>
                 </LinearLayout>
 
+                <LinearLayout android:id="@+id/dni_group" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+                    <TextView android:id="@+id/dni_label"
+                        android:layout_width="wrap_content" style="@style/DataContactLabel"
+                        android:layout_height="wrap_content" android:text="@string/dni_label" />
+                    <EditText android:id="@+id/dni"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent" style="@style/myDataEditText"
+                        android:inputType="textPersonName" android:editable="false"/>
+                </LinearLayout>
+
                 <LinearLayout android:id="@+id/mail_group" android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent">
@@ -128,6 +140,15 @@
                     android:text="@string/change_password" android:layout_below="@id/scrollView"/>
 
             </LinearLayout>
+
+            <Button android:id="@+id/deleteAccountButton"
+                android:layout_width="wrap_content" style="@style/DeleteAccount"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_account"
+                android:layout_gravity="center_horizontal"
+                android:onClick="launchDeleteAccountDialog"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
 
         </LinearLayout>
 

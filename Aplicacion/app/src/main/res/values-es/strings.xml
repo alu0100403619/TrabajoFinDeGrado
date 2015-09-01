@@ -37,6 +37,7 @@
     <string name="letter">Letra</string>
     <string name="mail">E-mail</string>
     <string name="password">Contraseña</string>
+    <string name="repeat_password">Repita Contraseña</string>
     <string name="course_group">Curso y Grupo</string>
     <string name="course_group_hint">1A, 2C, 3B...</string>
     <string name="alumno_data">**** Datos del Alumno ****</string>
@@ -70,6 +71,11 @@
     <string name="help_ok_dialog">Aceptar</string>
     <string name="ok">Vale</string>
     <string name="required_fields">Campos Obligatorios</string>
+    <string name="delete_account">Borrar Cuenta</string>
+    <string name="password_not_equals">Las contraseñas no coinciden</string>
+    <string name="action_not_undone">Esta acción no podrá ser desecha</string>
+    <string name="deleteAccountSucceeded">Cuenta Borrada Satisfactoriamente</string>
+    <string name="delete_account_error">No se ha podido borrar el usuario ni su cuenta</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nombre: </string>

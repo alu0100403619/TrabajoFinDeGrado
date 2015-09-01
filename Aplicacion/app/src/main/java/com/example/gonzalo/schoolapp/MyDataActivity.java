@@ -33,16 +33,17 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 
 public class MyDataActivity extends Activity {
 
-    String rol, myMail, key, schoolSelected;
+    String rol, myMail, key, schoolSelected, myDNI;
     Object[] childrensKeyArray;
     Firebase ref, schoolsRef, childRef;
 
-    EditText nameEditText, lastnameEditText, mailEditText, telephoneEditText;
+    EditText nameEditText, lastnameEditText, mailEditText, telephoneEditText, dniEditText;
     LinearLayout childrenGroupLL;
     Spinner spinnerSchool, childSchoolSpinner;
     ArrayList<String> schools;
@@ -50,6 +51,7 @@ public class MyDataActivity extends Activity {
     ArrayList<Alumno> childrensArrayList;
     int numberOfChildrens = 0;
 
+    //TODO Revisar Colegios
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Utilities.loadLanguage(this);
@@ -60,11 +62,13 @@ public class MyDataActivity extends Activity {
 
         rol = getIntent().getExtras().getString(getString(R.string.bbdd_rol));
         myMail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
+        myDNI = getIntent().getExtras().getString(getString(R.string.bbdd_dni));
 
         nameEditText = (EditText) findViewById(R.id.name);
         lastnameEditText = (EditText) findViewById(R.id.lastname);
         mailEditText = (EditText) findViewById(R.id.mail);
         telephoneEditText = (EditText) findViewById(R.id.telephone);
+        dniEditText = (EditText) findViewById(R.id.dni);
 
         //Spinner
         spinnerSchool = (Spinner) findViewById(R.id.spinnerSchool);
@@ -77,12 +81,12 @@ public class MyDataActivity extends Activity {
 
         nameEditText.setEnabled(false);
         lastnameEditText.setEnabled(false);
+        dniEditText.setEnabled(false);
         mailEditText.setEnabled(false);
         telephoneEditText.setEnabled(false);
         spinnerSchool.setEnabled(false);
 
         childrenGroupLL = (LinearLayout) findViewById(R.id.children_group);
-        //childrenGroupLL = (LinearLayout) findViewById(R.id.childs);
 
         if (rol.equals(getString(R.string.rol_student))) {
             ref = new Firebase(getString(R.string.studentRef));
@@ -96,7 +100,7 @@ public class MyDataActivity extends Activity {
             ref = new Firebase(getString(R.string.fatherRef));
             childrenGroupLL.setVisibility(View.VISIBLE);
         }
-        Query userData = ref.orderByChild(getString(R.string.bbdd_mail)).equalTo(myMail);
+        Query userData = ref.orderByChild(getString(R.string.bbdd_dni)).equalTo(myDNI);
         userData.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -160,10 +164,12 @@ public class MyDataActivity extends Activity {
         courseGroupEditText.setText(alumno.getClassroom());
         mailEditText.setText(alumno.getMail());
         telephoneEditText.setText(alumno.getTelephone());
+        dniEditText.setText(alumno.getDNI());
 
         spinnerSchool.setSelection(spinnerAdapter.getPosition(alumno.getSchool()));
     }
 
+    //TODO Revisar
     public void setData (Teacher teacher) {
         String classRooms = "";
         ArrayList<String> clas = teacher.getClassRooms();
@@ -176,6 +182,7 @@ public class MyDataActivity extends Activity {
         lastnameEditText.setText(teacher.getLastname());
         mailEditText.setText(teacher.getMail());
         telephoneEditText.setText(teacher.getTelephone());
+        dniEditText.setText(teacher.getDNI());
 
         spinnerSchool.setSelection(spinnerAdapter.getPosition(teacher.getSchool()));
 
@@ -201,6 +208,7 @@ public class MyDataActivity extends Activity {
         lastnameEditText.setText(father.getLastname());
         mailEditText.setText(father.getMail());
         telephoneEditText.setText(father.getTelephone());
+        dniEditText.setText(father.getDNI());
 
         for (int i = 0; i < childrensArrayList.size(); i++) {
             Alumno alumno = (Alumno) childrensArrayList.get(i);
@@ -333,9 +341,10 @@ public class MyDataActivity extends Activity {
         allSchools.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                if (!tmp.contains(dataSnapshot.getValue().toString())) {
-                    tmp.add(dataSnapshot.getValue().toString());
+                Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
+                String schoolName = values.get(getString(R.string.bbdd_name)).toString();
+                if (!tmp.contains(schoolName)) {
+                    tmp.add(schoolName);
                 }
             }
 
@@ -364,6 +373,7 @@ public class MyDataActivity extends Activity {
             Map<String, Object> aluMap = new HashMap<>();
             aluMap.put(getString(R.string.bbdd_name), nameEditText.getText().toString());
             aluMap.put(getString(R.string.bbdd_lastname), lastnameEditText.getText().toString());
+            aluMap.put(getString(R.string.bbdd_dni), dniEditText.getText().toString());
             aluMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
             aluMap.put(getString(R.string.bbdd_telephone), telephoneEditText.getText().toString());
             aluMap.put(getString(R.string.bbdd_center), spinnerSchool.getSelectedItem().toString());
@@ -379,6 +389,7 @@ public class MyDataActivity extends Activity {
             Map<String, Object> classMap = new HashMap<>();
             teacherMap.put(getString(R.string.bbdd_name), nameEditText.getText().toString());
             teacherMap.put(getString(R.string.bbdd_lastname), lastnameEditText.getText().toString());
+            teacherMap.put(getString(R.string.bbdd_dni), dniEditText.getText().toString());
             teacherMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
             teacherMap.put(getString(R.string.bbdd_telephone), telephoneEditText.getText().toString());
             teacherMap.put(getString(R.string.bbdd_center), spinnerSchool.getSelectedItem().toString());
@@ -403,6 +414,7 @@ public class MyDataActivity extends Activity {
             Map<String, Object> tempMap = new HashMap<>();
             fatherMap.put(getString(R.string.bbdd_name), nameEditText.getText().toString());
             fatherMap.put(getString(R.string.bbdd_lastname), lastnameEditText.getText().toString());
+            fatherMap.put(getString(R.string.bbdd_dni), dniEditText.getText().toString());
             fatherMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
             fatherMap.put(getString(R.string.bbdd_telephone), telephoneEditText.getText().toString());
             //Get info Childs
@@ -468,6 +480,11 @@ public class MyDataActivity extends Activity {
                 formOk = false;
                 lastnameEditText.setError(getString(R.string.field_empty));
             }
+            data = dniEditText.getText().toString();
+            if ((!Utilities.isDNI(data)) && (!Utilities.isNIE(data))) {
+                formOk = false;
+                dniEditText.setError(getString(R.string.dni_format_error));
+            }
             data = mailEditText.getText().toString();
             if (!Utilities.isMail(data)) {
                 formOk = false;
@@ -495,6 +512,11 @@ public class MyDataActivity extends Activity {
                 formOk = false;
                 lastnameEditText.setError(getString(R.string.field_empty));
             }
+            data = dniEditText.getText().toString();
+            if ((!Utilities.isDNI(data)) && (!Utilities.isNIE(data))) {
+                formOk = false;
+                dniEditText.setError(getString(R.string.dni_format_error));
+            }
             data = mailEditText.getText().toString();
             if (!Utilities.isMail(data)) {
                 formOk = false;
@@ -521,6 +543,11 @@ public class MyDataActivity extends Activity {
             if (data.isEmpty()) {
                 formOk = false;
                 lastnameEditText.setError(getString(R.string.field_empty));
+            }
+            data = dniEditText.getText().toString();
+            if ((!Utilities.isDNI(data)) && (!Utilities.isNIE(data))) {
+                formOk = false;
+                dniEditText.setError(getString(R.string.dni_format_error));
             }
             data = mailEditText.getText().toString();
             if (!Utilities.isMail(data)) {
@@ -607,6 +634,80 @@ public class MyDataActivity extends Activity {
                                 dialog.cancel();
                             }
                         });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
+    public void launchDeleteAccountDialog (View view) {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        final View promptView = layoutInflater.inflate(R.layout.delete_account_dialog, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set prompt.xml to alertdialog builder
+        alertDialogBuilder.setView(promptView);
+        alertDialogBuilder.setTitle(getString(R.string.delete_account));
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.delete_account),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                EditText myPasswordEditText = (EditText) promptView.findViewById(R.id.password_field);
+                                EditText myRepeatedPasswordEditText = (EditText) promptView.findViewById(R.id.password_field_repited);
+
+                                String myPassword = myPasswordEditText.getText().toString();
+                                String myRepeatedPassword = myRepeatedPasswordEditText.getText().toString();
+                                
+                                if (myPassword.equals(myRepeatedPassword)) {
+                                    final Firebase rootRef = new Firebase(getString(R.string.rootRef));
+                                    rootRef.removeUser(myMail, myPassword, new Firebase.ResultHandler() {
+                                        @Override
+                                        public void onSuccess() {
+                                            //Eliminamos la informacion de los hijo
+                                            /*if (rol.equals(getString(R.string.rol_father))) {
+                                                for (Object childKey: childrensKeyArray){
+                                                    String cKey = childKey.toString();
+                                                    childRef.child(cKey).removeValue();
+                                                }//for childKey
+                                            }//*/
+                                            ref.child(key).removeValue();
+                                            Intent intent = new Intent(MyDataActivity.this, WelcomeActivity.class);
+                                            rootRef.unauth();
+                                            Toast.makeText(MyDataActivity.this,
+                                                    getString(R.string.deleteAccountSucceeded),
+                                                    Toast.LENGTH_LONG).show();
+                                            startActivity(intent);
+                                            MyDataActivity.this.finish();
+                                        }
+
+                                        @Override
+                                        public void onError(FirebaseError firebaseError) {
+                                            Toast.makeText(MyDataActivity.this,
+                                                    getString(R.string.delete_account_error) + " " +
+                                                            firebaseError, Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                                } else {
+                                    myPasswordEditText.setError(getString(R.string.password_not_equals));
+                                    myRepeatedPasswordEditText.setError(getString(R.string.password_not_equals));
+                                    Toast.makeText(MyDataActivity.this,
+                                            getString(R.string.password_not_equals), Toast.LENGTH_LONG).show();
+                                }//if password equal
+                            }
+                        })
+                .setNegativeButton(getString(R.string.back),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
 
         // create alert dialog
         AlertDialog alertDialog = alertDialogBuilder.create();

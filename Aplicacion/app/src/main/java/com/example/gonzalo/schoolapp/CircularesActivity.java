@@ -232,7 +232,7 @@ public class CircularesActivity extends Activity {
         }).setNegativeButton(getString(R.string.back), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+                dialog.cancel();
             }
         });
         dialog.show();

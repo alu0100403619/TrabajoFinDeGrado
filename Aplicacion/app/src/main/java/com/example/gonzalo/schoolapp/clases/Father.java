@@ -72,6 +72,16 @@ public class Father implements Parcelable {
         return schools;
     }
 
+    public ArrayList<String> getDniChildrens () {
+        ArrayList<String> dnis = new ArrayList<>();
+        for (Alumno child: childrens) {
+            if (!dnis.contains(child.getDNI())) {
+                dnis.add(child.getDNI());
+            }
+        }
+        return dnis;
+    }
+
     public String getTelephone() {
         return telephone;
     }

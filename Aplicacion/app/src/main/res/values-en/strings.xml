@@ -33,6 +33,7 @@
     <string name="letter">Letter</string>
     <string name="mail">E-mail</string>
     <string name="password">Password</string>
+    <string name="repeat_password">Repeat Password</string>
     <string name="course_group">Course and Group</string>
     <string name="course_group_hint">1A, 2C, 3B...</string>
     <string name="alumno_data">**** Student Data ****</string>
@@ -68,6 +69,11 @@
     <string name="ok">Ok</string>
     <string name="action_logout">Log Out</string>
     <string name="required_fields">Required Fields</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="password_not_equals">Passwords are not equal</string>
+    <string name="action_not_undone">This action can not be undone</string>
+    <string name="deleteAccountSucceeded">Account Deleted Succeesfully</string>
+    <string name="delete_account_error">Unable to delete the user or account</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Name: </string>
