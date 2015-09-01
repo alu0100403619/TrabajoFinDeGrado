@@ -34,7 +34,7 @@ public class ExpandableFahtersActivity extends Activity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<Father>> listDataChild;
-    ArrayList<String> clases;
+    ArrayList<String> clases, tempFathersDnis;
     String school, mail, myName, myRol, myDNI;
     Firebase fathersRef;
     ArrayList<Father> fathers;
@@ -48,6 +48,7 @@ public class ExpandableFahtersActivity extends Activity {
 
         fathersRef = new Firebase (getString(R.string.fatherRef));
         clases = new ArrayList<>();
+        tempFathersDnis = new ArrayList<>();
         fathers = new ArrayList<>();
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<Father>>();
@@ -123,14 +124,13 @@ public class ExpandableFahtersActivity extends Activity {
                 Map<String, Object> child;
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Map<String, Object> childrens = (Map<String, Object>) values.get(getString(R.string.bbdd_children));
-                //Log.i("ExpandFatAct", "Keys Hijos: "+childrens.keySet());
                 Set<String> keys = childrens.keySet();
                 for (String key: keys) {
                     child = (Map<String, Object>) childrens.get(key);
                     if (child.get(getString(R.string.bbdd_center)).equals(school)) {
                         Father father = new Father (values);
-                        //TODO Si el array no lo contiene, mete al padre. Se Repiten---------------------------------
-                        if ((!fathers.contains(father)) && (!father.getDNI().equals(myDNI))) {
+                        if ((!tempFathersDnis.contains(father.getDNI())) && (!father.getDNI().equals(myDNI))) {
+                            tempFathersDnis.add(father.getDNI());
                             fathers.add(father);
                         }//if
                     }//if
