@@ -51,7 +51,6 @@ public class MyDataActivity extends Activity {
     ArrayList<Alumno> childrensArrayList;
     int numberOfChildrens = 0;
 
-    //TODO Revisar Colegios
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Utilities.loadLanguage(this);
@@ -169,7 +168,6 @@ public class MyDataActivity extends Activity {
         spinnerSchool.setSelection(spinnerAdapter.getPosition(alumno.getSchool()));
     }
 
-    //TODO Revisar
     public void setData (Teacher teacher) {
         String classRooms = "";
         ArrayList<String> clas = teacher.getClassRooms();
@@ -663,7 +661,7 @@ public class MyDataActivity extends Activity {
 
                                 String myPassword = myPasswordEditText.getText().toString();
                                 String myRepeatedPassword = myRepeatedPasswordEditText.getText().toString();
-                                
+
                                 if (myPassword.equals(myRepeatedPassword)) {
                                     final Firebase rootRef = new Firebase(getString(R.string.rootRef));
                                     rootRef.removeUser(myMail, myPassword, new Firebase.ResultHandler() {
