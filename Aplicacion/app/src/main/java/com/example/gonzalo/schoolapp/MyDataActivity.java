@@ -714,4 +714,14 @@ public class MyDataActivity extends Activity {
         alertDialog.show();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    public void back(View view) {
+        onBackPressed();
+    }
+
 }//class

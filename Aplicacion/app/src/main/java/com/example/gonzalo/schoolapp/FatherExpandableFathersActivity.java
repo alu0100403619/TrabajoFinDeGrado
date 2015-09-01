@@ -1,5 +1,6 @@
 package com.example.gonzalo.schoolapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -102,7 +103,7 @@ public class FatherExpandableFathersActivity extends ActionBarActivity {
     }
 
     public void prepareListData() {
-        Log.i("FEFA", "fathers: "+fathers);
+        Log.i("FEFA", "fathers: " + fathers);
     }
 
     @Override
@@ -126,4 +127,14 @@ public class FatherExpandableFathersActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed(){
+        Firebase rootref = new Firebase (getString(R.string.rootRef));
+        Intent intent = new Intent(this, LoginActivity.class);
+        rootref.unauth();
+        startActivity(intent);
+        this.finish();
+    }
+
 }

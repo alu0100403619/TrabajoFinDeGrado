@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,6 +45,7 @@ public class LoginActivity extends Activity {
         Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         Firebase.setAndroidContext(this);
         rootRef = new Firebase(getString(R.string.rootRef));

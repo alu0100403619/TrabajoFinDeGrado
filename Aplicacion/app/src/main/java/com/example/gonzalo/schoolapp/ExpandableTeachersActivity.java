@@ -179,4 +179,13 @@ public class ExpandableTeachersActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed(){
+        Firebase rootref = new Firebase (getString(R.string.rootRef));
+        Intent intent = new Intent(this, LoginActivity.class);
+        rootref.unauth();
+        startActivity(intent);
+        this.finish();
+    }
 }

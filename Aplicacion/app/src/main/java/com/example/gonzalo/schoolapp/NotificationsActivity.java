@@ -160,4 +160,14 @@ public class NotificationsActivity extends ListActivity {
             public void onCancelled(FirebaseError firebaseError) {}
         });//getMessages
     }
+
+    @Override
+    public void onBackPressed(){
+        Log.i("AlumnoTabActivity", "Back Pressed");
+        Firebase rootref = new Firebase (getString(R.string.rootRef));
+        Intent intent = new Intent(this, LoginActivity.class);
+        rootref.unauth();
+        startActivity(intent);
+        this.finish();
+    }
 }//class

@@ -13,7 +13,7 @@
         <LinearLayout android:id="@+id/scrollChild"
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout android:id="@+id/child1"
                 android:layout_width="wrap_content" android:orientation="vertical"
@@ -141,14 +141,26 @@
 
             </LinearLayout>
 
-            <Button android:id="@+id/deleteAccountButton"
-                android:layout_width="wrap_content" style="@style/DeleteAccount"
-                android:layout_height="wrap_content"
-                android:text="@string/delete_account"
-                android:layout_gravity="center_horizontal"
-                android:onClick="launchDeleteAccountDialog"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+            <LinearLayout android:id="@+id/child3"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" android:layout_gravity="center_horizontal" >
+
+                <Button android:id="@+id/back_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/back"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="back" />
+
+                <Button android:id="@+id/deleteAccountButton"
+                    android:layout_width="wrap_content" style="@style/DeleteAccount"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_account"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="launchDeleteAccountDialog" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

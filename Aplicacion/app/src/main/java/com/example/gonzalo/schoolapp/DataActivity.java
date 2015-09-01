@@ -115,7 +115,7 @@ public class DataActivity extends Activity {
         schoolGroup.setVisibility(View.GONE);
         courseGroupGroup.setVisibility(View.GONE);
         ArrayList<Alumno> childrens = father.getChildrens();
-        Log.i("DataActivity", "Hijos: "+childrens);
+        Log.i("DataActivity", "Hijos: " + childrens);
 
         nameTextView.setText(father.getName());
         lastnameTextView.setText(father.getLastname());
@@ -141,6 +141,16 @@ public class DataActivity extends Activity {
                 childs.addView(childClassroom);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    public void back(View view) {
+        onBackPressed();
     }
 
 }

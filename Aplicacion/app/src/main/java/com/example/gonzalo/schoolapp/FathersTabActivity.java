@@ -153,5 +153,4 @@ public class FathersTabActivity extends TabActivity {
         intent.putExtra("title", getString(R.string.meeting_school));
         startActivity(intent);
     }
-
 }//class

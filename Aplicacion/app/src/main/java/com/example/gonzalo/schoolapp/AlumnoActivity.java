@@ -3,6 +3,7 @@ package com.example.gonzalo.schoolapp;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -107,5 +108,15 @@ public class AlumnoActivity extends ListActivity {
             public void onCancelled(FirebaseError firebaseError) {}
         });
     }//function
+
+    @Override
+    public void onBackPressed(){
+        Log.i("AlumnoTabActivity", "Back Pressed");
+        Firebase rootref = new Firebase (getString(R.string.rootRef));
+        Intent intent = new Intent(this, LoginActivity.class);
+        rootref.unauth();
+        startActivity(intent);
+        this.finish();
+    }
 
 }//class

@@ -113,4 +113,13 @@ public class TeachersActivity extends ListActivity {
         Intent intent = new Intent(this, CircularesActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed(){
+        Firebase rootref = new Firebase (getString(R.string.rootRef));
+        Intent intent = new Intent(this, LoginActivity.class);
+        rootref.unauth();
+        startActivity(intent);
+        this.finish();
+    }
 }

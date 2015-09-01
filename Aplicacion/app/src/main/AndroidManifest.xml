@@ -31,6 +31,7 @@
         </activity>
         <activity
             android:name=".AlumnoTabActivity"
+            android:parentActivityName=".LoginActivity"
             android:label="@string/title_activity_alumno_tab" >
         </activity>
         <activity android:name=".AlumnoActivity" />
@@ -46,6 +47,7 @@
         </activity>
         <activity
             android:name=".TeachersTabActivity"
+            android:parentActivityName=".LoginActivity"
             android:label="@string/title_activity_teachers_tab" >
         </activity>
         <activity
@@ -62,6 +64,7 @@
         </activity>
         <activity
             android:name=".FathersTabActivity"
+            android:parentActivityName=".LoginActivity"
             android:label="@string/title_activity_fathers_tab" >
         </activity>
         <activity
@@ -70,6 +73,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
+            android:parentActivityName=".WelcomeActivity"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
@@ -107,22 +111,6 @@
         <activity
             android:name=".ChangeLanguageActivity"
             android:label="@string/title_activity_change_language" >
-        </activity>
-        <activity
-            android:name=".classSelector.StudentsClassSelector"
-            android:label="@string/title_activity_students_class_selector" >
-        </activity>
-        <activity
-            android:name=".classSelector.FathersClassSelector"
-            android:label="@string/title_activity_fathers_class_selector" >
-        </activity>
-        <activity
-            android:name=".ClassSelector.StudentsClassSelector"
-            android:label="@string/title_activity_students_class_selector" >
-        </activity>
-        <activity
-            android:name=".ClassSelector.FathersClassSelector"
-            android:label="@string/title_activity_fathers_class_selector" >
         </activity>
     </application>
 
