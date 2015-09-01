@@ -19,7 +19,7 @@ import com.firebase.client.FirebaseError;
 public class ChangePasswordActivity extends Activity {
 
     String myMail;
-    EditText mailEditText, oldPasswordEditText, newPasswordEditText;
+    EditText mailEditText, oldPasswordEditText, newPasswordEditText, newRepeatedPasswordEditText;
     Firebase rootRef;
 
     @Override
@@ -33,6 +33,7 @@ public class ChangePasswordActivity extends Activity {
         mailEditText = (EditText) findViewById(R.id.mailField);
         oldPasswordEditText = (EditText) findViewById(R.id.oldPasswordField);
         newPasswordEditText = (EditText) findViewById(R.id.newPasswordField);
+        newRepeatedPasswordEditText = (EditText) findViewById(R.id.newRepeatedPasswordField);
 
         myMail = getIntent().getExtras().getString(getString(R.string.bbdd_mail));
 
@@ -66,6 +67,7 @@ public class ChangePasswordActivity extends Activity {
         String mailFieldText = mailEditText.getText().toString();
         String oldPasswordFieldText = oldPasswordEditText.getText().toString();
         String newPasswordFieldText = newPasswordEditText.getText().toString();
+        String newRepeatedPasswordFieldText = newRepeatedPasswordEditText.getText().toString();
 
         if (mailFieldText.isEmpty()) {
             mailEditText.setError(getString(R.string.mail_empty));
@@ -76,9 +78,16 @@ public class ChangePasswordActivity extends Activity {
         if (newPasswordFieldText.isEmpty()) {
             newPasswordEditText.setError(getString(R.string.password_empty));
         }
+        if (newRepeatedPasswordFieldText.isEmpty()) {
+            newRepeatedPasswordEditText.setError(getString(R.string.password_empty));
+        }
+        if (newPasswordFieldText.equals(newRepeatedPasswordFieldText)) {
+            newPasswordEditText.setError(getString(R.string.password_not_equals));
+            newRepeatedPasswordEditText.setError(getString(R.string.password_not_equals));
+        }
 
         if ((!mailFieldText.isEmpty()) && (!oldPasswordFieldText.isEmpty()) &&
-                (!newPasswordFieldText.isEmpty())) {
+                (!newRepeatedPasswordFieldText.isEmpty()) && (!newPasswordFieldText.isEmpty())) {
             rootRef.changePassword(mailFieldText, oldPasswordFieldText, newPasswordFieldText, new Firebase.ResultHandler(){
                 @Override
                 public void onSuccess() {
