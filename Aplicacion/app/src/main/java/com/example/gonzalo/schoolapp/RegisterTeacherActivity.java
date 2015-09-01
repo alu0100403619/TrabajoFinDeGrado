@@ -150,6 +150,7 @@ public class RegisterTeacherActivity extends Activity {
         EditText telephoneEditText = (EditText) findViewById(R.id.text_telephone);
         EditText mailEditText = (EditText) findViewById(R.id.text_mail);
         EditText passwordEditText = (EditText) findViewById(R.id.text_password);
+        EditText passwordRepeatedEditText = (EditText) findViewById(R.id.text_repeated_password);
         EditText letterNieEditText = (EditText) findViewById(R.id.letterNIE);
         EditText dniEditText = (EditText) findViewById(R.id.DNI);
         EditText letterDniEditText = (EditText) findViewById(R.id.letterDNI);
@@ -158,8 +159,9 @@ public class RegisterTeacherActivity extends Activity {
         String lastname = lastnameEditText.getText().toString();
         String telephone = telephoneEditText.getText().toString();
         String classroom = ((Button) findViewById(R.id.classSpinner)).getText().toString();
-        String mail = mailEditText.getText().toString();
+        String mail = mailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString();
+        String repeatedPassword = passwordRepeatedEditText.getText().toString();
         String school = ((Spinner) findViewById(R.id.spinner_2)).getSelectedItem().toString();
         String dni = letterNieEditText.getText().toString() + dniEditText.getText().toString()
                 + letterDniEditText.getText().toString();
@@ -218,6 +220,17 @@ public class RegisterTeacherActivity extends Activity {
             passwordEditText.setError(getString(R.string.field_empty));
             haveEmptyFields = true;
         }
+        if (repeatedPassword.isEmpty()) {
+            Log.i("RegStudAct", "pass Empty");
+            passwordRepeatedEditText.setError(getString(R.string.field_empty));
+            haveEmptyFields = true;
+        }
+        if (!password.equals(repeatedPassword)) {
+            Log.i("RegStudAct", "pass no Equal");
+            passwordEditText.setError(getString(R.string.password_not_equals));
+            passwordRepeatedEditText.setError(getString(R.string.password_not_equals));
+            haveEmptyFields = true;
+        }
         if ((school.isEmpty()) || (school.equals(getString(R.string.add_school))) ||
                 (school.equals(getString(R.string.select_school)))) {
             Log.i("RegStudAct", "school Empty");
@@ -236,7 +249,7 @@ public class RegisterTeacherActivity extends Activity {
 
         if (!haveEmptyFields()) {
             showLoading();
-            final String mail = ((EditText) findViewById(R.id.text_mail)).getText().toString();
+            final String mail = ((EditText) findViewById(R.id.text_mail)).getText().toString().trim();
             final String password = ((EditText) findViewById(R.id.text_password)).getText().toString();
             rootRef.createUser(mail, password, new Firebase.ResultHandler() {
                 @Override

@@ -51,7 +51,6 @@ public class LoginActivity extends Activity {
         mailEditText = (EditText) findViewById(R.id.mailField);
         passwordEditText = (EditText) findViewById(R.id.passwordField);
         //TODO si auth != null lanzar la actividad correcta
-
     }
 
 
@@ -91,7 +90,7 @@ public class LoginActivity extends Activity {
 
     public String setTypeUser () {
         userType = "";
-        mail = mailEditText.getText().toString();
+        mail = mailEditText.getText().toString().trim();
         Query rolQuery = rootRef.child(getString(R.string._students))
                 .orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
         rolQuery.addListenerForSingleValueEvent(new ValueEventListener() {

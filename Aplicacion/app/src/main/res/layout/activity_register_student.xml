@@ -130,6 +130,14 @@
                 android:drawableLeft="@drawable/ic_action_secure"
                 android:drawableEnd="@drawable/ic_action_required"/>
 
+            <EditText android:id="@+id/text_repeated_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/repeat_password"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_action_secure"
+                android:drawableEnd="@drawable/ic_action_required"/>
+
             <LinearLayout android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
