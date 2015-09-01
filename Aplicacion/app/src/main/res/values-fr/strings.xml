@@ -73,6 +73,7 @@
     <string name="action_not_undone">Cette action ne peut être annulée</string>
     <string name="deleteAccountSucceeded">Compte supprimé avec succès</string>
     <string name="delete_account_error">Impossible de supprimer l\'utilisateur ou le compte</string>
+    <string name="action_empty_chat">Le Chat Vide</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nom: </string>

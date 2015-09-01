@@ -76,6 +76,7 @@
     <string name="action_not_undone">Esta acción no podrá ser desecha</string>
     <string name="deleteAccountSucceeded">Cuenta Borrada Satisfactoriamente</string>
     <string name="delete_account_error">No se ha podido borrar el usuario ni su cuenta</string>
+    <string name="action_empty_chat">Vaciar Chat</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nombre: </string>

@@ -112,6 +112,14 @@ public class ChatActivity extends ListActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_empty_chat) {
+            if (idConversation != null) {
+                messageBBDD.deleteAllMessageConversation(idConversation);
+                messageBBDD.deleteConversation(idConversation);
+            }
+            messages.clear();
+            chatAdapter.notifyDataSetChanged();
+        }
 
         return super.onOptionsItemSelected(item);
     }

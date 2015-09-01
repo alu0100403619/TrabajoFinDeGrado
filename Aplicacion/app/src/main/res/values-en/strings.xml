@@ -74,6 +74,7 @@
     <string name="action_not_undone">This action can not be undone</string>
     <string name="deleteAccountSucceeded">Account Deleted Succeesfully</string>
     <string name="delete_account_error">Unable to delete the user or account</string>
+    <string name="action_empty_chat">Empty Chat</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Name: </string>
