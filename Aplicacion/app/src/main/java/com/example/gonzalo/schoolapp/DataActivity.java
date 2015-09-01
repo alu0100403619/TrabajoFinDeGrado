@@ -22,8 +22,6 @@ public class DataActivity extends Activity {
     private String rol;
     private TextView nameTextView;
     private TextView lastnameTextView;
-    private TextView mailTextView;
-    private TextView telephoneTextView;
     private LinearLayout childrenGroupLL;
 
     @Override
@@ -34,8 +32,6 @@ public class DataActivity extends Activity {
 
         nameTextView = (TextView) findViewById(R.id.name);
         lastnameTextView = (TextView) findViewById(R.id.lastname);
-        mailTextView = (TextView) findViewById(R.id.mail);
-        telephoneTextView = (TextView) findViewById(R.id.telephone);
         childrenGroupLL = (LinearLayout) findViewById(R.id.children_group);
 
         rol = getIntent().getExtras().getString(getString(R.string.rol));
@@ -88,8 +84,6 @@ public class DataActivity extends Activity {
         lastnameTextView.setText(" " + alumno.getLastname());
         schoolTextView.setText(" " + alumno.getSchool());
         courseGroupTextView.setText(" " + alumno.getClassroom());
-        mailTextView.setText(" " + alumno.getMail());
-        telephoneTextView.setText(" " + alumno.getTelephone());
     }
 
     public void setData (Teacher teacher) {
@@ -103,8 +97,6 @@ public class DataActivity extends Activity {
 
         nameTextView.setText(" " + teacher.getName());
         lastnameTextView.setText(" " + teacher.getLastname());
-        mailTextView.setText(" " + teacher.getMail());
-        telephoneTextView.setText(" " + teacher.getTelephone());
         schoolTextView.setText(" " + teacher.getSchool());
 
         for (int i = 0; i < clas.size(); i++) {
@@ -127,8 +119,6 @@ public class DataActivity extends Activity {
 
         nameTextView.setText(father.getName());
         lastnameTextView.setText(father.getLastname());
-        mailTextView.setText(father.getMail());
-        telephoneTextView.setText(father.getTelephone());
 
         for (int i = 0; i < childrens.size(); i++) {
             Alumno alumno = (Alumno) childrens.get(i);
@@ -136,16 +126,12 @@ public class DataActivity extends Activity {
                 TextView childNumber = new TextView(this);
                 childNumber.setText(" ##" + getString(R.string.son_label) + " " + (i + 1) + "##");
                 TextView childName = new TextView(this);
-                //childName.setText(child.getName());
                 childName.setText(alumno.getName());
                 TextView childLastname = new TextView(this);
-                //childLastname.setText(child.getLastname());
                 childLastname.setText(alumno.getLastname());
                 TextView childSchool = new TextView(this);
-                //childSchool.setText(child.getSchool());
                 childSchool.setText(alumno.getSchool());
                 TextView childClassroom = new TextView(this);
-                //childClassroom.setText(child.getClassroom());
                 childClassroom.setText(alumno.getClassroom());
                 //**Annadimos los nuevos elementos
                 childs.addView(childNumber);
