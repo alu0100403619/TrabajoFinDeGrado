@@ -40,30 +40,6 @@
                     style="@style/DataContact" />
             </LinearLayout>
 
-            <LinearLayout android:id="@+id/mail_group" android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView android:id="@+id/mail_label"
-                        android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="@string/mail_label"
-                    style="@style/DataContactLabel"/>
-                <TextView android:id="@+id/mail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" style="@style/DataContact"/>
-            </LinearLayout>
-
-            <LinearLayout android:id="@+id/telephone_group" android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView android:id="@+id/telephone_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="@string/telephone_label"
-                    style="@style/DataContactLabel"/>
-                <TextView android:id="@+id/telephone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" style="@style/DataContact"/>
-            </LinearLayout>
-
             <LinearLayout android:id="@+id/school_group" android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
