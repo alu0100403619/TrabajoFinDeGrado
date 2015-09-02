@@ -8,17 +8,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TabHost;
 
 import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.Firebase;
 
-import java.util.Calendar;
-
 public class AlumnoTabActivity extends TabActivity {
 
     String mail, clase, school, myName, myRol, myDNI;
     Firebase aluRef;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +83,10 @@ public class AlumnoTabActivity extends TabActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_alumno_tab, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView SearchView = (SearchView) searchItem.getActionView();
+
         return true;
     }
 

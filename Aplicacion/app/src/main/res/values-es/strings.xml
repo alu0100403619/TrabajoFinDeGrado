@@ -78,6 +78,7 @@
     <string name="delete_account_error">No se ha podido borrar el usuario ni su cuenta</string>
     <string name="action_empty_chat">Vaciar Chat</string>
     <string name="meeting_school">Reunión en el Colegio</string>
+    <string name="search">Buscar</string>
 
     <!-- Etiquetas -->
     <string name="name_label">Nombre: </string>
