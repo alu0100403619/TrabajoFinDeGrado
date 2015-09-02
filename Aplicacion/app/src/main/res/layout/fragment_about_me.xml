@@ -55,11 +55,6 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_action_email"/>
 
-                <TextView android:id="@+id/telephone" android:text="@string/my_telephone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_action_phone"/>
-
                 <TextView android:id="@+id/adress" android:text="@string/my_adress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
