@@ -22,10 +22,11 @@
 			\item {\bf Contactos}: Se recuperarán todos los usuarios relacionados con la persona que esté usando la aplicación. Esto permitirá que se puedan comunicar.
 			\item {\bf chat}: Los usuarios se podrán enviar mensajes entre sí, éstos se almacenaran en Firebase para ser recuperados por la aplicación y luego borrados de la nube. La comunicación será del tipo alumno-profesor, padre-profesor y viceversa.
 			\item {\bf Notificaciones}: \CollegeApp recuperará de la base de datos todos los mensajes que tenga el usuario, para después borrarlos de su almacenamiento en la nube.
-			\item {\bf Circulares}: Aviso que mandará un profesor a todos los integrantes de una clase, e incluso de varias. Estos mensajes se almacenarán en la nube y serán recuperados por la aplicación, que los eliminará de su almacenamiento en internet.
-			\item {\bf Citas}: Una vez concertada una cita con un profesor, se podrá mandar al calendario de Google para tenerla registrada.
+			\item {\bf Circulares}: Aviso que enviará un profesor a todos los integrantes de una clase, e incluso de varias. Estos mensajes se almacenarán en la nube y serán recuperados por la aplicación, que los eliminará de su almacenamiento en internet.
+			\item {\bf Citas}: Se podrá programar un evento en el calendario.
 			\item {\bf Visualización de Datos}: El usuario podrá visualizar la información de sus contactos con una selección larga en uno de ellos.
 			\item {\bf Edición de datos}: Se podrá editar los datos en el dispositivo móvil, tras lo cual se actualizarán en la base de datos almacenada en la nube. 
+			\item {\bf Darse de baja}: El usuario podrá eliminar su cuenta de la aplicación.
 		\end{itemize}
 
 	%\section{Pantallas}
@@ -102,11 +103,11 @@
 				\end{itemize}
 		\end{itemize}
 										
-		Los profesores tendrán una opción para enviar circulares a otros usuarios de la aplicación. Los padres podrán concertar citas con los profesores y viceversa.
-		Al seleccionar cualquiera de los usuarios que aparecen en las listas, se lanzará un ``chat'' para que los usuarios se comuniquen entre ellos. Al enviar un mensaje éste se almacenará en los servicios en la nube, en la tabla destinada a los mensajes. Esta tabla contendrá el mensaje, el destinatario y el remitente. Cuando el dispositivo reciba el mensaje, lo borrará de la tabla para no sobrecargarla.
+		Los profesores tendrán una opción para enviar circulares a otros usuarios de la aplicación. Los usuarios podrán programar citas en el calendario sin necesidad de salir de la aplicación.
+		Al seleccionar cualquiera de los contactos que aparecen en las listas, se lanzará un ``chat'' para que los usuarios se comuniquen entre ellos. Al enviar un mensaje éste se almacenará en los servicios en la nube, en la tabla destinada a los mensajes. Esta tabla contendrá el mensaje, el destinatario y el remitente. Cuando el dispositivo reciba el mensaje, lo borrará de la tabla para no sobrecargarla.
 		
 		\bigskip
-		Al hacer una selección larga, se podrán ver los datos del usuario que se selecciona.
+		Al hacer una selección larga, se podrán ver los datos del usuario que se selecciona. También se podrán programar eventos en el calendario, además, el usuario podrá editar sus propios datos.
 	
 		Todos los datos estarán almacenados en la nube, en concreto en los servicios de Firebase\cite{6:firebase:online} que es propiedad de Google\cite{18:google:online}.
 
@@ -126,8 +127,8 @@
 				\item Curso en el que está el alumno.
 			\end{itemize}
 			\item Sistema de ``acceso'': Se le pedirá al usuario que ingrese su identificación, es decir, su e-mail y contraseña.
-			\item Sistema de comunicación entre alumnos, profesores y padres/madres/tutores legales: Tanto los profesores como los padres/madres/tutores legales se podrán comunicar entre sí con un servicio tipo ``chat'', para informar de alguna incidencia, mensaje o notificación. Este servicio enviará los mensajes a través de internet usando los servicios de ``firebase''.
-			\item Sistema de citas: Se podrá concertar citas con los padres/madres/Tutores Legales, así como éstos podrán solicitar reuniones con los profesores, estas citas se podrán añadir al calendario de Google.
+			\item Sistema de comunicación entre alumnos, profesores y padres/madres/tutores legales: Tanto los profesores como los padres/madres/tutores legales se podrán comunicar entre sí con un servicio tipo ``chat'', para informar de alguna incidencia, mensaje o notificación. Este servicio enviará los mensajes a través de internet usando los servicios de ``firebase''. Éstos estarán codificados por colores según el rol del remitente del mensaje. En ningún ámbito de la aplicación se permitirá la comunicación entre padres y alumnos.
+			\item Sistema de citas: Se podrá programar un evento en el calendario.
 			\item Lista de contactos, organizada por grupos desplegables, por ejemplo los profesores tendrán la lista organizadas por las clases que impartan en el centro.
 		\end{itemize}
 	
@@ -135,7 +136,7 @@
 
 	\section{Roles}
 		\begin{itemize}
-			\item Alumnos: Se podrá comunicar con los profesores, pudiendo solicitar citas y recibir circulares.
-			\item Profesores: Se podrá comunicar con los alumnos y padres, pudiendo solicitar citas y enviar circulares. Los padres y alumnos en la lista de contactos estarán organizados por las clases que impartan en el centro.
-			\item Padre/Madre/Tutor Legal: Se podrá comunicar con los profesores, pudiendo recibir circulares y solicitar citas. Los profesores en la lista de contactos estarán organizados las clases que impartan a los alumnos con los que el progenitor esté relacionado.
+			\item Alumnos: Se podrá comunicar con los profesores, pudiendo programar citas en el calendario y recibir circulares.
+			\item Profesores: Se podrá comunicar con los alumnos y padres, pudiendo programar citas en el calendario y enviar circulares. Los padres y alumnos en la lista de contactos estarán organizados por las clases que impartan en el centro.
+			\item Padre/Madre/Tutor Legal: Se podrá comunicar con los profesores, pudiendo recibir circulares y programar citas en el calendario. Los profesores en la lista de contactos estarán organizados las clases que impartan a los alumnos con los que el progenitor esté relacionado.
 		\end{itemize}

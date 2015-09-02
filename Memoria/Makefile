@@ -26,6 +26,11 @@ SRC      = \
 						Capitulos/Cap3_Objetivos.tex \
 						Capitulos/Cap4_Antecedentes.tex \
 						Capitulos/Cap5_Problemas.tex \
+						Capitulos/Cap6_Fases.tex \
+						Capitulos/Cap7_DesarrolloProyecto.tex \
+						Capitulos/Cap8_Conclusiones_LineasFuturas.tex \
+						Capitulos/Cap9_Cap8English.tex \
+						Capitulos/Cap10_Presupuesto.tex \
 						Capitulos/TODO.tex \
 						Apendices/ApendiceA_DiagramaClases.tex \
 						Apendices/ApendiceB_DiagramaActividades.tex \

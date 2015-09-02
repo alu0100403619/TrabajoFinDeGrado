@@ -84,9 +84,6 @@ public class AlumnoTabActivity extends TabActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_alumno_tab, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView SearchView = (SearchView) searchItem.getActionView();
-
         return true;
     }
 

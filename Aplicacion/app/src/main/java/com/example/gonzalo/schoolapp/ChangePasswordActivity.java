@@ -93,6 +93,7 @@ public class ChangePasswordActivity extends Activity {
                 public void onSuccess() {
                     Toast.makeText(ChangePasswordActivity.this, getString(R.string.correct_change_password_message),
                             Toast.LENGTH_SHORT).show();
+                    ChangePasswordActivity.this.finish();
                 }
                 @Override
                 public void onError(FirebaseError firebaseError) {
@@ -104,6 +105,6 @@ public class ChangePasswordActivity extends Activity {
     }
 
     public void back (View view) {
-
+        ChangePasswordActivity.this.finish();
     }
 }
