@@ -2,7 +2,6 @@ package com.example.gonzalo.schoolapp.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +9,7 @@ import java.util.Map;
 /**
  * Created by Gonzalo on 07/04/2015.
  */
-public class Alumno implements Parcelable {
+public class Student implements Parcelable {
     private String name;
     private String lastname;
     private String school;
@@ -20,7 +19,7 @@ public class Alumno implements Parcelable {
     private String dni;
     private String rol = "Alumno";
 
-    public Alumno(Map<String, Object> values) {
+    public Student(Map<String, Object> values) {
         setName((String) values.get("nombre"));
         setLastname((String) values.get("apellido"));
         setSchool((String) values.get("centro"));
@@ -107,16 +106,16 @@ public class Alumno implements Parcelable {
         return name + " " + lastname;
     }
 
-    public boolean equals (Alumno alumno) {
+    public boolean equals (Student student) {
         boolean same = false;
-        if (dni.equals(alumno.getDNI())){
+        if (dni.equals(student.getDNI())){
             same = true;
         }
         return same;
     }
 
     //*****Parte de la interfaz Parcelable*****//
-    public Alumno(Parcel in) {
+    public Student(Parcel in) {
         readFromParcel(in);
     }
 
@@ -150,13 +149,13 @@ public class Alumno implements Parcelable {
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator () {
         @Override
-        public Alumno createFromParcel (Parcel in) {
-            return new Alumno(in);
+        public Student createFromParcel (Parcel in) {
+            return new Student(in);
         }
 
         @Override
-        public Alumno[] newArray(int size) {
-            return new Alumno[size];
+        public Student[] newArray(int size) {
+            return new Student[size];
         }
     };//Parcelable.creator*/
 }

@@ -2,7 +2,6 @@ package com.example.gonzalo.schoolapp.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -17,7 +16,7 @@ public class Father implements Parcelable {
     private String mail;
     private String telephone;
     private String dni;
-    private ArrayList<Alumno> childrens;
+    private ArrayList<Student> childrens;
     private String rol = "Padre";
 
     public Father(Map<String, Object> values) {
@@ -38,23 +37,23 @@ public class Father implements Parcelable {
         this.dni = dni;
     }
 
-    public ArrayList<Alumno> getChildrens() {
+    public ArrayList<Student> getChildrens() {
         return childrens;
     }
 
     public void setChildrens(Map<String, Object> childs){
         Set<String> keys = childs.keySet();
         for (String key: keys) {
-            Alumno alumno = new Alumno((Map<String, Object>) childs.get(key));
-            if (!childrens.contains(alumno)) {
-                childrens.add(alumno);
+            Student student = new Student((Map<String, Object>) childs.get(key));
+            if (!childrens.contains(student)) {
+                childrens.add(student);
             }//if
         }//for key
     }
 
     public ArrayList<String> getClassrooms() {
         ArrayList<String> classrooms = new ArrayList<>();
-        for (Alumno child: childrens) {
+        for (Student child: childrens) {
             if (!classrooms.contains(child.getClassroom())) {
                 classrooms.add(child.getClassroom());
             }
@@ -64,7 +63,7 @@ public class Father implements Parcelable {
 
     public ArrayList<String> getSchools() {
         ArrayList<String> schools = new ArrayList<>();
-        for (Alumno child: childrens) {
+        for (Student child: childrens) {
             if (!schools.contains(child.getSchool())) {
                 schools.add(child.getSchool());
             }
@@ -74,7 +73,7 @@ public class Father implements Parcelable {
 
     public ArrayList<String> getDniChildrens () {
         ArrayList<String> dnis = new ArrayList<>();
-        for (Alumno child: childrens) {
+        for (Student child: childrens) {
             if (!dnis.contains(child.getDNI())) {
                 dnis.add(child.getDNI());
             }
@@ -146,7 +145,7 @@ public class Father implements Parcelable {
 
     //*****Parte de la interfaz Parcelable*****//
     public Father(Parcel in) {
-        childrens = new ArrayList<Alumno> ();
+        childrens = new ArrayList<Student> ();
         readFromParcel(in);
     }
 
@@ -172,7 +171,7 @@ public class Father implements Parcelable {
         mail = in.readString();
         telephone = in.readString();
         dni = in.readString();
-        in.readTypedList(childrens, Alumno.CREATOR);
+        in.readTypedList(childrens, Student.CREATOR);
         rol = in.readString();
     }
 

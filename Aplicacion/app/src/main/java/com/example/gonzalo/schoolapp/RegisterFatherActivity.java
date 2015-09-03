@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -36,7 +36,7 @@ import java.util.UUID;
 
 public class RegisterFatherActivity extends Activity {
 
-    ArrayList<Alumno> children;
+    ArrayList<Student> children;
     ArrayList<Boolean> childrenExist;//si es false annadir a la BD ademas de al padre
     ArrayList<String> childrenKey, schools, classes;
     Firebase rootRef, studentRef, fatherRef;
@@ -128,8 +128,7 @@ public class RegisterFatherActivity extends Activity {
                             childMap.remove(getString(R.string.bbdd_telephone));
                             childMap.remove(getString(R.string.bbdd_mail));
                             infoMap.put(uuid, childMap);
-                        }
-                        else {
+                        } else {
                             childMap.remove(getString(R.string.bbdd_telephone));
                             childMap.remove(getString(R.string.bbdd_mail));
                             infoMap.put(childrenKey.get(0), childMap);
@@ -197,7 +196,7 @@ public class RegisterFatherActivity extends Activity {
         String key;
         if (requestCode == 2) {
             if (resultCode == RESULT_OK) {
-                Alumno student = data.getExtras().getParcelable(getString(R.string.bbdd_children));
+                Student student = data.getExtras().getParcelable(getString(R.string.bbdd_children));
                 boolean exist = data.getExtras().getBoolean(getString(R.string.exist));
                 if (data.getExtras().containsKey(getString(R.string.key))) {
                     key = data.getExtras().getString(getString(R.string.key));
@@ -331,6 +330,12 @@ public class RegisterFatherActivity extends Activity {
 
     @Override
     public void onBackPressed(){
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    public void back (View view) {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
         this.finish();

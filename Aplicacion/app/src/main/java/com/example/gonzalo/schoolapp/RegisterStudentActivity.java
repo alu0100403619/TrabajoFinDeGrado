@@ -294,7 +294,7 @@ public class RegisterStudentActivity extends Activity {
                     rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
                         @Override
                         public void onAuthenticated(AuthData authData) {
-                            Intent intent = new Intent(RegisterStudentActivity.this, AlumnoTabActivity.class);
+                            Intent intent = new Intent(RegisterStudentActivity.this, StudentTabActivity.class);
                             intent.putExtra(getString(R.string.bbdd_mail), mail);
                             intent.putExtra(getString(R.string.bbdd_class), classroom);
                             intent.putExtra(getString(R.string.bbdd_center), school);
@@ -345,14 +345,22 @@ public class RegisterStudentActivity extends Activity {
                     Log.i("RegisterStudentActivity", "Annadida: " + name);
                 }//if name
             }
+
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
             @Override
-            public void onCancelled(FirebaseError firebaseError) {}
+            public void onCancelled(FirebaseError firebaseError) {
+            }
         });//query
         return tmp;
     }
@@ -508,6 +516,12 @@ public class RegisterStudentActivity extends Activity {
 
     @Override
     public void onBackPressed(){
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    public void back (View view) {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
         this.finish();

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterFather;
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.clases.Father;
 import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;

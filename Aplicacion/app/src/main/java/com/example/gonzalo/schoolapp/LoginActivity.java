@@ -206,7 +206,7 @@ public class LoginActivity extends Activity {
                 @Override
                 public void onAuthenticated(AuthData authData) {
                     if (userType.equals(getString(R.string._students))) {
-                        Intent intent = new Intent(LoginActivity.this, AlumnoTabActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, StudentTabActivity.class);
                         intent.putExtra(getString(R.string.bbdd_mail), mail);
                         intent.putExtra(getString(R.string.myName), myName);
                         intent.putExtra(getString(R.string.myRol), myRol);

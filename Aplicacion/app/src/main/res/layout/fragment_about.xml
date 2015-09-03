@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content" android:src="@drawable/ic_action_register_student"
                         android:layout_height="wrap_content" />
 
-                    <TextView android:id="@+id/studentText" android:text="@string/alumno"
+                    <TextView android:id="@+id/studentText" android:text="@string/Student"
                         android:layout_width="wrap_content" android:layout_below="@id/registerStudent"
                         android:layout_height="wrap_content" android:layout_centerHorizontal="true"/>
 

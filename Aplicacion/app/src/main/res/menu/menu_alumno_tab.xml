@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.gonzalo.schoolapp.AlumnoTabActivity">
+    tools:context="com.example.gonzalo.schoolapp.StudentTabActivity">
     <item android:id="@+id/action_modify" android:title="@string/action_modify"
         android:orderInCategory="98" app:showAsAction="never" />
     <item android:id="@+id/action_settings" android:title="@string/action_settings"

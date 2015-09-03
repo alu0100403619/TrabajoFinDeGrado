@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.clases.Date;
 import com.example.gonzalo.schoolapp.clases.Father;
 import com.example.gonzalo.schoolapp.clases.Message;
@@ -42,7 +42,7 @@ public class CircularesActivity extends Activity {
 
     String mySchool, myDNI, myName, myRol;
     ArrayList<String> myClasses, studentsSelected, fathersSelected;
-    ArrayList<Alumno> cloudStudents;
+    ArrayList<Student> cloudStudents;
     ArrayList<Father> cloudFathers;
     //Firebase fatherRef, studentRef;
     Firebase rootRef, messageRef;
@@ -87,7 +87,7 @@ public class CircularesActivity extends Activity {
                         String studentSchool = studentValue.get(getString(R.string.bbdd_center)).toString();
                         String studentClass = studentValue.get(getString(R.string.bbdd_class)).toString();
                         if ((studentSchool.equals(mySchool)) && (myClasses.contains(studentClass))) {
-                            Alumno student = new Alumno(studentValue);
+                            Student student = new Student(studentValue);
                             if (!cloudStudents.contains(student)) {
                                 cloudStudents.add(student);
                             }//if !contains
@@ -261,7 +261,7 @@ public class CircularesActivity extends Activity {
         //Creamos el mensaje
         Message message = new Message(myDNI, myName, messageToSend, date, myRol);
 
-        for (Alumno student: cloudStudents) {
+        for (Student student: cloudStudents) {
             String studentDNI = student.getDNI();
             String studentSchool = student.getSchool();
             String studentClass = student.getClassroom();
@@ -289,7 +289,7 @@ public class CircularesActivity extends Activity {
                 messageRef.child(uuid).setValue(messageMap);
                 Log.i("CircularesActivity", "Alu Mensage Enviado a "+student.getName()+" "+student.getLastname());
             }//contains*/
-        }//for Alumno
+        }//for Student
         for (Father father: cloudFathers) {
             String fatherDNI = father.getDNI();
             if ((father.getSchools().contains(mySchool)) &&

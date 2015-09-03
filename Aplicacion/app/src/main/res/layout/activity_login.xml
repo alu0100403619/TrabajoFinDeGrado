@@ -39,38 +39,6 @@
                 android:hint="@string/password_hint"
                 android:inputType="textPassword" android:textColor="@color/ForestGreen"/>
 
-            <!-- RadioGroup
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/passwordField"
-                android:layout_centerHorizontal="true"
-                android:orientation="horizontal"
-                android:onClick="setTypeUser"
-                android:id="@+id/radioGroupUser">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/alumno"
-                    android:id="@+id/radioButton_alumno"
-                    android:onClick="setTypeUser" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/teacher"
-                    android:id="@+id/radioButton_teacher"
-                    android:onClick="setTypeUser" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="52dp"
-                    android:text="@string/mother"
-                    android:id="@+id/radioButton_mother"
-                    android:onClick="setTypeUser" />
-            </RadioGroup -->
-
-
         </RelativeLayout>
 
         </ScrollView>

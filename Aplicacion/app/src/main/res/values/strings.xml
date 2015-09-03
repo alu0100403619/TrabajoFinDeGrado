@@ -14,7 +14,7 @@
     <string name="old_password_hint">Vieja Contraseña</string>
     <string name="login_button_label">Acceder</string>
     <string name="sign_up_text">Registro</string>
-    <string name="alumno">Alumno</string>
+    <string name="Student">Alumno</string>
     <string name="teacher">Profesor</string>
     <string name="father">Madre/Padre/Tutor Legal</string>
     <string name="rol">Rol</string>

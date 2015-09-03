@@ -151,12 +151,26 @@
                     android:text="@string/required_fields"/>
             </LinearLayout>
 
-            <Button android:id="@+id/submit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/submit" android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:onClick="submit" />
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="fill_parent" android:gravity="center_horizontal"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/back_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/back" android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="back" />
+
+                <Button android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/submit" android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="submit" />
+
+            </LinearLayout>
             <!-- Fin del LinearLayout y del ScrollView -->
         </LinearLayout>
     </ScrollView>

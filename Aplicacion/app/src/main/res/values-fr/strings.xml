@@ -148,7 +148,7 @@
         <item>Mère/Père/Tuteur</item>
     </string-array>
 
-    <string name="alumno">Étudiant</string>
+    <string name="Student">Étudiant</string>
     <string name="teacher">Professeur</string>
     <string name="father">Mère/Père/Tuteur</string>
     <string name="rol">Rôle</string>

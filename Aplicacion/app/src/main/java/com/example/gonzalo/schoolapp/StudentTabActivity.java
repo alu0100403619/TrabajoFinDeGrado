@@ -4,7 +4,6 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.widget.TabHost;
 import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.Firebase;
 
-public class AlumnoTabActivity extends TabActivity {
+public class StudentTabActivity extends TabActivity {
 
     String mail, clase, school, myName, myRol, myDNI;
     Firebase aluRef;
@@ -42,8 +41,8 @@ public class AlumnoTabActivity extends TabActivity {
         TabHost.TabSpec spec;
         Intent intent;
 
-        //Alumno Tab
-        intent = new Intent().setClass(this, AlumnoActivity.class);
+        //Student Tab
+        intent = new Intent().setClass(this, StudentActivity.class);
         intent.putExtra(getString(R.string.bbdd_mail), mail);
         intent.putExtra(getString(R.string.bbdd_class), clase);
         intent.putExtra(getString(R.string.bbdd_center), school);

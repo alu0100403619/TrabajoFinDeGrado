@@ -12,14 +12,13 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterAlumno;
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,11 +30,11 @@ public class ExpandableAlumnosActivity extends Activity {
     ExpandableListAdapterAlumno listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<Alumno>> listDataChild;
+    HashMap<String, List<Student>> listDataChild;
     ArrayList<String> clases;
     Firebase alumnosRef;
     String school, myName, mail, myRol, myDNI;
-    ArrayList<Alumno> alumnos;
+    ArrayList<Student> students;
     TextView messageTextView;
 
     @Override
@@ -46,9 +45,9 @@ public class ExpandableAlumnosActivity extends Activity {
 
         alumnosRef = new Firebase (getString(R.string.studentRef));
         clases = new ArrayList<>();
-        alumnos = new ArrayList<>();
+        students = new ArrayList<>();
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<Alumno>>();
+        listDataChild = new HashMap<String, List<Student>>();
 
         //Obtenemos las clases
         clases = getIntent().getExtras().getStringArrayList(getString(R.string.bbdd_teacher_class));
@@ -117,8 +116,8 @@ public class ExpandableAlumnosActivity extends Activity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
-                Alumno alumno = new Alumno(values);
-                alumnos.add(alumno);
+                Student student = new Student(values);
+                students.add(student);
                 //Preparar los datos
                 prepareListData();
             }
@@ -135,15 +134,15 @@ public class ExpandableAlumnosActivity extends Activity {
 
     public void prepareListData() {
         for (int i = 0; i < clases.size(); i++) {
-            List<Alumno> auxList = new ArrayList<>();
+            List<Student> auxList = new ArrayList<>();
             //Adding Header Data
             if (!listDataChild.containsKey(clases.get(i))) {
                 listDataHeader.add(clases.get(i));
             }//if
-            for (Alumno alumno : alumnos) {
+            for (Student student : students) {
                 //Adding Child Data
-                if ((alumno.getClassroom().equals(clases.get(i))) && (!auxList.contains(alumno))){
-                    auxList.add(alumno);
+                if ((student.getClassroom().equals(clases.get(i))) && (!auxList.contains(student))){
+                    auxList.add(student);
                 }//if
             }//for teacher
             listDataChild.put(listDataHeader.get(i), auxList);

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.Adapters.NotifyAdapter;
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.clases.Message;
 import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
@@ -163,7 +163,7 @@ public class NotificationsActivity extends ListActivity {
 
     @Override
     public void onBackPressed(){
-        Log.i("AlumnoTabActivity", "Back Pressed");
+        Log.i("NotificationsActivity", "Back Pressed");
         Firebase rootref = new Firebase (getString(R.string.rootRef));
         Intent intent = new Intent(this, LoginActivity.class);
         rootref.unauth();

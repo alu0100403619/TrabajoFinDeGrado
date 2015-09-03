@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.clases.Father;
 import com.example.gonzalo.schoolapp.clases.Teacher;
 import com.example.gonzalo.schoolapp.utilities.Utilities;
@@ -39,8 +39,8 @@ public class DataActivity extends Activity {
         rol = getIntent().getExtras().getString(getString(R.string.rol));
         switch (rol) {
             case "Alumno":
-                Alumno alumno = getIntent().getExtras().getParcelable(getString(R.string.person));
-                setData(alumno);
+                Student student = getIntent().getExtras().getParcelable(getString(R.string.person));
+                setData(student);
                 break;
             case "Padre":
                 Father father =  getIntent().getExtras().getParcelable(getString(R.string.person));
@@ -76,17 +76,17 @@ public class DataActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setData (Alumno alumno) {
+    public void setData (Student student) {
 
         //***Obtenemos los TextViews
         childrenGroupLL.setVisibility(View.GONE);
         TextView schoolTextView = (TextView) findViewById(R.id.school);
         TextView courseGroupTextView = (TextView) findViewById(R.id.course_group);
 
-        nameTextView.setText(" " + alumno.getName());
-        lastnameTextView.setText(" " + alumno.getLastname());
-        schoolTextView.setText(" " + alumno.getSchool());
-        courseGroupTextView.setText(" " + alumno.getClassroom());
+        nameTextView.setText(" " + student.getName());
+        lastnameTextView.setText(" " + student.getLastname());
+        schoolTextView.setText(" " + student.getSchool());
+        courseGroupTextView.setText(" " + student.getClassroom());
     }
 
     public void setData (Teacher teacher) {
@@ -117,25 +117,25 @@ public class DataActivity extends Activity {
         LinearLayout childs = (LinearLayout) findViewById(R.id.childs);
         schoolGroup.setVisibility(View.GONE);
         courseGroupGroup.setVisibility(View.GONE);
-        ArrayList<Alumno> childrens = father.getChildrens();
+        ArrayList<Student> childrens = father.getChildrens();
         Log.i("DataActivity", "Hijos: " + childrens);
 
         nameTextView.setText(father.getName());
         lastnameTextView.setText(father.getLastname());
 
         for (int i = 0; i < childrens.size(); i++) {
-            Alumno alumno = (Alumno) childrens.get(i);
-            if (alumno != null) {
+            Student student = (Student) childrens.get(i);
+            if (student != null) {
                 TextView childNumber = new TextView(this);
                 childNumber.setText(" ##" + getString(R.string.son_label) + " " + (i + 1) + "##");
                 TextView childName = new TextView(this);
-                childName.setText(alumno.getName());
+                childName.setText(student.getName());
                 TextView childLastname = new TextView(this);
-                childLastname.setText(alumno.getLastname());
+                childLastname.setText(student.getLastname());
                 TextView childSchool = new TextView(this);
-                childSchool.setText(alumno.getSchool());
+                childSchool.setText(student.getSchool());
                 TextView childClassroom = new TextView(this);
-                childClassroom.setText(alumno.getClassroom());
+                childClassroom.setText(student.getClassroom());
                 //**Annadimos los nuevos elementos
                 childs.addView(childNumber);
                 childs.addView(childName);

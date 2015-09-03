@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -139,8 +139,14 @@ public class AddChildActivity extends Activity {
     public void addChild (View vew) {
         if (!haveEmptyFields()) {
             final EditText mailEditText = (EditText) findViewById(R.id.text_mail);
+            EditText letterNieEditText = (EditText) findViewById(R.id.letterNIE);
+            EditText dniEditText = (EditText) findViewById(R.id.DNI);
+            EditText letterDniEditText = (EditText) findViewById(R.id.letterDNI);
+
             String mail = mailEditText.getText().toString();
-            Query existStudent = childRef.orderByChild(getString(R.string.bbdd_mail)).equalTo(mail);
+            String dniStudent = letterNieEditText.getText().toString() + dniEditText.getText().toString()
+                    + letterDniEditText.getText().toString();
+            Query existStudent = childRef.orderByChild(getString(R.string.bbdd_dni)).equalTo(dniStudent);
             existStudent.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -163,7 +169,8 @@ public class AddChildActivity extends Activity {
                         studentMap.put(getString(R.string.bbdd_center), school);
                         studentMap.put(getString(R.string.bbdd_class), classroom);
                         studentMap.put(getString(R.string.bbdd_mail), mailEditText.getText().toString());
-                        Alumno student = new Alumno(studentMap);
+                        Student student = new Student(studentMap);
+                        Log.i("AddChildActivity", "Student not exist");
                         returnChild(student, false, null);
                     }
                     //Student Exist
@@ -171,7 +178,8 @@ public class AddChildActivity extends Activity {
                         Map<String, Object> dataSnapshotMap = (Map<String, Object>) dataSnapshot.getValue();
                         key = (dataSnapshotMap.keySet().toArray())[0].toString();
                         Map<String, Object> studentMap = (Map<String, Object>) dataSnapshotMap.get(key);
-                        Alumno student = new Alumno(studentMap);
+                        Student student = new Student(studentMap);
+                        Log.i("AddChildActivity", "Student exist: " + student.getName());
                         returnChild(student, true, key);
                     }
                 }
@@ -181,7 +189,7 @@ public class AddChildActivity extends Activity {
         }
     }
 
-    public void returnChild (Alumno student, boolean exist, String childKey) {
+    public void returnChild (Student student, boolean exist, String childKey) {
         Intent returnIntent = new Intent();
         returnIntent.putExtra(getString(R.string.bbdd_children), student);
         returnIntent.putExtra(getString(R.string.exist), exist);

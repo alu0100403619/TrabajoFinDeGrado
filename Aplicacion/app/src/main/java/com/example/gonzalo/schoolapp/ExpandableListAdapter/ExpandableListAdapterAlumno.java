@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.R;
 
 import java.util.HashMap;
@@ -21,10 +21,10 @@ public class ExpandableListAdapterAlumno extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> listDataHeader;
-    private HashMap<String, List<Alumno>> listDataChild;
+    private HashMap<String, List<Student>> listDataChild;
 
     public ExpandableListAdapterAlumno (Context context, List<String> listDataHeader,
-                                         HashMap<String, List<Alumno>> listDataChild) {
+                                         HashMap<String, List<Student>> listDataChild) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listDataChild;
@@ -45,7 +45,7 @@ public class ExpandableListAdapterAlumno extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final Alumno childText = (Alumno) getChild(groupPosition, childPosition);
+        final Student childText = (Student) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context

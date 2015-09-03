@@ -20,7 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gonzalo.schoolapp.clases.Alumno;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.clases.Father;
 import com.example.gonzalo.schoolapp.clases.Teacher;
 import com.example.gonzalo.schoolapp.utilities.Utilities;
@@ -34,7 +34,6 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 
 
@@ -49,7 +48,7 @@ public class MyDataActivity extends Activity {
     Spinner spinnerSchool, childSchoolSpinner;
     ArrayList<String> schools;
     ArrayAdapter<String> spinnerAdapter;
-    ArrayList<Alumno> childrensArrayList;
+    ArrayList<Student> childrensArrayList;
     int numberOfChildrens = 0;
 
     @Override
@@ -109,8 +108,8 @@ public class MyDataActivity extends Activity {
                 key = keyArray[0].toString();
                 Map<String, Object> values = (Map<String, Object>) dataSnapshotValue.get(key);
                 if (rol.equals(getString(R.string.rol_student))) {
-                    Alumno alumno = new Alumno(values);
-                    setData(alumno);
+                    Student student = new Student(values);
+                    setData(student);
                 }
                 else if (rol.equals(getString(R.string.rol_teacher))) {
                     Teacher teacher = new Teacher(values);
@@ -155,19 +154,19 @@ public class MyDataActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setData (Alumno alumno) {
+    public void setData (Student student) {
         //***Obtenemos los TextViews
         EditText courseGroupEditText = (EditText) findViewById(R.id.course_group);
         courseGroupEditText.setEnabled(false);
 
-        nameEditText.setText(alumno.getName());
-        lastnameEditText.setText(alumno.getLastname());
-        courseGroupEditText.setText(alumno.getClassroom());
-        mailEditText.setText(alumno.getMail());
-        telephoneEditText.setText(alumno.getTelephone());
-        dniEditText.setText(alumno.getDNI());
+        nameEditText.setText(student.getName());
+        lastnameEditText.setText(student.getLastname());
+        courseGroupEditText.setText(student.getClassroom());
+        mailEditText.setText(student.getMail());
+        telephoneEditText.setText(student.getTelephone());
+        dniEditText.setText(student.getDNI());
 
-        spinnerSchool.setSelection(spinnerAdapter.getPosition(alumno.getSchool()));
+        spinnerSchool.setSelection(spinnerAdapter.getPosition(student.getSchool()));
     }
 
     public void setData (Teacher teacher) {
@@ -211,8 +210,8 @@ public class MyDataActivity extends Activity {
         dniEditText.setText(father.getDNI());
 
         for (int i = 0; i < childrensArrayList.size(); i++) {
-            Alumno alumno = (Alumno) childrensArrayList.get(i);
-            if (alumno != null) {
+            Student student = (Student) childrensArrayList.get(i);
+            if (student != null) {
                 //LinearLayout's
                 LinearLayout childNameGroup = new LinearLayout(this);
                 LinearLayout childLastnameGroup = new LinearLayout(this);
@@ -255,9 +254,9 @@ public class MyDataActivity extends Activity {
                 childSchoolSpinner.setEnabled(false);
 
                 //Set Text EditText
-                childName.setText(alumno.getName());
-                childLastname.setText(alumno.getLastname());
-                childClassroom.setText(alumno.getClassroom());
+                childName.setText(student.getName());
+                childLastname.setText(student.getLastname());
+                childClassroom.setText(student.getClassroom());
 
                 //Annadimos a los LinearLayout's
                 childNameGroup.addView(childNameLabel);

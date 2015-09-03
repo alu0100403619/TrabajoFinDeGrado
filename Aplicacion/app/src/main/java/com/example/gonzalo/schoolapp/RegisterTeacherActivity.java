@@ -599,4 +599,10 @@ public class RegisterTeacherActivity extends Activity {
         // show it
         classDialog.show();
     }
+
+    public void back (View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 }

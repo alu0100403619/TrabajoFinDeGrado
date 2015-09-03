@@ -30,11 +30,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AlumnoTabActivity"
+            android:name=".StudentTabActivity"
             android:parentActivityName=".LoginActivity"
             android:label="@string/title_activity_alumno_tab" >
         </activity>
-        <activity android:name=".AlumnoActivity" />
+        <activity android:name=".StudentActivity" />
         <activity android:name=".TeachersActivity" />
         <activity android:name=".NotificationsActivity" />
         <activity

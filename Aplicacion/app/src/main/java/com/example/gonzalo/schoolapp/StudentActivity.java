@@ -8,8 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.example.gonzalo.schoolapp.clases.Alumno;
-import com.example.gonzalo.schoolapp.utilities.Utilities;
+import com.example.gonzalo.schoolapp.clases.Student;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -23,9 +22,9 @@ import java.util.Map;
 /**
  * Created by Gonzalo on 17/02/2015.
  */
-public class AlumnoActivity extends ListActivity {
+public class StudentActivity extends ListActivity {
 
-    List<Alumno> alus;
+    List<Student> alus;
     String mail, clase, school, myName, myRol, myDNI;
     Firebase aluRef;
 
@@ -51,7 +50,7 @@ public class AlumnoActivity extends ListActivity {
         this.getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(AlumnoActivity.this, DataActivity.class);
+                Intent intent = new Intent(StudentActivity.this, DataActivity.class);
                 intent.putExtra(getString(R.string.person), alus.get(position));
                 intent.putExtra(getString(R.string.rol), alus.get(position).getRol());
                 startActivity(intent);
@@ -66,7 +65,7 @@ public class AlumnoActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String name = alus.get(position).getName() + " " +
                         alus.get(position).getLastname();
-                Intent intent = new Intent(AlumnoActivity.this, ChatActivity.class);
+                Intent intent = new Intent(StudentActivity.this, ChatActivity.class);
                 intent.putExtra(getString(R.string.name), name);
                 intent.putExtra(getString(R.string.mail), mail);
                 intent.putExtra(getString(R.string.bbdd_dni_remitter), alus.get(position).getDNI());
@@ -80,13 +79,13 @@ public class AlumnoActivity extends ListActivity {
     }
 
     public void preparingData(){
-        //Obtener los alumnos de la misma clase
+        //Obtener los Student de la misma clase
         Query getClassmates = aluRef.orderByChild(getString(R.string.bbdd_center)).equalTo(school);
         getClassmates.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
-                Alumno alu = new Alumno(values);
+                Student alu = new Student(values);
                 String dni = values.get(getString(R.string.bbdd_dni)).toString();
                 if ((values.get(getString(R.string.bbdd_class)).equals(clase)) &&
                         (!dni.equals(myDNI))) {
@@ -94,24 +93,32 @@ public class AlumnoActivity extends ListActivity {
                 }//if
 
                 //Seteamos el ArrayAdapter
-                ArrayAdapter<Alumno> adapter = new ArrayAdapter<Alumno>(AlumnoActivity.this,
+                ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(StudentActivity.this,
                         R.layout.list_item_layout, alus);
                 setListAdapter(adapter);
             }
+
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
             @Override
-            public void onCancelled(FirebaseError firebaseError) {}
+            public void onCancelled(FirebaseError firebaseError) {
+            }
         });
     }//function
 
     @Override
     public void onBackPressed(){
-        Log.i("AlumnoTabActivity", "Back Pressed");
+        Log.i("StudentActivity", "Back Pressed");
         Firebase rootref = new Firebase (getString(R.string.rootRef));
         Intent intent = new Intent(this, LoginActivity.class);
         rootref.unauth();
