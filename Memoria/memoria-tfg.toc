@@ -32,6 +32,6 @@
 \contentsline {section}{\numberline {9.1}Future lines}{33}{section.9.1}
 \contentsline {section}{\numberline {9.2}Conclusions}{33}{section.9.2}
 \contentsline {chapter}{\numberline {10}Presupuesto}{34}{chapter.10}
-\contentsline {chapter}{\numberline {11}TODO}{35}{chapter.11}
-\contentsline {chapter}{\numberline {A}Diagrama de Clases}{36}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Diagrama de Actividades}{37}{appendix.Alph2}
+\contentsline {chapter}{\numberline {A}Diagrama de Clases}{35}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Diagrama de Actividades}{36}{appendix.Alph2}
+\contentsline {chapter}{\numberline {C}Secuencia de Actividades}{38}{appendix.Alph3}
