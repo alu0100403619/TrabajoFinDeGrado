@@ -427,13 +427,14 @@ Futuro:
 Jul 30
 
 Futuro:
-- Añadir botón de "logout" con el nombre "Salir"
-- Los alumnos Pueden NO tener e-mail: pensar una forma alternativa de
++ Añadir botón de "logout" con el nombre "Salir"
++ Los alumnos Pueden NO tener e-mail: pensar una forma alternativa de
 	identificación (DNI?)
 - Al registrar usuarios, mostrar de algún modo campos
 	obligatorios/NoObligatorios
-- El mensaje de recuperación de password, en español.
-- Ponerle un icono a la app
++ El mensaje de recuperación de password, en español.
++ Ponerle un icono a la app
+
 - Cuando un emisor establece un 'diálogo' a través de msgs con otro usuario de
 	la app, comprobar que los mensajes llegan de uno a otro (hemos visto que no funciona
 	del todo bien).
@@ -447,7 +448,36 @@ Futuro:
 
 Para FdeSande: Calificar las actividades ya subidas
 --------------------------
---------------------------
+Sep 03
+
++ Los alumnos Pueden NO tener e-mail: pensar una forma alternativa de identificación (DNI?)
+  Ahora los alumnos se identifican (como todos los usuarios) a través de DNI.
+- ¿Qué ocurre con un usuario 'padre' que registra alumn@s que no tienen
+	e-mail?. 
+- Recoger en la introducción de la memoria el 'perfil tipo' de alumnado para
+	quien está pensada la app.
+
+- Completar el presupuesto:
+  Vas a vender tu app.
+
+- Resumen: ampliar. Más largo.
+- Leer TODA la memoria con sentido crítico, viendo si estás de acuerdo con
+	todo lo que dices allí.
+
+- "Los datos almacenado"
+
+- Tiene que tener número de página.
+
+- Los mensajes que se presentan a un usuario tienen que mostrarse en orden
+	cronológico de envío. 
+
+- Al crear mensajes, eliminar el campo 'Asunto' si no se usa.
+
+- Error: los padres reciben mensajes que han sido enviados al alumnado.
+
+- TRABAJAR exhaustivamente hasta el lunes en MEJORAR la memoria.
+
+-------------------------
 --------------------------
 --------------------------
 --------------------------
