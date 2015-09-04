@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -117,7 +118,10 @@ public class ExpandableAlumnosActivity extends Activity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Student student = new Student(values);
-                students.add(student);
+                //students.add(student);
+                if (!student.getMail().isEmpty()) {
+                    students.add(student);
+                }
                 //Preparar los datos
                 prepareListData();
             }

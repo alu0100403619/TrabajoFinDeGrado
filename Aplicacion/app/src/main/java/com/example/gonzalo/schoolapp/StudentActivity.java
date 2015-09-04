@@ -87,7 +87,7 @@ public class StudentActivity extends ListActivity {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Student alu = new Student(values);
                 String dni = values.get(getString(R.string.bbdd_dni)).toString();
-                if ((values.get(getString(R.string.bbdd_class)).equals(clase)) &&
+                if ((values.get(getString(R.string.bbdd_class)).equals(clase)) && (!alu.getMail().isEmpty()) &&
                         (!dni.equals(myDNI))) {
                     alus.add(alu);
                 }//if
