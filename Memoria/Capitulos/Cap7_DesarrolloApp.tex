@@ -13,4 +13,119 @@
 \chapter{Desarrollo de la Aplicación}
 \label{chap:developing}
 
-	.
+	En este capítulo se expondrá la implementación de las clases mas relevantes para la aplicación.
+	Sería demasiado extenso explicar en profundidad cada uno de los elementos que componen \CollegeApp.
+	
+	\section{Clase Student}
+	
+		Esta es la clase encargada de almacenar los datos de los alumnos que se obtienen desde el {\it proveedor de servicios}.
+		A continuación se explicarán los atributos de la clase:
+		
+		\begin{itemize}
+			\item {\it name}: Nombre del alumno.
+			\item {\it lastname}: Apellidos del alumno.
+			\item {\it school}: Escuela a la que asiste el alumno.
+			\item {\it classroom}: Clase a la que asiste el alumno.
+			\item {\it mail}: Correo electrónico del alumno.
+			\item {\it telephone}: Teléfono de alumno.
+			\item {\it dni}: D.N.I o N.I.E del alumno.
+			\item {\it rol}: El rol en este perfil es Alumno.
+		\end{itemize}
+		
+		El constructor obtiene los datos desde un {\it HashMap}\cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable}\cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
+		En el listado \ref{code:StudentJava} se puede observar la implementación de la clase.
+		
+		\lstinputlisting[language=Java,caption={Ejemplo de la clase Student.},label={code:StudentJava}]{Code/Student.java}
+	
+	\section{Clase Father}
+	
+		Esta es la clase encargada de almacenar los datos de los usuarios con el perfil de padre que se obtienen desde la {\it nube}.
+		A continuación se explicarán los atributos de la clase:
+		
+		\begin{itemize}
+			\item {\it name}: Nombre del padre.
+			\item {\it lastname}: Apellidos del Padre.
+			\item {\it mail}: Correo electrónico del alumno.
+			\item {\it telephone}: Teléfono de alumno.
+			\item {\it dni}: D.N.I o N.I.E del alumno.
+			\item {\it childrens}: {\it ArrayList}\cite{12:arraytist:online} de la clase {\ttfamily Student} que son hijos del usuario.
+			\item {\it rol}: El rol en este perfil es Padre.
+		\end{itemize}
+		
+		El constructor obtiene los datos desde un {\it HashMap}\cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable}\cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
+		
+		\bigskip
+		Los métodos importantes en esta clase son {\ttfamily getClassrooms()} que devuelve un ArrayList con las clases a las que van los hijos y {\ttfamily getSchools()} que devuelve otro ArrayList con los colegios a los que asisten los hijos.
+		En el listado \ref{code:FatherJava} se puede observar la implementación de la clase.
+		
+		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase Father.},label={code:FatherJava}]{Code/Father.java}
+	
+	\section{Clase Teacher}
+	
+		Esta es la clase encargada de almacenar los datos de los usuarios con el perfil de profesor que se obtienen desde la {\it nube}.
+		A continuación se explicarán los atributos de la clase:
+		
+		\begin{itemize}
+			\item {\it name}: Nombre del profesor.
+			\item {\it lastname}: Apellidos del profesor.
+			\item {\it mail}: Correo electrónico del profesor.
+			\item {\it telephone}: Teléfono de profesor.
+			\item {\it dni}: D.N.I o N.I.E del profesor.
+			\item {\it rol}: El rol en este perfil es Profesor.
+		\end{itemize}
+		
+		El constructor obtiene los datos desde un {\it HashMap}\cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable}\cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
+		En el listado \ref{code:TeacherJava} se puede observar la implementación de la clase.
+		
+		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase Teacher.},label={code:TeacherJava}]{Code/Teacher.java}
+	
+	\section{clase Message}
+	
+		Esta es la clase encargada de almacenar los datos de los mensajes que se obtienen desde la {\it nube}.
+		A continuación se explicarán los atributos de la clase:
+		
+		\begin{itemize}
+			\item {\it dniRemitter: D.N.I del remitente del mensaje.
+			\item {\it remitter}: Nombre del remitente del mensaje, se usa para mostrar el nombre en {\ttfamily NotificationsActivity}\ref{sec:notifications}.
+			\item {\it message}: Mensaje que mandan los usuarios.
+			\item {\it rolRemmiter}: Perfil del remitente, se usa para colorear las notificaciones.
+			\item {\it date}: fecha del mensaje.
+			\item {\it destinatario}: Este campo solo está presente en la base de datos. Se usa para recuperar los mensajes.
+		\end{itemize}
+		
+		El constructor obtiene los datos desde un {\it HashMap}\cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable}\cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
+		En el listado \ref{code:MessageJava} se puede observar la implementación de la clase.
+		
+		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase Message.},label={code:MessageJava}]{Code/Message.java}
+		
+	\section{Clase MessageSQLHelper}
+		Cada uno de los mensaje enviados entre los usuarios está almacenado en el dispositivo, en una base de datos local {\it SQLite}\cite{13:sqlite:online}.
+		
+		\bigskip
+		La tabla {\ttfamily messages} almacena los mensajes que se envian desde el dispositivo. Sus atributos son:
+		
+		\begin{itemize}
+			\item {\it idConversation}: Identificación de la conversación.
+			\item {\it dniRemitter}: D.N.I del remitente.
+			\item {\it remitter}: Nombre del remitente.
+			\item {\it message}: Mensaje. 
+			\item {\it day}: Día en el que se envió el mensaje.
+			\item {\it month}: Mes en el que se envió el mensaje.
+			\item {\it year}: Año en el que se envió el mensaje.
+			\item {\it hour}: Hora en el que se envió la mensaje.
+			\item {\it minute}: Minuto en el que se envió el mensaje.
+		\end{itemize}
+		
+		\bigskip
+		La tabla {\ttfamily conversations} almacena el identificador de la conversación entre dos usuarios.
+		Sus atributos son:
+		
+		\begin{itemize}
+			\item {\it id}: Identificación de la conversación.
+			\item {\it dniSender}: D.N.I del usuario que envía el mensaje.
+			\item {\it dniRemitter}: D.N.I del remitente.
+		\end{itemize}
+		
+		En el listado \ref{code:MessageDBJava} se puede observar la implementación de la clase.
+		
+		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase MessageSQLHelper.},label={code:MessageDBJava}]{Code/MessageSQLHelper.java}

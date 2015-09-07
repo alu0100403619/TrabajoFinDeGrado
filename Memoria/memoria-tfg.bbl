@@ -87,11 +87,43 @@ Android sdk, January.
   \href{http://developer.android.com/intl/es/sdk/installing/installing-adt.html}{http://developer.android.com/intl/es/sdk/installing/installing-adt.html}
   [Online; Last accessed June 2015].
 
-\bibitem{14:java:online}
-Sun~Microsystem James~Gosling.
-\newblock Java, January 1995.
+\bibitem{29:firstapp:online}
+Developer Android.
+\newblock Training, January.
 \newblock
-  \href{https://en.wikipedia.org/wiki/Java_(programming_language)}{https://en.wikipedia.org/wiki/Java\_(programming\_language)}
+  \href{https://developer.android.com/training/index.html}{https://developer.android.com/training/index.html}
+  [Online; Last accessed January 2015].
+
+\bibitem{55:tabhostswipe:online}
+Developer Android.
+\newblock Tabhost swipe, April.
+\newblock
+  \href{http://www.cs.dartmouth.edu/~campbell/cs65/lecture08/lecture08.html}{http://www.cs.dartmouth.edu/{\textasciitilde}campbell/cs65/lecture08/lecture08.html}
+  [Online; Last accessed April 2015].
+
+\bibitem{10:hashmap:online}
+Hashmap, September.
+\newblock
+  \href{http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html}{http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html}
+  [Online; Last accessed September 2015].
+
+\bibitem{11:parcelable:online}
+Interface parcelable, January.
+\newblock
+  \href{http://developer.android.com/reference/android/os/Parcelable.html}{http://developer.android.com/reference/android/os/Parcelable.html}
   [Online; Last accessed June 2015].
+
+\bibitem{12:arraytist:online}
+Arraylist, September.
+\newblock
+  \href{http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html}{http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html}
+  [Online; Last accessed September 2015].
+
+\bibitem{13:sqlite:online}
+SGoliver.
+\newblock Sqlite android, January 2015.
+\newblock
+  \href{http://www.sgoliver.net/blog/bases-de-datos-en-android-i-primeros-pasos/}{http://www.sgoliver.net/blog/bases-de-datos-en-android-i-primeros-pasos/}
+  [Online; Last accessed September 2015].
 
 \end{thebibliography}

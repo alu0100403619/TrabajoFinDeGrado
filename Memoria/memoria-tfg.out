@@ -46,13 +46,18 @@
 \BOOKMARK [1][-]{section.6.13}{Citas}{chapter.6}% 46
 \BOOKMARK [1][-]{section.6.14}{Datos del contacto \(DataActivity\)}{chapter.6}% 47
 \BOOKMARK [0][-]{chapter.7}{Desarrollo de la Aplicaci\363n}{}% 48
-\BOOKMARK [0][-]{chapter.8}{Problemas}{}% 49
-\BOOKMARK [0][-]{chapter.9}{Conclusiones y Lineas futuras}{}% 50
-\BOOKMARK [1][-]{section.9.1}{Lineas futuras}{chapter.9}% 51
-\BOOKMARK [1][-]{section.9.2}{Conclusiones}{chapter.9}% 52
-\BOOKMARK [0][-]{chapter.10}{Conclusions and Future lines}{}% 53
-\BOOKMARK [1][-]{section.10.1}{Future lines}{chapter.10}% 54
-\BOOKMARK [1][-]{section.10.2}{Conclusions}{chapter.10}% 55
-\BOOKMARK [0][-]{chapter.11}{Presupuesto}{}% 56
-\BOOKMARK [0][-]{appendix.Alph1}{Diagrama de Clases}{}% 57
-\BOOKMARK [0][-]{appendix.Alph2}{Diagrama de Actividades}{}% 58
+\BOOKMARK [1][-]{section.7.1}{Clase Student}{chapter.7}% 49
+\BOOKMARK [1][-]{section.7.2}{Clase Father}{chapter.7}% 50
+\BOOKMARK [1][-]{section.7.3}{Clase Teacher}{chapter.7}% 51
+\BOOKMARK [1][-]{section.7.4}{clase Message}{chapter.7}% 52
+\BOOKMARK [1][-]{section.7.5}{Clase MessageSQLHelper}{chapter.7}% 53
+\BOOKMARK [0][-]{chapter.8}{Problemas}{}% 54
+\BOOKMARK [0][-]{chapter.9}{Conclusiones y Lineas futuras}{}% 55
+\BOOKMARK [1][-]{section.9.1}{Lineas futuras}{chapter.9}% 56
+\BOOKMARK [1][-]{section.9.2}{Conclusiones}{chapter.9}% 57
+\BOOKMARK [0][-]{chapter.10}{Conclusions and Future lines}{}% 58
+\BOOKMARK [1][-]{section.10.1}{Future lines}{chapter.10}% 59
+\BOOKMARK [1][-]{section.10.2}{Conclusions}{chapter.10}% 60
+\BOOKMARK [0][-]{chapter.11}{Presupuesto}{}% 61
+\BOOKMARK [0][-]{appendix.Alph1}{Diagrama de Clases}{}% 62
+\BOOKMARK [0][-]{appendix.Alph2}{Diagrama de Actividades}{}% 63

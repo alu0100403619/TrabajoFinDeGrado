@@ -18,7 +18,6 @@ A level-1 auxiliary file: Capitulos/Cap10_Cap9English.aux
 A level-1 auxiliary file: Capitulos/Cap11_Presupuesto.aux
 A level-1 auxiliary file: Apendices/ApendiceA_DiagramaClases.aux
 A level-1 auxiliary file: Apendices/ApendiceB_DiagramaActividades.aux
-A level-1 auxiliary file: Apendices/ApendiceC_MapaActividades.aux
 The style file: unsrt.bst
 Database file #1: Bibliografia/bibliography.bib
 Warning--entry type for "1:androidstudio:online" isn't style-file defined
@@ -39,20 +38,31 @@ Warning--entry type for "8:latex:online" isn't style-file defined
 --line 67 of file Bibliografia/bibliography.bib
 Warning--entry type for "9:github:online" isn't style-file defined
 --line 76 of file Bibliografia/bibliography.bib
-Warning--entry type for "14:java:online" isn't style-file defined
+Warning--entry type for "10:hashmap:online" isn't style-file defined
 --line 85 of file Bibliografia/bibliography.bib
+Warning--entry type for "12:arraytist:online" isn't style-file defined
+--line 94 of file Bibliografia/bibliography.bib
+Warning--entry type for "11:parcelable:online" isn't style-file defined
+--line 103 of file Bibliografia/bibliography.bib
+Warning--entry type for "13:sqlite:online" isn't style-file defined
+--line 113 of file Bibliografia/bibliography.bib
 Warning--entry type for "15:eclipse:online" isn't style-file defined
---line 95 of file Bibliografia/bibliography.bib
-Warning--entry type for "20:andoirdSDK:online" isn't style-file defined
---line 105 of file Bibliografia/bibliography.bib
-Warning--entry type for "21:jdt:online" isn't style-file defined
---line 114 of file Bibliografia/bibliography.bib
-Warning--entry type for "16:parse:online" isn't style-file defined
 --line 123 of file Bibliografia/bibliography.bib
+Warning--entry type for "20:andoirdSDK:online" isn't style-file defined
+--line 133 of file Bibliografia/bibliography.bib
+Warning--entry type for "21:jdt:online" isn't style-file defined
+--line 142 of file Bibliografia/bibliography.bib
+Warning--entry type for "16:parse:online" isn't style-file defined
+--line 151 of file Bibliografia/bibliography.bib
 Warning--entry type for "17:jdk:online" isn't style-file defined
---line 132 of file Bibliografia/bibliography.bib
+--line 160 of file Bibliografia/bibliography.bib
+Warning--entry type for "29:firstapp:online" isn't style-file defined
+--line 169 of file Bibliografia/bibliography.bib
+Warning--entry type for "55:tabhostswipe:online" isn't style-file defined
+--line 180 of file Bibliografia/bibliography.bib
 Warning--entry type for "57:nube:online" isn't style-file defined
---line 162 of file Bibliografia/bibliography.bib
+--line 190 of file Bibliografia/bibliography.bib
+Warning--I didn't find a database entry for "14:java:online"
 Warning--there's a month but no year in 16:parse:online
 Warning--there's a month but no year in 57:nube:online
 Warning--there's a month but no year in 9:github:online
@@ -62,4 +72,9 @@ Warning--there's a month but no year in 4:micolegioapp:online
 Warning--there's a month but no year in 17:jdk:online
 Warning--there's a month but no year in 21:jdt:online
 Warning--there's a month but no year in 20:andoirdSDK:online
-(There were 25 warnings)
+Warning--there's a month but no year in 29:firstapp:online
+Warning--there's a month but no year in 55:tabhostswipe:online
+Warning--there's a month but no year in 10:hashmap:online
+Warning--there's a month but no year in 11:parcelable:online
+Warning--there's a month but no year in 12:arraytist:online
+(There were 36 warnings)
