@@ -1,0 +1,154 @@
+%
+% ---------------------------------------------------
+%
+% Trabajo de Final de Grado:
+% Author: Gonzalo Jesús García Martín <dracoyue@gmail.com>
+% Capítulo: Especificación de Requisitos
+% Fichero: Cap2_EspecificacionRequisitos.tex
+%
+% ----------------------------------------------------
+%
+
+\cleardoublepage
+\chapter{Especificación de Requisitos}
+\label{chap:requirements}
+
+	La especificación de requisitos es una parte fundamental de todo desarrollo ya que describe de forma completa el comportamiento funcional del software. Incluye casos de uso, requisitos funcionales, no funcionales, de usuarios y del sistema.
+	Va dirigido tanto al cliente como al equipo de desarrollo y establece unos compromisos fundamentales entre ambos.
+	
+	\bigskip
+	En este capítulo se describirán formalmente las funcionalidades, los sistemas integrados en la aplicación y los perfiles o roles que podrán tener los usuarios.
+	
+	\bigskip
+	En el caso de \CollegeApp son varias las funcionalidades integradas en la aplicación, desde el registro y el acceso de usuarios hasta el envío de mensajes y la recepción notificaciones.
+	
+	\section{Funcionalidades}
+		A continuación se describen las funcionalidades de la aplicación:
+		\begin{itemize} 
+			\item {\bf Registro}: Tras rellenar el formulario y accionar el botón de registro, \CollegeApp enviará los datos a un proveedor de servicios en la nube. Éstos serán almacenados en la base de datos, en sus tablas correspondientes. También creará al usuario para que tenga acceso a la aplicación.
+			\item {\bf Acceso}: El usuario introducirá su dirección de correo electrónico y contraseña en los campos destinados a ello. El dispositivo móvil se autenticará contra el servidor y si todo es correcto permitirá el acceso.
+			\item {\bf Recuerdo de Contraseña}: La aplicación solicitará al servicio en la nube una contraseña temporal para que el usuario pueda acceder, tras lo cual tendrá que editar su contraseña en \CollegeApp.
+			\item {\bf Contactos}: Se recuperarán todos los usuarios relacionados con la persona que esté usando la aplicación. Esto permitirá que se puedan comunicar.
+			\item {\bf Chat}: Los usuarios se podrán enviar mensajes entre sí, éstos se almacenaran en el servidor para ser recuperados por la aplicación y luego borrados de la nube. La comunicación será del tipo alumno-profesor, padre-profesor y viceversa en ambos casos. En ningún ámbito de la aplicación se permitirá la comunicación entre padres e hijos.
+			\item {\bf Notificaciones}: \CollegeApp recuperará de la base de datos todos los mensajes que tenga el usuario, para después borrarlos de su almacenamiento en la nube. Éstas se diferenciarán por colores según el perfil del remitente.
+			\item {\bf Circulares}: Aviso que enviará un profesor a todos los integrantes de una clase, e incluso de varias. Estos mensajes se almacenarán en la nube y serán recuperados por la aplicación, que los eliminará de su almacenamiento en internet.
+			\item {\bf Citas}: Permitirá al usuario programar un evento en el calendario por defecto sin salir de la aplicación. Utiliza la funcionalidad para añadir eventos que implementa el sistema operativo\cite{5:os:online} del dispositivo. Se introducirán los datos en los campos correspondientes y se guardará la cita.
+			\item {\bf Visualización de Datos}: El usuario podrá visualizar la información de sus contactos con una selección larga cualquiera de ellos.
+			\item {\bf Modificación de datos}: El usuario podrá editar los datos en el dispositivo móvil, tras lo cual se actualizarán en la base de datos almacenada en la nube. 
+			\item {\bf Darse de baja}: El usuario podrá eliminar su cuenta de la aplicación y su información en el servidor.
+		\end{itemize}
+
+	\section{Sistemas de la Aplicación}
+		\begin{itemize}
+			\item Sistema de Registro: Al usuario se le pedirán los siguientes datos:
+			\begin{itemize}
+				\item Nombre y Apellidos.
+				\item Número de teléfono.
+				\item D.N.I.
+				\item Nombre del centro con el que va a hacer el registro.
+				\item Clase y grupo.
+				\item Correo electrónico y contraseña.
+				\item En caso de que el usuario se registre como padre también tendrá que introducir:
+				\begin{itemize}
+					\item Nombre y Apellidos del alumno.
+					\item D.N.I del alumno.
+					\item Clase en la que está el alumno.
+					\item Centro en el que está el alumno.
+					\item Curso en el que está el alumno.
+					\item Teléfono del alumno, este dato es opcional.
+					\item Correo electrónico del alumno, este dato es opcional.
+				\end{itemize}
+			\end{itemize}
+			\item Sistema de ``acceso'': Se le pedirá al usuario que ingrese su identificación, es decir, su correo electrónico y contraseña.
+			\item Sistema de comunicación entre usuarios: Este servicio enviará los mensajes a través de internet usando los servicios de un proveedor. Se explicará en la siguiente tabla (Tabla \ref{table:communications}). %Pone tabla 4.2 cuando es la tabla 4.1
+			
+			\begin{table} [!hbt]
+			\begin{center}
+			\begin{tabular}{|| c | c | c | c ||}
+				\hline
+				\hline
+				& Padre & Alumno & Profesor \\
+				\hline
+				Padre & Mensaje & Sin comunicación & Mensaje \\
+				\hline
+				Alumno & Sin comunicación & Mensaje & Mensaje \\
+				\hline
+				Profesor & Circular y Mensaje & Circular y Mensaje & Mensaje \\
+				\hline
+				\hline
+			\end{tabular}
+			\caption{Comunicaciones permitidas}
+			\label{table:communications}
+			\end{center}
+			\end{table}
+			
+			No parece lógico que un usuario con el perfil de padre se pueda comunicar con los compañeros de clase de su hijo, puesto que no sería del agrado de los progenitores.
+			\newline
+			Las comunicaciones bidireccionales profesor-padre y profesor-alumno son necesarias para que los alumnos y los padres puedan recibir mensajes y notificaciones.
+			
+			\item Sistema de citas: Permitirá al usuario programar un evento en el calendario del dispositivo sin salir de la aplicación, usando las funciones que implementa Android.
+			\item Lista de contactos: Organizada por grupos desplegables, por ejemplo los profesores tendrán la lista organizada según las clases que impartan en el centro.
+		\end{itemize}
+	
+		Esto permitirá establecer un sistema de comunicaciones entre los profesores y padres de alumnos.
+
+	\section{Perfiles}
+		\begin{itemize}
+			\item Alumnos: Podrán programar citas en el calendario y recibir circulares. Como se puede observar en la tabla \ref{table:studentsCommunications}, las comunicaciones entre alumnos y padres no están permitidas en ningún ámbito de la aplicación, ya que podría ocasionar problemas no deseados.
+			Los estudiantes podrán conversar con los profesores para resolver las dudas y problemas que ellos consideren oportunos. También podrán comunicarse entre sí para pedir apuntes y resolver dudas entre otras cosas.
+			
+			\begin{table} [!hbt]
+				\begin{center}
+					\begin{tabular}{|| c | c | c | c ||}
+						\hline
+						\hline
+						& Padre & Alumno & Profesor \\
+						\hline
+						Alumno & Sin comunicación & Mensaje & Mensaje \\
+						\hline
+						\hline
+					\end{tabular}
+					\caption{Comunicaciones permitidas para el perfil de alumno}
+					\label{table:studentsCommunications}
+				\end{center}
+			\end{table}
+			
+			\item Profesores: Podrán programar citas en el calendario y enviar circulares. Los padres y alumnos en la lista de contactos estarán organizados según las clases que impartan en el centro. Como se explica en la tabla \ref{table:teachersCommunications}, los profesores se pueden comunicar con todos los usuarios a través de mensajes directos tipo chat, mientras que con los padres y alumnos, además, pueden usar mensajes tipo circulares que le llegarán a todos los integrantes de la clase. Esto cumple con el objetivo de que tanto alumnos como padres estén informados de las incidencias ocurridas en clase.
+			
+			\begin{table} [!hbt]
+				\begin{center}
+					\begin{tabular}{|| c | c | c | c ||}
+						\hline
+						\hline
+						& Padre & Alumno & Profesor \\
+						\hline
+						Profesor & Circular y Mensaje & Circular y Mensaje & Mensaje \\
+						\hline
+						\hline
+					\end{tabular}
+					\caption{Comunicaciones permitidas para el perfil de profesor.}
+					\label{table:teachersCommunications}
+				\end{center}
+			\end{table}
+			
+			\item Padre/Madre/Tutor Legal: Podrán recibir circulares y programar citas en el calendario. Los profesores y padres en la lista de contactos estarán organizados según las clases que impartan a los alumnos con los que el progenitor esté relacionado.
+			En la tabla \ref{table:fathersCommunications} se puede observar que los padres se pueden comunicar con los profesores para estar informados de todo lo que ocurre con sus hijos.
+			
+			\begin{table} [!hbt]
+				\begin{center}
+					\begin{tabular}{|| c | c | c | c ||}
+						\hline
+						\hline
+						& Padre & Alumno & Profesor \\
+						\hline
+						Padre & Mensaje & Sin comunicación & Mensaje \\
+						\hline
+						\hline
+					\end{tabular}
+					\caption{Comunicaciones permitidas para el perfil de padre.}
+					\label{table:fathersCommunications}
+				\end{center}
+			\end{table}
+			
+			
+		\end{itemize}

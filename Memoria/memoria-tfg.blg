@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: memoria-tfg.aux
+A level-1 auxiliary file: Previos/Portada.aux
+A level-1 auxiliary file: Previos/Certificado.aux
+A level-1 auxiliary file: Previos/Agradecimientos.aux
+A level-1 auxiliary file: Previos/Licencia.aux
+A level-1 auxiliary file: Previos/Resumen.aux
+A level-1 auxiliary file: Previos/Summary.aux
+A level-1 auxiliary file: Capitulos/Cap1_Introduccion.aux
+A level-1 auxiliary file: Capitulos/Cap2_Objetivos.aux
+A level-1 auxiliary file: Capitulos/Cap3_Antecedentes.aux
+A level-1 auxiliary file: Capitulos/Cap4_EspecificacionRequisitos.aux
+A level-1 auxiliary file: Capitulos/Cap5_Herramientas.aux
+A level-1 auxiliary file: Capitulos/Cap6_DescripcionApp.aux
+A level-1 auxiliary file: Capitulos/Cap7_DesarrolloApp.aux
+A level-1 auxiliary file: Capitulos/Cap8_Problemas.aux
+A level-1 auxiliary file: Capitulos/Cap9_Conclusiones_LineasFuturas.aux
+A level-1 auxiliary file: Capitulos/Cap10_Cap9English.aux
+A level-1 auxiliary file: Capitulos/Cap11_Presupuesto.aux
+A level-1 auxiliary file: Apendices/ApendiceA_DiagramaClases.aux
+A level-1 auxiliary file: Apendices/ApendiceB_DiagramaActividades.aux
+A level-1 auxiliary file: Apendices/ApendiceC_MapaActividades.aux
+The style file: unsrt.bst
+Database file #1: Bibliografia/bibliography.bib
+Warning--entry type for "1:androidstudio:online" isn't style-file defined
+--line 1 of file Bibliografia/bibliography.bib
+Warning--entry type for "2:android:online" isn't style-file defined
+--line 10 of file Bibliografia/bibliography.bib
+Warning--entry type for "3:remind:online" isn't style-file defined
+--line 20 of file Bibliografia/bibliography.bib
+Warning--entry type for "4:micolegioapp:online" isn't style-file defined
+--line 30 of file Bibliografia/bibliography.bib
+Warning--entry type for "5:os:online" isn't style-file defined
+--line 40 of file Bibliografia/bibliography.bib
+Warning--entry type for "6:firebase:online" isn't style-file defined
+--line 49 of file Bibliografia/bibliography.bib
+Warning--entry type for "7:json:online" isn't style-file defined
+--line 58 of file Bibliografia/bibliography.bib
+Warning--entry type for "8:latex:online" isn't style-file defined
+--line 67 of file Bibliografia/bibliography.bib
+Warning--entry type for "9:github:online" isn't style-file defined
+--line 76 of file Bibliografia/bibliography.bib
+Warning--entry type for "14:java:online" isn't style-file defined
+--line 85 of file Bibliografia/bibliography.bib
+Warning--entry type for "15:eclipse:online" isn't style-file defined
+--line 95 of file Bibliografia/bibliography.bib
+Warning--entry type for "20:andoirdSDK:online" isn't style-file defined
+--line 105 of file Bibliografia/bibliography.bib
+Warning--entry type for "21:jdt:online" isn't style-file defined
+--line 114 of file Bibliografia/bibliography.bib
+Warning--entry type for "16:parse:online" isn't style-file defined
+--line 123 of file Bibliografia/bibliography.bib
+Warning--entry type for "17:jdk:online" isn't style-file defined
+--line 132 of file Bibliografia/bibliography.bib
+Warning--entry type for "57:nube:online" isn't style-file defined
+--line 162 of file Bibliografia/bibliography.bib
+Warning--there's a month but no year in 16:parse:online
+Warning--there's a month but no year in 57:nube:online
+Warning--there's a month but no year in 9:github:online
+Warning--there's a month but no year in 8:latex:online
+Warning--there's a month but no year in 3:remind:online
+Warning--there's a month but no year in 4:micolegioapp:online
+Warning--there's a month but no year in 17:jdk:online
+Warning--there's a month but no year in 21:jdt:online
+Warning--there's a month but no year in 20:andoirdSDK:online
+(There were 25 warnings)

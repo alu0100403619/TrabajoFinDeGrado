@@ -1,34 +1,59 @@
 \BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Tecnolog\355as}{chapter.1}% 2
-\BOOKMARK [2][-]{subsection.1.1.1}{Selecci\363n}{section.1.1}% 3
-\BOOKMARK [2][-]{subsection.1.1.2}{Otros IDE's: Eclipse}{section.1.1}% 4
-\BOOKMARK [2][-]{subsection.1.1.3}{Otros Servicios en la Nube: Parse16:parse:online}{section.1.1}% 5
-\BOOKMARK [1][-]{section.1.2}{Instalaci\363n}{chapter.1}% 6
-\BOOKMARK [2][-]{subsection.1.2.1}{AndroidStudio}{section.1.2}% 7
-\BOOKMARK [2][-]{subsection.1.2.2}{Firebase}{section.1.2}% 8
-\BOOKMARK [1][-]{section.1.3}{Otras Aplicaciones similares}{chapter.1}% 9
-\BOOKMARK [2][-]{subsection.1.3.1}{Remind}{section.1.3}% 10
-\BOOKMARK [2][-]{subsection.1.3.2}{miColegioApp}{section.1.3}% 11
-\BOOKMARK [1][-]{section.1.4}{Tutoriales}{chapter.1}% 12
-\BOOKMARK [0][-]{chapter.2}{Especificaci\363n de Requisitos}{}% 13
-\BOOKMARK [1][-]{section.2.1}{Funcionalidades}{chapter.2}% 14
-\BOOKMARK [1][-]{section.2.2}{Actividades}{chapter.2}% 15
-\BOOKMARK [1][-]{section.2.3}{Sistemas de la Aplicaci\363n}{chapter.2}% 16
-\BOOKMARK [1][-]{section.2.4}{Roles}{chapter.2}% 17
-\BOOKMARK [0][-]{chapter.3}{Objetivos}{}% 18
-\BOOKMARK [1][-]{section.3.1}{Objetivos Generales}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.2}{Objetivos Espec\355ficos}{chapter.3}% 20
-\BOOKMARK [0][-]{chapter.4}{Antecedentes}{}% 21
-\BOOKMARK [0][-]{chapter.5}{Problemas}{}% 22
-\BOOKMARK [0][-]{chapter.6}{Fases}{}% 23
-\BOOKMARK [0][-]{chapter.7}{Desarrollo del Proyecto}{}% 24
-\BOOKMARK [0][-]{chapter.8}{Conclusiones y Lineas futuras}{}% 25
-\BOOKMARK [1][-]{section.8.1}{Lineas futuras}{chapter.8}% 26
-\BOOKMARK [1][-]{section.8.2}{Conclusiones}{chapter.8}% 27
-\BOOKMARK [0][-]{chapter.9}{Conclusions and Future lines}{}% 28
-\BOOKMARK [1][-]{section.9.1}{Future lines}{chapter.9}% 29
-\BOOKMARK [1][-]{section.9.2}{Conclusions}{chapter.9}% 30
-\BOOKMARK [0][-]{chapter.10}{Presupuesto}{}% 31
-\BOOKMARK [0][-]{appendix.Alph1}{Diagrama de Clases}{}% 32
-\BOOKMARK [0][-]{appendix.Alph2}{Diagrama de Actividades}{}% 33
-\BOOKMARK [0][-]{appendix.Alph3}{Secuencia de Actividades}{}% 34
+\BOOKMARK [0][-]{chapter.2}{Objetivos}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Antecedentes}{}% 3
+\BOOKMARK [1][-]{section.3.1}{Otras Aplicaciones similares}{chapter.3}% 4
+\BOOKMARK [2][-]{subsection.3.1.1}{Remind}{section.3.1}% 5
+\BOOKMARK [2][-]{subsection.3.1.2}{miColegioApp}{section.3.1}% 6
+\BOOKMARK [0][-]{chapter.4}{Especificaci\363n de Requisitos}{}% 7
+\BOOKMARK [1][-]{section.4.1}{Funcionalidades}{chapter.4}% 8
+\BOOKMARK [1][-]{section.4.2}{Sistemas de la Aplicaci\363n}{chapter.4}% 9
+\BOOKMARK [1][-]{section.4.3}{Perfiles}{chapter.4}% 10
+\BOOKMARK [0][-]{chapter.5}{Herramientas}{}% 11
+\BOOKMARK [1][-]{section.5.1}{Selecci\363n}{chapter.5}% 12
+\BOOKMARK [1][-]{section.5.2}{Otros entornos de desarrollo integrado: Eclipse}{chapter.5}% 13
+\BOOKMARK [2][-]{subsection.5.2.1}{Instalaci\363n}{section.5.2}% 14
+\BOOKMARK [1][-]{section.5.3}{Otros Servicios en la Nube: Parse16:parse:online}{chapter.5}% 15
+\BOOKMARK [1][-]{section.5.4}{Instalaci\363n de las herramientas usadas}{chapter.5}% 16
+\BOOKMARK [2][-]{subsection.5.4.1}{AndroidStudio}{section.5.4}% 17
+\BOOKMARK [2][-]{subsection.5.4.2}{Firebase}{section.5.4}% 18
+\BOOKMARK [0][-]{chapter.6}{Descripci\363n de la Aplicaci\363n}{}% 19
+\BOOKMARK [1][-]{section.6.1}{Pantalla Principal \(MainActivity\)}{chapter.6}% 20
+\BOOKMARK [2][-]{subsection.6.1.1}{Bienvenida \(WelcomeFragment\)}{section.6.1}% 21
+\BOOKMARK [2][-]{subsection.6.1.2}{Ayuda \(HelpFragment\)}{section.6.1}% 22
+\BOOKMARK [2][-]{subsection.6.1.3}{Sobre mi \(AboutMeFragment\)}{section.6.1}% 23
+\BOOKMARK [1][-]{section.6.2}{Cambio de idioma \(ChangeLanguajeActivity\)}{chapter.6}% 24
+\BOOKMARK [1][-]{section.6.3}{Registro \(RegisterActivity\)}{chapter.6}% 25
+\BOOKMARK [2][-]{subsection.6.3.1}{Registro de alumnos \(RegisterStudentActivity\)}{section.6.3}% 26
+\BOOKMARK [2][-]{subsection.6.3.2}{Registro de Profesores \(RegisterTeacherActivity\)}{section.6.3}% 27
+\BOOKMARK [2][-]{subsection.6.3.3}{Registro de Padres \(RegisterFatherActivity\)}{section.6.3}% 28
+\BOOKMARK [2][-]{subsection.6.3.4}{A\361adir hijo \(AddChildActivity\)}{section.6.3}% 29
+\BOOKMARK [1][-]{section.6.4}{Acceso \(LoginActivity\)}{chapter.6}% 30
+\BOOKMARK [1][-]{section.6.5}{Acceso como alumno \(StudentTabActivity\)}{chapter.6}% 31
+\BOOKMARK [2][-]{subsection.6.5.1}{Lista de contactos: Alumnos \(studentActivity\)}{section.6.5}% 32
+\BOOKMARK [2][-]{subsection.6.5.2}{Lista de contactos: Profesores \(TeachersActivity\)}{section.6.5}% 33
+\BOOKMARK [1][-]{section.6.6}{Acceso como padre \(FatherTabActivity\)}{chapter.6}% 34
+\BOOKMARK [2][-]{subsection.6.6.1}{Lista de contactos: Padres \(ExpandableFathersActivity\)}{section.6.6}% 35
+\BOOKMARK [2][-]{subsection.6.6.2}{Lista de contactos: Profesores \(ExpandableTeachersActivity\)}{section.6.6}% 36
+\BOOKMARK [1][-]{section.6.7}{Acceso como profesor \(TeacherTabActivity\)}{chapter.6}% 37
+\BOOKMARK [2][-]{subsection.6.7.1}{Lista de contactos: Profesores \(ExpandableTeachersActivity\)}{section.6.7}% 38
+\BOOKMARK [2][-]{subsection.6.7.2}{Lista de contactos: Padres \(ExpandableFathersActivity\)}{section.6.7}% 39
+\BOOKMARK [2][-]{subsection.6.7.3}{Lista de contactos: Alumnos \(ExpandableAlumnosActivity\)}{section.6.7}% 40
+\BOOKMARK [1][-]{section.6.8}{Notificaciones \(notificationsActivity\)}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.9}{Chat \(ChatActivity\)}{chapter.6}% 42
+\BOOKMARK [1][-]{section.6.10}{Mis Datos \(MyDataActivity\)}{chapter.6}% 43
+\BOOKMARK [1][-]{section.6.11}{Cambio de Contrase\361a \(ChangePasswordactivity\)}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.12}{Circulares \(CircularesActivity\)}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.13}{Citas}{chapter.6}% 46
+\BOOKMARK [1][-]{section.6.14}{Datos del contacto \(DataActivity\)}{chapter.6}% 47
+\BOOKMARK [0][-]{chapter.7}{Desarrollo de la Aplicaci\363n}{}% 48
+\BOOKMARK [0][-]{chapter.8}{Problemas}{}% 49
+\BOOKMARK [0][-]{chapter.9}{Conclusiones y Lineas futuras}{}% 50
+\BOOKMARK [1][-]{section.9.1}{Lineas futuras}{chapter.9}% 51
+\BOOKMARK [1][-]{section.9.2}{Conclusiones}{chapter.9}% 52
+\BOOKMARK [0][-]{chapter.10}{Conclusions and Future lines}{}% 53
+\BOOKMARK [1][-]{section.10.1}{Future lines}{chapter.10}% 54
+\BOOKMARK [1][-]{section.10.2}{Conclusions}{chapter.10}% 55
+\BOOKMARK [0][-]{chapter.11}{Presupuesto}{}% 56
+\BOOKMARK [0][-]{appendix.Alph1}{Diagrama de Clases}{}% 57
+\BOOKMARK [0][-]{appendix.Alph2}{Diagrama de Actividades}{}% 58
+\BOOKMARK [0][-]{appendix.Alph3}{Secuencia de Actividades}{}% 59

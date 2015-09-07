@@ -1,0 +1,82 @@
+%
+% ---------------------------------------------------
+%
+% Trabajo de Final de Grado:
+% Author: Gonzalo Jesús García Martín <dracoyue@gmail.com>
+% Capítulo: Objetivos
+% Fichero: Cap5_Problemas.tex
+%
+% ----------------------------------------------------
+%
+
+\cleardoublepage
+\chapter{Problemas}
+\label{chap:troubles}
+
+	Al diseñar una aplicación siempre surgen problemas inesperados en los que hay que agudizar el ingenio para resolverlos.
+
+	En este capítulo se expondrán los problemas ocurridos a la hora de programar, se irán enumerando y explicando la forma de resolverlos.
+
+	\begin{enumerate}
+		\item {\bf Android Studio no render target}
+			\begin{itemize}
+				\item {\bf Solución}:
+					\begin{enumerate}
+						\item Asegúrese de que hay un dispositivo real o virtual seleccionado.
+						\item Tener una versión de {\it Android} seleccionada.
+						\item Versiones necesarias para el desarrollo dela aplicación en {\it Android} instaladas.
+						\item Crear un nuevo {\it Dispositivo Virtual} ({\it AVD}).
+						% Meter dibujo de AVD
+						\item Reiniciar Android Studio.
+					\end{enumerate}
+			\end{itemize}
+		
+		\item {\bf Fallo al encontrar com.android.support:appcompat-v7:16.+}
+			\begin{itemize}
+				\item {\bf Solución}: Actualizar en las dependencias del archivo {\ttfamily build.gradle}, en el directorio {\ttfamily app} que está en la raíz del proyecto, la librería deberá ser la última versión disponible. Este cambio se realiza de forma manual.
+			\end{itemize}
+		
+		\item {\bf Fallo al encontrar Java}
+			\begin{itemize}
+				\item {\bf Solución}: Si java ya está instalado, averigüe el directorio. Una vez hecho esto necesita volver a establecer la variable de ámbito indicando la localización correcta. Seleccione {\ttfamily Iniciar \textgreater Equipo \textgreater Propiedades \textgreater Configuración Avanzada del Sistema}.
+				Entonces abra la pestaña {\ttfamily Opciones Avanzadas \textgreater Variables de Entorno} y añada una nueva variable de sistema llamada {\ttfamily JAVA\_HOME} que  tenga como valor la dirección del directorio donde tenga instalado el {\it JDK}, por ejemplo, {\ttfamily C:{\textbackslash}Program Files{\textbackslash}Java{\textbackslash}jdk1.7.0\_21}. 
+			\end{itemize}
+		\item {\bf Duplicidad en las dependencias de los paquetes}
+			\begin{itemize}
+				\item {\bf Solución}: Si se tiene un error de compilación sobre archivos duplicados, se puede excluir esos ficheros añadiendo la directiva {\ttfamily packagingOptions} al archivo {\ttfamily build.gradle} que está en el directorio {\ttfamily app}. Como se puede observar en el listado \ref{code:duplicidadbuild}.
+				
+				\lstinputlisting[float = h!, language=Java,caption={Solución a la duplicidad en {\ttfamily build.gradle}.}, label={code:duplicidadbuild}]{Code/duplicidadbuild.gradle}
+			\end{itemize}
+			
+		\item {\bf Problemas con import android.support.v13}
+			\begin{itemize}
+				\item {\bf Solución}: Añadir en las dependencias del archivo {\ttfamily build.gradle}, en el directorio {\ttfamily app} que está en la raíz del proyecto, la orden {\ttfamily compile 'com.android.support:support-v13:21.+'} de forma manual. Como se puede analizar en el listado \ref{code:supportv13}.
+				
+				\noindent
+				\lstinputlisting[float = h!, language=Java,caption={Solución al problema supportV13.},label={code:supportv13}]{Code/support13build.gradle}
+			\end{itemize}
+			
+		\item {\bf Problemas con Gradle}
+			\begin{itemize}
+				\item {\bf Solución}:
+					\begin{enumerate}
+						\item En el archivo {\ttfamily buil.gradle} que está en el directorio raíz del proyecto, añadir la dependencia de forma manual: {\ttfamily classpath 'com.android.tools.build:gradle:1.0.0' }. Listado \ref{code:buildGradle}.
+						\item En el archivo {\ttfamily buil.gradle}, que está en el directorio {\ttfamily app} en la raíz del proyecto, añadir dentro de {\ttfamily release} de forma manual, listado \ref{code:appBuildGradle}.
+							
+					\end{enumerate}
+					\noindent
+					\lstinputlisting[float = h!,language=Java,caption={Solución en {\ttfamily build.gradle}.},label={code:buildGradle}]{Code/buildgradle.gradle}
+					\lstinputlisting[float = h,language=Java,caption={Solución en {\ttfamily app/build.gradle}.},label={code:appBuildGradle}]{Code/appbuildgradle.gradle}
+			\end{itemize}
+		
+		\item {\bf SDK no encontrado}
+			\begin{itemize}
+				\item {\bf Solución}: Si AndroidStudio no encuentra el {\it SDK} y está instalado seleccionar {\ttfamily Windows \textgreater Preferencias \textgreater Android \textgreater Localización SDK} y establecer el directorio donde se tiene instalado.
+			\end{itemize}
+			
+		\item {\bf Consultas Asíncronas}
+			\begin{itemize}
+				\item {\bf Solución}: Existen dos tipos de consultas en {\it Firebase}, las que devuelven un solo resultado ({\ttfamily addListenerForSingleValueEvent()}) y las que devuelven varios resultados ({\ttfamily addChildEventListener()}). Éstas últimas se quedan esperando por si se modifican datos de la base de datos.
+				La solución sería removerlo al final de su uso ({\ttfamily ref.removeEventListener(originalListener);}) o tener una sola consulta del segundo tipo por actividad.
+			\end{itemize}
+	\end{enumerate}
