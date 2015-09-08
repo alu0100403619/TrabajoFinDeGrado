@@ -6,13 +6,10 @@ A level-1 auxiliary file: Previos/Licencia.aux
 A level-1 auxiliary file: Previos/Resumen.aux
 A level-1 auxiliary file: Previos/Summary.aux
 A level-1 auxiliary file: Capitulos/Cap1_Introduccion.aux
-A level-1 auxiliary file: Capitulos/Cap2_Objetivos.aux
-A level-1 auxiliary file: Capitulos/Cap3_Antecedentes.aux
 A level-1 auxiliary file: Capitulos/Cap4_EspecificacionRequisitos.aux
 A level-1 auxiliary file: Capitulos/Cap5_Herramientas.aux
 A level-1 auxiliary file: Capitulos/Cap6_DescripcionApp.aux
 A level-1 auxiliary file: Capitulos/Cap7_DesarrolloApp.aux
-A level-1 auxiliary file: Capitulos/Cap8_Problemas.aux
 A level-1 auxiliary file: Capitulos/Cap9_Conclusiones_LineasFuturas.aux
 A level-1 auxiliary file: Capitulos/Cap10_Cap9English.aux
 A level-1 auxiliary file: Capitulos/Cap11_Presupuesto.aux
@@ -28,7 +25,7 @@ Warning--entry type for "3:remind:online" isn't style-file defined
 --line 20 of file Bibliografia/bibliography.bib
 Warning--entry type for "4:micolegioapp:online" isn't style-file defined
 --line 30 of file Bibliografia/bibliography.bib
-Warning--entry type for "5:os:online" isn't style-file defined
+Warning--entry type for "5:git:online" isn't style-file defined
 --line 40 of file Bibliografia/bibliography.bib
 Warning--entry type for "6:firebase:online" isn't style-file defined
 --line 49 of file Bibliografia/bibliography.bib
@@ -46,35 +43,66 @@ Warning--entry type for "11:parcelable:online" isn't style-file defined
 --line 103 of file Bibliografia/bibliography.bib
 Warning--entry type for "13:sqlite:online" isn't style-file defined
 --line 113 of file Bibliografia/bibliography.bib
-Warning--entry type for "15:eclipse:online" isn't style-file defined
+Warning--entry type for "14:intellij:online" isn't style-file defined
 --line 123 of file Bibliografia/bibliography.bib
-Warning--entry type for "20:andoirdSDK:online" isn't style-file defined
---line 133 of file Bibliografia/bibliography.bib
-Warning--entry type for "21:jdt:online" isn't style-file defined
---line 142 of file Bibliografia/bibliography.bib
+Warning--entry type for "15:eclipse:online" isn't style-file defined
+--line 134 of file Bibliografia/bibliography.bib
+Warning--entry type for "16:ios:online" isn't style-file defined
+--line 144 of file Bibliografia/bibliography.bib
+Warning--entry type for "18:rest:online" isn't style-file defined
+--line 154 of file Bibliografia/bibliography.bib
+Warning--entry type for "19:java:online" isn't style-file defined
+--line 164 of file Bibliografia/bibliography.bib
+Warning--entry type for "22:netbeans:online" isn't style-file defined
+--line 192 of file Bibliografia/bibliography.bib
+Warning--entry type for "23:api:online" isn't style-file defined
+--line 201 of file Bibliografia/bibliography.bib
 Warning--entry type for "16:parse:online" isn't style-file defined
---line 151 of file Bibliografia/bibliography.bib
+--line 210 of file Bibliografia/bibliography.bib
 Warning--entry type for "17:jdk:online" isn't style-file defined
---line 160 of file Bibliografia/bibliography.bib
+--line 219 of file Bibliografia/bibliography.bib
+Warning--entry type for "24:creatactil:online" isn't style-file defined
+--line 228 of file Bibliografia/bibliography.bib
+Warning--entry type for "25:tabhost:online" isn't style-file defined
+--line 237 of file Bibliografia/bibliography.bib
+Warning--entry type for "28:mirepo:online" isn't style-file defined
+--line 246 of file Bibliografia/bibliography.bib
 Warning--entry type for "29:firstapp:online" isn't style-file defined
---line 169 of file Bibliografia/bibliography.bib
+--line 256 of file Bibliografia/bibliography.bib
 Warning--entry type for "55:tabhostswipe:online" isn't style-file defined
---line 180 of file Bibliografia/bibliography.bib
+--line 267 of file Bibliografia/bibliography.bib
 Warning--entry type for "57:nube:online" isn't style-file defined
---line 190 of file Bibliografia/bibliography.bib
-Warning--I didn't find a database entry for "14:java:online"
+--line 277 of file Bibliografia/bibliography.bib
+Warning--entry type for "56:soap:online" isn't style-file defined
+--line 287 of file Bibliografia/bibliography.bib
+I was expecting a `,' or a `}'---line 293 of file Bibliografia/bibliography.bib
+ :  note = {\href{https://en.wikipedia.org/wiki/SOAP}{\texttt{https://en.wikipedia.org/wiki/SOAP}}} 
+ :                                                                                                  [Online; Último Acceso agosto 2015]},
+I'm skipping whatever remains of this entry
+Warning--entry type for "59:jvm:online" isn't style-file defined
+--line 307 of file Bibliografia/bibliography.bib
+Warning--entry type for "60:http:online" isn't style-file defined
+--line 317 of file Bibliografia/bibliography.bib
 Warning--there's a month but no year in 16:parse:online
 Warning--there's a month but no year in 57:nube:online
 Warning--there's a month but no year in 9:github:online
 Warning--there's a month but no year in 8:latex:online
 Warning--there's a month but no year in 3:remind:online
 Warning--there's a month but no year in 4:micolegioapp:online
+Warning--there's a month but no year in 24:creatactil:online
+Warning--there's a month but no year in 22:netbeans:online
+Warning--there's a month but no year in 16:ios:online
+Warning--there's a month but no year in 18:rest:online
+Warning--there's a month but no year in 56:soap:online
+Warning--there's a month but no year in 23:api:online
+Warning--there's a month but no year in 19:java:online
 Warning--there's a month but no year in 17:jdk:online
-Warning--there's a month but no year in 21:jdt:online
-Warning--there's a month but no year in 20:andoirdSDK:online
 Warning--there's a month but no year in 29:firstapp:online
 Warning--there's a month but no year in 55:tabhostswipe:online
+Warning--there's a month but no year in 59:jvm:online
+Warning--there's a month but no year in 28:mirepo:online
 Warning--there's a month but no year in 10:hashmap:online
 Warning--there's a month but no year in 11:parcelable:online
 Warning--there's a month but no year in 12:arraytist:online
-(There were 36 warnings)
+Warning--there's a month but no year in 25:tabhost:online
+(There was 1 error message)

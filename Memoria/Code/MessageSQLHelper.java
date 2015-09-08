@@ -15,17 +15,13 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
                 "hour TEXT, " +
                 "minutes TEXT, " +
                 "message TEXT )";
-
         String createConversationsTable = "CREATE TABLE conversations ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "dniSender TEXT, " +
                 "dniRemitter TEXT )";
-
         //Creando BBDD
         db.execSQL(createMessagesTable);
-        db.execSQL(createConversationsTable);
-    }
-
+        db.execSQL(createConversationsTable);}
     public void addMessage(Message message, String idConversation){/*...*/}
     public  void addConversation (String dniSender, String dniRemitter) {/*...*/}
     public String getIdConversation (String dniRemitter) {/*...*/}

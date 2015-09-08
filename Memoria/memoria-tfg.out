@@ -1,63 +1,48 @@
 \BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Objetivos}{}% 2
-\BOOKMARK [0][-]{chapter.3}{Antecedentes}{}% 3
-\BOOKMARK [1][-]{section.3.1}{Otras Aplicaciones similares}{chapter.3}% 4
-\BOOKMARK [2][-]{subsection.3.1.1}{Remind}{section.3.1}% 5
-\BOOKMARK [2][-]{subsection.3.1.2}{miColegioApp}{section.3.1}% 6
-\BOOKMARK [0][-]{chapter.4}{Especificaci\363n de Requisitos}{}% 7
-\BOOKMARK [1][-]{section.4.1}{Funcionalidades}{chapter.4}% 8
-\BOOKMARK [1][-]{section.4.2}{Sistemas de la Aplicaci\363n}{chapter.4}% 9
-\BOOKMARK [1][-]{section.4.3}{Perfiles}{chapter.4}% 10
-\BOOKMARK [0][-]{chapter.5}{Herramientas}{}% 11
-\BOOKMARK [1][-]{section.5.1}{Selecci\363n}{chapter.5}% 12
-\BOOKMARK [1][-]{section.5.2}{Otros entornos de desarrollo integrado: Eclipse}{chapter.5}% 13
-\BOOKMARK [2][-]{subsection.5.2.1}{Instalaci\363n}{section.5.2}% 14
-\BOOKMARK [1][-]{section.5.3}{Otros Servicios en la Nube: Parse16:parse:online}{chapter.5}% 15
-\BOOKMARK [1][-]{section.5.4}{Instalaci\363n de las herramientas usadas}{chapter.5}% 16
-\BOOKMARK [2][-]{subsection.5.4.1}{AndroidStudio}{section.5.4}% 17
-\BOOKMARK [2][-]{subsection.5.4.2}{Firebase}{section.5.4}% 18
-\BOOKMARK [0][-]{chapter.6}{Descripci\363n de la Aplicaci\363n}{}% 19
-\BOOKMARK [1][-]{section.6.1}{Pantalla Principal \(MainActivity\)}{chapter.6}% 20
-\BOOKMARK [2][-]{subsection.6.1.1}{Bienvenida \(WelcomeFragment\)}{section.6.1}% 21
-\BOOKMARK [2][-]{subsection.6.1.2}{Ayuda \(HelpFragment\)}{section.6.1}% 22
-\BOOKMARK [2][-]{subsection.6.1.3}{Sobre mi \(AboutMeFragment\)}{section.6.1}% 23
-\BOOKMARK [1][-]{section.6.2}{Cambio de idioma \(ChangeLanguajeActivity\)}{chapter.6}% 24
-\BOOKMARK [1][-]{section.6.3}{Registro \(RegisterActivity\)}{chapter.6}% 25
-\BOOKMARK [2][-]{subsection.6.3.1}{Registro de alumnos \(RegisterStudentActivity\)}{section.6.3}% 26
-\BOOKMARK [2][-]{subsection.6.3.2}{Registro de Profesores \(RegisterTeacherActivity\)}{section.6.3}% 27
-\BOOKMARK [2][-]{subsection.6.3.3}{Registro de Padres \(RegisterFatherActivity\)}{section.6.3}% 28
-\BOOKMARK [2][-]{subsection.6.3.4}{A\361adir hijo \(AddChildActivity\)}{section.6.3}% 29
-\BOOKMARK [1][-]{section.6.4}{Acceso \(LoginActivity\)}{chapter.6}% 30
-\BOOKMARK [1][-]{section.6.5}{Acceso como alumno \(StudentTabActivity\)}{chapter.6}% 31
-\BOOKMARK [2][-]{subsection.6.5.1}{Lista de contactos: Alumnos \(studentActivity\)}{section.6.5}% 32
-\BOOKMARK [2][-]{subsection.6.5.2}{Lista de contactos: Profesores \(TeachersActivity\)}{section.6.5}% 33
-\BOOKMARK [1][-]{section.6.6}{Acceso como padre \(FatherTabActivity\)}{chapter.6}% 34
-\BOOKMARK [2][-]{subsection.6.6.1}{Lista de contactos: Padres \(ExpandableFathersActivity\)}{section.6.6}% 35
-\BOOKMARK [2][-]{subsection.6.6.2}{Lista de contactos: Profesores \(ExpandableTeachersActivity\)}{section.6.6}% 36
-\BOOKMARK [1][-]{section.6.7}{Acceso como profesor \(TeacherTabActivity\)}{chapter.6}% 37
-\BOOKMARK [2][-]{subsection.6.7.1}{Lista de contactos: Profesores \(ExpandableTeachersActivity\)}{section.6.7}% 38
-\BOOKMARK [2][-]{subsection.6.7.2}{Lista de contactos: Padres \(ExpandableFathersActivity\)}{section.6.7}% 39
-\BOOKMARK [2][-]{subsection.6.7.3}{Lista de contactos: Alumnos \(ExpandableAlumnosActivity\)}{section.6.7}% 40
-\BOOKMARK [1][-]{section.6.8}{Notificaciones \(notificationsActivity\)}{chapter.6}% 41
-\BOOKMARK [1][-]{section.6.9}{Chat \(ChatActivity\)}{chapter.6}% 42
-\BOOKMARK [1][-]{section.6.10}{Mis Datos \(MyDataActivity\)}{chapter.6}% 43
-\BOOKMARK [1][-]{section.6.11}{Cambio de Contrase\361a \(ChangePasswordactivity\)}{chapter.6}% 44
-\BOOKMARK [1][-]{section.6.12}{Circulares \(CircularesActivity\)}{chapter.6}% 45
-\BOOKMARK [1][-]{section.6.13}{Citas}{chapter.6}% 46
-\BOOKMARK [1][-]{section.6.14}{Datos del contacto \(DataActivity\)}{chapter.6}% 47
-\BOOKMARK [0][-]{chapter.7}{Desarrollo de la Aplicaci\363n}{}% 48
-\BOOKMARK [1][-]{section.7.1}{Clase Student}{chapter.7}% 49
-\BOOKMARK [1][-]{section.7.2}{Clase Father}{chapter.7}% 50
-\BOOKMARK [1][-]{section.7.3}{Clase Teacher}{chapter.7}% 51
-\BOOKMARK [1][-]{section.7.4}{clase Message}{chapter.7}% 52
-\BOOKMARK [1][-]{section.7.5}{Clase MessageSQLHelper}{chapter.7}% 53
-\BOOKMARK [0][-]{chapter.8}{Problemas}{}% 54
-\BOOKMARK [0][-]{chapter.9}{Conclusiones y Lineas futuras}{}% 55
-\BOOKMARK [1][-]{section.9.1}{Lineas futuras}{chapter.9}% 56
-\BOOKMARK [1][-]{section.9.2}{Conclusiones}{chapter.9}% 57
-\BOOKMARK [0][-]{chapter.10}{Conclusions and Future lines}{}% 58
-\BOOKMARK [1][-]{section.10.1}{Future lines}{chapter.10}% 59
-\BOOKMARK [1][-]{section.10.2}{Conclusions}{chapter.10}% 60
-\BOOKMARK [0][-]{chapter.11}{Presupuesto}{}% 61
-\BOOKMARK [0][-]{appendix.Alph1}{Diagrama de Clases}{}% 62
-\BOOKMARK [0][-]{appendix.Alph2}{Diagrama de Actividades}{}% 63
+\BOOKMARK [1][-]{section.1.1}{Objetivos}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Antecedentes}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.2.1}{Aplicaciones similares}{section.1.2}% 4
+\BOOKMARK [0][-]{chapter.2}{Especificaci\363n de Requisitos}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Funcionalidades}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Sistemas de la Aplicaci\363n}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Perfiles}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Herramientas}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Otros Servicios en la Nube: Parse 16:parse:online}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{Instalaci\363n de las herramientas usadas}{chapter.3}% 11
+\BOOKMARK [2][-]{subsection.3.2.1}{AndroidStudio}{section.3.2}% 12
+\BOOKMARK [2][-]{subsection.3.2.2}{Firebase}{section.3.2}% 13
+\BOOKMARK [1][-]{section.3.3}{Tutoriales}{chapter.3}% 14
+\BOOKMARK [0][-]{chapter.4}{Descripci\363n de la Aplicaci\363n}{}% 15
+\BOOKMARK [1][-]{section.4.1}{Pantalla Principal \(MainActivity\)}{chapter.4}% 16
+\BOOKMARK [2][-]{subsection.4.1.1}{Bienvenida \(WelcomeFragment\)}{section.4.1}% 17
+\BOOKMARK [2][-]{subsection.4.1.2}{Ayuda \(HelpFragment\)}{section.4.1}% 18
+\BOOKMARK [2][-]{subsection.4.1.3}{Sobre mi \(AboutMeFragment\)}{section.4.1}% 19
+\BOOKMARK [1][-]{section.4.2}{Cambio de idioma \(ChangeLanguajeActivity\)}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{Registro \(RegisterActivity\)}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.3.1}{A\361adir alumno \(AddChildActivity\)}{section.4.3}% 22
+\BOOKMARK [1][-]{section.4.4}{Acceso \(LoginActivity\)}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.5}{Acceso de Usuarios}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.6}{Notificaciones \(notificationsActivity\)}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.7}{Chat \(ChatActivity\)}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.8}{Mis Datos \(MyDataActivity\)}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.9}{Cambio de Contrase\361a \(ChangePasswordactivity\)}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.10}{Circulares \(CircularesActivity\)}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.11}{Citas}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.12}{Datos del contacto \(DataActivity\)}{chapter.4}% 31
+\BOOKMARK [0][-]{chapter.5}{Desarrollo de la Aplicaci\363n}{}% 32
+\BOOKMARK [1][-]{section.5.1}{Clase Student}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.2}{Clase Father}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.3}{Clase Teacher}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.4}{Clase Message}{chapter.5}% 36
+\BOOKMARK [1][-]{section.5.5}{Clase MessageSQLHelper}{chapter.5}% 37
+\BOOKMARK [1][-]{section.5.6}{TabActivityes}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.7}{Problemas}{chapter.5}% 39
+\BOOKMARK [0][-]{chapter.6}{Conclusiones y Trabajos futuros}{}% 40
+\BOOKMARK [1][-]{section.6.1}{Trabajos futuros}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.2}{Conclusiones}{chapter.6}% 42
+\BOOKMARK [0][-]{chapter.7}{Conclusions and Future works}{}% 43
+\BOOKMARK [1][-]{section.7.1}{Future works}{chapter.7}% 44
+\BOOKMARK [1][-]{section.7.2}{Conclusions}{chapter.7}% 45
+\BOOKMARK [0][-]{chapter.8}{Presupuesto}{}% 46
+\BOOKMARK [0][-]{appendix.Alph1}{Diagrama de Clases}{}% 47
+\BOOKMARK [0][-]{appendix.Alph2}{Diagrama de Actividades}{}% 48

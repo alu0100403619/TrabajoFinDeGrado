@@ -1,66 +1,52 @@
 \select@language {spanish}
 \contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Objetivos}{2}{chapter.2}
-\contentsline {chapter}{\numberline {3}Antecedentes}{4}{chapter.3}
-\contentsline {section}{\numberline {3.1}Otras Aplicaciones similares}{5}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Remind}{5}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}miColegioApp}{6}{subsection.3.1.2}
-\contentsline {chapter}{\numberline {4}Especificaci\IeC {\'o}n de Requisitos}{7}{chapter.4}
-\contentsline {section}{\numberline {4.1}Funcionalidades}{7}{section.4.1}
-\contentsline {section}{\numberline {4.2}Sistemas de la Aplicaci\IeC {\'o}n}{9}{section.4.2}
-\contentsline {section}{\numberline {4.3}Perfiles}{11}{section.4.3}
-\contentsline {chapter}{\numberline {5}Herramientas}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Selecci\IeC {\'o}n}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Otros entornos de desarrollo integrado: Eclipse}{14}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Instalaci\IeC {\'o}n}{14}{subsection.5.2.1}
-\contentsline {section}{\numberline {5.3}Otros Servicios en la Nube: Parse\cite {16:parse:online}}{15}{section.5.3}
-\contentsline {subsubsection}{Instalaci\IeC {\'o}n}{16}{section*.5}
-\contentsline {section}{\numberline {5.4}Instalaci\IeC {\'o}n de las herramientas usadas}{19}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}AndroidStudio}{19}{subsection.5.4.1}
-\contentsline {subsubsection}{Primeros Pasos}{20}{section*.6}
-\contentsline {subsection}{\numberline {5.4.2}Firebase}{23}{subsection.5.4.2}
-\contentsline {chapter}{\numberline {6}Descripci\IeC {\'o}n de la Aplicaci\IeC {\'o}n}{26}{chapter.6}
-\contentsline {section}{\numberline {6.1}Pantalla Principal (MainActivity)}{28}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Bienvenida (WelcomeFragment)}{28}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Ayuda (HelpFragment)}{28}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Sobre mi (AboutMeFragment)}{29}{subsection.6.1.3}
-\contentsline {section}{\numberline {6.2}Cambio de idioma (ChangeLanguajeActivity)}{30}{section.6.2}
-\contentsline {section}{\numberline {6.3}Registro (RegisterActivity)}{30}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Registro de alumnos (RegisterStudentActivity)}{30}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Registro de Profesores (RegisterTeacherActivity)}{32}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Registro de Padres (RegisterFatherActivity)}{32}{subsection.6.3.3}
-\contentsline {subsection}{\numberline {6.3.4}A\IeC {\~n}adir hijo (AddChildActivity)}{32}{subsection.6.3.4}
-\contentsline {section}{\numberline {6.4}Acceso (LoginActivity)}{33}{section.6.4}
-\contentsline {section}{\numberline {6.5}Acceso como alumno (StudentTabActivity)}{34}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Lista de contactos: Alumnos (studentActivity)}{35}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}Lista de contactos: Profesores (TeachersActivity)}{35}{subsection.6.5.2}
-\contentsline {section}{\numberline {6.6}Acceso como padre (FatherTabActivity)}{36}{section.6.6}
-\contentsline {subsection}{\numberline {6.6.1}Lista de contactos: Padres (ExpandableFathersActivity)}{36}{subsection.6.6.1}
-\contentsline {subsection}{\numberline {6.6.2}Lista de contactos: Profesores (ExpandableTeachersActivity)}{37}{subsection.6.6.2}
-\contentsline {section}{\numberline {6.7}Acceso como profesor (TeacherTabActivity)}{37}{section.6.7}
-\contentsline {subsection}{\numberline {6.7.1}Lista de contactos: Profesores (ExpandableTeachersActivity)}{38}{subsection.6.7.1}
-\contentsline {subsection}{\numberline {6.7.2}Lista de contactos: Padres (ExpandableFathersActivity)}{38}{subsection.6.7.2}
-\contentsline {subsection}{\numberline {6.7.3}Lista de contactos: Alumnos (ExpandableAlumnosActivity)}{40}{subsection.6.7.3}
-\contentsline {section}{\numberline {6.8}Notificaciones (notificationsActivity)}{40}{section.6.8}
-\contentsline {section}{\numberline {6.9}Chat (ChatActivity)}{41}{section.6.9}
-\contentsline {section}{\numberline {6.10}Mis Datos (MyDataActivity)}{41}{section.6.10}
-\contentsline {section}{\numberline {6.11}Cambio de Contrase\IeC {\~n}a (ChangePasswordactivity)}{42}{section.6.11}
-\contentsline {section}{\numberline {6.12}Circulares (CircularesActivity)}{43}{section.6.12}
-\contentsline {section}{\numberline {6.13}Citas}{44}{section.6.13}
-\contentsline {section}{\numberline {6.14}Datos del contacto (DataActivity)}{44}{section.6.14}
-\contentsline {chapter}{\numberline {7}Desarrollo de la Aplicaci\IeC {\'o}n}{46}{chapter.7}
-\contentsline {section}{\numberline {7.1}Clase Student}{46}{section.7.1}
-\contentsline {section}{\numberline {7.2}Clase Father}{48}{section.7.2}
-\contentsline {section}{\numberline {7.3}Clase Teacher}{49}{section.7.3}
-\contentsline {section}{\numberline {7.4}clase Message}{50}{section.7.4}
-\contentsline {section}{\numberline {7.5}Clase MessageSQLHelper}{51}{section.7.5}
-\contentsline {chapter}{\numberline {8}Problemas}{56}{chapter.8}
-\contentsline {chapter}{\numberline {9}Conclusiones y Lineas futuras}{62}{chapter.9}
-\contentsline {section}{\numberline {9.1}Lineas futuras}{62}{section.9.1}
-\contentsline {section}{\numberline {9.2}Conclusiones}{62}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusions and Future lines}{64}{chapter.10}
-\contentsline {section}{\numberline {10.1}Future lines}{64}{section.10.1}
-\contentsline {section}{\numberline {10.2}Conclusions}{64}{section.10.2}
-\contentsline {chapter}{\numberline {11}Presupuesto}{66}{chapter.11}
-\contentsline {chapter}{\numberline {A}Diagrama de Clases}{67}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Diagrama de Actividades}{68}{appendix.Alph2}
+\contentsline {section}{\numberline {1.1}Objetivos}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Antecedentes}{3}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Aplicaciones similares}{3}{subsection.1.2.1}
+\contentsline {subsubsection}{Remind}{3}{section*.5}
+\contentsline {subsubsection}{miColegioApp}{4}{section*.6}
+\contentsline {chapter}{\numberline {2}Especificaci\IeC {\'o}n de Requisitos}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Funcionalidades}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Sistemas de la Aplicaci\IeC {\'o}n}{8}{section.2.2}
+\contentsline {section}{\numberline {2.3}Perfiles}{10}{section.2.3}
+\contentsline {chapter}{\numberline {3}Herramientas}{12}{chapter.3}
+\contentsline {section}{\numberline {3.1}Otros Servicios en la Nube: Parse \cite {16:parse:online}}{13}{section.3.1}
+\contentsline {subsubsection}{Instalaci\IeC {\'o}n}{14}{section*.7}
+\contentsline {section}{\numberline {3.2}Instalaci\IeC {\'o}n de las herramientas usadas}{16}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}AndroidStudio}{17}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Firebase}{18}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Tutoriales}{20}{section.3.3}
+\contentsline {chapter}{\numberline {4}Descripci\IeC {\'o}n de la Aplicaci\IeC {\'o}n}{22}{chapter.4}
+\contentsline {section}{\numberline {4.1}Pantalla Principal ({\ttfamily MainActivity})}{24}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Bienvenida ({\ttfamily WelcomeFragment})}{24}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Ayuda ({\ttfamily HelpFragment})}{24}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Sobre mi ({\ttfamily AboutMeFragment})}{24}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Cambio de idioma ({\ttfamily ChangeLanguajeActivity})}{24}{section.4.2}
+\contentsline {section}{\numberline {4.3}Registro ({\ttfamily RegisterActivity})}{25}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}A\IeC {\~n}adir alumno ({\ttfamily AddChildActivity})}{26}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}Acceso ({\ttfamily LoginActivity})}{27}{section.4.4}
+\contentsline {section}{\numberline {4.5}Acceso de Usuarios}{29}{section.4.5}
+\contentsline {section}{\numberline {4.6}Notificaciones ({\ttfamily notificationsActivity})}{30}{section.4.6}
+\contentsline {section}{\numberline {4.7}Chat ({\ttfamily ChatActivity})}{30}{section.4.7}
+\contentsline {section}{\numberline {4.8}Mis Datos ({\ttfamily MyDataActivity})}{31}{section.4.8}
+\contentsline {section}{\numberline {4.9}Cambio de Contrase\IeC {\~n}a ({\ttfamily ChangePasswordactivity})}{31}{section.4.9}
+\contentsline {section}{\numberline {4.10}Circulares ({\ttfamily CircularesActivity})}{31}{section.4.10}
+\contentsline {section}{\numberline {4.11}Citas}{32}{section.4.11}
+\contentsline {section}{\numberline {4.12}Datos del contacto ({\ttfamily DataActivity})}{32}{section.4.12}
+\contentsline {chapter}{\numberline {5}Desarrollo de la Aplicaci\IeC {\'o}n}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}Clase {\ttfamily Student}}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Clase {\ttfamily Father}}{35}{section.5.2}
+\contentsline {section}{\numberline {5.3}Clase {\ttfamily Teacher}}{35}{section.5.3}
+\contentsline {section}{\numberline {5.4}Clase {\ttfamily Message}}{35}{section.5.4}
+\contentsline {section}{\numberline {5.5}Clase {\ttfamily MessageSQLHelper}}{36}{section.5.5}
+\contentsline {section}{\numberline {5.6}\ttfamily TabActivityes}{38}{section.5.6}
+\contentsline {section}{\numberline {5.7}Problemas}{41}{section.5.7}
+\contentsline {chapter}{\numberline {6}Conclusiones y Trabajos futuros}{46}{chapter.6}
+\contentsline {section}{\numberline {6.1}Trabajos futuros}{46}{section.6.1}
+\contentsline {section}{\numberline {6.2}Conclusiones}{47}{section.6.2}
+\contentsline {chapter}{\numberline {7}Conclusions and Future works}{48}{chapter.7}
+\contentsline {section}{\numberline {7.1}Future works}{48}{section.7.1}
+\contentsline {section}{\numberline {7.2}Conclusions}{49}{section.7.2}
+\contentsline {chapter}{\numberline {8}Presupuesto}{50}{chapter.8}
+\contentsline {chapter}{\numberline {A}Diagrama de Clases}{52}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Diagrama de Actividades}{53}{appendix.Alph2}

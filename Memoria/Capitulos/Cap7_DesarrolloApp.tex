@@ -13,107 +13,79 @@
 \chapter{Desarrollo de la Aplicación}
 \label{chap:developing}
 
-	En este capítulo se expondrá la implementación de las clases mas relevantes para la aplicación.
-	Sería demasiado extenso explicar en profundidad cada uno de los elementos que componen \CollegeApp.
+	En este capítulo se expondrá la implementación de las clases más relevantes para la aplicación.
+	Sería demasiado extenso explicar en profundidad cada uno de los elementos que componen la aplicación.
+	La figura \ref{fig:ClassDiagram} presenta un diagrama de clases de \CollegeApp\ mientras que en el apéndice \ref{chap:activitiesdiagram} muestra el diagrama de actividades(figura \ref{fig:ActivitiesDiagram}).
 	
-	\section{Clase Student}
+	\bigskip
+	Todo el código de \CollegeApp\ \cite{28:mirepo:online} está disponible públicamente en el repositorio de github.
+	
+	\section{Clase {\ttfamily Student}} \label{sec:Student}
 	
 		Esta es la clase encargada de almacenar los datos de los alumnos que se obtienen desde el {\it proveedor de servicios}.
-		A continuación se explicarán los atributos de la clase:
-		
-		\begin{itemize}
-			\item {\it name}: Nombre del alumno.
-			\item {\it lastname}: Apellidos del alumno.
-			\item {\it school}: Escuela a la que asiste el alumno.
-			\item {\it classroom}: Clase a la que asiste el alumno.
-			\item {\it mail}: Correo electrónico del alumno.
-			\item {\it telephone}: Teléfono de alumno.
-			\item {\it dni}: D.N.I o N.I.E del alumno.
-			\item {\it rol}: El rol en este perfil es Alumno.
-		\end{itemize}
-		
-		El constructor obtiene los datos desde un {\it HashMap}\cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable}\cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
+		El constructor obtiene los datos desde un {\it HashMap} \cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable} \cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
 		En el listado \ref{code:StudentJava} se puede observar la implementación de la clase.
 		
-		\lstinputlisting[language=Java,caption={Ejemplo de la clase Student.},label={code:StudentJava}]{Code/Student.java}
-	
-	\section{Clase Father}
-	
-		Esta es la clase encargada de almacenar los datos de los usuarios con el perfil de padre que se obtienen desde la {\it nube}.
-		A continuación se explicarán los atributos de la clase:
-		
-		\begin{itemize}
-			\item {\it name}: Nombre del padre.
-			\item {\it lastname}: Apellidos del Padre.
-			\item {\it mail}: Correo electrónico del alumno.
-			\item {\it telephone}: Teléfono de alumno.
-			\item {\it dni}: D.N.I o N.I.E del alumno.
-			\item {\it childrens}: {\it ArrayList}\cite{12:arraytist:online} de la clase {\ttfamily Student} que son hijos del usuario.
-			\item {\it rol}: El rol en este perfil es Padre.
-		\end{itemize}
-		
-		El constructor obtiene los datos desde un {\it HashMap}\cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable}\cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
+		\lstinputlisting[float=h!, language=Java,caption={Ejemplo de la clase Student.},label={code:StudentJava}]{Code/Student.java}
 		
 		\bigskip
-		Los métodos importantes en esta clase son {\ttfamily getClassrooms()} que devuelve un ArrayList con las clases a las que van los hijos y {\ttfamily getSchools()} que devuelve otro ArrayList con los colegios a los que asisten los hijos.
-		En el listado \ref{code:FatherJava} se puede observar la implementación de la clase.
+		Entre las líneas 19 y 25 se observa el método {\ttfamily writeToParcel()}, que implementa la forma de introducir datos de un objeto de la clase {\it Parcelable}.
 		
-		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase Father.},label={code:FatherJava}]{Code/Father.java}
+		El método {\ttfamily readFromParcel()} (líneas de la 26 a la 30) muestra como se obtienen los datos de esta clase. En este método, los atributos deben estar en el mismo orden que el en {\ttfamily writeToParcel()}.
+		
+		De la línea 31 a la 36, se se muestra como crear un objeto de la clase {\it Parcelable}.
 	
-	\section{Clase Teacher}
+	\section{Clase {\ttfamily Father}}
+	
+		Esta es la clase encargada de almacenar los datos de los usuarios con el rol de padre que se obtienen desde la {\it nube}.
+		Los atributos de la clase son: name, lastname, mail, telephone, dni, childrens ({\it ArrayList} \cite{12:arraytist:online} de la clase {\ttfamily Student} que son hijos del usuario) y rol.
+		Funciona igual que la clase {\ttfamily Student} (sección \ref{sec:Student}).
+				
+		\bigskip
+		Los métodos más importantes en esta clase son {\ttfamily getClassrooms()} que devuelve un ArrayList con las clases en las que están registrados los hijos y {\ttfamily getSchools()} que devuelve otro ArrayList con los colegios a los que asisten los hijos.
+	
+	\section{Clase {\ttfamily Teacher}}
 	
 		Esta es la clase encargada de almacenar los datos de los usuarios con el perfil de profesor que se obtienen desde la {\it nube}.
-		A continuación se explicarán los atributos de la clase:
+		Los atributos de la clase son name, lastname, mail, telephone, dni y rol.
+		Funciona igual que la clase {\ttfamily Student} (sección \ref{sec:Student}).
 		
-		\begin{itemize}
-			\item {\it name}: Nombre del profesor.
-			\item {\it lastname}: Apellidos del profesor.
-			\item {\it mail}: Correo electrónico del profesor.
-			\item {\it telephone}: Teléfono de profesor.
-			\item {\it dni}: D.N.I o N.I.E del profesor.
-			\item {\it rol}: El rol en este perfil es Profesor.
-		\end{itemize}
+		El constructor obtiene los datos desde un {\it HashMap} \cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable} \cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
 		
-		El constructor obtiene los datos desde un {\it HashMap}\cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable}\cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
-		En el listado \ref{code:TeacherJava} se puede observar la implementación de la clase.
-		
-		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase Teacher.},label={code:TeacherJava}]{Code/Teacher.java}
-	
-	\section{clase Message}
+	\section{Clase {\ttfamily Message}}
 	
 		Esta es la clase encargada de almacenar los datos de los mensajes que se obtienen desde la {\it nube}.
-		A continuación se explicarán los atributos de la clase:
+		A continuación se enumeran los atributos de la clase:
 		
 		\begin{itemize}
-			\item {\it dniRemitter: D.N.I del remitente del mensaje.
-			\item {\it remitter}: Nombre del remitente del mensaje, se usa para mostrar el nombre en {\ttfamily NotificationsActivity}\ref{sec:notifications}.
-			\item {\it message}: Mensaje que mandan los usuarios.
+			\setlength{\itemsep}{1pt}
+			\setlength{\parskip}{0pt}
+			\setlength{\parsep}{0pt}
+			\item {\it dniRemitter}: D.N.I del remitente del mensaje.
+			\item {\it remitter}: Nombre del remitente del mensaje, se usa para mostrar el nombre en {\ttfamily NotificationsActivity} (sección \ref{sec:notifications}).
+			\item {\it message}: Mensaje que envían los usuarios.
 			\item {\it rolRemmiter}: Perfil del remitente, se usa para colorear las notificaciones.
 			\item {\it date}: fecha del mensaje.
 			\item {\it destinatario}: Este campo solo está presente en la base de datos. Se usa para recuperar los mensajes.
 		\end{itemize}
 		
-		El constructor obtiene los datos desde un {\it HashMap}\cite{10:hashmap:online} que es el objeto que devuelven las consultas a la base de datos. También se ha implementado la interfaz {\it Parcelable}\cite{11:parcelable:online} que es la que permite compartir objetos de una clase entre {\it Activities}. 
-		En el listado \ref{code:MessageJava} se puede observar la implementación de la clase.
+		Funciona igual que la clase {\ttfamily Student} (sección \ref{sec:Student}).
 		
-		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase Message.},label={code:MessageJava}]{Code/Message.java}
-		
-	\section{Clase MessageSQLHelper}
+	\section{Clase {\ttfamily MessageSQLHelper}}
 		Cada uno de los mensaje enviados entre los usuarios está almacenado en el dispositivo, en una base de datos local {\it SQLite}\cite{13:sqlite:online}.
 		
 		\bigskip
-		La tabla {\ttfamily messages} almacena los mensajes que se envian desde el dispositivo. Sus atributos son:
+		La tabla {\ttfamily messages} almacena los mensajes que se envían desde el dispositivo. Sus atributos son:
 		
 		\begin{itemize}
+			\setlength{\itemsep}{1pt}
+			\setlength{\parskip}{0pt}
+			\setlength{\parsep}{0pt}
 			\item {\it idConversation}: Identificación de la conversación.
 			\item {\it dniRemitter}: D.N.I del remitente.
 			\item {\it remitter}: Nombre del remitente.
 			\item {\it message}: Mensaje. 
-			\item {\it day}: Día en el que se envió el mensaje.
-			\item {\it month}: Mes en el que se envió el mensaje.
-			\item {\it year}: Año en el que se envió el mensaje.
-			\item {\it hour}: Hora en el que se envió la mensaje.
-			\item {\it minute}: Minuto en el que se envió el mensaje.
+			\item {\it day, month, year, hour, minute}: Datos del envío del mensaje.
 		\end{itemize}
 		
 		\bigskip
@@ -121,11 +93,104 @@
 		Sus atributos son:
 		
 		\begin{itemize}
+			\setlength{\itemsep}{1pt}
+			\setlength{\parskip}{0pt}
+			\setlength{\parsep}{0pt}
 			\item {\it id}: Identificación de la conversación.
 			\item {\it dniSender}: D.N.I del usuario que envía el mensaje.
 			\item {\it dniRemitter}: D.N.I del remitente.
 		\end{itemize}
 		
-		En el listado \ref{code:MessageDBJava} se puede observar la implementación de la clase.
+		En el listado \ref{code:MessageDBJava} se muestra la implementación de la clase.
 		
 		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase MessageSQLHelper.},label={code:MessageDBJava}]{Code/MessageSQLHelper.java}
+		
+		Desde la línea 6 hasta la 24, se muestra el método {\ttfamily onCreate()} donde se crean las las tablas descritas anteriormente. Para cada tabla se crea una variable de tipo cadena ({\it String}) con la definición cada uno de sus atributos. Después se ejecuta la función {\ttfamily execSQL()} y se le pasa como parámetro la variable creada.
+		
+	\section{\ttfamily TabActivityes}
+		Cuando el usuario accede a \CollegeApp\ se le muestra una pantalla con pestañas donde se hallan sus contactos. Cada pestaña es una actividad distinta a causa del problema \ref{prob:8}. Al cambiar de pestaña se cambia de actividad y la consulta deja de ejecutarse.
+		Esta solución ha sido la principal forma de construir la aplicación y solventar los problemas principales.
+		
+		\bigskip
+		En el listado \ref{code:studentTab} se muestra como se crean las pestañas en las que se mostrarán las listas de contactos. En la línea 5 se obtiene el elemento donde se añadirán las pestañas, llamado {\ttfamily TabHost} \cite{25:tabhost:online}. Se crea el objeto que lanzará la actividad deseado (línea 10) y se añade al {\ttfamily TabHost}.
+		
+		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase StudentTabActivity.},label={code:studentTab}]{Code/StudentTabActivity.java}
+		
+		\bigskip
+		La clase {\ttfamily StudentActivity} (listado \ref{code:studentActivity}) muestra un ejemplo de la interacción con la base de datos. En la línea 8 se puede ver la consulta que obtiene los alumnos que asisten a la misma clase que el usuario. A esta consulta se le añade un oyente que conecta con la base de datos y espera por si se modifican los datos. Se crea el objeto de la clase correspondiente en la línea 13 y se añade a un {\it ArrayList} con el que se rellenará la lista de contactos.
+		
+		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase StudentActivity.},label={code:studentActivity}]{Code/StudentActivity.java}
+	
+		\bigskip
+		En listado \ref{code:StudentRegisterJava} se muestra como se envía información a la base de datos. Al registrar al usuario se observa como existe una función que comprueba que todos los datos del formulario sean correctos (línea 7, {\ttfamily haveEmptyFields()}). Para permitir el acceso a \CollegeApp\ hay que crear al usuario como se muestra en la línea 8. Si se crea al usuario de forma satisfactoria, se procede a enviar la información a {\it Firebase}. Se crea un {\it HashMap} y se introducen los datos del usuario con el método {\ttfamily put()} (líneas 11 a 14). Se selecciona un identificador único (línea 15) y se envía a la base de datos. {\ttfamily studentRef} es la referencia a la tabla en la que se introducirán los datos, {\ttfamily child(uuid)} es la función que selecciona la fila correspondiente al usuario y {\ttfamily setValue(aluMap)} permite almacenar los datos que contiene el {\it HashMap} (línea 16).
+		
+		\lstinputlisting[float = h!,language=Java,caption={Ejemplo de la clase StudentRegisterActivity.},label={code:StudentRegisterJava}]{Code/StudentRegisterActivity.java}
+	
+	\section{Problemas}
+		Al diseñar una aplicación siempre surgen problemas inesperados en los que hay que agudizar el ingenio para resolverlos.
+		
+		En este capítulo se expondrán los problemas ocurridos a la hora de programar, se irán enumerando y explicando la forma de resolverlos.
+		
+		\begin{enumerate}
+			\item {\bf Android Studio no render target}
+			\begin{itemize}
+				\item {\bf Solución}:
+				\begin{enumerate}
+					\item Asegúrese de que hay un dispositivo real o virtual seleccionado.
+					\item Tener una versión de {\it Android} seleccionada.
+					\item Versiones necesarias para el desarrollo dela aplicación en {\it Android} instaladas.
+					\item Crear un nuevo {\it Dispositivo Virtual} ({\it AVD}).
+					% Meter dibujo de AVD
+					\item Reiniciar Android Studio.
+				\end{enumerate}
+			\end{itemize}
+			
+			\item {\bf Fallo al encontrar com.android.support:appcompat-v7:16.+}
+			\begin{itemize}
+				\item {\bf Solución}: Actualizar en las dependencias del archivo {\ttfamily build.gradle}, en el directorio {\ttfamily app} que está en la raíz del proyecto, la librería deberá ser la última versión disponible. Este cambio se realiza de forma manual.
+			\end{itemize}
+			
+			\item {\bf Fallo al encontrar Java}
+			\begin{itemize}
+				\item {\bf Solución}: Si java ya está instalado, averigüe el directorio. Una vez hecho esto necesita volver a establecer la variable de ámbito indicando la localización correcta. Seleccione {\ttfamily Iniciar \textgreater Equipo \textgreater Propiedades \textgreater Configuración Avanzada del Sistema}.
+				Entonces abra la pestaña {\ttfamily Opciones Avanzadas \textgreater Variables de Entorno} y añada una nueva variable de sistema llamada {\ttfamily JAVA\_HOME} que  tenga como valor la dirección del directorio donde tenga instalado el {\it JDK}, por ejemplo, {\ttfamily C:{\textbackslash}Program Files{\textbackslash}Java{\textbackslash}jdk1.7.0\_21}. 
+			\end{itemize}
+			\item {\bf Duplicidad en las dependencias de los paquetes}
+			\begin{itemize}
+				\item {\bf Solución}: Si se tiene un error de compilación sobre archivos duplicados, se puede excluir esos ficheros añadiendo la directiva {\ttfamily packagingOptions} al archivo {\ttfamily build.gradle} que está en el directorio {\ttfamily app}. Como se muestra en el listado \ref{code:duplicidadbuild}.
+				
+				\lstinputlisting[float = h!, language=Java,caption={Solución a la duplicidad en {\ttfamily build.gradle}.}, label={code:duplicidadbuild}]{Code/duplicidadbuild.gradle}
+			\end{itemize}
+			
+			\item {\bf Fallo al encontrar android.support.v13}
+			\begin{itemize}
+				\item {\bf Solución}: Añadir en las dependencias del archivo {\ttfamily build.gradle}, en el directorio {\ttfamily app} que está en la raíz del proyecto, la orden {\ttfamily compile 'com.android.support:support-v13:21.+'} de forma manual. Como se puede analizar en el listado \ref{code:supportv13}.
+				
+				\noindent
+				\lstinputlisting[float = h!, language=Java,caption={Solución al problema supportV13.},label={code:supportv13}]{Code/support13build.gradle}
+			\end{itemize}
+			
+			\item {\bf Arregle Gradle (Fix Gradle)}
+			\begin{itemize}
+				\item {\bf Solución}:
+				\begin{enumerate}
+					\item En el archivo {\ttfamily buil.gradle} que está en el directorio raíz del proyecto, añadir la dependencia de forma manual: {\ttfamily classpath 'com.android.tools.build:gradle:1.0.0' }. Listado \ref{code:buildGradle}.
+					\item En el archivo {\ttfamily buil.gradle}, que está en el directorio {\ttfamily app} en la raíz del proyecto, añadir dentro de {\ttfamily release} de forma manual, listado \ref{code:appBuildGradle}.
+					
+				\end{enumerate}
+				\noindent
+				\lstinputlisting[float = h!,language=Java,caption={Solución en {\ttfamily build.gradle}.},label={code:buildGradle}]{Code/buildgradle.gradle}
+				\lstinputlisting[float = h,language=Java,caption={Solución en {\ttfamily app/build.gradle}.},label={code:appBuildGradle}]{Code/appbuildgradle.gradle}
+			\end{itemize}
+			
+			\item {\bf SDK no encontrado}
+			\begin{itemize}
+				\item {\bf Solución}: Si AndroidStudio no encuentra el {\it SDK} y está instalado seleccionar {\ttfamily Windows \textgreater Preferencias \textgreater Android \textgreater Localización SDK} y establecer el directorio donde se tiene instalado.
+			\end{itemize}
+			
+			\item {\bf Consultas a la espera de cambios en los datos} \label{prob:8}
+			\begin{itemize}
+				\item {\bf Solución}: Existen dos tipos de consultas en {\it Firebase}, las que devuelven un solo resultado ({\ttfamily addListenerForSingleValueEvent()}) y las que devuelven varios resultados ({\ttfamily addChildEventListener()}). Éstas últimas se quedan esperando por si se modifican datos de la base de datos.
+				La solución sería remover el {\ttfamily listener} al final de su uso ({\ttfamily ref.removeEventListener(originalListener);}) o tener una sola consulta del segundo tipo por actividad.
+			\end{itemize}
+		\end{enumerate}

@@ -13,52 +13,35 @@
 \chapter{Herramientas}
 \label{chap:tools}
 
-	El software usado ha sido el siguiente:
+	El software usado en el desarrollo de \CollegeApp\ ha sido el siguiente:
 	\begin{itemize}
-		\item {\bf AndroidStudio}\cite{1:androidstudio:online}: Entorno de desarrollo integrado oficial para el desarrollo de aplicaciones para {\it Android}, basado en {\it IntelliJ IDEA}.
-		\item {\bf Android}\cite{2:android:online}: Sistema operativo basado en el {\it núcleo de Linux} para dispositivos móviles, televisores, automóviles y relojes inteligentes.
-		\item {\bf Firebase}\cite{6:firebase:online}: Proveedor de contenidos que proporciona servicios en la nube de forma fácil y segura, con una integración bastante sencilla con las nuevas tecnologías. Ofrece servicios de recuperación y guardado de datos, registro y acceso de usuarios, reglas de seguridad, simulador y análisis de datos entre otros. Los datos almacenados en este servicio no son datos \href{http://es.wikipedia.org/wiki/SQL}{\textit{SQL}}, si no que son datos \href{http://es.wikipedia.org/wiki/JSON}{\textit{JSON}}\cite{7:json:online}. Sistemas con los que {\it Firebase} está integrado:
+		\item {\bf AndroidStudio} \cite{1:androidstudio:online}: Entorno de desarrollo integrado oficial para el desarrollo de aplicaciones para {\it Android}, basado en {\it IntelliJ IDEA} \cite{14:intellij:online}.
+		Ha sido seleccionado por ser un entorno de programación moderno, de uso intuitivo y ligero en comparación con otros entornos de desarrollo ya existentes como {\it eclipse} \cite{15:eclipse:online} o {\it netbeans} \cite{22:netbeans:online} que son más pesados, ya que soportan más lenguajes de programación.
+		\item {\bf Android} \cite{2:android:online}: Sistema operativo basado en el {\it núcleo de Linux} para dispositivos móviles, televisores, automóviles y relojes inteligentes.
+		\item {\bf Firebase} \cite{6:firebase:online}: Proveedor de contenidos que proporciona servicios en la nube de forma fácil y segura, con una integración sencilla con las nuevas tecnologías. Ofrece servicios de recuperación y almacenamiento de datos, registro y acceso de usuarios, reglas de seguridad, simulador y análisis de datos entre otros. Los datos almacenados en este servicio no son datos \href{http://es.wikipedia.org/wiki/SQL}{\textit{SQL}}, sino que son datos \href{http://es.wikipedia.org/wiki/JSON}{\textit{JSON}} \cite{7:json:online}. Ha sido elegido por ser uno de los servicios en la nube más sencillos de utilizar.
+		Sistemas con los que {\it Firebase} está integrado:
 		\begin{itemize}
-			\item {\bf Android}\cite{2:android:online}: Sistema Operativo para dispositivos móviles propiedad de Google.
-			\item {\bf IOS}: Sistema operativo para dispositivos móviles propiedad de Apple Inc.
+			\item {\bf Android}: Sistema Operativo para dispositivos móviles propiedad de Google.
+			\item {\bf IOS} \cite{16:ios:online}: Sistema operativo para dispositivos móviles propiedad de Apple Inc.
 			\item {\bf Servicios Web}.
-			\item {\bf Servicios REST}.
+			\item {\bf Servicios REST} \cite{18:rest:online}: Es un conjunto de principios de arquitectura, pero en la actualidad se usa en el sentido más amplio para describir cualquier interfaz entre sistemas que utilice directamente HTTP \cite{60:http:online} para obtener datos o indicar la ejecución de operaciones sobre los datos, en cualquier formato sin las abstracciones adicionales de los protocolos basados en patrones de intercambio de mensajes, como por ejemplo SOAP \cite{56:soap:online}.
 		\end{itemize}
 	\end{itemize}
 	
-	\section{Selección}
-	%Por qué seleccionamos las herramientas seleccionadas
-	Se ha seleccionado {\it AndroidStudio} por ser un entorno de programación nuevo, de uso intuitivo y ligero en comparación con otros entornos de desarrollo ya existentes que son mas pesados, ya que soportan más lenguajes de programación. {\it Firebase} ha sido elegido por la misma razón, siendo uno de los servicios en la nube más sencillos de utilizar.
+	\section{Otros Servicios en la Nube: Parse \cite{16:parse:online}}
+	Proveedor de servicios en la nube alternativo a {\it Firebase} que ofrece eventos, autenticación de usuarios, almacenamientos de datos, análisis y {\it notificaciones push} entre otros.
 	
-	\section{Otros entornos de desarrollo integrado: Eclipse}
-	Software compuesto por varias herramientas de programación. Éstas son de código abierto multiplataforma para el desarrollo de proyectos. Al ser un conjunto de herramientas, se le considera un entorno de programación integrado, es decir, {\it IDE}.
+	\bigskip
+	Tras la implementación de una aplicación ejemplo para valorar {\it Parse}, se ha seleccionado {\it Firebase} por estar diseñado para la construcción de datos en tiempo real. Al acceder a través de una librería cliente los datos se sincronizan en tiempo real rápidamente. También ofrece una {\it interfaz de programación de aplicaciones} \cite{23:api:online}  de seguridad basada en la expresión altamente flexible que permite un control preciso sobre el acceso a los datos de los clientes.
 	
-	\subsection{Instalación}
-	\begin{itemize}
-		\item {\bf JDK}: Descargar e instalar {\it Java Development Kit}\cite{17:jdk:online}.
-		\item {\bf JDT}: Descargar e instalar {\it Java Development Tools}\cite{21:jdt:online}.
-		\item {\bf Eclipse}: Descargar {\it Eclipse IDE for Java Developers}\cite{15:eclipse:online}.
-		\item {\bf Uso}: Descomprimir en la carpeta donde se va a almacenar, y ejecutar {\ttfamily eclipse.exe}.
-		\begin{itemize}
-			\item {\bf workspace}: Seleccionar donde va a estar el espacio de trabajo en el cuadro de diálogo que aparece al ejecutar Eclipse por primera vez.
-			\item {\bf ADT Plug-in}\cite{20:andoirdSDK:online}: Seleccionar {\ttfamily help \textgreater Install new software} y en la ventana que se abre {\ttfamily work with \textgreater add} e introducir la dirección de internet donde se va a buscar los paquetes a instalar.
-			\item {\bf Paquetes}: Seleccionar los paquetes de {\it Developers Tools}.
-		\end{itemize}
-		\item {\bf SDK}: Añadir paquetes {\it SDK} con el gestor de paquetes ({\it SDK Manager}) seleccionándolo en la barra de herramientas (Figura \ref{fig:SdkManager}).
-		\begin{figure}[h !]
-			\centering
-			\includegraphics{SdkManager}
-			\caption{Icono SDK Manager}
-			\label{fig:SdkManager}
-		\end{figure}
-	\end{itemize}
-	
-	\section{Otros Servicios en la Nube: Parse\cite{16:parse:online}}
-	Proveedor de servicios en la nube que ofrece eventos, autenticación de usuarios, almacenamientos de datos, análisis y {\it notificaciones push} entre otros.
+	\bigskip
 	{\it Parse} está integrado con las siguientes tecnologías:
 	\begin{itemize}
+		\setlength{\itemsep}{1pt}
+		\setlength{\parskip}{0pt}
+		\setlength{\parsep}{0pt}
 		\item {\it IOS}.
-		\item {\it Android}\cite{2:android:online}.
+		\item {\it Android} \cite{2:android:online}.
 		\item {\it Javascript}.
 		\item {\it OSX}.
 		\item {\it Unity}: Software para la creación de videojuegos.
@@ -77,7 +60,7 @@
 		\lstinputlisting[float = h!,language=Java,caption={Importación de la librería de {\it Parse}},label={code:gradleParse}]{Code/buildParse.gradle}
 		\newpage
 		
-		\item {\bf Uso}: En los archivos de clase {\ttfamily  .java}\cite{14:java:online} seguir los siguientes pasos:
+		\item {\bf Uso}: En los archivos de clase {\ttfamily  .java}\ \cite{19:java:online} seguir los siguientes pasos:
 		\begin{itemize}
 			\item {\bf Librerías}: Importar las librerías necesarias:
 			\begin{itemize}
@@ -94,11 +77,11 @@
 			\item {\bf Oyentes}:Añadir un oyente ({\it Listener}) a la consulta.
 		\end{itemize}
 		
-		En el listado \ref{code:parse} obtenemos un ejemplo de uso de la librería.
+		En el listado \ref{code:parse} se presenta un ejemplo de uso de la librería.
 		
 		\newpage
 		\noindent
-		\lstinputlisting[language=Java,caption={Ejemplo de uso de {\it Parse}},label={code:parse}]{Code/ParseExample.java}
+		\lstinputlisting[language=Java,caption={Ejemplo de uso de {\it Parse} (parte del código)},label={code:parse}]{Code/ParseExample.java}
 	\end{itemize}
 		
 	\section{Instalación de las herramientas usadas}
@@ -106,17 +89,10 @@
 	
 	\subsection{AndroidStudio}
 	\begin{itemize}
-		\item {\bf JDK}: Descargar e instalar {\it Java Development Kit}\cite{17:jdk:online}.
+		\item {\bf JDK}: Descargar e instalar {\it Java Development Kit} \cite{17:jdk:online}.
 		\item {\bf Descarga}: Descargar {\it AndrodiStudio}.
 		\item {\bf Instalación}: Ejecutar el archivo de instalación descargado y seguir los pasos indicados por el instalador.
-		\item {\bf SDK}: Añadir paquetes {\it SDK} con el gestor de paquetes ({\it SDK Manager}) seleccionándolo en la barra de herramientas (Figura \ref{fig:SdkManager}).
-
-		\begin{figure}[h !]
-			\centering
-			\includegraphics{SdkManager}
-			\caption{Icono SDK Manager}
-			\label{fig:SdkManager}
-		\end{figure}
+		\item {\bf SDK}: Añadir paquetes {\it SDK} con el gestor de paquetes ({\it SDK Manager}) seleccionándolo en la barra de herramientas.
 		\item {\bf Paquetes}: Seleccionar las versiones de {\it Android} \cite{2:android:online} a instalar, se pueden elegir o quitar paquetes concretos de cada versión. Darle a {\it Install}. Es importante que ademas de instalar las versiones a utilizar, se instalen los siguientes paquetes:
 		\begin{itemize}
 			\item {\it Android SDK Tools}.
@@ -128,59 +104,23 @@
 		\end{itemize}
 	\end{itemize}
 	
-	En la figura \ref{fig:SdkManager} se pueden observar los paquetes que se pueden instalar.
+	En la figura \ref{fig:SdkManagerPackages} se pueden observar los paquetes que se pueden instalar.
 	
 	\begin{figure}[h !]
 		\centering
-		\includegraphics{Packages}
+		\includegraphics[scale=0.5]{Packages}
 		\caption{Paquetes en SDK Manager}
 		\label{fig:SdkManagerPackages}
 	\end{figure}
 	
-	\subsubsection{Primeros Pasos}
-	
-		Antes de comenzar con el desarrollo de la aplicación, se han implementado varias aplicaciones a modo de ejemplo para afianzar los conocimientos sobre {\it Android}.
-		
-		\begin{enumerate}
-			\item {\it Build your first app}\cite{29:firstapp:online}
-			\item {\it Adding the action bar}
-			\item {\it Supporting Different Devices}
-			\item {\it Managing the Activity Lifecycle}
-			\item {\it Building a Dynamic UI with Fragments}
-			\item {\it Saving Data}
-			\item {\it Interacting with Other Apps}
-			\item {\it Sharing Simple Data}
-			\item {\it Sharing Files}
-			\item {\it Sharing Files with NFC}
-			\item {\it Managing Audio Playback}
-			\item {\it Capturing Photos}
-			\item {\it Printing Content}
-			\item {\it Displaying Bitmaps Efficiently}
-			\item {\it Displaying Graphics with OpenGL ES}
-			\item {\it Animating Views Using Scenes and Transitions}
-			\item {\it Adding Animations}
-			\item {\it Connecting Devices Wirelessly}
-			\item {\it Performing Network Operations}
-			\item {\it Syncing to the Cloud}
-			\item {\it Transferring Data Using Sync Adapters}
-			\item {\it Best Practices for Security \& Privacy}
-			\item {\it Best Practices for Testing}
-			\item {\it Parse}
-			\item {\it Firebase Storage}
-			\item {\it Expandable ListView}
-			\item {\it TabHost Swipe}\cite{55:tabhostswipe:online}
-			\item {\it ActionBar Tab Swipe}
-		\end{enumerate}
-	
-	
 	\newpage
 	\subsection{Firebase}
 	\begin{itemize}
-		\item {\bf Librería}: Añadir la librería de {\it Firebase} en el archivo {\ttfamily build.gradle} que esta dentro de la carpeta {\ttfamily app} en el directorio raíz del proyecto. En el listado \ref{code:gradle} se puede observar como se importa la librería de {\it Firebase}.
+		\item {\bf Librería}: Añadir la librería de {\it Firebase} en el archivo {\ttfamily build.gradle} que está dentro de la carpeta {\ttfamily app} en el directorio raíz del proyecto \CollegeApp. En el listado \ref{code:gradle} se puede observar cómo se importa la librería de {\it Firebase}.
 		
 		\lstinputlisting[float = h!,language=Java,caption={Importación de la librería de {\it Firebase}},label={code:gradle}]{Code/build.gradle}
 		
-		\item {\bf Uso}: En los archivos de clase {\ttfamily .java}\cite{14:java:online} seguir los siguientes pasos:
+		\item {\bf Uso}: En los archivos de clase {\ttfamily .java }\cite{19:java:online} seguir los siguientes pasos:
 		\begin{itemize}
 			\item {\bf Librerías}: Se han de importar la librerías necesarias:
 			\begin{itemize}
@@ -197,6 +137,48 @@
 		\end{itemize}
 	\end{itemize}
 
-	En el listado \ref{code:firebase} se puede observar un ejemplo del uso de la librería {\it Firebase}.
+	En el listado \ref{code:firebase} se presenta un ejemplo del uso de la librería {\it Firebase}.
 	
 	\lstinputlisting[float = h!,language=Java,caption={Ejemplo de uso de {\it Firebase}},label={code:firebase}]{Code/FirebaseExample.java}
+	
+	\section{Tutoriales}
+	
+	Antes de comenzar con el desarrollo de la aplicación propiamente dicha, se han implementado diversas aplicaciones a modo de ejemplo para afianzar los conocimientos sobre {\it Android}.
+	
+	\begin{enumerate}
+		\setlength{\itemsep}{1pt}
+		\setlength{\parskip}{0pt}
+		\setlength{\parsep}{0pt}
+		\item {\it Build your first app} \cite{29:firstapp:online}
+		\item {\it Adding the action bar}
+		\item {\it Supporting Different Devices} \label{tut:3}
+		\item {\it Managing the Activity Lifecycle}
+		\item {\it Building a Dynamic UI with Fragments} \label{tut:5}
+		\item {\it Saving Data}
+		\item {\it Interacting with Other Apps}
+		\item {\it Sharing Simple Data}
+		\item {\it Sharing Files}
+		\item {\it Sharing Files with NFC}
+		\item {\it Managing Audio Playback}
+		\item {\it Capturing Photos}
+		\item {\it Printing Content}
+		\item {\it Displaying Bitmaps Efficiently}
+		\item {\it Displaying Graphics with OpenGL ES}
+		\item {\it Animating Views Using Scenes and Transitions}
+		\item {\it Adding Animations} \label{tut:17}
+		\item {\it Connecting Devices Wirelessly}
+		\item {\it Performing Network Operations}
+		\item {\it Syncing to the Cloud}
+		\item {\it Transferring Data Using Sync Adapters}
+		\item {\it Best Practices for Security \& Privacy}
+		\item {\it Best Practices for Testing}
+		\item {\it Parse}
+		\item {\it Firebase Storage} \label{tut:25}
+		\item {\it Expandable ListView} \label{tut:26}
+		\item {\it TabHost Swipe} \cite{55:tabhostswipe:online} \label{tut:27}
+		\item {\it ActionBar Tab Swipe} \label{tut:28}
+	\end{enumerate}
+	
+	Los tutoriales más relevantes para el desarrollo de \CollegeApp\ fueron {\it Supporting Different Devices} (tutorial \ref{tut:3}) que ayudó a implementar el soporte de idiomas y {\it Building a Dynamic UI with Fragments} (tutorial \ref{tut:5}), {\it ActionBar Tab Swipe} (tutorial \ref{tut:28}) y {\it TabHost Swipe} (tutorial \ref{tut:27}) gracias a los cuales existe {\ttfamily WelcomeActivity}.
+	
+	 También han sido significativos {\it Adding Animations} (tutorial \ref{tut:17}) para el {\it cuadro de diálogo} {\bf cargando}, {\it Firebase Storage} (tutorial \ref{tut:25}) que permitió la programación del uso de la base de datos y {\it Expandable ListView} (tutorial \ref{tut:26}) cuyos conocimientos se utilizaron en el desarrollo de la lista de contactos desplegable.

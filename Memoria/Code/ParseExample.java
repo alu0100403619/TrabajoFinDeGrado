@@ -1,22 +1,15 @@
-package com.example.gonzalo.noteapp;
-import com.parse.FindCallback;
-import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
+//Importar Librerias de Firebase: FindCallback, Parse
+//ParseException, ParseObject, ParseQuery, ParseUser
 public class MainActivity extends ListActivity {
-    public static final String APPLICATION_ID = "ID de la Aplicacion";
-    public static final String CLIENT_KEY = "Clave de Cliente";
+    public static final String APPLICATION_ID = "APP_ID";
+    public static final String CLIENT_KEY = "ClientKey";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //...
         //Inicializando Parse
         Parse.initialize(this, APPLICATION_ID, CLIENT_KEY);
         //Para autenticacion de Usuarios
-        ParseUser currentUser = ParseUser.getCurrentUser();
-    }
+        ParseUser currentUser = ParseUser.getCurrentUser(); }
     private void refreshPostList() {
         Object[] authors = {null, ParseUser.getCurrentUser()};
         //Ejemplo de consulta a Parse
@@ -31,12 +24,8 @@ public class MainActivity extends ListActivity {
                     for (ParseObject post : postList) {
                         Note note = new Note(post.getObjectId(),
                                 post.getString("title"), post.getString("content"));
-                        posts.add(note);
-                    }//for
-                    ((ArrayAdapter<Note>) getListAdapter()).notifyDataSetChanged();
-                } else {
+                        posts.add(note);}//for
+                    ((ArrayAdapter<Note>) getListAdapter()).notifyDataSetChanged(); } else {
                     Log.d(getClass().getSimpleName(), "Error: " + e.getMessage());
-                }//else
-            }});//query.findInBackground
-    }
-}//class
+                }}});//query.findInBackground
+    }}//class
