@@ -25,12 +25,12 @@
             android:onClick="SendMessage" />
     </LinearLayout>
 
-    <EditText
+    <EditText android:lines="3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText_message"
         android:hint="@string/text_hint"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/editText_asunto"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -58,8 +58,8 @@
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:layout_height="40dip"
+        android:id="@+id/editText_asunto"
         android:layout_below="@+id/editTextContact"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

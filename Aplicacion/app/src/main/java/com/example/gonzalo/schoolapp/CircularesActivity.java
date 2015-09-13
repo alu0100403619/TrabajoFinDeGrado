@@ -246,7 +246,9 @@ public class CircularesActivity extends Activity {
         //BBDD Local, en el dispositivo
         MessageSQLHelper messageBBDD = new MessageSQLHelper(this);
         //Mensaje a mandar
-        String messageToSend = ((EditText) findViewById(R.id.editText_message)).getText().toString().trim();
+        String messageToSend = getString(R.string.asunto) + ": " +
+                ((EditText) findViewById(R.id.editText_asunto)).getText().toString().trim() + "\n" +
+                ((EditText) findViewById(R.id.editText_message)).getText().toString().trim();
         //Obtenemos la fecha
         Calendar calendar = Calendar.getInstance();
         Date date = new Date(calendar.get(calendar.DAY_OF_MONTH),
