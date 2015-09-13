@@ -24,8 +24,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
                 android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_action_person"
-                android:drawableEnd="@drawable/ic_action_required"/>
+                android:drawableLeft="@drawable/ic_action_person" />
 
 
             <EditText android:id="@+id/text_lastname"
@@ -33,16 +32,14 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/lastname"
                 android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_action_person"
-                android:drawableEnd="@drawable/ic_action_required"/>
+                android:drawableLeft="@drawable/ic_action_person" />
 
             <EditText android:id="@+id/text_telephone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/telephone"
                 android:inputType="phone" android:maxLength="9"
-                android:ems="10" android:drawableLeft="@drawable/ic_action_phone"
-                android:drawableEnd="@drawable/ic_action_required"/>
+                android:ems="10" android:drawableLeft="@drawable/ic_action_phone" />
 
             <LinearLayout android:id="@+id/dni_group"
                 android:orientation="horizontal"
@@ -68,10 +65,6 @@
                     android:hint="@string/letter_dni"
                     android:inputType="textCapCharacters"
                     android:maxLength="1" />
-                <ImageView android:id="@+id/asterisk3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_required"/>
             </LinearLayout>
 
             <EditText android:id="@+id/text_mail"
@@ -79,33 +72,25 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/mail"
                 android:inputType="textEmailAddress"
-                android:drawableLeft="@drawable/ic_action_email"
-                android:drawableEnd="@drawable/ic_action_required"/>
+                android:drawableLeft="@drawable/ic_action_email" />
 
             <EditText android:id="@+id/text_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_action_secure"
-                android:drawableEnd="@drawable/ic_action_required"/>
+                android:drawableLeft="@drawable/ic_action_secure" />
 
             <EditText android:id="@+id/text_repeated_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/repeat_password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_action_secure"
-                android:drawableEnd="@drawable/ic_action_required"/>
+                android:drawableLeft="@drawable/ic_action_secure" />
 
             <LinearLayout android:id="@+id/numberChildrenGroup"
                 android:layout_width="fill_parent" android:orientation="horizontal"
                 android:layout_height="wrap_content">
-
-                <ImageView android:id="@+id/asterisk1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:src="@drawable/ic_action_required"
-                    android:contentDescription="Required" />
 
                 <TextView android:id="@+id/numberChildrenLabel"
                     android:layout_width="wrap_content" android:text="@string/father_number_children"

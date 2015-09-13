@@ -71,7 +71,8 @@
     <string name="help_ok_dialog">Aceptar</string>
     <string name="ok">Vale</string>
     <string name="action_logout">Salir</string>
-    <string name="required_fields">Campos Obligatorios</string>
+    <string name="required_fields">Todos los campos son obligatorios</string>
+    <string name="optional_fields">Campos Opcionales</string>
     <string name="letter_nie">X, Y, Z</string>
     <string name="dni">12345678</string>
     <string name="letter_dni">A - Z</string>

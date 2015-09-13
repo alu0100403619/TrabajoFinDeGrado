@@ -67,7 +67,8 @@
     <string name="help_ok_dialog">Accepter</string>
     <string name="ok">D\'accord</string>
     <string name="action_logout">Se déconnecter</string>
-    <string name="required_fields">Champs Requis</string>
+    <string name="required_fields">Tous les champs sont requis.</string>
+    <string name="optional_fields">Les champs facultatifs.</string>
     <string name="delete_account">Supprimer le Compte</string>
     <string name="password_not_equals">Les mots de passe ne sont pas égux</string>
     <string name="action_not_undone">Cette action ne peut être annulée</string>

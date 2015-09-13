@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.clases.Student;
@@ -234,21 +235,21 @@ public class AddChildActivity extends Activity {
             haveEmptyFields = true;
         }
         if (dni.isEmpty()) {
-            ImageView asterisk3 = (ImageView) findViewById(R.id.asterisk3);
-            asterisk3.setImageResource(R.drawable.ic_action_required_empty);
+            dniEditText.setError(getString(R.string.field_empty));
+            letterDniEditText.setError(getString(R.string.field_empty));
             Toast.makeText(this, getString(R.string.field_empty), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         } else if ((!Utilities.isDNI(dni)) && (!Utilities.isNIE(dni))) {
-            ImageView asterisk3 = (ImageView) findViewById(R.id.asterisk3);
-            asterisk3.setImageResource(R.drawable.ic_action_required_empty);
+            dniEditText.setError(getString(R.string.dni_format_error));
+            letterDniEditText.setError(getString(R.string.dni_format_error));
             Toast.makeText(this, getString(R.string.dni_format_error), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
         if ((classroom.isEmpty()) || (classroom.equals(getString(R.string.add_class))) ||
                 (classroom.equals(getString(R.string.select_class)))) {
             Log.i("RegStudAct", "classroom Empty");
-            ImageView asterisk2 = (ImageView) findViewById(R.id.asterisk2);
-            asterisk2.setImageResource(R.drawable.ic_action_required_empty);
+            TextView classroomTextView = (TextView) findViewById(R.id.label_spinner_2);
+            classroomTextView.setTextColor(getResources().getColor(R.color.Red));
             Toast.makeText(this, getString(R.string.select_class), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
@@ -260,8 +261,8 @@ public class AddChildActivity extends Activity {
         if ((school.isEmpty()) || (school.equals(getString(R.string.add_school))) ||
                 (school.equals(getString(R.string.select_school)))) {
             Log.i("RegStudAct", "school Empty");
-            ImageView asterisk1 = (ImageView) findViewById(R.id.asterisk1);
-            asterisk1.setImageResource(R.drawable.ic_action_required_empty);
+            TextView schoolTextView = (TextView) findViewById(R.id.class_label);
+            schoolTextView.setTextColor(getResources().getColor(R.color.Red));
             Toast.makeText(this, getString(R.string.select_school), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }

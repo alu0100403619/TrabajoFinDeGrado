@@ -24,8 +24,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
                 android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_action_person"
-                android:drawableEnd="@drawable/ic_action_required"/>
+                android:drawableLeft="@drawable/ic_action_person"/>
 
 
             <EditText android:id="@+id/text_lastname"
@@ -33,14 +32,14 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/lastname"
                 android:inputType="textPersonName"
-                android:drawableLeft="@drawable/ic_action_person"
-                android:drawableEnd="@drawable/ic_action_required"/>
+                android:drawableLeft="@drawable/ic_action_person"/>
 
             <EditText android:id="@+id/text_telephone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/telephone"
                 android:inputType="phone" android:maxLength="9"
+                android:drawableEnd="@drawable/ic_action_required"
                 android:ems="10" android:drawableLeft="@drawable/ic_action_phone"/>
 
             <LinearLayout android:id="@+id/dni_group"
@@ -67,10 +66,6 @@
                     android:hint="@string/letter_dni"
                     android:inputType="textCapCharacters"
                     android:maxLength="1" />
-                <ImageView android:id="@+id/asterisk3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_required"/>
             </LinearLayout>
 
             <LinearLayout android:id="@+id/school_group"
@@ -81,10 +76,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bbdd_schools"/>
-                <ImageView android:id="@+id/asterisk1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:src="@drawable/ic_action_required"
-                    android:contentDescription="Required" />
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
@@ -99,10 +90,6 @@
                 <TextView android:id="@+id/class_label"
                     android:layout_width="wrap_content" android:text="@string/bbdd_class"
                     android:layout_height="wrap_content" />
-                <ImageView android:id="@+id/asterisk2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:src="@drawable/ic_action_required"
-                    android:contentDescription="Required" />
                 <Spinner android:id="@+id/classSpinner"
                     android:layout_width="226dp"
                     android:layout_height="wrap_content" />
@@ -118,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/mail"
                 android:inputType="textEmailAddress"
-                android:drawableLeft="@drawable/ic_action_email" />
+                android:drawableLeft="@drawable/ic_action_email"
+                android:drawableEnd="@drawable/ic_action_required"/>
 
             <LinearLayout android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -130,7 +118,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/required_fields"/>
+                    android:text="@string/optional_fields"/>
             </LinearLayout>
 
             <LinearLayout android:orientation="horizontal"

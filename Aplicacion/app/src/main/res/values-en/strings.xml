@@ -68,7 +68,8 @@
     <string name="help_ok_dialog">Acept</string>
     <string name="ok">Ok</string>
     <string name="action_logout">Log Out</string>
-    <string name="required_fields">Required Fields</string>
+    <string name="required_fields">All fields are required.</string>
+    <string name="optional_fields">Optional Fields</string>
     <string name="delete_account">Delete Account</string>
     <string name="password_not_equals">Passwords are not equal</string>
     <string name="action_not_undone">This action can not be undone</string>
