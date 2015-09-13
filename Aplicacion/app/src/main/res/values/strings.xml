@@ -124,28 +124,28 @@
     <string name="ActionBar_father">Rol: Padre/Madre/Tutor Legal</string>
 
     <!-- Activity's Titles -->
-    <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_alumno_tab">AlumnoTabActivity</string>
-    <string name="title_activity_circulares">CircularesActivity</string>
-    <string name="title_activity_teachers_tab">TeachersTabActivity</string>
-    <string name="title_activity_expandable_teachers">ExpandableTeachersActivity</string>
-    <string name="title_activity_expandable_fahters">ExpandableFahtersActivity</string>
-    <string name="title_activity_expandable_alumnos">ExpandableAlumnosActivity</string>
-    <string name="title_activity_fathers_tab">FathersTabActivity</string>
-    <string name="title_activity_contact">ContactActivity</string>
+    <string name="title_activity_register">Registro</string>
+    <string name="title_activity_alumno_tab">Pestañas de Alumno</string>
+    <string name="title_activity_circulares">Circulares</string>
+    <string name="title_activity_teachers_tab">Pestañas de Profesor</string>
+    <string name="title_activity_expandable_teachers">Profesores</string>
+    <string name="title_activity_expandable_fahters">Padres</string>
+    <string name="title_activity_expandable_alumnos">Alumnos</string>
+    <string name="title_activity_fathers_tab">Pestañas de Padres</string>
+    <string name="title_activity_contact">Contacto</string>
     <string name="title_activity_father_expandable_father">FatherExpandableFatherActivity</string>
-    <string name="title_activity_welcome">WelcomeActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_welcome">Bienvenido</string>
+    <string name="title_activity_login">Acceso</string>
     <string name="welcome_image_description">Imagen de Bienvenida</string>
     <string name="title_activity_data">Datos de Contacto</string>
-    <string name="title_activity_chat_2">ChatActivity</string>
-    <string name="title_activity_chat">ChatActivity</string>
-    <string name="title_activity_my_data">MyDataActivity</string>
-    <string name="title_activity_change_password">ChangePasswordActivity</string>
-    <string name="title_activity_register_teacher">RegisterTeacherActivity</string>
-    <string name="title_activity_register_father">RegisterFatherActivity</string>
-    <string name="title_activity_add_child">AddChildActivity</string>
-    <string name="title_activity_register_student">RegisterStudentActivity</string>
+    <string name="title_activity_chat">Chat</string>
+    <string name="title_activity_chat_2">Chat</string>
+    <string name="title_activity_my_data">Mis Datos</string>
+    <string name="title_activity_change_password">cambio de Contraseña</string>
+    <string name="title_activity_register_teacher">Registro de Profesores</string>
+    <string name="title_activity_register_father">Registro de Padres</string>
+    <string name="title_activity_add_child">Añadir hijos</string>
+    <string name="title_activity_register_student">Registro de Alumnos</string>
 
     <!-- Tabs Title -->
     <string name="welcomeTab">Bienvenido</string>
