@@ -43,7 +43,7 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
 
         String createConversationsTable = "CREATE TABLE conversations ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "dniSender TEXT, " +
+                "dniAddressee TEXT, " +
                 "dniRemitter TEXT )";
 
         //Creando BBDD
@@ -76,7 +76,7 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
     private static final String KEY_IDCONVERSATION = "idConversation";
     private static final String KEY_DNIREMITTER = "dniRemitter";
     private static final String KEY_REMITTER = "remitter";
-    private static final String KEY_DNISENDER = "dniSender";
+    private static final String KEY_DNIADDRESSEE = "dniAddressee";
     private static final String KEY_DAY= "day";
     private static final String KEY_MONTH= "month";
     private static final String KEY_YEAR= "year";
@@ -117,16 +117,16 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public  void addConversation (String dniSender, String dniRemitter) {
-        Log.d("addConversation", dniSender + "->" + dniRemitter);
+    public  void addConversation (String dniRemitter, String dniAddressee) {
+        Log.d("addConversation", dniRemitter + "->" + dniAddressee);
 
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
 
         // 2. create ContentValues to add key "column"/value
         ContentValues values = new ContentValues();
-        values.put(KEY_DNISENDER, dniSender);
         values.put(KEY_DNIREMITTER, dniRemitter);
+        values.put(KEY_DNIADDRESSEE, dniAddressee);
 
         // 3. insert
         db.insert(TABLE_CONVERSATIONS, // table
@@ -137,14 +137,17 @@ public class MessageSQLHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public String getIdConversation (String dniRemitter) {
+    //DniRemitter -> Remitente
+    public String getIdConversation (String dniRemitter, String dniAddressee) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_CONVERSATIONS,
-                COLUMNS_CONVERSATION,
-                KEY_DNIREMITTER + " = ?",
-                new String[] {dniRemitter}, null, null, null, null);
+        Cursor cursor = db.query(TABLE_CONVERSATIONS, // a. tabla a consultar (FROM)
+                COLUMNS_CONVERSATION, // b. columnas a devolver (SELECT)
+                KEY_DNIREMITTER + " = ? and " + KEY_DNIADDRESSEE + " = ?", // c. WHERE
+                new String[] {dniRemitter, dniAddressee}, // d. reemplaza a ?
+                null, null, null, null);
         if ((cursor != null) && (cursor.getCount() > 0)) {
             cursor.moveToFirst();
+            Log.i("MessageSQLHelper", "dniRemitter:"+dniRemitter+" - dniAddressee: "+dniAddressee+" - id: "+cursor.getString(0));
             return cursor.getString(0);
         }
         else {

@@ -268,12 +268,12 @@ public class CircularesActivity extends Activity {
             if ((mySchool.equals(studentSchool)) && (studentsSelected.contains(studentClass))) {
                 Log.i("CircularesActivity", "Entro por students contains");
                 //Add mensaje a la BBDD local
-                String idConversation = messageBBDD.getIdConversation(studentDNI);
+                String idConversation = messageBBDD.getIdConversation(myDNI, studentDNI);
                 if (idConversation != null) {
                     messageBBDD.addMessage(message, idConversation);
                 } else {
                     messageBBDD.addConversation(myDNI, studentDNI);
-                    idConversation = messageBBDD.getIdConversation(studentDNI);
+                    idConversation = messageBBDD.getIdConversation(myDNI, studentDNI);
                     messageBBDD.addMessage(message, idConversation);
                 }//if null
                 //Metemos los datos comunes en el mismo mapa
@@ -295,12 +295,12 @@ public class CircularesActivity extends Activity {
             if ((father.getSchools().contains(mySchool)) &&
                     (Utilities.containsSomethingString(fathersSelected, father.getClassrooms()))) {
                 //Add mensaje a la BBDD local
-                String idConversation = messageBBDD.getIdConversation(fatherDNI);
+                String idConversation = messageBBDD.getIdConversation(myDNI, fatherDNI);
                 if (idConversation != null) {
                     messageBBDD.addMessage(message, idConversation);
                 } else {
                     messageBBDD.addConversation(myDNI, fatherDNI);
-                    idConversation = messageBBDD.getIdConversation(fatherDNI);
+                    idConversation = messageBBDD.getIdConversation(myDNI, fatherDNI);
                     messageBBDD.addMessage(message, idConversation);
                 }//if null
                 //Metemos los datos comunes en el mismo mapa

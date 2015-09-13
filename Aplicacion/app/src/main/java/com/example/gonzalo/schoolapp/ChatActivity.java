@@ -59,23 +59,23 @@ public class ChatActivity extends ListActivity {
         //Obtener el Nombre
         chatName = getIntent().getExtras().getString(getString(R.string.name));
 
-        //Obtener mi e-mail
-        mail = getIntent().getExtras().getString(getString(R.string.mail));
-        dniRemitter = getIntent().getExtras().getString(getString(R.string.bbdd_dni_remitter));
-        idConversation = messageBBDD.getIdConversation(dniRemitter);
-        Log.i("ChatActivity", "idConversation: " + idConversation);
-
         //Obtener el Nombre
         myName = getIntent().getExtras().getString(getString(R.string.myName));
         myRol = getIntent().getExtras().getString(getString(R.string.myRol));
         myDNI = getIntent().getExtras().getString(getString(R.string.myDNI));
+
+        //Obtener mi e-mail
+        mail = getIntent().getExtras().getString(getString(R.string.mail));
+        dniRemitter = getIntent().getExtras().getString(getString(R.string.bbdd_dni_remitter));
+        idConversation = messageBBDD.getIdConversation(myDNI, dniRemitter);
+        Log.i("ChatActivity", "idConversation: " + idConversation);
 
         //Cargar Mensajes Previos Almacenados en la memoria de la BBDD
         if (idConversation != null) {
             messages.addAll(messageBBDD.getAllMessagesConversation(idConversation));
         } else {
             messageBBDD.addConversation(myDNI, dniRemitter);
-            idConversation = messageBBDD.getIdConversation(dniRemitter);
+            idConversation = messageBBDD.getIdConversation(myDNI, dniRemitter);
         }
 
         //Cambiar el titulo de la ActionBar
