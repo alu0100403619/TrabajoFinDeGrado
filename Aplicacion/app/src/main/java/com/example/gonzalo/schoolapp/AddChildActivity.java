@@ -101,7 +101,6 @@ public class AddChildActivity extends Activity {
         classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //Log.i("RegisterStudentActivity", "Item: "+classSchool.get(position));
                 String selected = classSpinner.getSelectedItem().toString();
                 if (selected.equals(getString(R.string.add_class))) {
                     launchClassPrompt();
@@ -282,7 +281,7 @@ public class AddChildActivity extends Activity {
                 }//if key
                 if (!tmp.contains(name)) {
                     tmp.add(name);
-                    Log.i("RegisterStudentActivity", "Annadida: " + name);
+                    Log.i("StudentRegisterActivity", "Annadida: " + name);
                 }//if name
             }
             @Override
@@ -306,7 +305,7 @@ public class AddChildActivity extends Activity {
                 String classroom = dataSnapshot.getValue().toString();
                 if (!tmp.contains(classroom)) {
                     tmp.add(classroom);
-                    Log.i("RegisterStudentActivity", "Clase Annadida: " + classroom);
+                    Log.i("StudentRegisterActivity", "Clase Annadida: " + classroom);
                 }//if name
             }
             @Override

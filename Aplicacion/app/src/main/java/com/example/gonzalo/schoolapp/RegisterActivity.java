@@ -1,40 +1,12 @@
 package com.example.gonzalo.schoolapp;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.text.InputType;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.gonzalo.schoolapp.clases.Student;
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.Query;
-import com.firebase.client.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
 
 import com.example.gonzalo.schoolapp.utilities.Utilities;
 
@@ -76,19 +48,19 @@ public class RegisterActivity extends Activity {
     }
 
     public void launchRegisterStudent(View view) {
-        Intent intent = new Intent(this, RegisterStudentActivity.class);
+        Intent intent = new Intent(this, StudentRegisterActivity.class);
         startActivity(intent);
         finish();
     }
 
     public void launchRegisterTeacher(View view) {
-        Intent intent = new Intent(this, RegisterTeacherActivity.class);
+        Intent intent = new Intent(this, TeacherRegisterActivity.class);
         startActivity(intent);
         finish();
     }
 
     public void launchRegisterFather(View view) {
-        Intent intent = new Intent(this, RegisterFatherActivity.class);
+        Intent intent = new Intent(this, FatherRegisterActivity.class);
         startActivity(intent);
         finish();
     }

@@ -93,15 +93,15 @@
             android:label="@string/title_activity_change_password" >
         </activity>
         <activity
-            android:name=".RegisterStudentActivity"
+            android:name=".StudentRegisterActivity"
             android:label="@string/title_activity_register_student" >
         </activity>
         <activity
-            android:name=".RegisterTeacherActivity"
+            android:name=".TeacherRegisterActivity"
             android:label="@string/title_activity_register_teacher" >
         </activity>
         <activity
-            android:name=".RegisterFatherActivity"
+            android:name=".FatherRegisterActivity"
             android:label="@string/title_activity_register_father" >
         </activity>
         <activity

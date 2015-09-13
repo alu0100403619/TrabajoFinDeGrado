@@ -3,10 +3,8 @@ package com.example.gonzalo.schoolapp;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,11 +28,10 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 
 
-public class RegisterFatherActivity extends Activity {
+public class FatherRegisterActivity extends Activity {
 
     ArrayList<Student> children;
     ArrayList<Boolean> childrenExist;//si es false annadir a la BD ademas de al padre
@@ -144,7 +141,7 @@ public class RegisterFatherActivity extends Activity {
                     rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
                         @Override
                         public void onAuthenticated(AuthData authData) {
-                            Intent intent = new Intent(RegisterFatherActivity.this, FathersTabActivity.class);
+                            Intent intent = new Intent(FatherRegisterActivity.this, FathersTabActivity.class);
                             intent.putExtra(getString(R.string.bbdd_mail), mail);
                             intent.putExtra(getString(R.string.bbdd_center), schools);
                             intent.putExtra(getString(R.string.bbdd_teacher_class), classes);
@@ -158,10 +155,10 @@ public class RegisterFatherActivity extends Activity {
 
                         @Override
                         public void onAuthenticationError(FirebaseError firebaseError) {
-                            Toast.makeText(RegisterFatherActivity.this,
+                            Toast.makeText(FatherRegisterActivity.this,
                                     getString(R.string.login_error)
                                             + firebaseError.getMessage(), Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(RegisterFatherActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(FatherRegisterActivity.this, LoginActivity.class);
                             alertDialog.dismiss();
                             startActivity(intent);
                             finish();
@@ -175,7 +172,7 @@ public class RegisterFatherActivity extends Activity {
                 @Override
                 public void onError(FirebaseError firebaseError) {
                     alertDialog.dismiss();
-                    Toast.makeText(RegisterFatherActivity.this, firebaseError.toString(),
+                    Toast.makeText(FatherRegisterActivity.this, firebaseError.toString(),
                             Toast.LENGTH_LONG).show();
                 }
             });//createUser

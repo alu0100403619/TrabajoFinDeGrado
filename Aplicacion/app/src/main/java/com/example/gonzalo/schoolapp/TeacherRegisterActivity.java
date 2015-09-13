@@ -5,9 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.provider.Settings;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -37,32 +37,37 @@ import java.util.Map;
 import java.util.UUID;
 
 
-public class RegisterStudentActivity extends Activity {
+public class TeacherRegisterActivity extends Activity {
 
-    Firebase studentRef, rootRef, schoolsRef;
-    AlertDialog dialog, alertDialog;
-    Spinner spinner, classSpinner;
-    ArrayList<String> schools, schoolsKeys, classSchool;
+    Firebase teacherRef, rootRef, schoolsRef;
+    AlertDialog dialog, alertDialog, classDialog;
+    Spinner spinner;
+    Button classSpinner;
+    ArrayList<String> schools, schoolsKeys, teachersClasses, classSchool;
     ArrayAdapter<String> spinnerAdapter, classAdapter;
     String schoolKey;
+
+    //AlertDialog with checkbox
+    ArrayList<String> classTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Utilities.loadLanguage(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_student);
+        setContentView(R.layout.activity_register_teacher);
         Firebase.setAndroidContext(this);
 
-        studentRef = new Firebase (getString(R.string.studentRef));
+        teacherRef = new Firebase (getString(R.string.teacherRef));
         rootRef = new Firebase (getString(R.string.rootRef));
         schoolsRef = new Firebase (getString(R.string.schoolsRef));
         spinner = (Spinner) findViewById(R.id.spinner_2);
-        classSpinner = (Spinner) findViewById(R.id.classSpinner);
+        classSpinner = (Button) findViewById(R.id.classSpinner);
 
+        teachersClasses = new ArrayList<>();
         schoolsKeys = new ArrayList<>();
         classSchool = new ArrayList<>();
+        classTemp = new ArrayList<>();
 
-        //Set the spinner
         schools = getSchools();
         schools.add(getString(R.string.select_school));
         schoolsKeys.add(getString(R.string.invalid_key));
@@ -81,43 +86,26 @@ public class RegisterStudentActivity extends Activity {
                     launchPrompt();
                 } else if ((!selected.equals(getString(R.string.add_school))) &&
                         (!selected.equals(getString(R.string.select_school)))) {
+                    classTemp.clear();
+                    classSpinner.setText(getString(R.string.select_class));
                     classSchool.clear();
                     classSchool = getClassrooms(schoolsKeys.get(position));
                     classSchool.add(0, getString(R.string.add_class));
-                    classSchool.add(0, getString(R.string.select_class));
-                    classAdapter = new ArrayAdapter<String>(RegisterStudentActivity.this, android.R.layout.simple_spinner_item, classSchool);
-                    classSpinner.setAdapter(classAdapter);
                 }
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
-        //Set the classSpinner
-        classSchool.add(getString(R.string.select_class));
         classSchool.add(getString(R.string.add_class));
-        classAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, classSchool);
-        classAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        classSpinner.setAdapter(classAdapter);
-        classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //Log.i("RegisterStudentActivity", "Item: "+classSchool.get(position));
-                String selected = classSpinner.getSelectedItem().toString();
-                if (selected.equals(getString(R.string.add_class))) {
-                    launchClassPrompt();
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-
     }//function
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_register_student, menu);
+        getMenuInflater().inflate(R.menu.menu_register_teacher, menu);
         return true;
     }
 
@@ -172,7 +160,7 @@ public class RegisterStudentActivity extends Activity {
         String name = nameEditText.getText().toString();
         String lastname = lastnameEditText.getText().toString();
         String telephone = telephoneEditText.getText().toString();
-        String classroom = ((Spinner) findViewById(R.id.classSpinner)).getSelectedItem().toString();
+        String classroom = ((Button) findViewById(R.id.classSpinner)).getText().toString();
         String mail = mailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString();
         String repeatedPassword = passwordRepeatedEditText.getText().toString();
@@ -216,7 +204,7 @@ public class RegisterStudentActivity extends Activity {
             Log.i("RegStudAct", "classroom Empty");
             ImageView asterisk2 = (ImageView) findViewById(R.id.asterisk2);
             asterisk2.setImageResource(R.drawable.ic_action_required_empty);
-            Toast.makeText(this, getString(R.string.select_school), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.select_class), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
         if (mail.isEmpty()) {
@@ -250,7 +238,7 @@ public class RegisterStudentActivity extends Activity {
             Log.i("RegStudAct", "school Empty");
             ImageView asterisk1 = (ImageView) findViewById(R.id.asterisk1);
             asterisk1.setImageResource(R.drawable.ic_action_required_empty);
-            Toast.makeText(this, getString(R.string.select_class), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.select_school), Toast.LENGTH_LONG).show();
             haveEmptyFields = true;
         }
         return haveEmptyFields;
@@ -271,47 +259,53 @@ public class RegisterStudentActivity extends Activity {
                     final String name = ((EditText) findViewById(R.id.text_name)).getText().toString();
                     String lastname = ((EditText) findViewById(R.id.text_lastname)).getText().toString();
                     String telephone = ((EditText) findViewById(R.id.text_telephone)).getText().toString();
-                    final String classroom = ((Spinner) findViewById(R.id.classSpinner)).getSelectedItem().toString();
+                    String classroom = ((Button) findViewById(R.id.classSpinner)).getText().toString();
                     final String school = ((Spinner) findViewById(R.id.spinner_2)).getSelectedItem().toString();
                     final String dni = ((EditText) findViewById(R.id.letterNIE)).getText().toString()
                             + ((EditText) findViewById(R.id.DNI)).getText().toString()
                             + ((EditText) findViewById(R.id.letterDNI)).getText().toString();
+                    teachersClasses = separateTeacherClasses(classroom);
 
-                    Map<String, Object> aluMap = new HashMap<>();
-                    aluMap.put(getString(R.string.bbdd_name), name);
-                    aluMap.put(getString(R.string.bbdd_lastname), lastname);
-                    aluMap.put(getString(R.string.bbdd_telephone), telephone);
-                    aluMap.put(getString(R.string.bbdd_dni), dni);
-                    aluMap.put(getString(R.string.bbdd_mail), mail);
-                    aluMap.put(getString(R.string.bbdd_class), classroom);
-                    aluMap.put(getString(R.string.bbdd_center), school);
+                    Map<String, Object> teacherMap = new HashMap<>();
+                    Map<String, Object> schoolsMap = new HashMap<>();
+                    teacherMap.put(getString(R.string.bbdd_name), name);
+                    teacherMap.put(getString(R.string.bbdd_lastname), lastname);
+                    teacherMap.put(getString(R.string.bbdd_telephone), telephone);
+                    teacherMap.put(getString(R.string.bbdd_dni), dni);
+                    teacherMap.put(getString(R.string.bbdd_mail), mail);
+                    teacherMap.put(getString(R.string.bbdd_center), school);
+                    for (String clas: teachersClasses) {
+                        String uuid = UUID.randomUUID().toString();
+                        schoolsMap.put(uuid, clas);
+                    }
+                    teacherMap.put(getString(R.string.bbdd_teacher_class), schoolsMap);
 
                     String uuid = UUID.randomUUID().toString();
-                    Log.i("RegStudAct", "Map: "+aluMap);
-                    studentRef.child(uuid).setValue(aluMap);
+                    Log.i("RegStudAct", "Map: "+teacherMap);
+                    teacherRef.child(uuid).setValue(teacherMap);
 
-                    //Lanzando StudentTabActivity
+                    //Lanzando TeachersTabActivity
                     rootRef.authWithPassword(mail, password, new Firebase.AuthResultHandler() {
                         @Override
                         public void onAuthenticated(AuthData authData) {
-                            Intent intent = new Intent(RegisterStudentActivity.this, StudentTabActivity.class);
+                            Intent intent = new Intent(TeacherRegisterActivity.this, TeachersTabActivity.class);
                             intent.putExtra(getString(R.string.bbdd_mail), mail);
-                            intent.putExtra(getString(R.string.bbdd_class), classroom);
+                            intent.putExtra(getString(R.string.bbdd_teacher_class), teachersClasses);
                             intent.putExtra(getString(R.string.bbdd_center), school);
-                            intent.putExtra(getString(R.string.bbdd_name), name);
-                            intent.putExtra(getString(R.string.bbdd_dni), dni);
+                            intent.putExtra(getString(R.string.myName), name);
+                            intent.putExtra(getString(R.string.dni), dni);
                             intent.putExtra(getString(R.string.myRol), getString(R.string.rol_student));
                             alertDialog.dismiss();
                             startActivity(intent);
-                            RegisterStudentActivity.this.finish();
+                            TeacherRegisterActivity.this.finish();
                         }
 
                         @Override
                         public void onAuthenticationError(FirebaseError firebaseError) {
-                            Toast.makeText(RegisterStudentActivity.this,
+                            Toast.makeText(TeacherRegisterActivity.this,
                                     getString(R.string.login_error)
                                             + firebaseError.getMessage(), Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(RegisterStudentActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(TeacherRegisterActivity.this, LoginActivity.class);
                             alertDialog.dismiss();
                             startActivity(intent);
                             finish();
@@ -322,7 +316,7 @@ public class RegisterStudentActivity extends Activity {
                 @Override
                 public void onError(FirebaseError firebaseError) {
                     alertDialog.dismiss();
-                    Toast.makeText(RegisterStudentActivity.this, getString(R.string.login_error) + " " +
+                    Toast.makeText(TeacherRegisterActivity.this, getString(R.string.login_error) + " " +
                             firebaseError, Toast.LENGTH_LONG).show();
                 }
             });//rootRef
@@ -342,7 +336,7 @@ public class RegisterStudentActivity extends Activity {
                 }//if key
                 if (!tmp.contains(name)) {
                     tmp.add(name);
-                    Log.i("RegisterStudentActivity", "Annadida: " + name);
+                    Log.i("StudentRegisterActivity", "Annadida: " + name);
                 }//if name
             }
 
@@ -374,7 +368,7 @@ public class RegisterStudentActivity extends Activity {
                 String classroom = dataSnapshot.getValue().toString();
                 if (!tmp.contains(classroom)) {
                     tmp.add(classroom);
-                    Log.i("RegisterStudentActivity", "Clase Annadida: " + classroom);
+                    Log.i("StudentRegisterActivity", "Clase Annadida: " + classroom);
                 }//if name
             }
             @Override
@@ -423,57 +417,6 @@ public class RegisterStudentActivity extends Activity {
                                     classSchool.clear();
                                     classSchool = getClassrooms(uuid);
                                     classSchool.add(0, getString(R.string.add_class));
-                                    classSchool.add(0, getString(R.string.select_class));
-                                    classAdapter = new ArrayAdapter<String>(RegisterStudentActivity.this, android.R.layout.simple_spinner_item, classSchool);
-                                    classSpinner.setAdapter(classAdapter);
-                                }
-                            }
-                        })
-                .setNegativeButton(getString(R.string.back),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
-        alertDialog.show();
-    }
-
-    public void launchClassPrompt() {
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View promptView = layoutInflater.inflate(R.layout.classprompt, null);
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        // set prompt.xml to alertdialog builder
-        alertDialogBuilder.setView(promptView);
-
-        final EditText classEditText = (EditText) promptView.findViewById(R.id.classEditText);
-
-        // set dialog message
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton(getString(R.string.save),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // get user input and set it to result
-                                // edit text
-                                String classroom = classEditText.getText().toString();
-                                if (classroom.isEmpty()) {
-                                    classEditText.setError(getString(R.string.field_empty));
-                                } else if (!Utilities.isOneClass(classroom)) {
-                                    classEditText.setError(getString(R.string.error_class_format));
-                                } else {
-                                    String uuid = UUID.randomUUID().toString();
-                                    schoolsRef.child(schoolKey)
-                                            .child(getString(R.string.bbdd_teacher_class))
-                                            .child(uuid).setValue(classroom);
-
-                                    classSchool.add(classroom);
-                                    classSpinner.setSelection(classAdapter.getPosition(classroom));
                                 }
                             }
                         })
@@ -514,11 +457,147 @@ public class RegisterStudentActivity extends Activity {
         alertDialog.show();
     }
 
+    public ArrayList<String> separateTeacherClasses (String classes) {
+        ArrayList<String> tmpArrayList = new ArrayList<>();
+
+        String tmp = classes.replaceAll(" ", "");
+        String[] tmpArray = tmp.split(",");
+        for (String tmpClass: tmpArray) {
+            if (!tmpArrayList.contains(tmpClass)) {
+                tmpArrayList.add(tmpClass);
+            }
+        }
+        return tmpArrayList;
+    }
+
+    public void launchClassPrompt() {
+        classDialog.dismiss();
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.classprompt, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set prompt.xml to alertdialog builder
+        alertDialogBuilder.setView(promptView);
+
+        final EditText classEditText = (EditText) promptView.findViewById(R.id.classEditText);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.save),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // get user input and set it to result
+                                // edit text
+                                String classroom = classEditText.getText().toString();
+                                if (classroom.isEmpty()) {
+                                    classEditText.setError(getString(R.string.field_empty));
+                                } else if (!Utilities.isOneClass(classroom)) {
+                                    classEditText.setError(getString(R.string.error_class_format));
+                                } else {
+                                    String uuid = UUID.randomUUID().toString();
+                                    schoolsRef.child(schoolKey)
+                                            .child(getString(R.string.bbdd_teacher_class))
+                                            .child(uuid).setValue(classroom);
+
+                                    classSchool.add(classroom);
+                                    classTemp.add (classroom);
+
+                                    String classes = "";
+                                    if (classTemp.size() == 0) {
+                                        classes = getString(R.string.select_class);
+                                    } else {
+                                        for (String str : classTemp) {
+                                            if (classes.isEmpty()) {
+                                                classes += str;
+                                            } else {
+                                                classes += ", " + str;
+                                            } //if else
+                                        }//for
+                                    }//if else
+                                    classSpinner.setText(classes);
+
+                                }
+                            }
+                        })
+                .setNegativeButton(getString(R.string.back),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
     @Override
     public void onBackPressed(){
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    public void launchClassSelector(View view) {
+        final String classSchls [];
+        final boolean classSelected [];
+
+        Log.i("TeacherRegisterActivity", "Class selector launch");
+        classSchls = new String[classSchool.size()];
+        classSelected = new boolean[classSchool.size()];
+        for (int i = 0; i < classSchool.size(); i++) {
+            classSchls[i] = classSchool.get(i);
+            if ((classTemp.size() != 0) && (classTemp.contains(classSchool.get(i)))) {
+                classSelected[i] = true;
+            } else {
+                classSelected[i] = false;
+            }//if else
+        }//for
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle(R.string.select_class);
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setMultiChoiceItems(classSchls, classSelected, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                if (classSchls[which].equals(getString(R.string.add_class))) {
+                    Log.i("RTA", "add class - Checked: " + classSchls[which]);
+                    launchClassPrompt();//TODO add clase
+                } else if (isChecked) {
+                    Log.i("RTA", "Checked: " + classSchls[which]);
+                    classTemp.add(classSchls[which]);
+                } else if (classTemp.contains(classSchls[which])) {
+                    classTemp.remove(classSchls[which]);
+                    classSelected[which] = false;
+                }//if else
+            }
+        });//setMulti
+        alertDialogBuilder.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String classes = "";
+                if (classTemp.size() == 0) {
+                    classes = getString(R.string.select_class);
+                } else {
+                    for (String str : classTemp) {
+                        if (classes.isEmpty()) {
+                            classes += str;
+                        } else {
+                            classes += ", " + str;
+                        } //if else
+                    }//for
+                }//if else
+                classSpinner.setText(classes);
+            }
+        });
+
+        // create alert dialog
+        classDialog = alertDialogBuilder.create();
+
+        // show it
+        classDialog.show();
     }
 
     public void back (View view) {
