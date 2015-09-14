@@ -1,30 +1,22 @@
 package com.example.gonzalo.schoolapp;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gonzalo.schoolapp.Adapters.NotifyAdapter;
-import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.clases.Message;
-import com.example.gonzalo.schoolapp.utilities.Utilities;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Queue;
 
 /**
  * Created by Gonzalo on 17/02/2015.
@@ -38,7 +30,6 @@ public class NotificationsActivity extends ListActivity {
     ArrayList<Integer> numberMessages;
     ArrayList<String> rolRemitterMessages;
     NotifyAdapter notifyAdapter;
-    int i = 0;
 
     public void onCreate (Bundle savedInstanceBundle) {
         super.onCreate(savedInstanceBundle);
@@ -59,19 +50,18 @@ public class NotificationsActivity extends ListActivity {
         //Preparamos los datos
         preparingData();
 
-        //Listener Click Largo
-
         //Listener click Normal
         this.getListView().setClickable(true);
         this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String itemMail = dnisList.get(position);
+                int i = 0;
+                String itemDni = dnisList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
 
-                while (i < messagesList.size()) {
+                while (i < messagesList.size()) { //Problema está aquí
                     Message message = messagesList.get(i);
-                    if ((itemMail.equals(message.getDniRemitter())) && (!messages.contains(message))) {
+                    if (itemDni.equals(message.getDniRemitter())) {
                         messages.add(message);
                         messagesList.remove(message);
                         i--;
@@ -79,19 +69,19 @@ public class NotificationsActivity extends ListActivity {
                     i++;
                 }//while
 
-                //Lanzar Actividad
                 Intent intent = new Intent(NotificationsActivity.this, ChatActivity.class);
+                //Lanzar Actividad
                 intent.putExtra(getString(R.string.bbdd_message), messages);
                 intent.putExtra(getString(R.string.name), messagesListView.get(position));
                 intent.putExtra(getString(R.string.mail), mail);
-                intent.putExtra(getString(R.string.bbdd_dni_remitter), messages.get(0).getDniRemitter());
+                intent.putExtra(getString(R.string.bbdd_dni_remitter), messages.get(0).getDniRemitter());//ERROR
                 intent.putExtra(getString(R.string.myName), myName);
                 intent.putExtra(getString(R.string.myRol), myRol);
                 intent.putExtra(getString(R.string.myDNI), myDNI);
 
                 //Borrar al hacer click
-                //TODO borrar solo si pos != -1 o >= 0??
                 int pos = dnisList.indexOf(messages.get(0).getDniRemitter());
+//              if ((pos != -1) || (pos >= 0)) {
                 dnisList.remove(pos);
                 messagesListView.remove(pos);
                 numberMessages.remove(pos);
@@ -138,6 +128,7 @@ public class NotificationsActivity extends ListActivity {
                 } else {
                     int pos = dnisList.indexOf(message.getDniRemitter());
                     int number = numberMessages.get(pos) + 1;
+                    numberMessages.remove(pos);
                     numberMessages.add(pos, number);
                     //El rol ya esta en el ArrayList
                 }
