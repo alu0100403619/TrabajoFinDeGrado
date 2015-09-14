@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by Gonzalo on 21/05/2015.
  */
-public class Date implements Parcelable{
+public class Date implements Parcelable, Comparable<Date>{
 
     private long day;
     private long month;
@@ -87,6 +87,29 @@ public class Date implements Parcelable{
             }//hora
         }//fecha
         return same;
+    }
+
+    //*****Parte de la interfaz Comparable*****//
+    @Override
+    public int compareTo (Date date) {
+        int result = 0;
+        if (this.year < date.getYear()) { result = -1; }
+        else if (this.year > date.getYear()) { result = 1; } else {
+            if (this.month < date.getMonth()) { result = -1; }
+            else if (this.month > date.getMonth()) { result = 1; } else {
+                if (this.day < date.getDay()) { result = -1; }
+                else if (this.day > date.getDay()) { result = 1; } else {
+                    if (this.hour < date.getHour()) { result = -1; }
+                    else if (this.hour > date.getHour()) { result = 1; } else {
+                        if (this.minutes < date.getMinutes()) { result = -1; }
+                        else if (this.minutes > date.getMinutes()) { result = 1; } else {
+                            result = 0;
+                        }//if else minute
+                    }//else if hour
+                }//if else day
+            }//if else month
+        }//if else year
+        return result;
     }
 
     //*****Parte de la interfaz Parcelable*****//

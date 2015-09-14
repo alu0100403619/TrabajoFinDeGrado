@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by Gonzalo on 21/05/2015.
  */
-public class Message implements Parcelable{
+public class Message implements Parcelable, Comparable<Message> {
     private String dniRemitter; //Mail Remitente
     private String remitter; //Remitente
     private String message; //Mensaje
@@ -107,6 +107,12 @@ public class Message implements Parcelable{
         }
         return same;
     }//*/
+
+    //*****Parte de la interfaz Comparable*****//
+    @Override
+    public int compareTo (Message message) {
+        return this.date.compareTo(message.getDate());
+    }
 
     //*****Parte de la interfaz Parcelable*****//
     public Message(Parcel in) {

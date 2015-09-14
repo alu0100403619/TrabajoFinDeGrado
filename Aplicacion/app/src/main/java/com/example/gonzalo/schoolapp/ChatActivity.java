@@ -28,6 +28,7 @@ import junit.runner.Version;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -193,6 +194,8 @@ public class ChatActivity extends ListActivity {
                     messages.add(message);
                     messageBBDD.addMessage(message, idConversation);
                 }//if
+
+                Collections.sort(messages);
 
                 //Seteamos el Adapter
                 //chatAdapter = new ChatAdapter(ChatActivity.this, messages);
