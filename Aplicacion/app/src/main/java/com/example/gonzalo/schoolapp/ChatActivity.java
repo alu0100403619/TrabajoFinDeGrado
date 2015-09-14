@@ -92,6 +92,8 @@ public class ChatActivity extends ListActivity {
             messages.addAll(messagesToNotifications);
         }//if
 
+        Collections.sort(messages);
+
         //Obtener Mensajes de la Nube
         getCloudMessages();
     }
@@ -190,7 +192,7 @@ public class ChatActivity extends ListActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> values = (Map<String, Object>) dataSnapshot.getValue();
                 Message message = new Message(values);
-                if (dniRemitter.equals(message.getDniRemitter())) {
+                if ((dniRemitter.equals(message.getDniRemitter())) && (!messages.contains(message))) {
                     messages.add(message);
                     messageBBDD.addMessage(message, idConversation);
                 }//if

@@ -60,9 +60,9 @@ public class NotificationsActivity extends ListActivity {
                 String itemDni = dnisList.get(position);
                 ArrayList<Message> messages = new ArrayList<Message>();
 
-                while (i < messagesList.size()) { //Problema está aquí
+                while (i < messagesList.size()) {
                     Message message = messagesList.get(i);
-                    if (itemDni.equals(message.getDniRemitter())) {
+                    if ((itemDni.equals(message.getDniRemitter())) && (!messages.contains(message))) {
                         messages.add(message);
                         messagesList.remove(message);
                         i--;
