@@ -162,4 +162,31 @@ public class NotificationsActivity extends ListActivity {
         startActivity(intent);
         this.finish();
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        //messagesList
+        savedInstanceState.putParcelableArrayList(getString(R.string.messagesList), messagesList);
+        //messagesListView
+        savedInstanceState.putStringArrayList(getString(R.string.messagesListView), messagesListView);
+        //rolRemitterMessages
+        savedInstanceState.putStringArrayList(getString(R.string.rolRemitterMessages), rolRemitterMessages);
+        //dnisList
+        savedInstanceState.putStringArrayList(getString(R.string.dnisList), dnisList);
+        //numberMessages
+        savedInstanceState.putIntegerArrayList(getString(R.string.numberMessages), numberMessages);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        messagesList = savedInstanceState.getParcelableArrayList(getString(R.string.messagesList));
+        messagesListView = savedInstanceState.getStringArrayList(getString(R.string.messagesListView));
+        rolRemitterMessages = savedInstanceState.getStringArrayList(getString(R.string.rolRemitterMessages));
+        dnisList = savedInstanceState.getStringArrayList(getString(R.string.dnisList));
+        numberMessages = savedInstanceState.getIntegerArrayList(getString(R.string.numberMessages));
+        notifyAdapter = new NotifyAdapter(NotificationsActivity.this, messagesListView,
+                numberMessages, rolRemitterMessages);
+        setListAdapter(notifyAdapter);
+    }
+
 }//class

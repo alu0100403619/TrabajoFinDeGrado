@@ -164,9 +164,15 @@
 
     <!-- Invalid Keys -->
     <string name="invalid_key">-----</string>
-    <string name="title_activity_students_class_selector">StudentsClassSelector</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_students_class_selector">StudentsClassSelector</string>
     <string name="title_activity_fathers_class_selector">FathersClassSelector</string>
+
+    <!-- onSavedInstanceState - onRestoreInstanceState -->
+    <string name="messagesList">messagesList</string>
+    <string name="messagesListView">messagesListView</string>
+    <string name="rolRemitterMessages">rolRemitterMessages</string>
+    <string name="dnisList">dnisList</string>
+    <string name="numberMessages">numberMessages</string>
 
 </resources>
