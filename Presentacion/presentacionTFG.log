@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.9)  14 SEP 2015 17:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.9)  15 SEP 2015 22:04
 entering extended mode
 **presentacionTFG.tex
 (presentacionTFG.tex
@@ -1369,46 +1369,46 @@ LaTeX Info: Redefining \% on input line 2.
 
 
 ] (Capitulos/Cap4_Descripcion.tex
-<Images/Remind.png, id=457, 542.025pt x 963.6pt>
+<Images/Remind.png, id=455, 542.025pt x 963.6pt>
 File: Images/Remind.png Graphic file (type png)
  <use Images/Remind.png>
-Package pdftex.def Info: Images/Remind.png used on input line 26.
+Package pdftex.def Info: Images/Remind.png used on input line 18.
 (pdftex.def)             Requested size: 95.84079pt x 170.38222pt.
 
 [14
 
 
  <./Images/Remind.png>]
-<Images/miColegioApp.png, id=484, 542.025pt x 963.6pt>
+<Images/miColegioApp.png, id=482, 542.025pt x 963.6pt>
 File: Images/miColegioApp.png Graphic file (type png)
 
 <use Images/miColegioApp.png>
-Package pdftex.def Info: Images/miColegioApp.png used on input line 48.
+Package pdftex.def Info: Images/miColegioApp.png used on input line 40.
 (pdftex.def)             Requested size: 95.84079pt x 170.38222pt.
  [15
 
  <./Images/miColegioApp.png>]
-<Images/android_fragments.png, id=511, 557.08125pt x 174.6525pt>
+<Images/android_fragments.png, id=509, 557.08125pt x 174.6525pt>
 File: Images/android_fragments.png Graphic file (type png)
 
 <use Images/android_fragments.png>
-Package pdftex.def Info: Images/android_fragments.png used on input line 65.
+Package pdftex.def Info: Images/android_fragments.png used on input line 57.
 (pdftex.def)             Requested size: 239.60567pt x 75.11775pt.
 
-<Images/dialog.png, id=512, 295.1025pt x 170.6375pt>
+<Images/dialog.png, id=510, 295.1025pt x 170.6375pt>
 File: Images/dialog.png Graphic file (type png)
  <use Images/dialog.png>
-Package pdftex.def Info: Images/dialog.png used on input line 65.
+Package pdftex.def Info: Images/dialog.png used on input line 57.
 (pdftex.def)             Requested size: 85.57382pt x 49.48099pt.
 
 [16
 
  <./Images/android_fragments.png> <./Images/dialog.png (PNG copy)>]
-<Images/mapaActividades.png, id=539, 234.1247pt x 390.70969pt>
+<Images/mapaActividades.png, id=537, 234.1247pt x 390.70969pt>
 File: Images/mapaActividades.png Graphic file (type png)
 
 <use Images/mapaActividades.png>
-Package pdftex.def Info: Images/mapaActividades.png used on input line 75.
+Package pdftex.def Info: Images/mapaActividades.png used on input line 67.
 (pdftex.def)             Requested size: 102.68962pt x 171.37027pt.
  [17
 
@@ -1424,37 +1424,73 @@ LaTeX Info: Redefining \% on input line 2.
 ] (Capitulos/Cap5_Desarrollo.tex [20
 
 
-] [21
+]
+(Code/Student.java) [21
+
+] (Code/StudentParcelable.java) [22
+
+] [23
 
 ]
-(Code/Student.java)
-Overfull \vbox (116.31941pt too high) detected at line 28
+(Code/MessageSQLHelper.java) [24
+
+] [25
+
+] (Code/StudentActivity.java) [26
+
+]
+(Code/AddChildActivity.java)
+Overfull \vbox (3.22908pt too high) detected at line 91
  []
 
-[22
+[27
+
+] <Images/App/ChangeLanguaje.png, id=835, 542.025pt x 963.6pt>
+File: Images/App/ChangeLanguaje.png Graphic file (type png)
+
+<use Images/App/ChangeLanguaje.png>
+Package pdftex.def Info: Images/App/ChangeLanguaje.png used on input line 100.
+(pdftex.def)             Requested size: 85.57382pt x 152.12068pt.
+
+<Images/App/loginLand.png, id=836, 963.6pt x 542.025pt>
+File: Images/App/loginLand.png Graphic file (type png)
+
+<use Images/App/loginLand.png>
+Package pdftex.def Info: Images/App/loginLand.png used on input line 100.
+(pdftex.def)             Requested size: 171.14764pt x 96.27007pt.
+ [28
+
+ <./Images/App/ChangeLanguaje.png> <./Images/App/loginLand.png>]) (presentacion
+TFG.toc
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+) [29
+
+
+] (Capitulos/Cap6_Problemas.tex
+[30
+
+
+] (Code/build.gradle) [31
+
+] (Code/appbuild.gradle)
+Overfull \vbox (4.22905pt too high) detected at line 29
+ []
+
+[32
 
 ]) (presentacionTFG.toc
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
-) [23
-
-
-] (Capitulos/Cap6_Problemas.tex [24
-
-
-])
-(presentacionTFG.toc
-LaTeX Info: Redefining \. on input line 2.
-LaTeX Info: Redefining \% on input line 2.
-) [25
+) [33
 
 
 ] (Capitulos/Cap8_Conclusiones.tex
-(presentacionTFG.vrb) [26
+(presentacionTFG.vrb) [34
 
 
 ]) (Capitulos/Cap9_final.tex (presentacionTFG.vrb)
-[27
+[35
 
 
 
@@ -1484,13 +1520,13 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 199.
  ) 
 Here is how much of TeX's memory you used:
- 22273 strings out of 493698
- 424642 string characters out of 3141989
- 729946 words of memory out of 3000000
- 24969 multiletter control sequences out of 15000+200000
- 14005 words of font info for 51 fonts, out of 3000000 for 9000
+ 22417 strings out of 493698
+ 426884 string characters out of 3141989
+ 719946 words of memory out of 3000000
+ 25076 multiletter control sequences out of 15000+200000
+ 14701 words of font info for 54 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 49i,16n,64p,488b,1261s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,16n,64p,488b,1259s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:
@@ -1502,9 +1538,9 @@ m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi12.pfb><C:/Program
  Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on presentacionTFG.pdf (27 pages, 2384161 bytes).
+Output written on presentacionTFG.pdf (35 pages, 3499580 bytes).
 PDF statistics:
- 897 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
- 203 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1111 PDF objects out of 1200 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 213 words of extra memory for PDF output out of 10000 (max. 10000000)
 
