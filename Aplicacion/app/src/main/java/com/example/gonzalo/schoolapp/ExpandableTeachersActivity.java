@@ -190,4 +190,18 @@ public class ExpandableTeachersActivity extends Activity {
         startActivity(intent);
         this.finish();
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putStringArrayList(getString(R.string.listDataHeader), (ArrayList<String>) listDataHeader);
+        savedInstanceState.putSerializable(getString(R.string.listDataChild), listDataChild);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        listDataHeader = savedInstanceState.getStringArrayList(getString(R.string.listDataHeader));
+        listDataChild = (HashMap<String, List<Teacher>>) savedInstanceState.getSerializable(getString(R.string.listDataChild));
+        listAdapter = new ExpandableListAdapterTeacher(this, listDataHeader, listDataChild);
+        expListView.setAdapter(listAdapter);
+    }
 }

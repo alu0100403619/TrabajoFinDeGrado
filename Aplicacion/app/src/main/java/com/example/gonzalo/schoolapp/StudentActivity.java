@@ -3,6 +3,7 @@ package com.example.gonzalo.schoolapp;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -124,5 +125,18 @@ public class StudentActivity extends ListActivity {
         rootref.unauth();
         startActivity(intent);
         this.finish();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putParcelableArrayList(getString(R.string.students), (ArrayList<? extends Parcelable>) alus);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        alus = savedInstanceState.getParcelableArrayList(getString(R.string.students));
+        ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(this,
+                R.layout.list_item_layout, alus);
+        setListAdapter(adapter);
     }
 }//class

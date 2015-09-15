@@ -13,6 +13,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterAlumno;
 import com.example.gonzalo.schoolapp.ExpandableListAdapter.ExpandableListAdapterFather;
 import com.example.gonzalo.schoolapp.clases.Student;
 import com.example.gonzalo.schoolapp.clases.Father;
@@ -159,7 +160,6 @@ public class ExpandableFahtersActivity extends Activity {
             }//if
             for (Father father : fathers) {
                 //Adding Child Data
-                //TODO PUEDE QUE SE REPITA POR AQUI
                 if ((father.getClassrooms().contains(clases.get(i))) && (!auxList.contains(father))){
                     auxList.add(father);
                 }//if
@@ -202,5 +202,19 @@ public class ExpandableFahtersActivity extends Activity {
         rootref.unauth();
         startActivity(intent);
         this.finish();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putStringArrayList(getString(R.string.listDataHeader), (ArrayList<String>) listDataHeader);
+        savedInstanceState.putSerializable(getString(R.string.listDataChild), listDataChild);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        listDataHeader = savedInstanceState.getStringArrayList(getString(R.string.listDataHeader));
+        listDataChild = (HashMap<String, List<Father>>) savedInstanceState.getSerializable(getString(R.string.listDataChild));
+        listAdapter = new ExpandableListAdapterFather(this, listDataHeader, listDataChild);
+        expListView.setAdapter(listAdapter);
     }
 }

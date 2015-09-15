@@ -174,5 +174,9 @@
     <string name="rolRemitterMessages">rolRemitterMessages</string>
     <string name="dnisList">dnisList</string>
     <string name="numberMessages">numberMessages</string>
+    <string name="listDataHeader">listDataHeader</string>
+    <string name="listDataChild">listDataChild</string>
+    <string name="students">students</string>
+    <string name="classTeachers">classTeachers</string>
 
 </resources>
