@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.9)  15 SEP 2015 22:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.9)  16 SEP 2015 08:37
 entering extended mode
 **presentacionTFG.tex
 (presentacionTFG.tex
@@ -1445,52 +1445,57 @@ Overfull \vbox (3.22908pt too high) detected at line 91
 
 [27
 
-] <Images/App/ChangeLanguaje.png, id=835, 542.025pt x 963.6pt>
+] <Images/App/ChangeLanguaje.png, id=836, 542.025pt x 963.6pt>
 File: Images/App/ChangeLanguaje.png Graphic file (type png)
 
 <use Images/App/ChangeLanguaje.png>
 Package pdftex.def Info: Images/App/ChangeLanguaje.png used on input line 100.
-(pdftex.def)             Requested size: 85.57382pt x 152.12068pt.
+(pdftex.def)             Requested size: 102.68962pt x 182.55658pt.
+ [28
 
-<Images/App/loginLand.png, id=836, 963.6pt x 542.025pt>
+ <./Images/App/ChangeLanguaje.png>]
+(Code/ChangeLanguageActivity.java) [29
+
+]
+<Images/App/loginLand.png, id=888, 963.6pt x 542.025pt>
 File: Images/App/loginLand.png Graphic file (type png)
 
 <use Images/App/loginLand.png>
-Package pdftex.def Info: Images/App/loginLand.png used on input line 100.
-(pdftex.def)             Requested size: 171.14764pt x 96.27007pt.
- [28
+Package pdftex.def Info: Images/App/loginLand.png used on input line 115.
+(pdftex.def)             Requested size: 239.60567pt x 134.77809pt.
+ [30
 
- <./Images/App/ChangeLanguaje.png> <./Images/App/loginLand.png>]) (presentacion
-TFG.toc
+ <./Images/App/loginLand.png>])
+(presentacionTFG.toc
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
-) [29
+) [31
 
 
-] (Capitulos/Cap6_Problemas.tex
-[30
+] (Capitulos/Cap6_Problemas.tex [32
 
 
-] (Code/build.gradle) [31
+]
+(Code/build.gradle) [33
 
 ] (Code/appbuild.gradle)
 Overfull \vbox (4.22905pt too high) detected at line 29
  []
 
-[32
+[34
 
 ]) (presentacionTFG.toc
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
-) [33
+) [35
 
 
 ] (Capitulos/Cap8_Conclusiones.tex
-(presentacionTFG.vrb) [34
+(presentacionTFG.vrb) [36
 
 
 ]) (Capitulos/Cap9_final.tex (presentacionTFG.vrb)
-[35
+[37
 
 
 
@@ -1520,10 +1525,10 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 199.
  ) 
 Here is how much of TeX's memory you used:
- 22417 strings out of 493698
- 426884 string characters out of 3141989
+ 22439 strings out of 493698
+ 427235 string characters out of 3141989
  719946 words of memory out of 3000000
- 25076 multiletter control sequences out of 15000+200000
+ 25091 multiletter control sequences out of 15000+200000
  14701 words of font info for 54 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  49i,16n,64p,488b,1259s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1538,9 +1543,9 @@ m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi12.pfb><C:/Program
  Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on presentacionTFG.pdf (35 pages, 3499580 bytes).
+Output written on presentacionTFG.pdf (37 pages, 3511788 bytes).
 PDF statistics:
- 1111 PDF objects out of 1200 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
+ 1167 PDF objects out of 1200 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
  213 words of extra memory for PDF output out of 10000 (max. 10000000)
 
