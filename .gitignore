@@ -13,6 +13,9 @@ Presentacion/*.txt
 Presentacion/*.pdf
 Presentacion/*.gz
 Presentacion/*.log
+Presentacion/*.out
+Presentacion/*.pdf
+Presentacion/*.toc
 Presentacion/*/*.aux
 Presentacion/*/*.txt
 Presentacion/*/*.pdf

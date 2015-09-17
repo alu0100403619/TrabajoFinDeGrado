@@ -3,7 +3,7 @@
 \beamer@sectionintoc {1}{Introducci\IeC {\'o}n}{3}{0}{1}
 \beamer@sectionintoc {2}{Especificaci\IeC {\'o}n de Requisitos}{6}{0}{2}
 \beamer@sectionintoc {3}{Herramientas Software}{9}{0}{3}
-\beamer@sectionintoc {4}{Descripci\IeC {\'o}n de \texttt {SchoolApp{}}}{13}{0}{4}
-\beamer@sectionintoc {5}{Desarrollo de la Aplicaci\IeC {\'o}n}{19}{0}{5}
-\beamer@sectionintoc {6}{Problemas}{31}{0}{6}
-\beamer@sectionintoc {7}{Summary and conclusions}{35}{0}{7}
+\beamer@sectionintoc {4}{Descripci\IeC {\'o}n de \texttt {SchoolApp{}}}{17}{0}{4}
+\beamer@sectionintoc {5}{Desarrollo de la Aplicaci\IeC {\'o}n}{23}{0}{5}
+\beamer@sectionintoc {6}{Problemas}{32}{0}{6}
+\beamer@sectionintoc {7}{Summary and conclusions}{36}{0}{7}
