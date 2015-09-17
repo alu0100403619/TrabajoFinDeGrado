@@ -98,15 +98,17 @@ public class NotificationsActivity extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK){
-                String mailRemitter = data.getStringExtra(getString(R.string.bbdd_mail_remitter));
-                int pos = dnisList.indexOf(mailRemitter);
+                //String mailRemitter = data.getStringExtra(getString(R.string.bbdd_mail_remitter));
+                //int pos = dnisList.indexOf(mailRemitter);
+                String dniRemitter = data.getStringExtra(getString(R.string.bbdd_dni_remitter));
+                int pos = dnisList.indexOf(dniRemitter);
                 if (pos != -1) {
                     dnisList.remove(pos);
                     messagesListView.remove(pos);
                     numberMessages.remove(pos);
                     rolRemitterMessages.remove(pos);
                     notifyAdapter.notifyDataSetChanged();
-                    Log.i("NotificationsActivity", "Eliminar al Volver del chat con "+mailRemitter);
+                    Log.i("NotificationsActivity", "Eliminar al Volver del chat con "+dniRemitter);
                 }
             }
         }
