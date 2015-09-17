@@ -161,6 +161,7 @@ public class ChatActivity extends ListActivity {
         returnIntent.putExtra(getString(R.string.bbdd_dni_remitter), dniRemitter);
         setResult(RESULT_OK,returnIntent);
         super.onBackPressed();
+        this.finish();//--------------------------------------------------
     }
 
     public void sendToDataBase(Message message) {

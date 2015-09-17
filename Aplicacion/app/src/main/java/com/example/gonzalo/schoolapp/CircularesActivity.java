@@ -223,7 +223,7 @@ public class CircularesActivity extends Activity {
                     }
                 }
                 classesSelected += "\n";
-                classesSelected += getString(R.string.teachers) + ": ";
+                classesSelected += getString(R.string.fathers) + ": ";
                 for (int i = 0; i < fathersSelected.size(); i++) {
                     if (i < (fathersSelected.size() - 1)) {
                         classesSelected += fathersSelected.get(i) + ", ";
